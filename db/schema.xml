@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="720" y="275" name="classes">
+</datatypes><table x="729" y="275" name="classes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -71,39 +71,6 @@
 </key>
 <comment>List of all classes</comment>
 </table>
-<table x="233" y="128" name="volunteers">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="first_name" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="last_name" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="address_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="addresses" row="id" />
-</row>
-<row name="email" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="phone" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="briefing_comments?" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><comment>all necessary briefing info, date, place etc. </comment>
-</row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-<comment>List of all available volunteers. Only approved volunteers are contained here.</comment>
-</table>
 <table x="16" y="298" name="addresses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
@@ -132,7 +99,7 @@
 </key>
 <comment>Contains addresses for volunteers and students</comment>
 </table>
-<table x="200" y="410" name="students">
+<table x="225" y="444" name="students">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -167,7 +134,7 @@
 </key>
 <comment>List of all students</comment>
 </table>
-<table x="442" y="261" name="class_volunteers">
+<table x="405" y="213" name="class_volunteers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="classes" row="id" />
@@ -177,12 +144,7 @@
 <default>NULL</default></row>
 <row name="volunteer_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="volunteers" row="id" />
-</row>
-<row name="role_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="roles" row="id" />
-<comment>The specific role of the volunteer for the class. "Teacher", "Assistant" etc.</comment>
+<default>NULL</default><relation table="users" row="id" />
 </row>
 <row name="teacher" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -197,19 +159,7 @@
 </key>
 <comment>List of volunteers for each class</comment>
 </table>
-<table x="806" y="68" name="roles">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="name" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-<comment>List of roles in the system ('Teacher', 'Assistant', etc.)</comment>
-</table>
-<table x="715" y="557" name="sessions">
+<table x="729" y="527" name="sessions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -218,27 +168,32 @@
 <default>NULL</default><relation table="classes" row="id" />
 </row>
 <row name="date" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="duration?" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><comment>How long the session will last</comment>
 </row>
-<row name="location_id" null="1" autoincrement="0">
+<row name="location_id?" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><comment>Can the location for each session differ than the location for the entire class? If so, we need this field. If not, then we use the address for the class</comment>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 <comment>List of each instance of a class</comment>
 </table>
-<table x="981" y="473" name="attendance">
+<table x="987" y="459" name="attendance">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="student_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="students" row="id" />
+</row>
+<row name="session_volunteer_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="session_volunteers" row="id" />
 </row>
 <row name="session_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -257,7 +212,7 @@
 </key>
 <comment>List of attendance FOR each student FOR each session FOR each class. Having everything on one table easily allows us to pull the attendance for the entire class AND an individual session for the class AND a students attendance across all sessions/classes</comment>
 </table>
-<table x="452" y="538" name="student_classes">
+<table x="423" y="562" name="student_classes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -274,7 +229,7 @@
 </key>
 <comment>List of classes a student is taking</comment>
 </table>
-<table x="792" y="158" name="subjects">
+<table x="726" y="104" name="subjects">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -286,7 +241,7 @@
 </key>
 <comment>List of all courses (Python, HTML, JS etc.)</comment>
 </table>
-<table x="988" y="231" name="session_volunteers">
+<table x="960" y="222" name="session_volunteers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -294,14 +249,17 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="sessions" row="id" />
 </row>
-<row name="role_id" null="1" autoincrement="0">
+<row name="class_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="roles" row="id" />
+<default>NULL</default><relation table="classes" row="id" />
 </row>
-<row name="present" null="1" autoincrement="0">
+<row name="volunteer_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>0</default></row>
-<row name="class_id???" null="1" autoincrement="0">
+<default>NULL</default></row>
+<row name="teacher" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="assistant" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -309,36 +267,50 @@
 </key>
 <comment>List of volunteers for each session. This table is necessary because it will allow us to override the default volunteers defined when creating the class if a volunteer needs to be changed.</comment>
 </table>
-<table x="436" y="71" name="volunteer_courses">
+<table x="409" y="31" name="volunteer_subjects">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="volunteer_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="volunteers" row="id" />
+<default>NULL</default><relation table="users" row="id" />
 </row>
 <row name="subject_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="subjects" row="id" />
 </row>
-<row name="role_id" null="1" autoincrement="0">
+<row name="teach" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="roles" row="id" />
-</row>
+<default>0</default></row>
+<row name="assist" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>0</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
-<comment>List of courses a volunteer can teach or assist with</comment>
+<comment>List of subjets a volunteer can teach or assist with</comment>
 </table>
-<table x="28" y="106" name="users">
+<table x="187" y="61" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="first_name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="last_name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <row name="username" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="password" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="phone" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="user_role" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -347,6 +319,10 @@
 <row name="client_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="clients" row="id" />
+</row>
+<row name="address_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="addresses" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
