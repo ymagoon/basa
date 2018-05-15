@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Custom added gems - YM
+gem 'cloudinary'
 gem 'figaro'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
