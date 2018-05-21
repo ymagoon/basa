@@ -1,4 +1,3 @@
-
 users
 validates :first_name, presence: true
 validates :last_name, presence: true
@@ -7,11 +6,15 @@ validates :email, uniqueness: true
 validates :phone, uniqueness: true, presence: true
 validates :user_role
 
+subjects
+-name, presence: true
+
 volunteer_subjects
+validates :volunteer_role, presence: true, inclusion { list of volunteer_roles }
 
 addresses
 
-validates :venue_name, presence: true, uniqueness: true
+validates :venue_name, presence: true, uniqueness: true ##### VENUE NAME ONLY NEEDS TO BE PRESENT FOR ADDRESS-TYPE LOCATION???
 validates :address_1, presence: true
 validates :city, presence: true
 validates :postal_code, presence: true
@@ -27,19 +30,27 @@ validates :birthdate, presence: true
 validates :gender, presence: true
 
 classes
--start_date, presense: true, allow_blank: false
--end_date, presense: true, allow_blank: false
+-start_date, presence: true, allow_blank: false
+-end_date, presence: true, allow_blank: false
 -frequency
--number_of_sessions, numericality: true, presense: true
+-number_of_sessions, numericality: true, presence: true
 -address_id
--min_capacity, numericality: true, presense: true, includes: { in: whatever }
--max_capacity, numericality: true, presense: true, includes: { in: whatever }
+-min_capacity, numericality: true, presence: true, includes: { in: whatever }
+-max_capacity, numericality: true, presence: true, includes: { in: whatever }
 -notes
--session_length, presense: true, numericality: true
+-session_length, presence: true, numericality: true
+
+sessions
+validates :date, presence: true
+
+student classes
+-none
+
+class_volunteers
+- (either teacher or assistant must be true) OR should this map in same way to volunteer_role field values?
 
 session_volunteers
--
+- (either teacher or assistant must be true) OR should this map in same way to volunteer_role field values?
 
-subjects
--name, presense: true
-
+attendance
+-none
