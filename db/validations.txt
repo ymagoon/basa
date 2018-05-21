@@ -1,3 +1,4 @@
+
 users
 validates :first_name, presence: true
 validates :last_name, presence: true
@@ -24,3 +25,21 @@ validates :email, uniqueness: true
 validates :phone, uniqueness: true, presence: true
 validates :birthdate, presence: true
 validates :gender, presence: true
+
+classes
+-start_date, presense: true, allow_blank: false
+-end_date, presense: true, allow_blank: false
+-frequency
+-number_of_sessions, numericality: true, presense: true
+-address_id
+-min_capacity, numericality: true, presense: true, includes: { in: whatever }
+-max_capacity, numericality: true, presense: true, includes: { in: whatever }
+-notes
+-session_length, presense: true, numericality: true
+
+session_volunteers
+-
+
+subjects
+-name, presense: true
+
