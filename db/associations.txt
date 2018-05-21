@@ -1,0 +1,56 @@
+users
+-a user has many volunteer_subjects
+-a user has many class_volunteers
+-a user has many classes through class_volunteers
+
+subjects
+-a subject has many volunteer subjects
+-a subject has many classes
+
+volunteer_subjects
+-a volunteer_subject belongs to a subject
+-a volunteer_subject belongs to a user
+
+class_volunteers
+-a class_volunteer belongs to a user
+-a class_volunteer belongs to a class
+
+classes
+-a class belongs to a subject
+-a class has many class_volunteers
+-a class has many users through class_volunteers
+-a class has many sessions
+-a class has many attendance through sessions
+-a class has many session volunteers
+-a class has many student_classes
+-a class has many students through student_classes
+-a class belongs to an address
+
+sessions
+-a session belongs to a class
+-a session has many attendences
+-a session has many session_volunteers
+
+session_volunteers
+-a session_volunteer belongs to a session
+-a session_volunteer belongs to a class
+
+attendance
+-an attendance belongs to a sessions
+-an attendance belongs to a student
+
+students
+-a student has many student_classes
+-a student has many classes through student_class
+-a student has many attendances
+-a student belongs to an address
+
+student_classes
+-a student_class belongs to a student
+-a student_class belongs to a class
+
+address
+-an address has many classes
+-an address has many users
+-an address has many students
+

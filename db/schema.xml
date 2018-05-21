@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="729" y="275" name="classes">
+</datatypes><table x="730" y="275" name="classes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -56,6 +56,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><comment>this will be more complex, but using frequency to as a placehold</comment>
 </row>
+<row name="number_of_sessions" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <row name="address_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="addresses" row="id" />
@@ -64,6 +67,12 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="max_capacity" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="notes" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="session_length" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -75,10 +84,16 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="street_number" null="1" autoincrement="0">
+<row name="venue_name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="street_name" null="1" autoincrement="0">
+<row name="address_formatted" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="address_1" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="address_2" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="city" null="1" autoincrement="0">
@@ -126,9 +141,6 @@
 <row name="gender" null="1" autoincrement="0">
 <datatype>CHAR(1)</datatype>
 <default>NULL</default></row>
-<row name="birth_date / age" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -159,7 +171,7 @@
 </key>
 <comment>List of volunteers for each class</comment>
 </table>
-<table x="729" y="527" name="sessions">
+<table x="736" y="579" name="sessions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -170,20 +182,12 @@
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
-<row name="duration?" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><comment>How long the session will last</comment>
-</row>
-<row name="location_id?" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><comment>Can the location for each session differ than the location for the entire class? If so, we need this field. If not, then we use the address for the class</comment>
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 <comment>List of each instance of a class</comment>
 </table>
-<table x="987" y="459" name="attendance">
+<table x="969" y="526" name="attendance">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -191,17 +195,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="students" row="id" />
 </row>
-<row name="session_volunteer_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="session_volunteers" row="id" />
-</row>
 <row name="session_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="sessions" row="id" />
-</row>
-<row name="class_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="classes" row="id" />
 </row>
 <row name="present" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -241,7 +237,7 @@
 </key>
 <comment>List of all courses (Python, HTML, JS etc.)</comment>
 </table>
-<table x="960" y="222" name="session_volunteers">
+<table x="1040" y="276" name="session_volunteers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -279,10 +275,7 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="subjects" row="id" />
 </row>
-<row name="teach" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>0</default></row>
-<row name="assist" null="1" autoincrement="0">
+<row name="role" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>0</default></row>
 <key type="PRIMARY" name="">
@@ -290,7 +283,7 @@
 </key>
 <comment>List of subjets a volunteer can teach or assist with</comment>
 </table>
-<table x="187" y="61" name="users">
+<table x="196" y="39" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -316,10 +309,6 @@
 <datatype>VARCHAR</datatype>
 <default>NULL</default><comment>"MANAGER", "VOLUNTEER"</comment>
 </row>
-<row name="client_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="clients" row="id" />
-</row>
 <row name="address_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="addresses" row="id" />
@@ -328,17 +317,5 @@
 <part>id</part>
 </key>
 <comment>Somehow link the volunteers into the user table. The user table will be used for access into the system with the Devise gem we talk about for logging in.</comment>
-</table>
-<table x="29" y="6" name="clients">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="name" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-<comment>List of all clients. Users will be associated with an organization and in a real production product this segregation will allow for specifics for a client. From formatting looks, feels, functionality, payments etc. </comment>
 </table>
 </sql>
