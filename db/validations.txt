@@ -1,0 +1,26 @@
+users
+validates :first_name, presence: true
+validates :last_name, presence: true
+validates :username, uniqueness: true, presence: true
+validates :email, uniqueness: true
+validates :phone, uniqueness: true, presence: true
+validates :user_role
+
+volunteer_subjects
+
+addresses
+
+validates :venue_name, presence: true, uniqueness: true
+validates :address_1, presence: true
+validates :city, presence: true
+validates :postal_code, presence: true
+validates :address_type, presence: true
+
+students
+
+validates :first_name, presence: true
+validates :last_name, presence: true
+validates :email, uniqueness: true
+validates :phone, uniqueness: true, presence: true
+validates :birthdate, presence: true
+validates :gender, presence: true
