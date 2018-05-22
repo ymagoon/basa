@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   attr_accessor :login
 
+  enum role: [:volunteer, :admin]
+  before_create :set_default_role
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }, length: { minimum: 6 }
   # Only allow letter, number, underscore and punctuation. This is important so users don't create a username
   # formatted like an email. Prevents issues where users might use an email as their username
@@ -28,6 +31,13 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= :volunteer
+    puts 'testing123 blah blah'
   end
 
   def validate_username

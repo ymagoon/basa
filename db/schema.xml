@@ -305,9 +305,9 @@
 <row name="phone" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="user_role" null="1" autoincrement="0">
+<row name="role" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
-<default>NULL</default><comment>"MANAGER", "VOLUNTEER"</comment>
+<default>NULL</default><comment>'admin', 'volunteer'</comment>
 </row>
 <row name="address_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
