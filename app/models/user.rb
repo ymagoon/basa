@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :login
 
+  # enum allows us to call user.admin? user.volunteer? => true/false user.role => 'admin' || 'volunteer'
   enum role: [:admin, :volunteer]
   before_create :set_default_role
 
@@ -32,7 +33,6 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role ||= :volunteer
-    puts 'testing123 blah blah'
   end
 
   def validate_username
