@@ -1,10 +1,13 @@
- users
+
+users
+
 validates :first_name, presence: true
 validates :last_name, presence: true
 validates :username, uniqueness: true, presence: true
 validates :email, uniqueness: true
 validates :phone, uniqueness: true, presence: true
 validates :user_role
+
 
 subjects
 -name, presence: true
@@ -15,6 +18,7 @@ validates :volunteer_role, presence: true, inclusion { list of volunteer_roles }
 addresses
 
 validates :venue_name, presence: true, uniqueness: true ##### VENUE NAME ONLY NEEDS TO BE PRESENT FOR ADDRESS-TYPE LOCATION???
+
 validates :address_1, presence: true
 validates :city, presence: true
 validates :postal_code, presence: true
@@ -54,3 +58,4 @@ session_volunteers
 
 attendance
 -none
+
