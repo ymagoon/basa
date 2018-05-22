@@ -36,7 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Custom added gems - YM
-gem 'cloudinary'
+# gem 'cloudinary'
+# gem 'carrierwave'
 gem 'figaro'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -46,6 +47,9 @@ gem 'jquery-rails'
 gem 'awesome_print'
 gem 'meta_request'
 gem 'better_errors'
+gem 'devise'
+gem 'pundit'
+gem 'pg_search'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
