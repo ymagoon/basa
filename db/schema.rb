@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_05_23_083216) do
   end
 
   create_table "subjects", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,8 +127,13 @@ ActiveRecord::Schema.define(version: 2018_05_23_083216) do
   end
 
   create_table "volunteer_rosters", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "user_id"
+    t.integer "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_volunteer_rosters_on_course_id"
+    t.index ["user_id"], name: "index_volunteer_rosters_on_user_id"
   end
 
   add_foreign_key "attendances", "sessions"
@@ -140,4 +146,6 @@ ActiveRecord::Schema.define(version: 2018_05_23_083216) do
   add_foreign_key "student_rosters", "courses"
   add_foreign_key "student_rosters", "students"
   add_foreign_key "students", "addresses"
+  add_foreign_key "volunteer_rosters", "courses"
+  add_foreign_key "volunteer_rosters", "users"
 end
