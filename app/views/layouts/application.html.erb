@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Basa</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <title>
+      <%= if content_for?(:title) then yield(:title) + ' | ' end %> BASA
+    </title>
+
+    <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag "application" %>
-    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

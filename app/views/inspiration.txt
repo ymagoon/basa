@@ -1,0 +1,29 @@
+LOGIN FORM
+    https://www.tutorialrepublic.com/snippets/designs/elegant-modal-sign-in-form.png
+
+SIGN UP FORM
+    https://i.stack.imgur.com/qxdkP.png
+
+ATTENDANCE
+    https://dribbble.com/shots/1656460-Teacher-Page
+
+CALENDAR
+    https://dribbble.com/shots/1458422-Vonigo-Schedule/attachments/216307
+    https://dribbble.com/shots/3554406-Schedule-Tenory-Sync
+    https://dribbble.com/shots/3425307-Scheduler-Test-Assignment/attachments/749641
+    https://dribbble.com/shots/1794804-RIT-SIS-sytem-schedule/attachments/295300
+    http://jsbin.com/ketiju/1/edit?css,js,output <---- actual code of a calendar (https://github.com/bclinkinbeard/egghead-d3-calendar)
+
+DASHBOARD
+    https://dribbble.com/shots/1990036-Student-Portal
+    https://dribbble.com/shots/2544298-Dashboard/attachments/503098 (OKAY)
+    https://dribbble.com/shots/1597572-Classroom-Dashboard/attachments/247410 (OKAY)
+    https://dribbble.com/shots/4293550-Dashboard-for-High-School-Admin/attachments/979671 (OKAY)
+
+TYPEFACE / COLOR PALETTE
+    https://www.behance.net/gallery/45502529/Strategy-Design-for-College-Admission-Platform
+
+DRAGABLE CODE FOR STUDENT, VOLUNTEER ASSIGNMENT
+    https://dribbble.com/shots/1530752-LC-View
+    https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+    https://html5demos.com/drag/#view-source

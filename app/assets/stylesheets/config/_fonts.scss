@@ -1,16 +1,41 @@
-// Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+// GothamPro styles from app/assets/fonts
+@font-face {
+  font-family: 'GothamPro';
+  src: font-url('GothamPro/GothamPro.eot?') format('eot'),
+       font-url('GothamPro/GothamPro.otf')  format('opentype'),
+       font-url('GothamPro/GothamPro.woff') format('woff'),
+       font-url('GothamPro/GothamPro.ttf')  format('truetype'),
+       font-url('GothamPro.svg#GothamPro') format('svg');
+}
+$gotham: "GothamPro";
 
-// Define fonts for body and headers
-$body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: "Raleway", "Helvetica", "sans-serif";
+@font-face {
+  font-family: 'GothamPro-Light';
+  src: font-url('GothamPro-Light/GothamPro-Light.eot?') format('eot'),
+       font-url('GothamPro-Light/GothamPro-Light.otf')  format('opentype'),
+       font-url('GothamPro-Light/GothamPro-Light.woff') format('woff'),
+       font-url('GothamPro-Light/GothamPro-Light.ttf')  format('truetype'),
+       font-url('GothamPro-Light/GothamPro-Light.svg#GothamPro-Light') format('svg');
+}
+$gotham-light: "GothamPro-Light";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: 'GothamPro-Medium';
+  src: font-url('GothamPro-Medium/GothamPro-Medium.eot?') format('eot'),
+       font-url('GothamPro-Medium/GothamPro-Medium.otf')  format('opentype'),
+       font-url('GothamPro-Medium/GothamPro-Medium.woff') format('woff'),
+       font-url('GothamPro-Medium/GothamPro-Medium.ttf')  format('truetype'),
+       font-url('GothamPro-Medium/GothamPro-Medium.svg#GothamPro-Medium') format('svg');
+}
+$gotham-medium: "GothamPro-Medium";
+
+@font-face {
+  font-family: 'GothamPro-Bold';
+  src: font-url('GothamPro-Bold/GothamPro-Bold.eot?') format('eot'),
+       font-url('GothamPro-Bold/GothamPro-Bold.otf')  format('opentype'),
+       font-url('GothamPro-Bold/GothamPro-Bold.woff') format('woff'),
+       font-url('GothamPro-Bold/GothamPro-Bold.ttf')  format('truetype'),
+       font-url('GothamPro-Bold/GothamPro-Bold.svg#GothamPro-Bold') format('svg');
+}
+$gotham-bold: "GothamPro-Bold";
+

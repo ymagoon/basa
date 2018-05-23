@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="730" y="275" name="classes">
+</datatypes><table x="775" y="264" name="courses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -75,6 +75,10 @@
 <row name="session_length" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>'pending', 'confirmed', 'cancelled'</comment>
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -146,48 +150,51 @@
 </key>
 <comment>List of all students</comment>
 </table>
-<table x="405" y="213" name="class_volunteers">
+<table x="442" y="225" name="voluteer_rosters">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="classes" row="id" />
-</row>
-<row name="class_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="volunteer_id" null="1" autoincrement="0">
+<row name="course_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="courses" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="teacher" null="1" autoincrement="0">
+<row name="role" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>0</default><comment>Instead of creating a new table, we can use this. Teacher will be 1 if they are the teacher for the class and 0 if they are not</comment>
-</row>
-<row name="assistant" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>0</default><comment>Instead of creating a new table, we can use this. Assistant will be 1 if they are an assistant for the class and 0 if they are not</comment>
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 <comment>List of volunteers for each class</comment>
 </table>
-<table x="736" y="579" name="sessions">
+<table x="734" y="587" name="sessions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="class_id" null="1" autoincrement="0">
+<row name="course_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="classes" row="id" />
+<default>NULL</default><relation table="courses" row="id" />
 </row>
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>'pending', 'confirmed', 'cancelled'</comment>
+</row>
+<row name="notes" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 <comment>List of each instance of a class</comment>
 </table>
-<table x="969" y="526" name="attendance">
+<table x="995" y="531" name="attendance">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -208,7 +215,7 @@
 </key>
 <comment>List of attendance FOR each student FOR each session FOR each class. Having everything on one table easily allows us to pull the attendance for the entire class AND an individual session for the class AND a students attendance across all sessions/classes</comment>
 </table>
-<table x="423" y="562" name="student_classes">
+<table x="453" y="566" name="student_rosters">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -216,14 +223,14 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="students" row="id" />
 </row>
-<row name="class_id" null="1" autoincrement="0">
+<row name="course_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="classes" row="id" />
+<default>NULL</default><relation table="courses" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
-<comment>List of classes a student is taking</comment>
+<comment>List of courses a student is taking</comment>
 </table>
 <table x="726" y="104" name="subjects">
 <row name="id" null="1" autoincrement="1">
@@ -237,37 +244,11 @@
 </key>
 <comment>List of all courses (Python, HTML, JS etc.)</comment>
 </table>
-<table x="1040" y="276" name="session_volunteers">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="session_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="sessions" row="id" />
-</row>
-<row name="class_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="classes" row="id" />
-</row>
-<row name="volunteer_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="teacher" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="assistant" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-<comment>List of volunteers for each session. This table is necessary because it will allow us to override the default volunteers defined when creating the class if a volunteer needs to be changed.</comment>
-</table>
 <table x="409" y="31" name="volunteer_subjects">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="volunteer_id" null="1" autoincrement="0">
+<row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
@@ -305,9 +286,9 @@
 <row name="phone" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="user_role" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default><comment>"MANAGER", "VOLUNTEER"</comment>
+<row name="role" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><comment>'admin', 'volunteer'</comment>
 </row>
 <row name="address_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
