@@ -10,12 +10,13 @@ class Course < ApplicationRecord
 
   before_create :set_default_status
 
-  enum frequency: [:daily, :weekly, :biweekly, :monthly]
+  @frequencies = ['daily', 'weekly', 'biweekly', 'monthly']
+  enum frequency: @frequencies
   enum status: ['pending', 'confirmed', 'cancelled']
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :frequency, presence: true, inclusion: { in: [0, 1, 2, 3]}
+  validates :frequency, presence: true, inclusion: { in: @frequencies}
   validates :number_of_sessions, :numericality => { :only_integer => true }
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
