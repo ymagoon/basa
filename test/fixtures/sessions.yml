@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course: one
+  date: 2018-05-23
+  notes: MyText
+
+two:
+  course: two
+  date: 2018-05-23
+  notes: MyText
