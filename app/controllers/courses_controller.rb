@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
     @course.address = @address
 
     if @course.save
-      puts 'woo, worked!'redirect_to courses_path
+      redirect_to courses_path
     else
       render 'new'
     end
