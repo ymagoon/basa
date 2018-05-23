@@ -7,7 +7,7 @@ class Address < ApplicationRecord
 
   enum address_type: @address_type
 
-  validates :venue_name, uniqueness: true
+  validates :venue_name, uniqueness: true, allow_blank: true
   validates :address_1, presence: true
   validates :postal_code, presence: true
   validates :city, presence: true
