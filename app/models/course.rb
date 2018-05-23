@@ -10,19 +10,49 @@ class Course < ApplicationRecord
 
   before_create :set_default_status
 
-  @frequencies = ['daily', 'weekly', 'biweekly', 'monthly']
-  enum frequency: @frequencies
-  enum status: ['pending', 'confirmed', 'cancelled']
+  def self.frequencies
+    [:daily, :weekly, :biweekly, :monthly]
+  end
+
+  def self.statuses
+    ['pending', 'confirmed', 'cancelled']
+  end
+
+  enum frequency: self.frequencies
+  enum status: self.statuses
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :frequency, presence: true, inclusion: { in: @frequencies}
+  validates :frequency, presence: true, inclusion: { in: self.frequencies.keys }
   validates :number_of_sessions, :numericality => { :only_integer => true }
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
 
+  def number_of_students
+    self.students.count
+  end
+
+  def schedule
+    # Creates a schedule of dates for a Course depending on what the start_date, end_date and
+    # frequency of the course is
+    schedule = IceCube::Schedule.new(now = start_date)
+
+    case frequency
+    when 'dialy'
+      schedule.add_recurrence_rule IceCube::Rule.daily.until(end_date)
+    when 'weekly'
+      schedule.add_recurrence_rule IceCube::Rule.weekly.until(end_date)
+    when 'biweekly'
+      schedule.add_recurrence_rule IceCube::Rule.weekly(2).until(end_date)
+    when 'monthly'
+      schedule.add_recurrence_rule IceCube::Rule.monthly(1).until(end_date)
+    end
+    schedule
+  end
+
   private
 
+  # When a course is created, default the status to pending
   def set_default_status
     self.status = 0
   end

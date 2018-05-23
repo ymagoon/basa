@@ -1,0 +1,13 @@
+<%= simple_form_for(@course) do |f| %>
+  <%= f.input :subject_id, collection: @subjects %>
+  <%= f.input :address_id, collection: @addresses %>
+  <%= f.input :start_date, as: :string %>
+  <%= f.input :end_date, as: :string %>
+  <%= f.input :frequency, as: :radio_buttons, collection: Course.frequencies.keys %>
+  <%= f.input :min_capacity, label: false, placeholder: 'Enter minimum class capacity' %>
+  <%= f.input :max_capacity, label: false, placeholder: 'Enter maximum class capacity' %>
+  <%= f.input :session_length, label: false, placeholder: 'Enter the class duration' %>
+  <%= f.submit %>
+<% end %>
+
+<!-- input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string -->
