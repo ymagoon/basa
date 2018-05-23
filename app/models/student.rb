@@ -1,13 +1,18 @@
 class Student < ApplicationRecord
-  belongs_to :address_id
+  belongs_to :address
   has_many :student_rosters
-  has_many :courses, through :student_rosters
+  has_many :courses, through: :student_rosters
   has_many :attendances
 
-  validates: first_name, presence: true
-  validates: last_name, presence: true
-  validates: phone, presence: true
-  validates: email, presence: true
-  validates: birth_date, presence: true
-  validates: gender, presence: true
+  @gender = ['male', 'female']
+
+  enum gender: @gender
+  email_expression = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  validates :first_name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 30 }
+  validates :phone, presence: true
+  validates :email, presence: true, format: { with: email_expression }
+  validates :birth_date, presence: true
+  validates :gender, presence: true, inclusion: { in: @gender }
 end
