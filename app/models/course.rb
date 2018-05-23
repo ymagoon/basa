@@ -1,14 +1,15 @@
 class Course < ApplicationRecord
   belongs_to :subject
   belongs_to :address
-  has_many :volunteer_rosters
-  has_many :student_rosters
+  has_many :volunteer_rosters, dependent: :destroy
+  has_many :student_rosters, dependent: :destroy
   has_many :students, through: :student_rosters
   has_many :users, through: :volunteer_rosters
-  has_many :sessions
-  has_many :attendances, through: :sessions
+  has_many :sessions, dependent: :destroy
+  has_many :attendances, through: :sessions, dependent: :destroy
 
   before_create :set_default_status, :set_number_of_sessions, :set_notes
+  after_create :create_sessions
 
   def self.frequencies
     [:daily, :weekly, :biweekly, :monthly]
@@ -49,6 +50,10 @@ class Course < ApplicationRecord
     schedule
   end
 
+  def list_occurrences
+    self.schedule.occurrences(self.end_date)
+  end
+
   private
 
   # When a course is created, default the status to pending
@@ -64,5 +69,12 @@ class Course < ApplicationRecord
   # Default the note to a blank string if the user doesn't enter a note
   def set_notes
     self.notes ||= ''
+  end
+
+  # Create all of the sessions for the course after the course itself is created
+  def create_sessions
+    self.schedule.occurrences(self.end_date).each do |session|
+      Session.create(course: self, date: session)
+    end
   end
 end
