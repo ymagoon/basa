@@ -1,3 +1,9 @@
+LOGIN FORM
+    https://www.tutorialrepublic.com/snippets/designs/elegant-modal-sign-in-form.png
+
+SIGN UP FORM
+    https://i.stack.imgur.com/qxdkP.png
+
 ATTENDANCE
     https://dribbble.com/shots/1656460-Teacher-Page
 
