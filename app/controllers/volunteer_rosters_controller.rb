@@ -19,5 +19,4 @@ class VolunteerRostersController < ApplicationController
 
   def destroy
   end
-
 end
