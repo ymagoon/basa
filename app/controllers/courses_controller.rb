@@ -21,10 +21,7 @@ class CoursesController < ApplicationController
 
     @address = Address.find(course_params[:address_id])
     @course.address = @address
-
-    # Fix logic when we add the session
-    @course.number_of_sessions = 0
-
+    # raise
     if @course.save
       puts 'woo, worked!'
     else
@@ -41,12 +38,11 @@ class CoursesController < ApplicationController
   def destroy
   end
 
-
   private
 
   def course_params
     params.require(:course).permit(:subject_id, :address_id, :start_date, :end_date, :frequency,
-                                   :min_capacity, :max_capacity, :session_length)
+                                   :min_capacity, :max_capacity, :session_length, :notes)
   end
 
   def set_subject

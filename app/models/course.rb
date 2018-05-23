@@ -8,7 +8,7 @@ class Course < ApplicationRecord
   has_many :sessions
   has_many :attendances, through: :sessions
 
-  before_create :set_default_status
+  before_create :set_default_status, :set_number_of_sessions, :set_notes
 
   def self.frequencies
     [:daily, :weekly, :biweekly, :monthly]
@@ -24,7 +24,6 @@ class Course < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :frequency, presence: true, inclusion: { in: self.frequencies.keys }
-  validates :number_of_sessions, :numericality => { :only_integer => true }
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
 
@@ -55,5 +54,15 @@ class Course < ApplicationRecord
   # When a course is created, default the status to pending
   def set_default_status
     self.status = 0
+  end
+
+  # Set the total number of sessions
+  def set_number_of_sessions
+    self.number_of_sessions = schedule.occurrences(end_date).count
+  end
+
+  # Default the note to a blank string if the user doesn't enter a note
+  def set_notes
+    self.notes ||= ''
   end
 end
