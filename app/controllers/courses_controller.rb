@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
+  before_action :set_course, only: [:edit, :update, :destroy]
   def index
     @courses = Course.all
   end
@@ -21,9 +22,9 @@ class CoursesController < ApplicationController
 
     @address = Address.find(course_params[:address_id])
     @course.address = @address
-    # raise
+
     if @course.save
-      puts 'woo, worked!'
+      puts 'woo, worked!'redirect_to courses_path
     else
       render 'new'
     end
@@ -33,9 +34,20 @@ class CoursesController < ApplicationController
   end
 
   def update
+    if @course.update(course_params)
+      redirect_to courses_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    if @course.destroy
+      redirect_to courses_path
+    end
+  end
+
+  def edit
   end
 
   private
@@ -47,5 +59,9 @@ class CoursesController < ApplicationController
 
   def set_subject
     @subject = Subject.find(params[:course][:subject_id])
+  end
+
+  def set_course
+    @course = Course.find(params[:id])
   end
 end
