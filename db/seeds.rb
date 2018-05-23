@@ -1,7 +1,49 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Seed subjects
+10.times do
+  Subject.create(name: Faker::ProgrammingLanguage.name)
+end
+
+# Subject.create(name: 'Scratch')
+# Subject.create(name: 'Python')
+# Subject.create(name: 'Ruby on Rails')
+# Subject.create(name: 'PHP')
+# Subject.create(name: 'Mobile App Development')
+# Subject.create(name: 'Responsive Website Design')
+
+# Seed students and volunteers
+50.times do
+  address = Address.create(venue_name: '',
+                           address_formatted: '',
+                           address_1: Faker::Address.street_address,
+                           address_2: Faker::Address.secondary_address,
+                           city: Faker::Address.city,
+                           state: Faker::Address.state,
+                           postal_code: Faker::Address.zip_code,
+                           address_type: rand(0..2)) # enumerator uses this
+
+  Student.create(first_name: Faker::Name.first_name,
+                 last_name: Faker::Name.last_name,
+                 email: Faker::Internet.email,
+                 phone: Faker::PhoneNumber.phone_number,
+                 birth_date: Faker::Date.between(15.year.ago, 8.year.ago),
+                 gender: rand(0..1),
+                 address: address)
+
+  address2 = Address.create(venue_name: '',
+                           address_formatted: '',
+                           address_1: Faker::Address.street_address,
+                           address_2: Faker::Address.secondary_address,
+                           city: Faker::Address.city,
+                           state: Faker::Address.state,
+                           postal_code: Faker::Address.zip_code,
+                           address_type: rand(0..2))
+
+  Volunteer.create(first_name: Faker::Name.first_name,
+                 last_name: Faker::Name.last_name,
+                 email: Faker::Internet.email,
+                 phone: Faker::PhoneNumber.phone_number,
+                 birth_date: Faker::Date.between(15.year.ago, 8.year.ago),
+                 gender: rand(0..1),
+                 address: address2)
+end
+
