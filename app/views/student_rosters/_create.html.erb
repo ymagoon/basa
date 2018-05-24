@@ -3,13 +3,13 @@
   <div class="col-xs-2">
   <% students.each do |student| %>
       <% if student.gender == 'male' %>
-        <div class="student_card male">
+        <div draggable="true" class="student_card male">
           <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
           <span class="age-gender"><i class="fas fa-male"></i><p><%= student.age(student.birth_date) %></p></span>
         </div>
       <% else %>
-        <div class="student_card female">
+        <div draggable="true" class="student_card female">
           <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
           <span class="age-gender"><i class="fas fa-female"></i><p><%= student.age(student.birth_date) %></p></span>
         </div>

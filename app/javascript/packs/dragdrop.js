@@ -45,6 +45,9 @@ function dragAndDrop() {
 
     saveStudentRoster();
 
+    // let data = e.dataTransfer.getData("text");
+    // e.target.appendChild(document.getElementById(file));
+
     console.log(e);
   });
 }
@@ -52,6 +55,9 @@ function dragAndDrop() {
 export { dragAndDrop }
 
     // Sending AJAX request and upload file
+
+
+
 // function uploadData(formdata){
 //   $.ajax({
 //       url: 'upload.php',
@@ -65,3 +71,4 @@ export { dragAndDrop }
 //       }
 //   });
 // }
+
