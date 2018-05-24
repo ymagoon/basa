@@ -9,6 +9,9 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+
+    # @students = Student.all - #students where studentid == student_roster(@course_id)
+
   end
 
   def new
