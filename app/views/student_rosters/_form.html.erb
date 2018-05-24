@@ -1,0 +1,4 @@
+<%= simple_form_for [@volunteer_roster, @student] do |f| %>
+  <%= f.input :student, collection: @students %>
+  <%= f.button :submit %>
+<% end -%>
