@@ -24,6 +24,9 @@ class CoursesController < ApplicationController
     @address = Address.find(course_params[:address_id])
     @course.address = @address
 
+    @course.start_date = course_params[:start_date]
+    @course.end_date = course_params[:end_date]
+    raise
     if @course.save
       redirect_to courses_path
       # redirect_to action: course_sessions_path(@course), occurrences: @course.list_occurrences
@@ -52,8 +55,14 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:subject_id, :address_id, :start_date, :end_date, :frequency,
-                                   :min_capacity, :max_capacity, :session_length, :notes)
+    parameters = params.require(:course).permit(:subject_id, :address_id, :start_date, :frequency,
+                                            :min_capacity, :max_capacity, :session_length, :notes)
+    # parse date into correct format
+    date = parameters[:start_date]
+    parameters[:start_date] = date[0..(date.index('-') - 2)]
+    parameters[:end_date] = date[(date.index('-') + 2)..-1]
+
+    parameters
   end
 
   def set_subject
