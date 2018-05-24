@@ -10,6 +10,7 @@ class VolunteerRostersController < ApplicationController
 
   def create
      # @volunteer = Volunteer.find(params[:id])
+     # volunteers must be filtered by role and proficiency
     # @course = Course.find(params[:id])
 
     if save
