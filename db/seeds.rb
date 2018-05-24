@@ -1,15 +1,12 @@
 # Seed subjects
-
-10.times do
-  Subject.create(name: Faker::ProgrammingLanguage.name)
-end
-
-# Subject.create(name: 'Scratch')
-# Subject.create(name: 'Python')
-# Subject.create(name: 'Ruby on Rails')
-# Subject.create(name: 'PHP')
-# Subject.create(name: 'Mobile App Development')
-# Subject.create(name: 'Responsive Website Design')
+Subject.create(name: 'Scratch')
+Subject.create(name: 'Python')
+Subject.create(name: 'Ruby on Rails')
+Subject.create(name: 'PHP')
+Subject.create(name: 'Mobile App Development')
+Subject.create(name: 'Responsive Website Design')
+Subject.create(name: 'C#')
+Subject.create(name: 'Blockchain Technology')
 
 # Seed students and volunteers
 address = ""
