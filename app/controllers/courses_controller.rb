@@ -4,9 +4,11 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    @students = Student.all
   end
 
   def show
+    @course = Course.find(params[:id])
   end
 
   def new
