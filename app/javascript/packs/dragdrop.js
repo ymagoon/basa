@@ -8,8 +8,10 @@ function saveStudentRoster(student_id, course_id) {
     }
   };
 
+  console.log(student_id);
+  console.log(course_id);
    // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
-  xhttp.open("POST", "/courses", true); // /course_id/student_rosters/student_id
+  xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
   xhttp.send();
 }
 
@@ -18,7 +20,6 @@ function dragAndDrop() {
   const html = document.documentElement
   const uploadArea = document.querySelector('.upload-area');
   const students = document.querySelectorAll('.student_card ');
-  console.log(students);
 
   html.addEventListener('dragover',function(e) {
     e.preventDefault();
@@ -31,16 +32,6 @@ function dragAndDrop() {
     e.stopPropagation();
   });
 
-  for(var i=0; i< students.length; i++) {
-    students[i].addEventListener('dragstart', function(e) {
-
-      const studentCard = e.target;
-      const dataId = studentCard.dataset.student
-
-      e.dataTransfer.setData("student-id", dataId);
-    });
-  };
-
   uploadArea.addEventListener('dragenter', function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -51,22 +42,35 @@ function dragAndDrop() {
     e.stopPropagation();
   });
 
+  for(var i=0; i< students.length; i++) {
+    students[i].addEventListener('dragstart', function(e) {
+
+      const studentCard = e.target;
+      const studentId = studentCard.dataset.student;
+      const courseId = studentCard.dataset.course;
+
+      const ids = [studentId, courseId];
+
+      e.dataTransfer.setData("ids", ids);
+      // e.dataTransfer.setData("courseId"), courseId);
+      // console.log(e);
+    });
+  };
+
   uploadArea.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
 
-    saveStudentRoster();
+    const target = e.target;
 
-    var target = e.target;
-
-    let data = e.dataTransfer.getData("student-id");
+    // data[0] is student_id and data[1] is the course_id
+    const data = e.dataTransfer.getData("ids").split(',');
     const studentCard = document.getElementById(data);
 
-    e.target.appendChild(studentCard);
+    // e.target.appendChild(studentCard);
 
-    // let data = e.dataTransfer.getData("text");
-    // e.target.appendChild(document.getElementById(file));
-
+    console.log(data);
+    saveStudentRoster(data[0], data[1]);
   });
 }
 
