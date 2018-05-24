@@ -1,5 +1,9 @@
 .students {
   display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
+  overflow: auto;
 }
 .age-gender {
   display: flex;
@@ -8,6 +12,9 @@
 }
 .student_card {
   box-shadow: 1px 1px 1px 1px gray;
+  margin: 5px;
+  width: 90px;
+  height: 90px;
 }
 
 
@@ -17,3 +24,12 @@
 .male {
     background: linear-gradient(to bottom right, $my-blue, $my-gray);
   }
+
+.student-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.jsdragdrop {
+  height: 700px;
+}

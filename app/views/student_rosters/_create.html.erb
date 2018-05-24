@@ -1,7 +1,7 @@
 <!-- Here are all of the students to choose from. Need to set a method in controller so we can order the students based on availability, or age, or locations, or whatever. Something for phase 2 or phase 3 -->
-<div class="students">
-  <div class="col-xs-2">
-  <% students.each do |student| %>
+<div class="col-xs-2 students">
+  <!-- <div class="col-xs-2"> -->
+  <% @students.each do |student| %>
       <div>
       <% if student.gender == 'male' %>
         <div draggable="true" class="student_card male" data-student="<%= student.id %>" data-course="1">
@@ -18,12 +18,8 @@
       <% end %>
     </div>
   <% end %>
-  </div>
+  <!-- </div> -->
 </div>
 
 <!-- This is the area for the student roster.  -->
-<div class="student-roster">
-  <h1><%#= @course.subject.name %></h1>
-  <hr>
-  <p>Add Students Here</p>
-</div>
+

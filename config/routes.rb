@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :courses do
     resources :sessions, except: [:new, :create]
     resources :attendances, only: [:index, :edit, :update]
-    resources :student_rosters, only: [:create, :destroy]
+    resources :student_rosters, only: [:show, :create, :destroy]
     resources :volunteer_rosters, only: [:new, :create, :destroy, :edit, :update]
   end
 
