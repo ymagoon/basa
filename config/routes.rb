@@ -9,9 +9,14 @@ Rails.application.routes.draw do
     resources :volunteer_rosters, only: [:new, :create]
   end
 
-  resources :subjects, only: :create
+  resources :volunteers, only: [:index, :show] do
+    resources :proficiencies, only: [:new, :create]
+  end
+
+  resources :subjects, only: [:create]
   resources :students, only: [:index, :show, :create]
-  resources :volunteers, only: [:index, :show]
-  resources :addresses, only: :create
+  resources :addresses, only: [:create]
   resources :volunteer_rosters, only: [:destroy]
+  resources :proficiencies, only: [:destroy]
+
 end

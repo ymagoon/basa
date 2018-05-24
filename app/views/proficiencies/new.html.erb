@@ -1,0 +1,8 @@
+<% title 'Proficiencies' %>
+<h1>Add Proficiencies for <%= @volunteer.first_name %> <%= @volunteer.last_name %> </h1>
+
+<%= simple_form_for([@user, @proficiency]) do |f| %>
+  <%= f.input :subject_id, collection: @subjects, label_method: :name %>
+  <%= f.input :role, as: :select, collection: ROLES %>
+  <%= f.submit %>
+<% end %>
