@@ -1,2 +1,17 @@
-<h1>StudentRosters#create</h1>
-<p>Find me in app/views/student_rosters/create.html.erb</p>
+<!-- Here are all of the students to choose from. Need to set a method in controller so we can order the students based on availability, or age, or locations, or whatever. Something for phase 2 or phase 3 -->
+<div class="students">
+  <% @students.each do |student| %>
+  <div class="student_card">
+    <h5 class="name-gender"><%= #{student.first_name} #{student.last_name} %>
+      <% if student.gender == 0 %>
+        <i class="fas fa-male"></i>
+      <% else %>
+        <i class="fas fa-female"></i>
+      <% end %>
+    </h5>
+    <p><%= student.age(student.birth_date) %></p>
+  </div>
+  <% end %>
+</div>
+
+<!-- This is the area for the student roster.  -->
