@@ -2,10 +2,22 @@ class StudentRostersController < ApplicationController
   #after create, check to see if the number of studnets in the course is > min, if so, change the
   # course status to 1 (confirmed)
   def create
-    # @student = Student.find(params[:id])
-    # @course = Course.find(params[:id])
+    @students = Student.all #need to order by what fits best
+    @student = Student.find(params[:id])
+    @course = Course.find(params[:id])
+    @student_roster = StudentRoster.new(student: @student, course: @course)
 
-    if save
+    if @student_roster.save
+      @sessions = Sessions.find(course_id: @course.id)
+      @course.sessions = @sessions
+      @course.sessions.each do |session|
+        session.attendance = Attendance.new(student: @student)
+        session.attendance.save
+      end
+    else
+      render 'new'
+    end
+
       #then query the session and find all sessions where course.sessions
       #loop through each sessions course.sessions.each do
       #attendance.create
