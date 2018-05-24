@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
 
     @course.start_date = course_params[:start_date]
     @course.end_date = course_params[:end_date]
-raise
+
     if @course.save
       redirect_to courses_path
       # redirect_to action: course_sessions_path(@course), occurrences: @course.list_occurrences
