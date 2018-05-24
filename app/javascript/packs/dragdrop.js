@@ -27,7 +27,8 @@ function dragAndDrop() {
   uploadArea.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
-
+    let data = e.dataTransfer.getData("text");
+    e.target.appendChild(document.getElementById(file));
 
 
 
