@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home', as: :home
 
   resources :courses do
-    resources :sessions, except: [:new]
+    resources :sessions, except: [:new, :create]
     resources :attendances, only: [:index, :edit, :update]
     resources :student_rosters, only: [:create, :destroy]
-    resources :volunteer_rosters, only: [:create, :destroy]
+    resources :volunteer_rosters, only: [:new, :create, :destroy, :edit, :update]
   end
 
   resources :subjects, only: :create

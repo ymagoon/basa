@@ -2,7 +2,7 @@ class Attendance < ApplicationRecord
   belongs_to :student
   belongs_to :session
 
-  @presence = [:absent, :present]
+  @presence = ['absent', 'present']
 
   enum present: @presence
 

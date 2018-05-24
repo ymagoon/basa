@@ -2,9 +2,15 @@ class VolunteerRoster < ApplicationRecord
   belongs_to :user
   belongs_to :course
 
-  @role = ['teacher', 'assistant']
+  # @roles = { teacher: 0, assistant: 1 }
+  @roles = ['teacher','assistant']
 
-  enum role: @role
 
-  validates :role, presence: true, inclusion: { in: @role }
+  enum role: @roles
+
+  validates :role, presence: true, inclusion: { in: @roles }
+
+  def self.roles
+    @roles
+  end
 end

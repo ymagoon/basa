@@ -1,10 +1,16 @@
 class StudentRoster < ApplicationRecord
-  belongs_to :student_id
-  belongs_to :course_id
+  belongs_to :student
+  belongs_to :course
 
-  @role = ['teacher', 'assistant']
+  after_create :create_attendance
 
-  enum role: @role
+  private
 
-  validates :role, presence: true, inclusion: { in: @role }
+  def create_attendance
+    course = Course.find_by(id: self.course_id)
+
+    course.sessions.each do |session|
+      Attendance.create(student_id: self.student_id, session: session)
+    end
+  end
 end
