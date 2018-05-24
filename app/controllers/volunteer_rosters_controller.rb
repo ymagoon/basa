@@ -13,6 +13,7 @@ class VolunteerRostersController < ApplicationController
       # 3. Filter the volunteers list based on proficiency LATER ADD FILTER FOR VOLS WHERE THE course.subject == user's proficiency AND role == the @role selected in the form
 
   def create
+
     @roster = VolunteerRoster.new(vol_roster_params)
     @roster.course = @course
 
@@ -20,6 +21,7 @@ class VolunteerRostersController < ApplicationController
       redirect_to course_path(@course)
     else
       render :new
+
     end
   end
 

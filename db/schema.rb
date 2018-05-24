@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_093847) do
+ActiveRecord::Schema.define(version: 2018_05_24_045756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2018_05_23_093847) do
 
   create_table "courses", force: :cascade do |t|
     t.bigint "subject_id"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "frequency"
     t.integer "number_of_sessions"
     t.bigint "address_id"
