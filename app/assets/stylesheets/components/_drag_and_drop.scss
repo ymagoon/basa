@@ -1,4 +1,4 @@
-.upload-area{
+.assigned-students{
     width: 70%;
     height: 200px;
     border: 2px solid lightgray;
@@ -9,11 +9,11 @@
     overflow: auto;
 }
 
-.upload-area:hover{
+.assigned-students:hover{
     cursor: pointer;
 }
 
-.upload-area h1{
+.assigned-students h1{
     text-align: center;
     font-weight: normal;
     font-family: sans-serif;

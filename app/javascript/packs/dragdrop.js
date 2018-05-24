@@ -54,7 +54,7 @@ function saveStudentRoster(student_id, course_id) {
 function dragAndDrop() {
   // preventing page from redirecting
   const html = document.documentElement
-  const uploadArea = document.querySelector('.upload-area');
+  const assignedStudents = document.querySelector('.assigned-students');
   const students = document.querySelectorAll('.student_card ');
 
   html.addEventListener('dragover',function(e) {
@@ -68,12 +68,12 @@ function dragAndDrop() {
     e.stopPropagation();
   });
 
-  uploadArea.addEventListener('dragenter', function(e) {
+  assignedStudents.addEventListener('dragenter', function(e) {
     e.preventDefault();
     e.stopPropagation();
   });
 
-  uploadArea.addEventListener('dragover', function(e) {
+  assignedStudents.addEventListener('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();
   });
@@ -93,7 +93,7 @@ function dragAndDrop() {
     });
   };
 
-  uploadArea.addEventListener('drop', function(e) {
+  assignedStudents.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
 

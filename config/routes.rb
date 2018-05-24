@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :sessions, except: [:new, :create]
     resources :attendances, only: [:index, :edit, :update]
 
-    resources :student_rosters, only: [:show, :destroy]
-    post '/student_rosters/:student_id', to: 'student_rosters#create', as: :student_rosters
+    resources :student_rosters, only: [:index, :destroy]
+    post '/student_rosters/:student_id', to: 'student_rosters#create'
 
     resources :volunteer_rosters, only: [:new, :create, :destroy, :edit, :update]
   end
