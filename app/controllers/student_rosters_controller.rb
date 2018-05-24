@@ -4,7 +4,6 @@ class StudentRostersController < ApplicationController
 
   skip_before_action :verify_authenticity_token, only: [:create]
 
-
 #pull csrf toek from the header page and pass it in the head of the request
 
   def show

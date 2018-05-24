@@ -3,18 +3,18 @@ function getMetaContent(property, name){
 }
 
 function saveStudentRoster(student_id, course_id) {
-  // const uploadArea = document.querySelector('.upload-area');
-  // uploadArea.dataset.remote = 'true';
-  // const xhttp = new XMLHttpRequest();
-  // xhttp.onreadystatechange = function() {
-  //   if (this.readyState == 4 && this.status == 200) {
-  //    uploadArea.innerHTML = this.responseText;
-  //   }
-  // };
+  const uploadArea = document.querySelector('.upload-area');
+  uploadArea.dataset.remote = 'true';
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     uploadArea.innerHTML = this.responseText;
+    }
+  };
 
-  //  // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
-  // xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
-  // xhttp.send();
+   // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
+  xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
+  xhttp.send();
 
   // const csrfToken = getMetaContent('name', 'csrf-token');
 
