@@ -36,7 +36,7 @@ function dragAndDrop() {
 
       const studentCard = e.target;
       const dataId = studentCard.dataset.student
-
+      console.log(studentCard);
       e.dataTransfer.setData("student-id", dataId);
     });
   };
