@@ -1,17 +1,5 @@
+<% title 'Courses' %>
+
 <h1>list of all courses</h1>
-<ul>
-  <% @courses.each do |course| %>
-    <p>
-      <%= course.subject.name %>
-    </p>
-    <p><%= course.start_date %> <span><%= course.end_date %></span></p>
-    <p>
-      <%= course.number_of_students %> <span> (<%= course.max_capacity %>)</span>
-    </p>
-    <p>
-      <%= course.address.venue_name %>
-    </p>
-    <p><%= course.status %></p>
-    <p>--------------------------</p>
-  <% end %>
-</ul>
+<%= render 'shared/course_list', courses: @courses %>
+
