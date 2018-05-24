@@ -1,6 +1,6 @@
 <% title 'Test Title' %>
 
-<h1>I'm GothicPro</h1>
+<!-- <h1>I'm GothicPro</h1>
 <h2>Im an h2</h2>
 <h3>I'm an h3</h3>
 <p>Find me in app/views/page/home.html.erb</p>
@@ -22,26 +22,18 @@
 
 <h1 style="color: #FF6131;">I'm the primary orange color</h1>
 <h2 style="color: #4D8DF8;">Im the secondary blue color</h2>
-<h3 style="color: #A2ACBD;">I'm the main gray color</h3>
+<h3 style="color: #A2ACBD;">I'm the main gray color</h3> -->
+
+<%= render 'student_rosters/create', students: Student.all %>
+
 <p style="color: #25242B;">I'm the main black color for all text</p>
 <%= link_to 'logout', destroy_user_session_path, method: 'delete'  %>
 
-<!doctype html>
-<html>
-    <head>
-        <script src="jquery-3.0.0.js" type="text/javascript"></script>
-        <script src="script.js" type="text/javascript"></script>
-    </head>
-    <body >
+<div class="container" >
+    <input type="file" name="file" id="file">
 
-        <div class="container" >
-            <input type="file" name="file" id="file">
-
-            <!-- Drag and Drop container-->
-            <div class="upload-area"  id="uploadfile">
-                <h1>Drag and Drop file here<br/>Or<br/>Click to select file</h1>
-            </div>
-        </div>
-
-    </body>
-</html>
+    <!-- Drag and Drop container-->
+    <div class="upload-area"  id="uploadfile">
+        <h1>Drag and Drop file here<br/>Or<br/>Click to select file</h1>
+    </div>
+</div>
