@@ -16,5 +16,23 @@
     </div>
   <% end %>
 </div>
+
+<hr>
+
+<div class="attendance-table">
+  <% attendances.each do |column| %>
+    <div class="attendance-column">
+      <div class="attendance-session-date">
+        <p>header</p> <%#= attendance.session.date %>
+      </div>
+      <div class="attendance-session-column">
+        <% column.each do |attendance| %>
+          <div class="attendance <%= attendance.present? ? 'present' : 'absent' %>" data-attendance="<%= attendance.id %>" data-course="<%= course.id %>">
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+</div>
 <!--
 "data-student="<%#= student.id %>" data-session="<%#= session.id %>" data-course="<%#= course.id %>" -->

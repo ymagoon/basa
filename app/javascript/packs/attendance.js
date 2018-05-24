@@ -1,49 +1,41 @@
-function callback () {
-  console.log(this.responseText);
-};
-
-function updateAttendance(studentId, sessionId, courseId) {
-  const xhttp = new XMLHttpRequest();
-
-//Send the proper header information along with the request
-// xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-// xhr.onreadystatechange = function() {//Call a function when the state changes.
-//     if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-//         // Request finished. Do processing here.
-//     }
-// }
-
-  //this should change the color
-  // xhttp.onreadystatechange = function() {
-  //   if (this.readyState == 4 && this.status == 200) {
-  //    assignedStudents.innerHTML = this.responseText;
-  //   }
-  // };
-  console.log('work');
-  xhttp.onload = callback;
-  xhttp.open("PATCH", `/courses/${courseId}/attendance`, true);
-  xhttp.setRequestHeader("Content-Type", "application/json");
-  xhttp.send(`{"student": "${studentId}", "session": "${sessionId}"}`);
-}
-
-function changeStatus(e) {
+function changeColor(e, presence) {
   // temporary change status until AJAX is implemented which will handle this
   const target = e.target
+  console.log(presence.attendance);
+  console.log(e.target);
 
-  if (target.classList.contains('absent')) {
-    target.classList.remove('absent');
-    target.classList.add('present');
-  } else {
+  if (presence.attendance === 'absent') {
     target.classList.remove('present');
     target.classList.add('absent');
+  } else {
+    target.classList.remove('absent');
+    target.classList.add('present');
   }
-  updateAttendance(target.dataset.student, target.dataset.session, target.dataset.course);
+}
+
+function updateAttendance(e) {
+  const request = new XMLHttpRequest();
+  const target = e.target
+  const courseId = target.dataset.course
+  const attendance = target.dataset.attendance
+
+  // Call a function when the state changes.
+  request.onreadystatechange = function() {
+    if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+      // request.onload = callback;
+      changeColor(e, JSON.parse(this.responseText));
+    }
+  }
+
+  request.open("PATCH", `/courses/${courseId}/attendance`, true);
+  // Send the proper header information along with the request
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(`{"attendance": "${attendance}"}`);
 }
 
 function initialize() {
   document.querySelectorAll('.attendance').forEach(function(e) {
-    e.addEventListener('click', changeStatus);
+    e.addEventListener('click', updateAttendance);
   });
 }
 

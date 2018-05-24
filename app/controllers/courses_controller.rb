@@ -11,6 +11,9 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @students = @course.students
     @sessions = @course.sessions
+    # array of arrays where inner array contains all students in a session
+    # TODO - order students within the session by name?
+    @attendances = @course.sessions.map { |s| s.attendances }
   end
 
   def new
