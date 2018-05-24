@@ -17,6 +17,8 @@ function dragAndDrop() {
   // preventing page from redirecting
   const html = document.documentElement
   const uploadArea = document.querySelector('.upload-area');
+  const students = document.querySelectorAll('.student_card ');
+  console.log(students);
 
   html.addEventListener('dragover',function(e) {
     e.preventDefault();
@@ -28,6 +30,16 @@ function dragAndDrop() {
     e.preventDefault();
     e.stopPropagation();
   });
+
+  for(var i=0; i< students.length; i++) {
+    students[i].addEventListener('dragstart', function(e) {
+
+      const studentCard = e.target;
+      const dataId = studentCard.dataset.student
+
+      e.dataTransfer.setData("student-id", dataId);
+    });
+  };
 
   uploadArea.addEventListener('dragenter', function(e) {
     e.preventDefault();
@@ -45,10 +57,16 @@ function dragAndDrop() {
 
     saveStudentRoster();
 
+    var target = e.target;
+
+    let data = e.dataTransfer.getData("student-id");
+    const studentCard = document.getElementById(data);
+
+    e.target.appendChild(studentCard);
+
     // let data = e.dataTransfer.getData("text");
     // e.target.appendChild(document.getElementById(file));
 
-    console.log(e);
   });
 }
 
