@@ -1,0 +1,20 @@
+<div class="attendance-table">
+  <% students.each do |student| %>
+    <div class="attendance-row">
+      <div class="attendance-student">
+        <p><%= "#{student.first_name} #{student.last_name}" %></p>
+      </div>
+      <div class="attendance-session">
+        <% sessions.each do |session| %>
+          <div class="attendance absent" data-student="<%= student.id %>" data-session="<%= session.id %>" data-course="<%= course.id %>">
+
+            <%#= link_to 't', course_attendance_path(course), class: 'test', method: 'patch', remote: true, data: {params: {'test': 1, 'test2': 2} } %>
+            <!-- <a href="/courses/<%#= course.id %>/attendance" data-method="patch" data-params="{session_id: <%#= session.id %>, course: <%#= course.id %> data-remote="true"></a> -->
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!--
+"data-student="<%#= student.id %>" data-session="<%#= session.id %>" data-course="<%#= course.id %>" -->
