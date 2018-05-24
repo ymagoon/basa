@@ -1,7 +1,7 @@
 <div class="courses-list">
   <div class="col-md-3">
     <% @courses.each do |course|%>
-    <%# link_to course_path(course) do %>
+    <% link_to course_path(course) do %>
       <div class="course-card" >
         <h3 ><%= course.subject.name %></h3>
         <p><%= course.start_date %> <span> <%= course.end_date %></span></p>
@@ -13,6 +13,6 @@
         <hr>
       </div>
     <% end %>
-    <%# end %>
+    <% end %>
   </div>
 </div>

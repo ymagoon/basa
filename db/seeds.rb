@@ -67,3 +67,8 @@ User.create(first_name: Faker::Name.first_name,
             phone: Faker::PhoneNumber.phone_number,
             # address: address2,
             role: 0)
+
+
+# c1 = Course.create( { subject_id: 1, start_date: DateTime.now, end_date: DateTime.now + 10, frequency: 1, number_of_sessions: 10, address_id: 1, min_capacity: 10, max_capacity: 20, notes: "Some notes about the course here", session_length: 90, status: 0 } )
+
+# c2 = Course.create( { subject_id: 2, start_date: DateTime.now + 10, end_date: DateTime.now + 20, frequency: 1, number_of_sessions: 10, address_id: 1, min_capacity: 10, max_capacity: 20, notes: "Some notes about the course here", session_length: 90, status: 0 } )

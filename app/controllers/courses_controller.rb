@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
-  before_action :set_course, only: [:edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
@@ -9,6 +9,9 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+
+    # @students = Student.all - #students where studentid == student_roster(@course_id)
+
   end
 
   def new

@@ -1,4 +1,6 @@
 class VolunteerRostersController < ApplicationController
+  before_action :set_course
+
   def index
   end
 
@@ -6,26 +8,27 @@ class VolunteerRostersController < ApplicationController
   end
 
   def new
+    @roster = VolunteerRoster.new
+    @volunteers = User.volunteers
+    @roles = VolunteerRoster.roles
+    # LATER ADD FILTER FOR VOLS WHERE THE course.subject == user's proficiency AND role == the @role selected in the form
   end
 
   def create
-     # @volunteer = Volunteer.find(params[:id])
-     # volunteers must be filtered by role and proficiency
-    # @course = Course.find(params[:id])
 
-    if save
-      #then query the session and find all sessions where course.sessions
-      #loop through each sessions course.sessions.each do
-      #attendance.create
-      #then pass studentid in to session id and create an attendance record per session per student
-      #
-      #check for testing: present field needs to be defaulting to 0 (Model should be doing this)
+    @roster = VolunteerRoster.new(vol_roster_params)
+    @roster.course = @course
+
+    if @roster.save
+      # raise
+      redirect_to course_path(@course)
+    else
+      render :new
+
     end
-
   end
 
   def edit
-    #to change the role of the volunteer, from asst to lead or vice versa
   end
 
   def update
@@ -33,4 +36,17 @@ class VolunteerRostersController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def vol_roster_params
+    params.require(:volunteer_roster).permit(:course_id, :user_id, :role)
+  end
+
+  def set_course
+    @course = Course.find(params[:course_id])
+  end
+
 end
+
+
