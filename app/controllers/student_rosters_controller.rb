@@ -8,11 +8,12 @@ class StudentRostersController < ApplicationController
     @student_roster = StudentRoster.new(student: @student, course: @course)
 
     if @student_roster.save
-      @sessions = Sessions.find(course_id: @course.id)
+      @sessions = Session.where(course_id: @course.id)
       @course.sessions = @sessions
       @course.sessions.each do |session|
-        session.attendance = Attendance.new(student: @student)
-        session.attendance.save
+        attendance = Attendance.new(@student.id, session.id)
+        attendance.save
+        redirect_to ???
       end
     else
       render 'new'
@@ -27,7 +28,14 @@ class StudentRostersController < ApplicationController
   end
 
   def destroy
+    @student_roster = StudentRoster.find(params[:id])
+    if @student_roster.delete
+      #need to figure out how to delete all the attendances we created when we destroy the roster as well. Where do I put the dependant destroy?
 
+      redirect_to ???
+    else
+      render 'new'
+    end
     #should only be able to add and delete a link bewtween a course and a student.
     #need to make sure that attendance record is dependant destroy based on this!!!!!
   end
