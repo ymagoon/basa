@@ -5,6 +5,7 @@ class VolunteerRostersController < ApplicationController
   end
 
   def show
+    @volunteer_roster = VolunteerRoster.new
   end
 
   def new

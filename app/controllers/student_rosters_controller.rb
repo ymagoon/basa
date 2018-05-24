@@ -2,13 +2,16 @@ class StudentRostersController < ApplicationController
   #after create, check to see if the number of studnets in the course is > min, if so, change the
   # course status to 1 (confirmed)
 
-  # before_action :set_student, only: [:create]
-  # before_action :set_course, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:create]
 
 
 #pull csrf toek from the header page and pass it in the head of the request
 
+  def show
+    @students = Student.all #need to order by what fits best
+    @student = Student.find(params[:id])
+    @course = Course.find(params[:id])
+  end
 
   def create
     puts params
@@ -32,14 +35,6 @@ class StudentRostersController < ApplicationController
   end
 
   private
-
-  # def set_student
-  #   parameters = params.require(:)
-  # end
-
-  # def set_course
-
-  # end
 
   # def destroy
   #   @student_roster = StudentRoster.find(params[:id])
