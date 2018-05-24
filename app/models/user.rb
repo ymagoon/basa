@@ -5,6 +5,12 @@ class User < ApplicationRecord
   enum role: [:admin, :volunteer]
   before_create :set_default_role
 
+  scope :volunteers, -> { where('role = 1') }
+  scope :admins, -> { where('role = 0') }
+
+  # scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
+
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }, length: { minimum: 6 }
 
   # So users don't create a username formatted like an email. Prevents issues where users might use an email as their username
