@@ -1,0 +1,19 @@
+.students {
+  display: flex;
+}
+.age-gender {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 5px;
+}
+.student_card {
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+
+.female {
+    background: linear-gradient(to bottom right, $my-pink, $my-gray);
+  }
+.male {
+    background: linear-gradient(to bottom right, $my-blue, $my-gray);
+  }
