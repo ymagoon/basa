@@ -16,18 +16,18 @@ function saveStudentRoster(student_id, course_id) {
   // xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
   // xhttp.send();
 
-  const csrfToken = getMetaContent('name', 'csrf-token');
+  // const csrfToken = getMetaContent('name', 'csrf-token');
 
-  const url = `/courses/${course_id}/student_rosters/${student_id}`
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-      "X-CSRF-Token": csrfToken,
-      "credentials": "same-origin"
-    },
-    body: JSON.stringify({ query: event.currentTarget.value })
-  })
+  // const url = `/courses/${course_id}/student_rosters/${student_id}`
+  // fetch(url, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //     "X-CSRF-Token": csrfToken
+  //     // "credentials": "same-origin"
+  //   },
+  //   body: JSON.stringify({ query: event.currentTarget.value })
+  // })
     // .then(response => response.json())
     // .then((data) => {
     //   console.log(data);
