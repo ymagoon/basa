@@ -1,18 +1,17 @@
 function getMetaContent(property, name){
-    return document.head.querySelector("["+property+"="+name+"]").content;
+  return document.head.querySelector("["+property+"="+name+"]").content;
 }
 
 function saveStudentRoster(student_id, course_id) {
-  const uploadArea = document.querySelector('.upload-area');
-  uploadArea.dataset.remote = 'true';
+  const assignedStudents = document.querySelector('.upload-area');
   const xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     uploadArea.innerHTML = this.responseText;
+     assignedStudents.innerHTML = this.responseText;
     }
   };
 
-   // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
   xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
   xhttp.send();
 
@@ -51,8 +50,8 @@ function saveStudentRoster(student_id, course_id) {
 //   .then(response => response.json()) // parses response to JSON
 // }
 
+// preventing page from redirecting
 function dragAndDrop() {
-  // preventing page from redirecting
   const html = document.documentElement
   const assignedStudents = document.querySelector('.assigned-students');
   const students = document.querySelectorAll('.student_card ');
@@ -60,7 +59,6 @@ function dragAndDrop() {
   html.addEventListener('dragover',function(e) {
     e.preventDefault();
     e.stopPropagation();
-    // console.log(e);
   });
 
   html.addEventListener('drop', function(e) {
@@ -78,18 +76,15 @@ function dragAndDrop() {
     e.stopPropagation();
   });
 
+  // Set event listener for all student cards so when they are dragged they pass student and course ID to ajax request
   for(var i=0; i< students.length; i++) {
     students[i].addEventListener('dragstart', function(e) {
-
       const studentCard = e.target;
       const studentId = studentCard.dataset.student;
       const courseId = studentCard.dataset.course;
-
       const ids = [studentId, courseId];
 
       e.dataTransfer.setData("ids", ids);
-      // e.dataTransfer.setData("courseId"), courseId);
-      // console.log(e);
     });
   };
 
@@ -98,14 +93,11 @@ function dragAndDrop() {
     e.stopPropagation();
 
     const target = e.target;
-
-    // data[0] is student_id and data[1] is the course_id
     const data = e.dataTransfer.getData("ids").split(',');
     const studentCard = document.getElementById(data);
 
     // e.target.appendChild(studentCard);
 
-    console.log(data);
     saveStudentRoster(data[0], data[1]);
   });
 }
