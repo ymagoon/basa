@@ -1,4 +1,4 @@
-function saveStudentRoster() {
+function saveStudentRoster(student_id, course_id) {
   const uploadArea = document.querySelector('.upload-area');
   // uploadArea.dataset.remote = 'true';
   const xhttp = new XMLHttpRequest();
@@ -8,8 +8,8 @@ function saveStudentRoster() {
     }
   };
 
-   course_student_rosters POST   /courses/:course_id/student_rosters(.:format
-  xhttp.open("POST", "/courses/course_id/student_rosters/student_id", true);
+   // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
+  xhttp.open("POST", "/courses", true); // /course_id/student_rosters/student_id
   xhttp.send();
 }
 
