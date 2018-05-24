@@ -38,7 +38,7 @@ class Course < ApplicationRecord
     schedule = IceCube::Schedule.new(now = start_date)
 
     case frequency
-    when 'dialy'
+    when 'daily'
       schedule.add_recurrence_rule IceCube::Rule.daily.until(end_date)
     when 'weekly'
       schedule.add_recurrence_rule IceCube::Rule.weekly.until(end_date)
