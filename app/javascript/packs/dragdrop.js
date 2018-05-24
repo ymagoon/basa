@@ -1,3 +1,18 @@
+function saveStudentRoster(student_id, course_id) {
+  const uploadArea = document.querySelector('.upload-area');
+  // uploadArea.dataset.remote = 'true';
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     uploadArea.innerHTML = this.responseText;
+    }
+  };
+
+   // course_student_rosters POST   /courses/:course_id/student_rosters(.:format
+  xhttp.open("POST", "/courses", true); // /course_id/student_rosters/student_id
+  xhttp.send();
+}
+
 function dragAndDrop() {
   // preventing page from redirecting
   const html = document.documentElement
@@ -39,6 +54,9 @@ function dragAndDrop() {
   uploadArea.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
+
+    saveStudentRoster();
+
     var target = e.target;
 
     let data = e.dataTransfer.getData("student-id");
@@ -46,44 +64,13 @@ function dragAndDrop() {
 
     e.target.appendChild(studentCard);
 
+    // let data = e.dataTransfer.getData("text");
+    // e.target.appendChild(document.getElementById(file));
 
   });
 }
 
 export { dragAndDrop }
-
-//     // Drop
-//     $('.upload-area').on('drop', function (e) {
-//         e.stopPropagation();
-//         e.preventDefault();
-
-//         $("h1").text("Upload");
-
-//         var file = e.originalEvent.dataTransfer.files;
-//         var fd = new FormData();
-
-//         fd.append('file', file[0]);
-
-//         uploadData(fd);
-//     });
-
-//     // Open file selector on div click
-//     $("#uploadfile").click(function(){
-//         $("#file").click();
-//     });
-
-//     // file selected
-//     $("#file").change(function(){
-//         var fd = new FormData();
-
-//         var files = $('#file')[0].files[0];
-
-//         fd.append('file',files);
-
-//         uploadData(fd);
-//     });
-// });
-
 
     // Sending AJAX request and upload file
 

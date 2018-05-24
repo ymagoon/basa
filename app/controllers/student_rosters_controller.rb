@@ -8,13 +8,7 @@ class StudentRostersController < ApplicationController
     @student_roster = StudentRoster.new(student: @student, course: @course)
 
     if @student_roster.save
-      @sessions = Session.where(course_id: @course.id)
-      @course.sessions = @sessions
-      @course.sessions.each do |session|
-        attendance = Attendance.new(@student.id, session.id)
-        attendance.save
-        redirect_to ???
-      end
+      redirect_to ''
     else
       render 'new'
     end
