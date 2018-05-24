@@ -68,3 +68,5 @@ function uploadData(formdata){
       }
   });
 }
+
+export { dragAndDrop };
