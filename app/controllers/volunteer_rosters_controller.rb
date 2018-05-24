@@ -15,6 +15,7 @@ class VolunteerRostersController < ApplicationController
   end
 
   def create
+
     @roster = VolunteerRoster.new(vol_roster_params)
     @roster.course = @course
 
@@ -23,6 +24,7 @@ class VolunteerRostersController < ApplicationController
       redirect_to course_path(@course)
     else
       render :new
+
     end
   end
 

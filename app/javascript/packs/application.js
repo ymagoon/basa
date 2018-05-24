@@ -8,4 +8,15 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'bootstrap';
+import 'daterangepicker';
+
+import { initializeDateRangePicker } from './picker';
+import { dragAndDrop } from './dragdrop';
+// import { drop } from './student_dragdrop';
+
+
+initializeDateRangePicker();
+dragAndDrop();
+// drop();
 console.log('Hello World from Webpacker')
+

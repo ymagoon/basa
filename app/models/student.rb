@@ -15,4 +15,10 @@ class Student < ApplicationRecord
   validates :email, presence: true, format: { with: email_expression }
   validates :birth_date, presence: true
   validates :gender, presence: true, inclusion: { in: @gender }
+
+
+  def age(dob)
+    now = Date.today
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
 end
