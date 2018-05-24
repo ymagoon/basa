@@ -6,7 +6,10 @@
   <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
 
   <p>Proficiencies:</p>
+  <ul>
   <% volunteer.proficiencies.each do |proficiency| %>
-
+    <li><%= proficiency.subject.name %> : <%= proficiency.role %> </li>
     <% end %>
+  </ul>
+  <p> -------------------------- </p>
   <% end %>
