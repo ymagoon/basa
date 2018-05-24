@@ -1,0 +1,12 @@
+<% title 'Volunteers' %>
+<h1>Volunteers</h1>
+
+<% @volunteers.each do |volunteer| %>
+  <p> <%= volunteer.first_name %> <%= volunteer.last_name %> </p>
+  <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
+
+  <p>Proficiencies:</p>
+  <% volunteer.proficiencies.each do |proficiency| %>
+
+    <% end %>
+  <% end %>

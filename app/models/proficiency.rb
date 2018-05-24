@@ -2,9 +2,7 @@ class Proficiency < ApplicationRecord
   belongs_to :subject
   belongs_to :user
 
-  @roles = ['teacher', 'volunteer']
+  enum role: ROLES # ROLES defined in application_record.rb
 
-  enum role: @roles
-
-  validates :role, presence: true, inclusion: { in: @roles }
+  validates :role, presence: true, inclusion: { in: ROLES }
 end
