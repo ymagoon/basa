@@ -11,6 +11,10 @@ class DashboardController < ApplicationController
   end
 
   def active_course_attendance
+    courses = Course.where(start_date: )
+
+Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+    1.week.ago..Date.today
     # list all courses that are active and their corresponding % aggregate
   end
 
@@ -44,14 +48,19 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
+    User.where(role: 'volunteer')
   end
 
   def number_of_volunteers_by_proficiency
   end
 
   def number_of_volunteers_assigned_to_course
-    # show # of volunteers that have never been assigned to a course
+    # total number of volunteers
+    users = User.where(role: 'volunteer').count
+
+    #total number of distinct users on volunteer_rosters
+    distinct_users = VolunteerRoster.select(:user_id).distinct.count
+
+    users - distinct_users
   end
-
-
 end
