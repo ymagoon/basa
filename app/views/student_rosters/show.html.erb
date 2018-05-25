@@ -8,10 +8,7 @@
     <div class="upload-area"  id="uploadfile">
       <input type="file" name="file" id="file">
       <!-- Drag and Drop container-->
-        <h1>Add Students to <%= @course.subject.name %> Roster Here</h1>
-        <% @course.students.each do |student| %>
-        <%= student.name %>
-        <% end %>
+
     </div>
   </div>
 </div>
