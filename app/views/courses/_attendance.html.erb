@@ -1,16 +1,17 @@
-<div class="attendance-sessions">
-  <% sessions.each do |session| %>
-    <div class="session-header">
-      <%= session.date %>
-    </div>
-  <% end %>
-</div>
+
 
 <div class="attendance-table">
+  <div class="attendance-sessions">
+    <% sessions.each do |session| %>
+      <div class="session-header">
+        <span><%= session.date_formatted %></span>
+      </div>
+    <% end %>
+  </div>
  <% students.each do |student| %>
     <div class="attendance-row">
-      <div class="attendance-student">
-        <p><%= "#{student.first_name} #{student.last_name}" %></p>
+      <div class="attendance-student border-right">
+        <p class="attendance-header-text"><%= "#{student.first_name} #{student.last_name}" %></p>
       </div>
       <div class="attendance-session">
         <% student.student_attendance(course).each do |attendance| %>
