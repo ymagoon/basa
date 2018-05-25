@@ -6,3 +6,8 @@
 .bold {
   font-style: bold;
 }
+
+.wrapper, html {
+  height: 100%;
+  background-color: $my-light-gray;
+}
