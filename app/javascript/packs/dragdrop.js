@@ -88,15 +88,26 @@ function dragAndDrop() {
     });
   };
 
+
+  
   assignedStudents.addEventListener('drop', function(e) {
     e.preventDefault();
     e.stopPropagation();
+
 
     const target = e.target;
     const data = e.dataTransfer.getData("ids").split(',');
     const studentCard = document.getElementById(data);
 
+
+    assignedStudents.appendChild(studentCard);
+    console.log(e.target);
+
+    // let data = e.dataTransfer.getData("text");
+    // e.target.appendChild(document.getElementById(file));
+
     // e.target.appendChild(studentCard);
+
 
     saveStudentRoster(data[0], data[1]);
   });
