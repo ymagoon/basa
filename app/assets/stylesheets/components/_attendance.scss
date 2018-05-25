@@ -1,16 +1,16 @@
 .attendance-sessions {
   display: flex;
-  position: relative;
-  margin-left: 170px; //
+  padding-left: 170px;
 
   .session-header {
     height: 150px;
     width: 30px;
     font-size: 12px;
+    font-family: $gotham-medium;
     color: $my-gray;
 
     span {
-      width:200px; /* same as height of .rotateObj */
+      width:200px; /* same as height of .session-header */
       display:inline-block;
       -webkit-transform-origin:84px 70px;
       -ms-transform-origin:84px 70px;
@@ -25,20 +25,6 @@
   }
 }
 
-    // -webkit-transform: rotate(90deg);
-    // -webkit-transform-origin: left top;
-    // -moz-transform: rotate(90deg);
-    // -moz-transform-origin: left top;
-    // -ms-transform: rotate(90deg);
-    // -ms-transform-origin: left top;
-    // -o-transform: rotate(90deg);
-    // -o-transform-origin: left top;
-    // transform: rotate(90deg);
-    // transform-origin: left top;
-
-
-
-
 .attendance-table {
   box-shadow: 1px 1px 3px $my-gray;
   margin: 50px 0;
@@ -47,7 +33,7 @@
   .attendance-row {
     display: flex;
     align-items: center;
-    height: 100%;
+    // height: 100%;
 
     &:nth-child(even) {
       background-color: white;
@@ -55,10 +41,8 @@
     .attendance-student {
       flex: 0 0 150px;
       padding: 10px 15px;
-      height: 100%;
 
       p {
-        height: 100%;
         margin: 0;
       }
     }
@@ -83,5 +67,5 @@
 }
 
 .border-right {
-   border-right: 1px solid $my-gray; // fix this so its a vertical line (cant have padding)
+   border-right: 1px solid $my-light-gray;
 }

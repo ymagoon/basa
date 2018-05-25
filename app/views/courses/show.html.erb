@@ -35,6 +35,15 @@
   </div>
 </div>
 
+<div class="course-header">
+  <div class="course-title">
+    <h1><%= @course.name %></h1>
+  </div>
+  <%= render 'shared/dropdown', courses: @courses %>
+</div>
+
+
+
 <div class="wrapper">
   <div class="attendance-container">
     <%= render 'attendance', students: @students, sessions: @sessions, course: @course %>

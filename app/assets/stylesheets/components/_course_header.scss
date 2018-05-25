@@ -1,0 +1,21 @@
+.course-header {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+
+  .course-title {
+    h1, ul, ol {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+  }
+}
+
+
+// <div class="course-header">
+//   <div class="course-title">
+//     <h1><%= @course.name %></h1>
+//     <span><%= render 'shared/dropdown', courses: @courses %></span>
+//   </div>
+// </div>
