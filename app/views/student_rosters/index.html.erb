@@ -2,13 +2,15 @@
   <h1 class="text-center">Add Students</h1>
 </div>
 <div class="container student-list">
-  <%= render 'create' %>
+  <%= render 'create', students: @students, course: @course %>
   <div class="student-roster">
     <%= link_to "Back to Course Page", course_path(@course), class: "btn btn-primary brand-primary" %>
     <div class="upload-area"  id="uploadfile">
       <input type="file" name="file" id="file">
       <!-- Drag and Drop container-->
-
+      <div class="assigned-students">
+        <h1>Add Students to <%= @course.subject.name %> Roster Here</h1>
+      </div>
     </div>
   </div>
 </div>
