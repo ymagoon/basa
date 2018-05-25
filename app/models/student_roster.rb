@@ -4,6 +4,9 @@ class StudentRoster < ApplicationRecord
 
   after_create :create_attendance, :autoconfirm
 
+  validates :student, uniqueness: { scope: :course, message: "student already associated with course"}
+  validate :max_capacity?
+
   private
 
   def create_attendance
@@ -19,6 +22,12 @@ class StudentRoster < ApplicationRecord
 
     if course.number_of_students >= course.min_capacity
       course.update(status: 'confirmed')
+    end
+  end
+  
+  def max_capacity?
+    if StudentRoster.count >= self.course.max_capacity
+      errors.add(:max_capacity, "the class is full")
     end
   end
 end
