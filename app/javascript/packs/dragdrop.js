@@ -18,7 +18,7 @@ function dragAndDrop() {
   const html = document.documentElement
   const uploadArea = document.querySelector('.upload-area');
   const students = document.querySelectorAll('.student_card ');
-  console.log(students);
+  // console.log(students);
 
   html.addEventListener('dragover',function(e) {
     e.preventDefault();

@@ -5,12 +5,13 @@
   <%= render 'create' %>
   <div class="student-roster">
     <%= link_to "Back to Course Page", course_path(@course), class: "btn btn-primary brand-primary" %>
-    <div class="jsdragdrop" style="width:500px">
+    <div class="upload-area"  id="uploadfile">
       <input type="file" name="file" id="file">
       <!-- Drag and Drop container-->
-      <div class="upload-area"  id="uploadfile">
         <h1>Add Students to <%= @course.subject.name %> Roster Here</h1>
-      </div>
+        <% @course.students.each do |student| %>
+        <%= student.name %>
+        <% end %>
     </div>
   </div>
 </div>
