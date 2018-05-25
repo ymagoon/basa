@@ -7,6 +7,7 @@
   font-style: bold;
 }
 
-.wrapper {
+.wrapper, html {
+  height: 100%;
   background-color: $my-light-gray;
 }
