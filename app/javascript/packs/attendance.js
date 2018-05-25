@@ -1,9 +1,7 @@
 function changeColor(e, presence) {
-  // temporary change status until AJAX is implemented which will handle this
   const target = e.target
-  console.log(presence.attendance);
-  console.log(e.target);
 
+  // change class of div to change color
   if (presence.attendance === 'absent') {
     target.classList.remove('present');
     target.classList.add('absent');
@@ -19,10 +17,9 @@ function updateAttendance(e) {
   const courseId = target.dataset.course
   const attendance = target.dataset.attendance
 
-  // Call a function when the state changes.
+  // Call a function when the state changes
   request.onreadystatechange = function() {
     if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-      // request.onload = callback;
       changeColor(e, JSON.parse(this.responseText));
     }
   }
