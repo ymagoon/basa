@@ -1,0 +1,12 @@
+<div class="course-header">
+  <div class="course-title">
+    <h1><%= course.name %></h1>
+  </div>
+  <%= render 'shared/dropdown', courses: courses %>
+
+  <div class="course-status">
+    <p class="<%= @course.pending? ? 'pending' : 'confirmed' %>">
+      <%= course.pending? ? 'Pending' : 'Confirmed' %>
+    </p>
+  </div>
+</div>
