@@ -1,7 +1,8 @@
 class StudentRostersController < ApplicationController
   #after create, check to see if the number of studnets in the course is > min, if so, change the
   # course status to 1 (confirmed)
-  before_action :set_course, only: [:index, :create]
+  before_action :set_course, only: [:index, :create, :destroy]
+  before_action :set_student, only: [:destroy]
   skip_before_action :verify_authenticity_token, only: [:create]
 
 #pull csrf token from the header page and pass it in the head of the request
@@ -29,11 +30,23 @@ class StudentRostersController < ApplicationController
       #check for testing: present field needs to be defaulting to 0 (Model should be doing this)
   end
 
+  def destroy
+    @student_roster = StudentRoster.find(params[:id])
+    @student = Student.find(params[:id])
+    @student_roster.student = @student
+    @student_roster.course = @course
+  end
+
   private
 
   def set_course
     @course = Course.find(params[:course_id])
   end
+
+  def set_student
+    @student = Student.find(params[:student_id])
+  end
+
 
   # def destroy
   #   @student_roster = StudentRoster.find(params[:id])

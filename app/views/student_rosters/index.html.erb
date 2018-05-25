@@ -9,8 +9,19 @@
       <input type="file" name="file" id="file">
       <!-- Drag and Drop container-->
       <div class="assigned-students">
+          <% @course.students.each do |student| %>
+          <div draggable="true" class="assigned student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" id="<%= student.id %>">
+            <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
+            <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><%= student.age(student.birth_date) %>
+              <%= link_to student course_student_roster_path (@course, @student_roster), method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </span>
+          </div>
+          <% end %>
       </div>
     </div>
+
   </div>
 </div>
