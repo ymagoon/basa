@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
 
   # Courses
   def total_number_of_courses
-    # use this to find active courses, & active/pending courses in future
+    Course.count
   end
 
   def active_course_attendance
