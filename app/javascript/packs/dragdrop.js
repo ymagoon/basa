@@ -88,8 +88,6 @@ function dragAndDrop() {
     });
   };
 
-
-
   assignedStudents.addEventListener('drop', function(e) {
     const target = e.target;
     const data = e.dataTransfer.getData("ids").split(',');
