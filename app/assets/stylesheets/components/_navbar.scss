@@ -9,9 +9,9 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black*/
+  background-color: black; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+ /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -19,12 +19,13 @@
   border: 1p;
   display: flex;
   flex-direction: column;
-  margin-left: 25px;
+
   align-content: center;
+  text-align: center;
 }
 
 /* The navigation menu links */
-.sidenav a {
+.sidenav fas {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 20px;
@@ -36,16 +37,15 @@
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: $my-green;
+    transition: 0.3s;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+.closebtn {
+    font-size: 50px;
+    position: relative;
+    left: 90px;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -58,4 +58,16 @@
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+#nav-btn {
+  display: flex;
+  width: 50px;
+  z-index:9;
+  position:fixed;
+  margin-left: 5px;
+}
+.nav-icon {
+  font-size: 50px;
+  padding-bottom: 5px;
 }
