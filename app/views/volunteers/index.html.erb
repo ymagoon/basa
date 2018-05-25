@@ -2,10 +2,29 @@
 <h1>Volunteers</h1>
 
 <% @volunteers.each do |volunteer| %>
-  <p> <%= volunteer.first_name %> <%= volunteer.last_name %> </p>
+  <h2> <%= volunteer.first_name %> <%= volunteer.last_name %> </h2>
   <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
 
-  <p>Proficiencies:</p>
+  <h3>Proficiencies:</h3>
+  <h4>Teacher</h4>
+  <ul>
+  <% volunteer.proficiencies.each do |proficiency| %>
+    <% if proficiency.role == "teacher" %>
+      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h4>Assistant</h4>
+  <ul>
+  <% volunteer.proficiencies.each do |proficiency| %>
+    <% if proficiency.role == "assistant" %>
+      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Add Proficiencies', new_volunteer_proficiency_path(volunteer) %>
 
   <p> -------------------------- </p>
   <% end %>

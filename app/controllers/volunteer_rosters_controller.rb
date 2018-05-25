@@ -3,14 +3,9 @@ class VolunteerRostersController < ApplicationController
 
   def new
     @roster = VolunteerRoster.new
-    @volunteers = User.volunteers
-    @roles = VolunteerRoster.roles
+    @teachers = list_teachers
+    @assistants = list_assistants
   end
-
-  # TO DO
-      # 1. Can't assign the same volunteer more than once
-      # 2. Only one teacher per course??
-      # 3. Filter the volunteers list based on proficiency LATER ADD FILTER FOR VOLS WHERE THE course.subject == user's proficiency AND role == the @role selected in the form
 
   def create
     @roster = VolunteerRoster.new(vol_roster_params)
@@ -39,6 +34,17 @@ class VolunteerRostersController < ApplicationController
   def set_course
     @course = Course.find(params[:course_id])
   end
+
+  def list_teachers
+    proficiencies = Proficiency.teachers_by_subject(@course.subject.name)
+    @teachers = proficiencies.map { |proficiency| proficiency.user }
+  end
+
+  def list_assistants
+    proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
+    @assistants = proficiencies.map { |proficiency| proficiency.user }
+  end
+
 end
 
 

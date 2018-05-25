@@ -1,15 +1,15 @@
 class ProficienciesController < ApplicationController
-  before_action :set_volunteer
+  before_action :set_volunteer, except: :destroy
 
   def new
     @proficiency = Proficiency.new
     @subjects = Subject.all
-    # @roles = ROLES
+    @roles = ApplicationRecord::ROLES
   end
 
   def create
     @proficiency = Proficiency.new(proficiency_params)
-    @proficiency.volunteer = @volunteer
+    @proficiency.user = @volunteer
 
     if @proficiency.save
       redirect_to volunteers_path
@@ -19,15 +19,19 @@ class ProficienciesController < ApplicationController
   end
 
   def destroy
+    @proficiency = Proficiency.find(params[:id])
+    @proficiency.destroy
+    redirect_to volunteers_path
   end
 
   private
 
   def set_volunteer
-    @volunteer = User.find(params[:user_id])
+    @volunteer = User.find(params[:volunteer_id])
+    # volunteer_id is actually the user_id
   end
 
   def proficiency_params
-    params.require(:proficiencies).permit(:user_id, :subject_id, :role)
+    params.require(:proficiency).permit(:volunteer_id, :subject_id, :role)
   end
 end
