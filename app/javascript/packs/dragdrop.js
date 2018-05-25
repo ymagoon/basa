@@ -57,12 +57,13 @@ function dragAndDrop() {
 
     saveStudentRoster();
 
-    var target = e.target;
+    let target = e.target;
 
     let data = e.dataTransfer.getData("student-id");
     const studentCard = document.getElementById(data);
 
-    e.target.appendChild(studentCard);
+    uploadArea.appendChild(studentCard);
+    console.log(e.target);
 
     // let data = e.dataTransfer.getData("text");
     // e.target.appendChild(document.getElementById(file));
