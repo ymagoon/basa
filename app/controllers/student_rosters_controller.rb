@@ -19,20 +19,14 @@ class StudentRostersController < ApplicationController
     @students = @allstudents - @inclass
 
     @student = Student.find(params[:student_id])
+
     @student_roster = StudentRoster.new(student: @student, course: @course)
 
-    @student_roster.save
-      # redirect_to ''
-    # else
-      # render 'new'
-    # end
-
-      #then query the session and find all sessions where course.sessions
-      #loop through each sessions course.sessions.each do
-      #attendance.create
-      #then pass studentid in to session id and create an attendance record per session per student
-      #
-      #check for testing: present field needs to be defaulting to 0 (Model should be doing this)
+    unless @student_roster.save
+      respond_to do |format|
+        format.js { flash.now[:notice] = "#{@student_roster.errors.full_messages[0]}" }
+      end
+    end
   end
 
   def destroy
