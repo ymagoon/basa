@@ -33,9 +33,6 @@ class DashboardController < ApplicationController
 
   end
 
-  def number_of_students
-    @course.students.ids.count
-  end
 
   def courses_below_min_capacity
     @courses = Course.all.select { |c| c.min_capacity > c.number_of_students }
@@ -65,12 +62,20 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
+    User.where(role: 'volunteer').count
   end
 
   def number_of_volunteers_by_proficiency
   end
 
   def number_of_volunteers_assigned_to_course
+     # total number of volunteers
+    users = User.where(role: 'volunteer').count
+
+    #total number of distinct users on volunteer_rosters
+    distinct_users = VolunteerRoster.select(:user_id).distinct.count
+
+    users - distinct_users
     # show # of volunteers that have never been assigned to a course
   end
 
