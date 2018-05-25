@@ -1,6 +1,6 @@
 .course-header {
   display: flex;
-  // justify-content: center;
+  padding-left: 30px;
   align-items: center;
 
   .course-title {
@@ -12,10 +12,17 @@
   }
 }
 
-
-// <div class="course-header">
-//   <div class="course-title">
-//     <h1><%= @course.name %></h1>
-//     <span><%= render 'shared/dropdown', courses: @courses %></span>
-//   </div>
-// </div>
+.course-status {
+  p {
+    border-radius: 3px;
+    padding: 2px 3px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+  }
+}
+.confirmed {
+  background-color: $my-blue;
+}
+.pending {
+  background-color: $my-green;
+}

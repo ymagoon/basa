@@ -35,16 +35,38 @@
   </div>
 </div>
 
-<div class="course-header">
-  <div class="course-title">
-    <h1><%= @course.name %></h1>
-  </div>
-  <%= render 'shared/dropdown', courses: @courses %>
-</div>
-
-
-
 <div class="wrapper">
+  <div class="course-header">
+    <div class="course-title">
+      <h1><%= @course.name %></h1>
+    </div>
+    <%= render 'shared/dropdown', courses: @courses %>
+
+    <div class="course-status">
+      <p class="<%= @course.pending? ? 'pending' : 'confirmed' %>">
+        <%= @course.pending? ? 'Pending' : 'Confirmed' %>
+      </p>
+    </div>
+
+  </div>
+
+
+<!--
+t.bigint "subject_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "frequency"
+    t.integer "number_of_sessions"
+    t.bigint "address_id"
+    t.integer "min_capacity"
+    t.integer "max_capacity"
+    t.text "notes"
+    t.integer "session_length"
+    t.integer "status"
+ -->
+
+
+
   <div class="attendance-container">
     <%= render 'attendance', students: @students, sessions: @sessions, course: @course %>
   </div>
