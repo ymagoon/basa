@@ -1,6 +1,13 @@
 class VolunteerRostersController < ApplicationController
   before_action :set_course, except: :destroy
 
+  def index
+  end
+
+  def show
+    @volunteer_roster = VolunteerRoster.new
+  end
+
   def new
     @roster = VolunteerRoster.new
     @teachers = list_teachers

@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home', as: :home
+  root to: 'dashboard#home', as: :home
 
   resources :courses do
     resources :sessions, except: [:new, :create]
-    resources :attendances, only: [:index, :edit, :update]
-    resources :student_rosters, only: [:create, :destroy]
+    resources :attendances, only: [:index]
+    resources :student_rosters, only: [:index, :destroy]
+    patch '/attendance', to: 'attendances#update'
+    post '/student_rosters/:student_id', to: 'student_rosters#create'
     resources :volunteer_rosters, only: [:new, :create]
-  end
-
-  # note that the volunteer routes actually refer to users since there's no volunteer model. Where you see :volunteer_id => this refers to the :user_id. (e.g. in Proficiencies)
-  resources :volunteers, only: [:index, :show] do
-    resources :proficiencies, only: [:new, :create]
   end
 
   resources :subjects, only: [:create]
@@ -19,4 +16,9 @@ Rails.application.routes.draw do
   resources :addresses, only: [:create]
   resources :volunteer_rosters, only: [:destroy]
   resources :proficiencies, only: [:destroy]
+
+  # note that the volunteer routes actually refer to users since there's no volunteer model. Where you see :volunteer_id => this refers to the :user_id. (e.g. in Proficiencies)
+  resources :volunteers, only: [:index, :show] do
+    resources :proficiencies, only: [:new, :create]
+  end
 end

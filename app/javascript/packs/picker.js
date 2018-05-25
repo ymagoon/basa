@@ -5,7 +5,7 @@ function initializeDateRangePicker() {
       startDate: moment().startOf('hour'),
       endDate: moment().startOf('hour').add(1, 'week'),
       locale: {
-        format: 'M/DD/YYYY hh:mm A'
+        format: 'DD/M/YYYY hh:mm A'
       }
     });
   });

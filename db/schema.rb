@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_045756) do
+ActiveRecord::Schema.define(version: 2018_05_25_054633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_24_045756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_attendances_on_session_id"
+    t.index ["student_id", "session_id"], name: "index_attendances_on_student_id_and_session_id", unique: true
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_05_24_045756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_student_rosters_on_course_id"
+    t.index ["student_id", "course_id"], name: "index_student_rosters_on_student_id_and_course_id", unique: true
     t.index ["student_id"], name: "index_student_rosters_on_student_id"
   end
 
