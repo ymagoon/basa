@@ -7,7 +7,7 @@ class StudentRoster < ApplicationRecord
   private
 
   def create_attendance
-    course = Course.find_by(id: self.course_id)
+    course = Course.find(self.course_id)
 
     course.sessions.each do |session|
       Attendance.create(student_id: self.student_id, session: session)

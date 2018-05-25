@@ -9,9 +9,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-
-    # @students = Student.all - #students where studentid == student_roster(@course_id)
-
+    @students = @course.students.order(first_name: :asc)
+    @sessions = @course.sessions
   end
 
   def new
@@ -31,7 +30,7 @@ class CoursesController < ApplicationController
 
     @course.start_date = course_params[:start_date]
     @course.end_date = course_params[:end_date]
-    raise
+
     if @course.save
       redirect_to courses_path
       # redirect_to action: course_sessions_path(@course), occurrences: @course.list_occurrences
