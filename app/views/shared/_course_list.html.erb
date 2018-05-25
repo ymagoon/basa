@@ -1,6 +1,6 @@
 <div class="courses-list">
   <% @courses.each do |course|%>
-    <div class="course-card" >
+    <div class="course-card" data-course-id="<%= course.id %>" >
       <%= link_to course_path(course) do %>
       <h2 class="text-center"><%= course.subject.name %></h2>
       <p><%= course.start_date %> <span> <%= course.end_date %></span></p>
@@ -9,6 +9,12 @@
       </p>
       <p><%= course.address.venue_name %></p>
       <p class="italic"><%= course.status %></p>
+      <%= link_to edit_course_path(course) do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+      <%= link_to course_path(course), method: :delete, remote: true do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
       <%end %>
       <hr>
     </div>

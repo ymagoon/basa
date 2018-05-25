@@ -51,9 +51,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    if @course.destroy
-      redirect_to courses_path
-    end
+    @course.destroy
   end
 
   private
