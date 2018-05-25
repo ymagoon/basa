@@ -13,4 +13,9 @@ class StudentRoster < ApplicationRecord
       Attendance.create(student_id: self.student_id, session: session)
     end
   end
+
+
+  def destroy_attendance
+    course = Course.find(self.course_id)
+  end
 end
