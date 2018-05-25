@@ -8,7 +8,7 @@ function saveStudentRoster(student_id, course_id) {
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     assignedStudents.innerHTML = this.responseText;
+     // assignedStudents.innerHTML = this.responseText;
     }
   };
 
