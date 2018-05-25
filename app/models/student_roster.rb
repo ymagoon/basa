@@ -17,6 +17,10 @@ class StudentRoster < ApplicationRecord
     end
   end
 
+  # def destroy_attendance
+  #   course = Course.find(self.course_id)
+  # end
+  
   def autoconfirm
     course = self.course
 

@@ -14,41 +14,7 @@ function saveStudentRoster(student_id, course_id) {
 
   xhttp.open("POST", `/courses/${course_id}/student_rosters/${student_id}`, true);
   xhttp.send();
-
-  // const csrfToken = getMetaContent('name', 'csrf-token');
-
-  // const url = `/courses/${course_id}/student_rosters/${student_id}`
-  // fetch(url, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //     "X-CSRF-Token": csrfToken
-  //     // "credentials": "same-origin"
-  //   },
-  //   body: JSON.stringify({ query: event.currentTarget.value })
-  // })
-    // .then(response => response.json())
-    // .then((data) => {
-    //   console.log(data);
-    // });
-
 }
-
-// return fetch(url, {
-//     body: JSON.stringify(data), // must match 'Content-Type' header
-//     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-//     credentials: 'same-origin', // include, same-origin, *omit
-//     headers: {
-//       'user-agent': 'Mozilla/4.0 MDN Example',
-//       'content-type': 'application/json'
-//     },
-//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-//     mode: 'cors', // no-cors, cors, *same-origin
-//     redirect: 'follow', // manual, *follow, error
-//     referrer: 'no-referrer', // *client, no-referrer
-//   })
-//   .then(response => response.json()) // parses response to JSON
-// }
 
 // preventing page from redirecting
 function dragAndDrop() {
