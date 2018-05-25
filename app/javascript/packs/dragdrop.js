@@ -3,12 +3,12 @@ function getMetaContent(property, name){
 }
 
 function saveStudentRoster(student_id, course_id) {
-  const assignedStudents = document.querySelector('.upload-area');
+  const assignedStudents = document.querySelector('.assigned-students');
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     assignedStudents.innerHTML = this.responseText;
+      // document.getElementById('flashes').insertAdjacentHTML('afterbegin', `<p>${this.responseText}</p>`);
     }
   };
 
@@ -94,21 +94,11 @@ function dragAndDrop() {
     const target = e.target;
     const data = e.dataTransfer.getData("ids").split(',');
     const studentCard = document.getElementById(data[0]);
-    console.log(data);
-    console.log(data[0])
-    console.log(studentCard);
 
     e.preventDefault();
     e.stopPropagation();
 
     assignedStudents.appendChild(studentCard);
-    console.log(e.target);
-
-    // let data = e.dataTransfer.getData("text");
-    // e.target.appendChild(document.getElementById(file));
-
-    // e.target.appendChild(studentCard);
-
 
     saveStudentRoster(data[0], data[1]);
   });

@@ -2,6 +2,8 @@ class StudentRoster < ApplicationRecord
   belongs_to :student
   belongs_to :course
 
+  validates :student, uniqueness: { scope: :course, message: "student already associated with course"}
+
   after_create :create_attendance
 
   private
