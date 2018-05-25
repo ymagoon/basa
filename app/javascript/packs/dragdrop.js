@@ -89,16 +89,17 @@ function dragAndDrop() {
   };
 
 
-  
+
   assignedStudents.addEventListener('drop', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-
     const target = e.target;
     const data = e.dataTransfer.getData("ids").split(',');
-    const studentCard = document.getElementById(data);
+    const studentCard = document.getElementById(data[0]);
+    console.log(data);
+    console.log(data[0])
+    console.log(studentCard);
 
+    e.preventDefault();
+    e.stopPropagation();
 
     assignedStudents.appendChild(studentCard);
     console.log(e.target);
