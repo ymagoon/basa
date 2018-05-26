@@ -1,0 +1,21 @@
+<h3>VOLUNTEERS</h3>
+<div class="volunteer-info border-bottom">
+  <div class="teacher-img">
+  </div>
+  <div class="volunteer">
+    <p><%= "#{teacher.first_name} #{teacher.last_name}" %></p>
+    <p><%= teacher.phone %></p>
+    <p><%= teacher.email %></p>
+  </div>
+
+  <% assistants.each do |assistant| %>
+    <div class="teacher-img">
+    </div>
+    <div class="volunteer">
+      <p><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
+      <p><%= assistant.phone %></p>
+      <p><%= assistant.email %></p>
+    </div>
+  <% end %>
+</div>
+

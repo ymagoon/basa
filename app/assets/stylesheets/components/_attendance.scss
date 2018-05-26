@@ -33,17 +33,23 @@
   .attendance-row {
     display: flex;
     align-items: center;
-    // height: 100%;
 
     &:nth-child(even) {
       background-color: white;
     }
     .attendance-student {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex: 0 0 150px;
       padding: 10px 15px;
 
       p {
         margin: 0;
+      }
+
+      .fas {
+        color: $my-gray;
       }
     }
     .attendance-session {
@@ -64,8 +70,4 @@
       }
     }
   }
-}
-
-.border-right {
-   border-right: 1px solid $my-light-gray;
 }

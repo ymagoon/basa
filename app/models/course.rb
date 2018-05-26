@@ -32,6 +32,14 @@ class Course < ApplicationRecord
     self.students.count
   end
 
+  def teacher
+    self.volunteer_rosters.find { |volunteer| volunteer.role == 'teacher' }.user
+  end
+
+  def assistants
+    self.volunteer_rosters.select { |volunteer| volunteer.role == 'assistant' }.map(&:user)
+  end
+
   def schedule
     # Creates a schedule of dates for a Course depending on what the start_date, end_date and
     # frequency of the course is

@@ -14,6 +14,8 @@ class CoursesController < ApplicationController
 
     # For the drop down
     @courses = Course.where(status: ['pending', 'confirmed']).select { |c| c.start_date >= DateTime.now || c.end_date <= DateTime.now }
+    @teacher = @course.teacher
+    @assistants = @course.assistants
 
     respond_to do |format|
       format.html # show.html.erb

@@ -13,8 +13,17 @@
   background-color: $my-light-gray;
 }
 
-.attendance-container {
+.better-container {
   margin: 0 30px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $my-gray-border;
+}
+
+
+.border-right {
+   border-right: 1px solid $my-gray-border;
 }
 
 // hr {
