@@ -1,4 +1,40 @@
 <% title 'Assign Volunteers' %>
 
-<%= render 'form' %>
+<h1> Assign Volunteers to Course ID <%= @course.id %> : <%= @course.subject.name %> </h1>
+<br>
 
+<h3>Assign Teachers</h3>
+
+<%= simple_form_for([@course, @roster]) do |f| %>
+  <%= f.input :user_id, collection: @teachers, label_method: :full_name %>
+  <%= f.input :role, input_html: { value: "teacher" }, as: :hidden %>
+  <%= f.submit %>
+<% end %>
+<br>
+<p>--------Teachers--------</p>
+<ul>
+  <% @course.volunteer_rosters.each do |roster| %>
+    <% if roster.role == "teacher" %>
+      <li> <%= roster.user.first_name %> <%= roster.user.last_name %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <% end %>
+    <% end %>
+</ul>
+<p>------------------------</p>
+
+
+<h3>Assign Assistants</h3>
+<%= simple_form_for([@course, @roster]) do |f| %>
+  <%= f.input :user_id, collection: @assistants, label_method: :full_name %>
+  <%= f.input :role, input_html: { value: "assistant" }, as: :hidden %>
+  <%= f.submit %>
+<% end %>
+<br>
+<p>-------Assistants-------</p>
+<ul>
+  <% @course.volunteer_rosters.each do |roster| %>
+    <% if roster.role == "assistant" %>
+      <li> <%= roster.user.first_name  %> <%= roster.user.last_name  %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <% end %>
+    <% end %>
+</ul>
+<p>------------------------</p>
