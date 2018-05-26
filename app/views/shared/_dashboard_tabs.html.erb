@@ -1,0 +1,32 @@
+<% title 'Home' %>
+<div class="better-container">
+  <div class="tabs">
+      <div class="tab ">
+      <%= link_to home_path do %>
+        <h3> <%= @active_courses.count %> / <%= Course.count %></h3>
+        <p>Aggragate Course Data</p>
+      <% end %>
+      </div>
+        <div class="tab active" >
+        <%= link_to volunteers_dashboard_index_path do %>
+        <h3> <%= @assigned_volunteers %> / <%= User.where(role: 'volunteer').count %></h3>
+        <p>Aggragate Volunteer Data</p>
+      <% end %>
+      </div>
+      <div class="tab" >
+      <%= link_to attendance_dashboard_index_path do %>
+        <h3>????</h3>
+        <p>Aggragate Attendance Data</p>
+      <% end %>
+      </div>
+      <div class="tab" >
+      <%= link_to students_dashboard_index_path do %>
+        <h3><%= Student.count %></h3>
+        <p>Aggragate Student Data</p>
+      <% end %>
+      </div>
+  </div>
+</div>
+
+
+
