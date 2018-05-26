@@ -1,0 +1,28 @@
+.course-header {
+  display: flex;
+  padding: 30px 0;
+  align-items: center;
+
+  .course-title {
+    h1, ul, ol {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+  }
+}
+
+.add-user, .add-volunteer {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  padding: 2px 3px;
+  margin-left: 10px;
+  border: 1px solid $my-gray;
+
+  .icon > a {
+    color: white;
+    height: 100%;
+    background-color: $my-green;
+  }
+}

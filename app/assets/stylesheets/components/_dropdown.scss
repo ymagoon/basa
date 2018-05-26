@@ -1,0 +1,38 @@
+li a {
+  width: 120px;
+  height: auto;
+}
+
+ul > li {
+  display: inline;
+  position: relative;
+  min-width: 150px;
+}
+
+/* hide submenus by setting the max-height to 0 */
+ul > li > ul {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .95s ease;
+}
+
+/* set max-height to an approximate height it could have */
+ul > li:hover > ul {
+  max-height: 300px;
+}
+
+ul.submenu {
+  background: #eee;
+  position: absolute;
+  left: 0;
+  top: 1em;
+}
+
+ul.submenu > li {
+  display: block;
+}
+
+#caret {
+  margin: 0 0 5px 0;
+  padding: 0 0 0 5px;
+}

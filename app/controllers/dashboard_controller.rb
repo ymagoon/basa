@@ -1,6 +1,19 @@
 class DashboardController < ApplicationController
+  before_action :set_assigned_volunteers,
   def home
+    @courses = active_courses
+    @no_teacher = courses_with_no_teacher
+    @below_cap = courses_below_min_capacity
+  end
 
+  def volunteers
+    @assigned_volunteers = number_of_volunteers_assigned_to_course
+  end
+
+  def students
+  end
+
+  def attendance
   end
 
   private
@@ -23,14 +36,13 @@ class DashboardController < ApplicationController
       total = course.attendances.count
       return present/total
     }
-
     # list all courses that are active and their corresponding % aggregate
   end
 
   def courses_with_no_teacher
     courses_w_teachers = VolunteerRoster.all.map { |a| a.course_id}.uniq
-    courses_without_teachers = Course.all.ids - courses_w_teachers
-
+    ids = Course.all.ids - courses_w_teachers
+    courses_with_no_teacher = ids.map { |id| Course.find(id) }
   end
 
 
@@ -62,6 +74,7 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
+
     User.where(role: 'volunteer').count
   end
 
@@ -79,5 +92,19 @@ class DashboardController < ApplicationController
     # show # of volunteers that have never been assigned to a course
   end
 
+  def set_assigned_volunteers
+    @assigned_volunteers = number_of_volunteers_assigned_to_course
+  end
+
+  def set_active_courses
+    @active_courses = Course.all.select { |c| c.status != 'cancelled'}
+  end
+
+  def set_active_students
+
+  end
+
+  def set_attendance_percentage
+  end
 
 end
