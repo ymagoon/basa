@@ -10,10 +10,9 @@ class CoursesController < ApplicationController
       @courses = Course.order_by_start_date
     end
 
-
     # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
     # lists each venue (as a hash) with how many other courses have that same address
-    @venues = courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
+    @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
 
     respond_to do |format|
       format.html
