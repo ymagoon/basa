@@ -2,13 +2,20 @@
   <% courses.each do |course|%>
     <div class="course-card" data-course-id="<%= course.id %>" >
       <%= link_to course_path(course) do %>
-      <h2 class="text-center"><%= course.subject.name %></h2>
-      <p><%= course.start_date %> <span> <%= course.end_date %></span></p>
+      <h2><%= course.name %></h2>
+      <h3><%= course.subject.name %></h3>
+      <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
       <p>
-        <%= course.number_of_students %> <span>- (<%= course.max_capacity %>)</span>
+        <%= course.number_of_students %> (<%= course.max_capacity %>)
       </p>
       <p><%= course.address.venue_name %></p>
-      <p class="italic"><%= course.status %></p>
+      <div class="course-status">
+        <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
+          <%= course.pending? ? 'Pending' : 'Confirmed' %>
+        </p>
+      </div>
+      <p># of sessions: <%= course.number_of_sessions %></p>
+
       <%= link_to edit_course_path(course) do %>
         <i class="far fa-edit"></i>
       <% end %>

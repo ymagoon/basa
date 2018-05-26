@@ -12,25 +12,6 @@
   }
 }
 
-.course-status {
-  p {
-    border-radius: 3px;
-    padding: 2px 3px;
-    margin-left: 10px;
-    margin-bottom: 0px;
-  }
-}
-.confirmed {
-  background-color: $my-blue;
-}
-.pending {
-  background-color: $my-green;
-}
-
-// .add {
-//   font-size: 2em;
-// }
-
 .add-user, .add-volunteer {
   display: flex;
   align-items: center;
