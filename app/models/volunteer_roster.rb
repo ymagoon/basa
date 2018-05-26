@@ -9,4 +9,9 @@ class VolunteerRoster < ApplicationRecord
   def self.roles
     ROLES
   end
-end
+
+#   def self.rosters_by_volunteer(volunteer)
+#     VolunteerRoster.joins(:course).where('user_id = ? AND start_date > DateTime.now', volunteer).order(start_date: :desc)
+#   end
+# end
+

@@ -19,7 +19,7 @@ class VolunteerRostersController < ApplicationController
     @roster.course = @course
 
     if @roster.save
-      redirect_to course_path(@course)
+      redirect_to new_course_volunteer_roster_path(@course)
     else
       render :new
     end
@@ -29,7 +29,13 @@ class VolunteerRostersController < ApplicationController
     @roster = VolunteerRoster.find(params[:id])
     @roster.destroy
     @course = @roster.course
-    redirect_to course_path(@course)
+    redirect_to new_course_volunteer_roster_path(@course)
+  end
+
+  def check_availability
+    #
+    #
+    #
   end
 
   private
