@@ -1,0 +1,6 @@
+function addReview(reviewHTML) {
+  const table = document.querySelector('.attendance-container');
+  table.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
+addReview("<%= j render "courses/attendance", course: @course, courses: @courses, students: @students, sessions: @sessions %>");

@@ -10,7 +10,7 @@ module Basa
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
 
-    # config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     config.load_defaults 5.2
 
     # Settings in config/environments/* take precedence over those specified here.

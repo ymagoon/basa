@@ -74,7 +74,6 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
-
     User.where(role: 'volunteer').count
   end
 
@@ -106,5 +105,6 @@ class DashboardController < ApplicationController
 
   def set_attendance_percentage
   end
+
 
 end
