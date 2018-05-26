@@ -1,11 +1,15 @@
-<ul id="caret">
-  <li>
-    <i class="fas fa-caret-down"></i>
-    <ul class="submenu">
-      <% courses.each do |course| %>
-        <li><%= link_to course.subject.name, course_path(course), remote: true %></li>
-      <% end %>
-    </ul>
-  </li>
-</ul>
-
+<div class="sort">
+  <p id="filter">Start Date</p>
+  <ul id="caret">
+    <li>
+      <i class="fas fa-caret-down"></i>
+      <ul class="submenu">
+        <li><%= link_to 'Start Date', '/courses?filter=start_date', remote: true %></li>
+        <li><%= link_to 'End Date', '/courses?filter=end_date', remote: true %></li>
+        <!-- <li><a href="">Start Date</a></li>
+        <li><a href="/courses?filter=end_date">End Date</a></li> -->
+        <li><%#= link_to course.subject.name, course_path(course), remote: true %></li>
+      </ul>
+    </li>
+  </ul>
+</div>

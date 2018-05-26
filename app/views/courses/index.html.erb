@@ -1,10 +1,18 @@
 <% title 'Courses' %>
-<div class="course-information">
-  <div class="container">
-    <h1 class="text-center">List of all courses</h1>
+
+<div class="wrapper">
+  <div class="container-better">
+
+    <%= render 'shared/dropdown' %>
+
+   <!--  <div class="course-information">
+      <div class="container">
+        <h1 class="text-center">List of all courses</h1>
+      </div>
+    </div>
+    <div class="container"> -->
+      <%= render 'shared/course_list', courses: @courses %>
+    <!-- </div> -->
+
   </div>
 </div>
-<div class="container">
-  <%= render 'shared/course_list', courses: @courses %>
-</div>
-

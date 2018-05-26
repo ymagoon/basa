@@ -2,8 +2,13 @@ class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+
   def index
-    @courses = Course.order_by_start_date
+    if filter = params[:filter]
+      @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
+    else
+      @courses = Course.order_by_start_date
+    end
   end
 
   def show
