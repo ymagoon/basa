@@ -13,7 +13,7 @@
     <div class="attendance-row">
       <div class="attendance-student border-right">
         <p class="attendance-header-text"><%= "#{student.first_name} #{student.last_name}" %></p>
-        <i class="fas fa-address-card"></i>
+        <i class="fas fa-address-card" data-toggle="modal" data-target="#student-info"></i>
       </div>
       <div class="attendance-session">
         <% student.student_attendance(course).each do |attendance| %>

@@ -12,14 +12,15 @@
       <%= course.pending? ? 'Pending' : 'Confirmed' %>
     </p>
   </div>
-  <div class="add-user">
-    <div class="icon">
-      <%= link_to course_student_rosters_path(@course) do %>
-        <i class="fas fa-plus"></i>
-      <% end %>
+  <%= link_to course_student_rosters_path(@course) do %>
+    <div class="add-user">
+      <div class="icon">
+
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
+      <span>Add User</span>
     </div>
-    <span>Add User</span>
-  </div>
   <div class="add-volunteer">
     <%= link_to new_course_volunteer_roster_path(@course), class: 'icon' do %>
       <i class="fas fa-plus"></i>

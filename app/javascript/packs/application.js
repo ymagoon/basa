@@ -1,5 +1,6 @@
 import 'bootstrap';
 import 'daterangepicker';
+import 'css-modal';
 
 import { initializeDateRangePicker } from './picker';
 import { dragAndDrop } from './dragdrop';

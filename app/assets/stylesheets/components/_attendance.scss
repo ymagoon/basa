@@ -55,6 +55,9 @@
 
       .fas {
         color: $my-gray;
+        &:hover {
+          color: $my-blue;
+        }
       }
     }
     .attendance-session {
