@@ -1,1 +1,18 @@
 <% title 'Home' %>
+<%= render 'shared/dashboard_tabs' %>
+
+<button class="accordion">All Active Courses</button>
+  <div class="panel">
+    <% @courses.each do |course| %>
+    <%= course.subject.name %>
+  </div>
+
+<button class="accordion">Courses with no Teacher</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<button class="accordion">Courses Below Minimum Capacity</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>

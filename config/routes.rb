@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'dashboard#home', as: :home
+    resources :dashboard, only: [] do
+      collection do
+        get 'volunteers', to: "dashboard#volunteers"
+        get 'students', to: "dashboard#students"
+        get 'attendance', to: "dashboard#attendance"
+      end
+    end
+
 
   resources :courses do
     resources :sessions, except: [:new, :create]

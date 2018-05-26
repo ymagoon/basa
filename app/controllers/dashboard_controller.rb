@@ -1,6 +1,16 @@
 class DashboardController < ApplicationController
-  def home
 
+  def home
+    @courses = Course.active_course_attendance
+  end
+
+  def volunteers
+  end
+
+  def students
+  end
+
+  def attendance
   end
 
   private
@@ -10,10 +20,10 @@ class DashboardController < ApplicationController
     Course.count
   end
 
-  def active_course_attendance
-    courses = Course.where(start_date: )
+  def self.active_course_attendance
+    # courses = Course.where(start_date: )
 
-Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+  Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
     1.week.ago..Date.today
     # list all courses that are active and their corresponding % aggregate
   end
