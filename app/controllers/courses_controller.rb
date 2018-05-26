@@ -9,6 +9,11 @@ class CoursesController < ApplicationController
     else
       @courses = Course.order_by_start_date
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -21,10 +26,10 @@ class CoursesController < ApplicationController
     @teacher = @course.teacher
     @assistants = @course.assistants
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.js # show.js.erb
-    end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.js # show.js.erb
+    # end
   end
 
   def new
