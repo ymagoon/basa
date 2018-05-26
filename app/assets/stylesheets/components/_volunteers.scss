@@ -4,12 +4,14 @@
   padding-left: 30px;
 
   .volunteer-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     align-self: flex-start;
     height: 35px;
     width: 35px;
     border-radius: 50%;
     background-color: $my-blue;
-    text-align: center;
 
     p {
       color: white;
