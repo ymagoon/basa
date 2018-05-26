@@ -23,7 +23,6 @@ class DashboardController < ApplicationController
       total = course.attendances.count
       return present/total
     }
-
     # list all courses that are active and their corresponding % aggregate
   end
 
@@ -78,6 +77,4 @@ class DashboardController < ApplicationController
     users - distinct_users
     # show # of volunteers that have never been assigned to a course
   end
-
-
 end

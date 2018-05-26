@@ -1,0 +1,11 @@
+<ul id="caret">
+  <li>
+    <i class="fas fa-caret-down"></i>
+    <ul class="submenu">
+      <% courses.each do |course| %>
+        <li><%= link_to course.subject.name, course_path(course), remote: true %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
+

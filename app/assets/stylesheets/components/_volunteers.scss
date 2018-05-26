@@ -1,0 +1,28 @@
+.volunteer-info {
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+
+  .volunteer-img {
+    align-self: flex-start;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: $my-blue;
+    text-align: center;
+
+    p {
+      color: white;
+      font-family: $gotham-light;
+      font-size: 22px;
+      margin-bottom: 0;
+    }
+  }
+
+  .volunteer {
+    margin-left: 10px;
+  }
+
+}
+
+

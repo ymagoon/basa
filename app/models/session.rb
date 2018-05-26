@@ -3,4 +3,8 @@ class Session < ApplicationRecord
   has_many :attendances
 
   validates :date, presence: true
+
+  def date_formatted
+    self.date.strftime('%A, %b %d')
+  end
 end
