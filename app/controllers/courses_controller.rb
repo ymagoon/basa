@@ -3,8 +3,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses = Course.all
-    @students = Student.all
+    @courses = Course.order_by_start_date
   end
 
   def show

@@ -28,6 +28,15 @@ class Course < ApplicationRecord
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
 
+  scope :order_by_start_date, -> { order(start_date: :asc)}
+  scope :order_by_end_date, -> { order(start_date: :desc)}
+
+  # chain these two for active courses
+  scope :current, -> { where("? between start_date and end_date", DateTime.now)}
+  scope :future, -> { where("start_date > ?", DateTime.now)}
+
+  scope :past, -> { where("? > end_date", DateTime.now)}
+
   def number_of_students
     self.students.count
   end
