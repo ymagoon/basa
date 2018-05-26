@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_action :set_assigned_volunteers,
+  before_action :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses
   def home
     @courses = active_courses
     @no_teacher = courses_with_no_teacher
@@ -57,6 +57,7 @@ class DashboardController < ApplicationController
 
   def number_of_students_attended_course
     # number of students that have attended a course (count the student_roster table)
+
   end
 
   def number_of_students_attended_course_unique
@@ -64,7 +65,7 @@ class DashboardController < ApplicationController
   end
 
   def total_student_attendance
-    # average student attendance for the entire system
+    @percentage_attendance
   end
 
   def student_attendance_for_active_courses
@@ -74,10 +75,6 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
-<<<<<<< HEAD
-=======
-
->>>>>>> a0f92e9c2de4263f996a42f4257262d9b4ca95d1
     User.where(role: 'volunteer').count
   end
 
@@ -108,10 +105,9 @@ class DashboardController < ApplicationController
   end
 
   def set_attendance_percentage
+    total = Attendance.all.count
+    present = Attendance.where(present: "present").count
+    @percentage_attendance = present.to_f / total
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a0f92e9c2de4263f996a42f4257262d9b4ca95d1
 end

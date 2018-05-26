@@ -20,7 +20,7 @@ class StudentRoster < ApplicationRecord
   # def destroy_attendance
   #   course = Course.find(self.course_id)
   # end
-  
+
   def autoconfirm
     course = self.course
 
@@ -28,9 +28,9 @@ class StudentRoster < ApplicationRecord
       course.update(status: 'confirmed')
     end
   end
-  
+
   def max_capacity?
-    if StudentRoster.count >= self.course.max_capacity
+    if self.course.students.count >= self.course.max_capacity
       errors.add(:max_capacity, "the class is full")
     end
   end

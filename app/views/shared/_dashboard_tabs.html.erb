@@ -7,7 +7,7 @@
         <p>Aggragate Course Data</p>
       <% end %>
       </div>
-        <div class="tab active" >
+        <div class="tab " >
         <%= link_to volunteers_dashboard_index_path do %>
         <h3> <%= @assigned_volunteers %> / <%= User.where(role: 'volunteer').count %></h3>
         <p>Aggragate Volunteer Data</p>
@@ -15,7 +15,7 @@
       </div>
       <div class="tab" >
       <%= link_to attendance_dashboard_index_path do %>
-        <h3>????</h3>
+        <h3><%= @percentage_attendance.round(4) * 100 %> %</h3>
         <p>Aggragate Attendance Data</p>
       <% end %>
       </div>
