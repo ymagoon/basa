@@ -14,6 +14,13 @@ class CoursesController < ApplicationController
     # lists each venue (as a hash) with how many other courses have that same address
     @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
 
+    # loop through params[:address] to find matching addresses. Since they are check boxes they only show if they are checked.
+    if params[:address]
+      addresses = params[:address].keys
+      @courses = Course.where('addresses.venue_name': addresses).joins(:address)
+      # raise
+    end
+
     respond_to do |format|
       format.html
       format.js
