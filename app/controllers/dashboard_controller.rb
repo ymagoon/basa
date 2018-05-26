@@ -74,6 +74,10 @@ class DashboardController < ApplicationController
 
   # Volunteers
   def total_number_of_volunteers
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0f92e9c2de4263f996a42f4257262d9b4ca95d1
     User.where(role: 'volunteer').count
   end
 
@@ -106,5 +110,8 @@ class DashboardController < ApplicationController
   def set_attendance_percentage
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a0f92e9c2de4263f996a42f4257262d9b4ca95d1
 end
