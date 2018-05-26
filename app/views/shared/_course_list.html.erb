@@ -1,5 +1,5 @@
 <div class="courses-list">
-  <% @courses.each do |course|%>
+  <% courses.each do |course|%>
     <div class="course-card" data-course-id="<%= course.id %>" >
       <%= link_to course_path(course) do %>
       <h2 class="text-center"><%= course.subject.name %></h2>
