@@ -10,8 +10,8 @@ class VolunteerRoster < ApplicationRecord
     ROLES
   end
 
-#   def self.rosters_by_volunteer(volunteer)
-#     VolunteerRoster.joins(:course).where('user_id = ? AND start_date > DateTime.now', volunteer).order(start_date: :desc)
-#   end
-# end
-
+  # def self.courses_by_volunteer(volunteer)
+  #   rosters = VolunteerRoster.joins(:course).where('user_id = ? AND start_date > ?', volunteer, DateTime.now).order('courses.start_date DESC')
+  #   rosters.map { |roster| roster.course.name }
+  # end
+end

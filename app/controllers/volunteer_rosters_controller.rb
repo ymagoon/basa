@@ -12,6 +12,7 @@ class VolunteerRostersController < ApplicationController
     @roster = VolunteerRoster.new
     @teachers = list_teachers
     @assistants = list_assistants
+    # @volunteers = list_teachers + list_assistants
   end
 
   def create
@@ -32,10 +33,10 @@ class VolunteerRostersController < ApplicationController
     redirect_to new_course_volunteer_roster_path(@course)
   end
 
-  def check_availability
-    #
-    #
-    #
+  def check_vol_courses
+    @query = params[:volunteer] ? true : false
+    @vol_courses = VolunteerRoster.courses_by_volunteer(params[:id])
+    redirect_to new_course_volunteer_roster_path(@course)
   end
 
   private

@@ -1,13 +1,12 @@
 <% title 'Assign Volunteers' %>
 <div class="container">
-<h1 class='text-center'> Assign Volunteers to Course ID <%= @course.id %> : <%= @course.subject.name %> CHANGE TO COURSE.NAME </h1>
+<h1 class='text-center'> Assign Volunteers to <%= @course.name %> </h1>
+<p class='text-center'><%= @course.start_date %> - <%= @course.end_date %> | <%= @course.address.venue_name %> </p>
 <div class="vol-roster-container">
   <br>
+
   <div class="volunteer-lookup">
-    <h2>1. Check Availability</h2>
-    <br>
-    <p>Add form to lookup a volunteer's allocated courses</p>
-    <p></p>
+    <!-- in slack -->
   </div>
 
   <div class="assign-form">
@@ -40,7 +39,7 @@
     <ul>
       <% @course.volunteer_rosters.each do |roster| %>
         <% if roster.role == "teacher" %>
-          <li> <%= roster.user.first_name %> <%= roster.user.last_name %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+          <li> <%= roster.user.full_name %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
           <% end %>
         <% end %>
     </ul>
@@ -50,7 +49,7 @@
     <ul>
       <% @course.volunteer_rosters.each do |roster| %>
         <% if roster.role == "assistant" %>
-          <li> <%= roster.user.first_name  %> <%= roster.user.last_name  %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+          <li> <%= roster.user.full_name  %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
           <% end %>
         <% end %>
     </ul>
