@@ -3,16 +3,15 @@
 
 <button class="accordion">All Active Courses</button>
   <div class="panel">
-    <% @courses.each do |course| %>
-    <%= course.subject.name %>
+    <%= render 'shared/course_list', courses: @courses %>
   </div>
 
 <button class="accordion">Courses with no Teacher</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <%= render 'shared/course_list', courses: @no_teacher %>
 </div>
 
 <button class="accordion">Courses Below Minimum Capacity</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+   <%= render 'shared/course_list', courses: @below_cap %>
 </div>
