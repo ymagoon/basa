@@ -7,26 +7,39 @@ class DashboardController < ApplicationController
 
   # Courses
   def total_number_of_courses
-    # use this to find active courses, & active/pending courses in future
+    Course.count
+  end
+
+  def active_courses
+    @active_courses = Course.all.select { |c| c.status != 'cancelled'}
+    #NEED DATE FILTER
   end
 
   def active_course_attendance
-    courses = Course.where(start_date: )
-
-Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
-    1.week.ago..Date.today
+    total_attendance = @course.attendances.count
+    total_present = @course.attendances.select { |c| c.present == "present" }.count
+    @active_courses.each { |course|
+      present = course.attendances.select { |c| c.present == "present" }.count
+      total = course.attendances.count
+      return present/total
+    }
     # list all courses that are active and their corresponding % aggregate
   end
 
   def courses_with_no_teacher
-    # courses that contain students that do not have a teacher assigned
+    courses_w_teachers = VolunteerRoster.all.map { |a| a.course_id}.uniq
+    courses_without_teachers = Course.all.ids - courses_w_teachers
+
   end
 
+
   def courses_below_min_capacity
+    @courses = Course.all.select { |c| c.min_capacity > c.number_of_students }
   end
 
   # Students
   def total_number_of_students
+    Student.count
   end
 
   def number_of_students_attended_course
@@ -48,19 +61,20 @@ Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end
 
   # Volunteers
   def total_number_of_volunteers
-    User.where(role: 'volunteer')
+    User.where(role: 'volunteer').count
   end
 
   def number_of_volunteers_by_proficiency
   end
 
   def number_of_volunteers_assigned_to_course
-    # total number of volunteers
+     # total number of volunteers
     users = User.where(role: 'volunteer').count
 
     #total number of distinct users on volunteer_rosters
     distinct_users = VolunteerRoster.select(:user_id).distinct.count
 
     users - distinct_users
+    # show # of volunteers that have never been assigned to a course
   end
 end

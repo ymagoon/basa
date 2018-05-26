@@ -6,8 +6,19 @@
   <div class="student-roster">
     <%= link_to "Back to Course Page", course_path(@course), class: "btn btn-primary brand-primary" %>
       <div class="assigned-students">
+          <% @course.students.each do |student| %>
+          <div draggable="true" class="assigned student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" id="<%= student.id %>">
+            <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
+            <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><%= student.age(student.birth_date) %>
+              <%= link_to student_roster_path(student.student_rosters.ids), method: :delete, confirm: "Are you sure you wish to delete this course?" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </span>
+          </div>
+          <% end %>
       </div>
-      <div ID="flashes"></div>
+    </div>
+    <div ID="flashes"></div>
   </div>
 </div>

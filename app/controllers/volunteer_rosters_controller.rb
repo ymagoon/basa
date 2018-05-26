@@ -1,5 +1,5 @@
 class VolunteerRostersController < ApplicationController
-  before_action :set_course
+  before_action :set_course, except: :destroy
 
   def index
   end
@@ -10,32 +10,26 @@ class VolunteerRostersController < ApplicationController
 
   def new
     @roster = VolunteerRoster.new
-    @volunteers = User.volunteers
-    @roles = VolunteerRoster.roles
-    # LATER ADD FILTER FOR VOLS WHERE THE course.subject == user's proficiency AND role == the @role selected in the form
+    @teachers = list_teachers
+    @assistants = list_assistants
   end
 
   def create
-
     @roster = VolunteerRoster.new(vol_roster_params)
     @roster.course = @course
 
     if @roster.save
-      # raise
       redirect_to course_path(@course)
     else
       render :new
-
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    @roster = VolunteerRoster.find(params[:id])
+    @roster.destroy
+    @course = @roster.course
+    redirect_to course_path(@course)
   end
 
   private
@@ -46,6 +40,16 @@ class VolunteerRostersController < ApplicationController
 
   def set_course
     @course = Course.find(params[:course_id])
+  end
+
+  def list_teachers
+    proficiencies = Proficiency.teachers_by_subject(@course.subject.name)
+    @teachers = proficiencies.map { |proficiency| proficiency.user }
+  end
+
+  def list_assistants
+    proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
+    @assistants = proficiencies.map { |proficiency| proficiency.user }
   end
 
 end

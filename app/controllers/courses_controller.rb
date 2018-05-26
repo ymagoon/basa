@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     @subjects = Subject.all
-    @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id }
+    @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id } # Can refactor this using scope in model. See VolunteerRoster.
   end
 
   def create
@@ -61,9 +61,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    if @course.destroy
-      redirect_to courses_path
-    end
+    @course.destroy
   end
 
   private
