@@ -1,4 +1,4 @@
-<!-- <div class="course-information">
+<div class="course-information">
   <div class="container">
     <div class="row">
       <h1>Course ID <%#= @course.id %> : <%#= @course.subject.name %></h1>
@@ -8,32 +8,32 @@
     </div>
     <div class="row">
       <h3>Teachers</h3>
-      <%# @course.volunteer_rosters.each do |roster| %>
-        <%# if roster.role == "teacher" %>
-          <p> <%#= roster.user.first_name  %> <%#= roster.user.last_name  %> </p>
-          <%# end %>
-      <%# end %>
+      <% @course.volunteer_rosters.each do |roster| %>
+        <% if roster.role == "teacher" %>
+          <p> <%= roster.user.first_name  %> <%#= roster.user.last_name  %> </p>
+          <% end %>
+      <% end %>
     </div>
       <h3>Assistants</h3>
     <div class="row">
-      <%# @course.volunteer_rosters.each do |roster| %>
-        <%# if roster.role == "assistant" %>
-          <p> <%#= roster.role %> : <%#= roster.user.first_name  %> <%#= roster.user.last_name  %> </p>
-          <%# end %>
-        <%# end %>
+      <% @course.volunteer_rosters.each do |roster| %>
+        <% if roster.role == "assistant" %>
+          <p> <%= roster.role %> : <%#= roster.user.first_name  %> <%#= roster.user.last_name  %> </p>
+          <% end %>
+        <% end %>
     </div>
     <div class="row">
     <h3>Students</h3>
     </div>
   </div>
-</div> -->
-<!-- <div class="container">
+</div>
+<div class="container">
   <div class="control-buttons">
-    <%#= link_to "Add Students", course_student_rosters_path(@course), class: "btn btn-primary brand-primary" %>
-    <%#= link_to "Add Volunteers", new_course_volunteer_roster_path(@course), class: "btn btn-primary brand-primary" %>
-    <%#= link_to "Back to Course Index", courses_path, class: "btn btn-primary brand-primary" %>
+    <%= link_to "Add Students", course_student_rosters_path(@course), class: "btn btn-primary brand-primary" %>
+    <%= link_to "Add Volunteers", new_course_volunteer_roster_path(@course), class: "btn btn-primary brand-primary" %>
+    <%= link_to "Back to Course Index", courses_path, class: "btn btn-primary brand-primary" %>
   </div>
-</div> -->
+</div>
 
 <div class="wrapper">
   <div class="better-container">

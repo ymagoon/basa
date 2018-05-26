@@ -40,7 +40,7 @@ class Course < ApplicationRecord
   def assistants
     assistants = self.volunteer_rosters.select { |volunteer| volunteer.role == 'assistant' }.map(&:user)
 
-    assistants.empty? ? assistants : []
+    assistants.empty? ? [] : assistants
   end
 
   def schedule
