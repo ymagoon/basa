@@ -1,6 +1,11 @@
 .attendance-sessions {
   display: flex;
-  padding-left: 170px;
+  // margin-left: 170px;
+  max-width: 100vw;
+
+  .placeholder {
+    flex: 0 0 170px;
+  }
 
   .session-header {
     height: 150px;
