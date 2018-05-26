@@ -2,28 +2,42 @@
   <% courses.each do |course|%>
     <div class="course-card" data-course-id="<%= course.id %>" >
       <%= link_to course_path(course) do %>
-      <h2><%= course.name %></h2>
-      <h3><%= course.subject.name %></h3>
-      <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
-      <p>
-        <%= course.number_of_students %> (<%= course.max_capacity %>)
-      </p>
-      <p><%= course.address.venue_name %></p>
-      <div class="course-status">
-        <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
-          <%= course.pending? ? 'Pending' : 'Confirmed' %>
+        <h2><%= course.name %></h2>
+        <h3><%= course.subject.name %></h3>
+        <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+        <p>
+          <%= course.number_of_students %> (<%= course.max_capacity %>)
         </p>
-      </div>
-      <p># of sessions: <%= course.number_of_sessions %></p>
+        <p><%= course.address.venue_name %></p>
+        <div class="course-status">
+          <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
+            <%= course.pending? ? 'Pending' : 'Confirmed' %>
+          </p>
+        </div>
+        <p># of sessions: <%= course.number_of_sessions %></p>
+        <p>
+          <% unless course.teacher.blank? %>
+            <%= "#{course.teacher.first_name} #{course.teacher.last_name}" %>
+          <% else %>
+            No teacher assigned yet
+          <% end %>
+        </p>
+        <% unless course.assistants.empty? %>
+          <% course.assistants.each do |assistant| %>
+            <p><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
+          <% end %>
+        <% else %>
+          No assistants assigned yet
+        <% end %>
 
-      <%= link_to edit_course_path(course) do %>
-        <i class="far fa-edit"></i>
+        <%= link_to edit_course_path(course) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+
+        <%= link_to course_path(course), method: :delete, remote: true do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
       <% end %>
-      <%= link_to course_path(course), method: :delete, remote: true do %>
-        <i class="far fa-trash-alt"></i>
-      <% end %>
-      <%end %>
-      <hr>
     </div>
   <% end %>
 </div>
