@@ -1,52 +1,19 @@
-<!-- <div class="attendance-table">
-  <%# students.each do |student| %>
-    <div class="attendance-row">
-      <div class="attendance-student">
-        <p><%#= "#{student.first_name} #{student.last_name}" %></p>
-      </div>
-      <div class="attendance-session">
-        <%# sessions.each do |session| %>
-          <div class="attendance absent" data-student="<%#= student.id %>" data-session="<%#= session.id %>" data-course="<%#= course.id %>">
-
-            <%#= link_to 't', course_attendance_path(course), class: 'test', method: 'patch', remote: true, data: {params: {'test': 1, 'test2': 2} } %>
-            <!-- <a href="/courses/<%#= course.id %>/attendance" data-method="patch" data-params="{session_id: <%#= session.id %>, course: <%#= course.id %> data-remote="true"></a> -->
-<!--           </div>
-        <%# end %>
-      </div>
-    </div>
-  <%# end %>
-</div> -->
-
-<!-- <div class="attendance-table">
-  <%# attendances.each do |column| %>
-    <div class="attendance-column">
-      <div class="attendance-session-date">
-        <p>header</p> <%#= attendance.session.date %>
-      </div>
-      <div class="attendance-session-column">
-        <%# column.each do |attendance| %>
-          <div class="attendance <%#= attendance.present? ? 'present' : 'absent' %>" data-attendance="<%#= attendance.id %>" data-course="<%#= course.id %>">
-          </div>
-        <%# end %>
-      </div>
-    </div>
-    <%# end %>
-</div> -->
-
-
-  <div class="attendance-sessions">
-  <% sessions.each do |session| %>
-    <div class="session-header">
-      <%= session.date %>
-    </div>
-  <% end %>
-  </div>
-
 <div class="attendance-table">
+  <div class="attendance-sessions">
+    <div class="placeholder">
+
+    </div>
+    <% sessions.each do |session| %>
+      <div class="session-header">
+        <span><%= session.date_formatted %></span>
+      </div>
+    <% end %>
+  </div>
  <% students.each do |student| %>
     <div class="attendance-row">
-      <div class="attendance-student">
-        <p><%= "#{student.first_name} #{student.last_name}" %></p>
+      <div class="attendance-student border-right">
+        <p class="attendance-header-text"><%= "#{student.first_name} #{student.last_name}" %></p>
+        <i class="fas fa-address-card" data-toggle="modal" data-target="#student-info"></i>
       </div>
       <div class="attendance-session">
         <% student.student_attendance(course).each do |attendance| %>
@@ -57,8 +24,3 @@
     </div>
   <% end %>
 </div>
-
-<!-- iterate for the sessions header row -->
-<!-- iterate over the students
-for each student display their name
-then for each student iterate over their attendance  -->
