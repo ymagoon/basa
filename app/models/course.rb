@@ -33,11 +33,14 @@ class Course < ApplicationRecord
   end
 
   def teacher
-    self.volunteer_rosters.find { |volunteer| volunteer.role == 'teacher' }.user
+    teacher = self.volunteer_rosters.find { |volunteer| volunteer.role == 'teacher' }
+    teacher ? teacher.user : ''
   end
 
   def assistants
-    self.volunteer_rosters.select { |volunteer| volunteer.role == 'assistant' }.map(&:user)
+    assistants = self.volunteer_rosters.select { |volunteer| volunteer.role == 'assistant' }.map(&:user)
+
+    assistants.empty? ? assistants : []
   end
 
   def schedule
