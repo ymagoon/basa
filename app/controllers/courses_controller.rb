@@ -24,12 +24,8 @@ class CoursesController < ApplicationController
     @courses = @courses.with_no_teacher if params[:no_teacher].present?
     @courses = @courses.with_no_assistants if params[:no_assistants].present?
 
-    # binding.pry
-        # if filter = params[:filter]
-    #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
-    # else
-    #   @courses = Course.order_by_start_date
-    # end
+    @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
+    @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
 
     @subjects = @courses.subject_count
     @venues = @courses.venue_count
