@@ -5,19 +5,36 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
-    @venues = @courses.venues
+
       # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
     # @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
     # need to make sure the venues scope works properly BEFORE removing the code above. Because this does work.
 
     # Course.where('addresses.venue_name': addresses).joins(:address)
+    # Filter by location
     @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
+    # Filter by phase
+    @courses = @courses.current if params[:current] if params[:current].present?
+    @courses = @courses.future if params[:future] if params[:future].present?
+    @courses = @courses.past if params[:past] if params[:past].present?
+
+    # Filter by subject
+    @courses = @courses.subjects(params[:subjects].keys) if params[:subjects].present?
+
+    # Filter by status
+    @coureses = @courses.status(params[:status]) if params[:status].present?
+    # binding.pry
         # if filter = params[:filter]
     #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
     # else
     #   @courses = Course.order_by_start_date
     # end
+
+    @courses = @courses.with_no_teacher if params[:no_teacher].present?
+
+    @subjects = @courses.subject_count
+    @venues = @courses.venue_count
 
     respond_to do |format|
       format.html

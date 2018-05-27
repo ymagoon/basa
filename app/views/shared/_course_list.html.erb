@@ -37,6 +37,7 @@
         <%= link_to course_path(course), method: :delete, remote: true do %>
           <i class="far fa-trash-alt"></i>
         <% end %>
+        <p><%= course.id %></p>
       <% end %>
     </div>
   <% end %>

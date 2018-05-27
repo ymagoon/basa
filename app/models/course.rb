@@ -33,15 +33,19 @@ class Course < ApplicationRecord
   # Course location filters
   scope :locations, -> (locations) { where('addresses.venue_name': locations).joins(:address) }
   # lists each venue (as a hash) with how many other courses have that same address
-  scope :venues, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
+
+  # might not work because might take all venues for ALL courses instead of the already filtered on courses
+  scope :venue_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
 
   # Course subject filters
+  scope :subject_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.subject.name] += 1 } }
+  scope :subjects, ->(subjects) { where('subjects.name': subjects).joins(:subject) }
 
   # Course status filters
-  scope :order_by_start_date, -> { order(start_date: :asc)}
-  scope :order_by_end_date, -> { order(start_date: :desc)}
+  scope :status, -> (status) { where(status: status)}
 
-  # chain these two for active courses
+  # Course phase filters
+  # These three filters do not work together because of their conditions. Need to find a way where they wont overwrite each other!
   scope :current, -> { where("? between start_date and end_date", DateTime.now)}
   scope :future, -> { where("start_date > ?", DateTime.now)}
   scope :past, -> { where("? > end_date", DateTime.now)}
@@ -49,13 +53,21 @@ class Course < ApplicationRecord
   # Course date range filters
 
   # Miscellaneous filters
+  scope :with_no_teacher, -> { joins("LEFT JOIN student_rosters ON courses.id = student_rosters.course_id").where(student_rosters: {id: nil}) }
+    # not quite working (above)
 
+  # def courses_with_no_teacher
+  #   courses_w_teachers = VolunteerRoster.all.map { |a| a.course_id}.uniq
+  #   ids = Course.all.ids - courses_w_teachers
+  #   courses_with_no_teacher = ids.map { |id| Course.find(id) }
+  # end
 
-# class Product < ActiveRecord::Base
-#   scope :status, -> (status) { where status: status }
-#   scope :location, -> (location_id) { where location_id: location_id }
+  # Course sorting scopes
+  scope :order_by_start_date, -> { order(start_date: :asc)}
+  scope :order_by_end_date, -> { order(start_date: :desc)}
+
 #   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
-# end
+
 
   # if filter = params[:filter]
   #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
