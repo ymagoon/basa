@@ -42,7 +42,7 @@ class Course < ApplicationRecord
   scope :subjects, ->(subjects) { where('subjects.name': subjects).joins(:subject) }
 
   # Course status filters
-  scope :status, -> (status) { where(status: status)}
+  scope :status, -> (status) { where(status: status) }
 
   # Course phase filters
   # These three filters do not work together because of their conditions. Need to find a way where they wont overwrite each other!

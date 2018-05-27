@@ -1,24 +1,31 @@
 
-<%= form_tag '/courses', method: 'get', remote: true, :id => 'location-filter' do %>
+<%= form_tag '/courses', method: 'get', remote: true, :id => 'filter' do %>
   <!-- status -->
-  <%= check_box_tag "current", 1, false, class: 'location-filter' %>
+  <%= check_box_tag "current", 1, false, class: 'current-filter filter' %>
   <%= label_tag 'current', 'current' %>
-  <%= check_box_tag "future", 1, false, class: 'location-filter' %>
+  <%= check_box_tag "future", 1, false, class: 'future-filter filter' %>
   <%= label_tag 'future', 'future' %>
-  <%= check_box_tag "past", 1, false, class: 'location-filter' %>
+  <%= check_box_tag "past", 1, false, class: 'past-filter filter' %>
   <%= label_tag 'past', 'past' %>
   <!-- subjects -->
   <% @subjects.each do |subject| %>
-    <%= check_box_tag "subjects[#{subject[0]}]", 1, false, class: 'location-filter' %>
+    <%= check_box_tag "subjects[#{subject[0]}]", 1, false, class: 'subject-filter filter' %>
     <%= label_tag subject[0], subject[0] %>
   <% end %>
   <!-- venues -->
   <% @venues.each do |venue| %>
-    <%= check_box_tag "address[#{venue[0]}]", 1, false, class: 'location-filter' %>
+    <%= check_box_tag "address[#{venue[0]}]", 1, false, class: 'address-filter filter' %>
     <%= label_tag venue[0], venue[0] %>
   <% end %>
 
-  <%= check_box_tag "no_teacher", 1, false, class: 'location-filter' %>
+  <%= check_box_tag "status[pending]", 1, false, class: 'pending-filter filter' %>
+  <%= label_tag 'pending', 'pending' %>
+  <%= check_box_tag "status[confirmed]", 1, false, class: 'confirmed-filter filter' %>
+  <%= label_tag 'confirmed', 'confirmed' %>
+  <%= check_box_tag "status[cancelled]", 1, false, class: 'cancelled-filter filter' %>
+  <%= label_tag 'cancelled', 'cancelled' %>
+
+  <%= check_box_tag "no_teacher", 1, false, class: 'no-teacher-filter filter' %>
   <%= label_tag 'no_teacher', 'no_teacher' %>
   <%= submit_tag 'submit', :id => 'submit' %>
 <% end %>

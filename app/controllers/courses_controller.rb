@@ -23,7 +23,8 @@ class CoursesController < ApplicationController
     @courses = @courses.subjects(params[:subjects].keys) if params[:subjects].present?
 
     # Filter by status
-    @coureses = @courses.status(params[:status]) if params[:status].present?
+    @courses = @courses.status(params[:status].keys) if params[:status].present?
+
     # binding.pry
         # if filter = params[:filter]
     #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
