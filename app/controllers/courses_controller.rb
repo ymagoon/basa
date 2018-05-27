@@ -4,22 +4,20 @@ class CoursesController < ApplicationController
 
 
   def index
-    if filter = params[:filter]
-      @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
-    else
-      @courses = Course.order_by_start_date
-    end
+    @courses = Course.all
+    @venues = @courses.venues
+      # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
+    # @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
+    # need to make sure the venues scope works properly BEFORE removing the code above. Because this does work.
 
-    # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
-    # lists each venue (as a hash) with how many other courses have that same address
-    @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
+    # Course.where('addresses.venue_name': addresses).joins(:address)
+    @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
-    # loop through params[:address] to find matching addresses. Since they are check boxes they only show if they are checked.
-    if params[:address]
-      addresses = params[:address].keys
-      @courses = Course.where('addresses.venue_name': addresses).joins(:address)
-      # raise
-    end
+        # if filter = params[:filter]
+    #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
+    # else
+    #   @courses = Course.order_by_start_date
+    # end
 
     respond_to do |format|
       format.html

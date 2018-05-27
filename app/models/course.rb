@@ -28,14 +28,64 @@ class Course < ApplicationRecord
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
 
+  # Define all of the scopes for filtering and sorting on the index page
+
+  # Course location filters
+  scope :locations, -> (locations) { where('addresses.venue_name': locations).joins(:address) }
+  # lists each venue (as a hash) with how many other courses have that same address
+  scope :venues, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
+
+  # Course subject filters
+
+  # Course status filters
   scope :order_by_start_date, -> { order(start_date: :asc)}
   scope :order_by_end_date, -> { order(start_date: :desc)}
 
   # chain these two for active courses
   scope :current, -> { where("? between start_date and end_date", DateTime.now)}
   scope :future, -> { where("start_date > ?", DateTime.now)}
-
   scope :past, -> { where("? > end_date", DateTime.now)}
+
+  # Course date range filters
+
+  # Miscellaneous filters
+
+
+# class Product < ActiveRecord::Base
+#   scope :status, -> (status) { where status: status }
+#   scope :location, -> (location_id) { where location_id: location_id }
+#   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+# end
+
+  # if filter = params[:filter]
+  #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
+  # else
+  #   @courses = Course.order_by_start_date
+  # end
+
+  # # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
+  # # lists each venue (as a hash) with how many other courses have that same address
+  # @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
+
+  # # loop through params[:address] to find matching addresses. Since they are check boxes they only show if they are checked.
+  # if params[:address]
+  #   addresses = params[:address].keys
+  #   @courses = Course.where('addresses.venue_name': addresses).joins(:address)
+  #   # raise
+  # end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   def number_of_students
     self.students.count
