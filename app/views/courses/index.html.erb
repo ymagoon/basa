@@ -4,16 +4,18 @@
     <h1 class="text-center">List of all courses</h1>
   </div>
 </div>
-<div class="better-container">
-  <div class="main-page">
-    <%= render 'filters' %>
-    <div class="course-content">
-      <div class="course-content-head">
-        <h2>23 results found</h2>
-        <%= render 'shared/dropdown' %>
-      </div>
-      <div class="course-list-wrapper">
-        <%= render 'shared/course_list', courses: @courses %>
+<div class="wrapper">
+  <div class="better-container">
+    <div class="main-page">
+      <%= render 'filters' %>
+      <div class="course-content">
+        <div class="course-content-head">
+          <h2>23 results found</h2>
+          <%= render 'shared/dropdown' %>
+        </div>
+        <div class="course-list-wrapper">
+          <%= render 'shared/course_list', courses: @courses %>
+        </div>
       </div>
     </div>
   </div>
