@@ -1,6 +1,6 @@
 function filter() {
   let form = document.getElementById('filter'); // the form
-  let inputs = document.querySelectorAll('.filter') // the check boxes
+  let inputs = document.querySelectorAll('.checkbox') // the check boxes
   let submit = document.getElementById('submit');
 
   inputs.forEach(function(input) {

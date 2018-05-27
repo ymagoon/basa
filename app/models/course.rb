@@ -53,20 +53,14 @@ class Course < ApplicationRecord
   # Course date range filters
 
   # Miscellaneous filters
-  scope :with_no_teacher, -> { joins("LEFT JOIN student_rosters ON courses.id = student_rosters.course_id").where(student_rosters: {id: nil}) }
-    # not quite working (above)
-
-  # def courses_with_no_teacher
-  #   courses_w_teachers = VolunteerRoster.all.map { |a| a.course_id}.uniq
-  #   ids = Course.all.ids - courses_w_teachers
-  #   courses_with_no_teacher = ids.map { |id| Course.find(id) }
-  # end
+  scope :with_no_teacher, -> { where('id not in (select course_id from volunteer_rosters where role = ?)', 0) }
+  scope :with_no_assistants, -> { where('id not in (select course_id from volunteer_rosters where role = ?)', 1) }
 
   # Course sorting scopes
   scope :order_by_start_date, -> { order(start_date: :asc)}
   scope :order_by_end_date, -> { order(start_date: :desc)}
 
-#   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+# scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 
 
   # if filter = params[:filter]
@@ -74,30 +68,6 @@ class Course < ApplicationRecord
   # else
   #   @courses = Course.order_by_start_date
   # end
-
-  # # Address.where('addresses.address_type = ?', 0).joins(:courses).group('addresses.venue_name').count
-  # # lists each venue (as a hash) with how many other courses have that same address
-  # @venues = @courses.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 }
-
-  # # loop through params[:address] to find matching addresses. Since they are check boxes they only show if they are checked.
-  # if params[:address]
-  #   addresses = params[:address].keys
-  #   @courses = Course.where('addresses.venue_name': addresses).joins(:address)
-  #   # raise
-  # end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def number_of_students
     self.students.count
