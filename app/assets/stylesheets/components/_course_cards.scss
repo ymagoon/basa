@@ -1,9 +1,92 @@
 .course-card {
   box-shadow: 1px 1px 1px $my-gray;
+  border: 1px solid black;
   padding: 5px;
   margin: 10px;
 }
 
 .courses-list {
-  display: flex;
+  // display: flex;
 }
+
+.course-card {
+  display: flex;
+
+  .volunteers {
+    width: 130px;
+    border: 1px solid #E8E8E8;
+    p {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+
+    .volunteer-section {
+      display: flex;
+      // align-items: center;
+    }
+  }
+  .student-info {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    p {
+      margin-bottom: 0;
+    }
+    .info-label {
+      font-size: 10px;
+    }
+    .info-section {
+      text-align: center;
+      border: 1px solid #E8E8E8;
+    }
+  }
+}
+
+.course-list-header {
+  display: flex;
+  align-items: center;
+}
+
+.light {
+  font-size: 10px;
+  color: $my-gray;
+  font-family: $gotham-bold;
+}
+
+.course-status {
+  p {
+    font-size: 10px;
+  }
+}
+
+.av {
+  background-color: $my-blue;
+  color: white;
+  font-family: $gotham-light;
+  width:14px;
+  height: 14px;
+  border-radius: 50%;
+  display:flex;
+  align-items: bottom;
+  justify-content: center;
+
+}
+.teacher-av {
+  background-color: $my-blue;
+}
+.assistant-av {
+  background-color: $my-green;
+}
+
+.v-name {
+  padding-left: 3px;
+}
+
+#teacher {
+  margin-left: 3px;
+}
+
+// courses-list
+//   course-card
+
