@@ -1,0 +1,13 @@
+.main-page {
+  display: flex;
+
+  .course-list-head {
+    display: flex;
+    margin-left: 30px;
+    align-content: center;
+    justify-content: space-between;
+  }
+  h2 {
+    margin: 0px;
+  }
+}

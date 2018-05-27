@@ -1,18 +1,22 @@
 <% title 'Courses' %>
-  <div class="better-container">
-    <!-- sort by  -->
-    <%= render 'shared/dropdown' %>
-    <!-- location filter -->
-    <%= render 'filters' %>
-
-   <!--  <div class="course-information">
+<div class="course-information">
       <div class="container">
         <h1 class="text-center">List of all courses</h1>
       </div>
     </div>
-    <div class="container"> -->
+  <div class="better-container">
+    <div class="main-page">
+      <%= render 'filters' %>
+      <div class="course-list">
+        <div class="course-list-head">
+          <h2>23 results found</h2>
+          <%= render 'shared/dropdown' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
       <div class="course-list-wrapper">
         <%= render 'shared/course_list', courses: @courses %>
       </div>
-    <!-- </div> -->
   </div>
