@@ -1,6 +1,7 @@
 <div class="courses-list">
   <% courses.each do |course|%>
   <div class="col-xs-12 col-md-6">
+    <%= link_to course_path(course), class: 'text-black' do %>
     <div class="course-card <%= course.pending? ? 'pending' : 'confirmed' %>" data-course-id="<%= course.id %>" >
       <div class="course-info">
         <div class="course-list-header">
@@ -8,7 +9,6 @@
         </div>
         <div class="course-list-secondary">
           <p class="no-margin-bottom"><%= course.subject.name.upcase %></p>
-          <!-- <p><%#= course.address.venue_name %></p> -->
         </div>
         <p class="no-margin-bottom"><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
       </div>
@@ -48,18 +48,9 @@
         <div class='location'><i class="fas fa-map-marker-alt"> </i><p class="no-margin-bottom"><%= course.address.venue_name.upcase %></p></div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>
     <%#= link_to edit_course_path(course) do %>
@@ -72,9 +63,3 @@
       <!-- <div class="btn btn-add-students">
 
       </div> -->
-
- <!--      <%#= link_to course_path(course) do %>
-        <p><%#= course.address.venue_name %></p>
-        <p># of sessions: <%#= course.number_of_sessions %></p>
-        <p><%#= course.id %></p>
-      <%# end %> -->
