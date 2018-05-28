@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :average_attendance
-
+  # before_action :average_attendance
 
   def index
     @courses = Course.all
@@ -119,6 +118,4 @@ class CoursesController < ApplicationController
   def set_course
     @course = Course.find(params[:id])
   end
-
-
 end
