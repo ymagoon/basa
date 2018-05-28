@@ -11,7 +11,7 @@
       <%#= link_to 'Add Course', new_course_path %>
       <div class="course-content">
         <div class="course-content-head">
-          <h2><%= (@courses.count) %> results found</h2>
+          <h2 id="results"><%= (@courses.count) %> results found</h2>
           <%= render 'shared/dropdown' %>
         </div>
         <div class="course-list-wrapper">

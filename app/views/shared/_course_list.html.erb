@@ -22,7 +22,7 @@
               <% end %>
             </div>
             <div class="volunteer-section">
-              <div class="av assistant-av"><p>A</p></div>
+              <div class="av assistant-av tool-tip-inner" data-toggle="tooltip" data-placement="top" title="I need you to work!"><p>A</p></div>
               <% unless course.assistants.empty? %>
                 <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
                 <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
@@ -58,12 +58,17 @@
               <%# end %>
             </div>
 
+
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
 </div>
+
+          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+  Tooltip on top
+</button>
     <%#= link_to edit_course_path(course) do %>
             <!-- <i class="far fa-edit"></i> -->
           <%# end %>

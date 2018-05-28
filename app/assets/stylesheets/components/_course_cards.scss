@@ -48,7 +48,8 @@
     // width: 150px;
     display: flex;
     flex-direction: column;
-    margin: 10px 0 0 10px; // fix me
+    justify-content: center;
+    margin-left: 10px;
 
     .volunteer-section {
       display: flex;
@@ -98,7 +99,10 @@
   }
 }
 
-
+.tooltip-inner {
+    white-space:pre;
+    max-width:none;
+}
 
 
 .confirmed {
