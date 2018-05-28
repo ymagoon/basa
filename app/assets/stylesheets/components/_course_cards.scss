@@ -1,9 +1,13 @@
 .course-card {
+  display: flex;
+  padding: 0;    //look at this
+  height: 150px; //look at this
+
   box-shadow: 1px 1px 1px $my-gray;
-  border: 1px solid #E8E8E8;
   background-color: white;
-  padding: 5px;
+  // padding: 5px;
   margin: 10px;
+  border-radius: 3px;
 
   .course-info {
     display: flex;
@@ -18,9 +22,9 @@
 }
 
 .course-card {
-  display: flex;
-  padding: 0;
-  height: 150px;
+
+
+
 
   .volunteers {
     width: 150px;
@@ -62,6 +66,14 @@
 
     }
   }
+}
+
+.confirmed {
+  border-left: 5px solid $my-blue;
+}
+
+.pending {
+  border-left: 5px solid $my-green;
 }
 
 .course-list-header {

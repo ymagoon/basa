@@ -1,7 +1,22 @@
 <div class="courses-list">
   <% courses.each do |course|%>
   <div class="col-xs-12 col-md-6">
-    <div class="course-card" data-course-id="<%= course.id %>" >
+    <div class="course-card <%= course.pending? ? 'pending' : 'confirmed' %>" data-course-id="<%= course.id %>" >
+      <div class="course-info">
+        <div class="course-list-header">
+          <h3><%= course.name %></h3>
+          <%= link_to edit_course_path(course) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to course_path(course), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this course?'} do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+        <p class="light"><%= course.subject.name %></p>
+        <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+
+      </div>
+
       <div class="volunteers">
         <div class="volunteer-section">
           <div class="av teacher-av"><p>T</p></div>
@@ -41,24 +56,7 @@
           <p class="info-label">Max</p>
         </div>
       </div>
-      <div class="course-info">
-        <div class="course-list-header">
-          <h3><%= course.name %></h3>
-          <%= link_to edit_course_path(course) do %>
-            <i class="far fa-edit"></i>
-          <% end %>
-          <%= link_to course_path(course), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this course?'} do %>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        </div>
-        <p class="light"><%= course.subject.name %></p>
-        <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
-        <div class="course-status">
-          <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
-            <%= course.pending? ? 'Pending' : 'Confirmed' %>
-          </p>
-        </div>
-      </div>
+
 
 
       <!-- <div class="btn btn-add-students">
