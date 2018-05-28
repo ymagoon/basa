@@ -20,6 +20,15 @@
     flex-direction: column;
     justify-content: center;
 
+    .course-list-header {
+      display: flex;
+      align-items: center;
+      h3 {
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
     .course-list-secondary {
       font-size: 10px;
       color: $my-gray;
@@ -27,58 +36,18 @@
       display: flex;
       justify-content: space-between;
     }
-
-    p {
-      margin-bottom: 0;
-    }
   }
-}
-
-
-
-.course-card {
-
-
-
-
   .volunteers {
-    width: 150px;
+    // width: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 5px;
-    // border: 1px solid #E8E8E8;
-    p {
-      font-size: 12px;
-      margin-bottom: 0;
-    }
+    margin: 10px 0 0 10px; // fix me
 
     .volunteer-section {
       display: flex;
-      // align-items: center;
     }
-  }
-  .student-info {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
     p {
-      margin-bottom: 0;
-    }
-    .info-label {
-      font-size: 10px;
-    }
-    .info-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 5px;
-      height: 33.33%;
-      // border-bottom: 1px solid #E8E8E8;
-      // border-right: 1px solid #E8E8E8;
-
+      font-size: 12px;
     }
   }
 }
@@ -91,25 +60,8 @@
   border-left: 5px solid $my-green;
 }
 
-.course-list-header {
-  display: flex;
-  align-items: center;
-  h3 {
-    margin: 0;
-  }
-}
-
-.course-info-container {
-  // align-items: center;
-}
-
-
-
-.course-status {
-  p {
-    font-size: 10px;
-    margin-left: 0;
-  }
+.no-margin-bottom {
+  margin-bottom: 0;
 }
 
 .av {
@@ -122,55 +74,23 @@
   display:flex;
   align-items: bottom;
   justify-content: center;
-
 }
+
 .teacher-av {
   background-color: $my-blue;
 }
 .assistant-av {
   background-color: $my-green;
 }
+.student-av {
+  background-color: $my-gray;
+}
 
 .v-name {
   padding-left: 3px;
 }
 
-#teacher {
-  margin-left: 3px;
-}
-
 .col-xs-12, .col-md-6 {
   margin: 0;
   padding: 0;
-}
-
-// courses-list
-//   course-card
-
-
-.btn-add {
-  display: flex;
-  align-items: center;
-  border-radius: 3px;
-  // padding: 2px 3px;
-  margin-left: 10px;
-  border: 1px solid $my-gray;
-
-  .icon {
-    align-items: center;
-    padding: 2px 3px 0 3px;
-    color: white;
-    background-color: $my-green;
-  }
-  .span {
-    padding-left: 5px;
-  }
-
-}
-
-.btn-add-volunteer {
-  .icon {
-    background-color: $my-green;
-
-  }
 }
