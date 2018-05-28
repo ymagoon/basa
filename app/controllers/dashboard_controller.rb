@@ -19,6 +19,7 @@ class DashboardController < ApplicationController
   def students
     @absent_students = Student.absent_student
   end
+  #FUCKING WORK
 
   def attendance
     @courses = Course.lowest_attendance
