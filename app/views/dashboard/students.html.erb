@@ -1,6 +1,6 @@
 <% title 'Student Data' %>
 <%= render 'shared/dashboard_tabs' %>
-<button class="accordion">Students that have attended courses (Total: <%= @attending_students.count %> ) </button>
+<button class="accordion">Students that haven't attended courses</button>
   <div class="panel">
   <div class="col-xs-2 students">
   <% @attending_students.each do |student| %>

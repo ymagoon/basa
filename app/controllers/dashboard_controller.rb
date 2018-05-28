@@ -99,12 +99,8 @@ class DashboardController < ApplicationController
     #total number of distinct users on volunteer_rosters
     distinct_users = VolunteerRoster.select(:user_id).distinct.count
 
-    users - distinct_users
+     @assigned_volunteers = users - distinct_users
     # show # of volunteers that have never been assigned to a course
-  end
-
-  def set_assigned_volunteers
-    @assigned_volunteers = number_of_volunteers_assigned_to_course
   end
 
   def set_active_courses
