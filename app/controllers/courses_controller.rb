@@ -101,7 +101,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    parameters = params.require(:course).permit(:subject_id, :address_id, :start_date, :frequency,
+    parameters = params.require(:course).permit(:name, :subject_id, :address_id, :start_date, :frequency,
                                             :min_capacity, :max_capacity, :session_length, :notes)
     # parse date into correct format
     date = parameters[:start_date]
