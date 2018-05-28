@@ -1,13 +1,19 @@
 class DashboardController < ApplicationController
-  before_action :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :average_attendance
+  before_action  :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :average_attendance
   def home
     @courses = active_courses
     @no_teacher = courses_with_no_teacher
-    @below_cap = courses_below_min_capacity
+    @below_cap = Course.courses_below_min_cap
   end
 
   def volunteers
-    @assigned_volunteers = number_of_volunteers_assigned_to_course
+    @c_vols = Proficiency.teachers_by_subject("C#")
+    @ruby_vols = Proficiency.teachers_by_subject("Ruby on Rails")
+    @scratch_vols = Proficiency.teachers_by_subject("Scratch")
+    @python_vols = Proficiency.teachers_by_subject("Python")
+    @php_vols = Proficiency.teachers_by_subject("PHP")
+    @mobile_app_vols = Proficiency.teachers_by_subject("Mobile App Development")
+    @unassigned_vols = Proficiency.teachers_by_subject(nil)
   end
 
   def students
@@ -47,9 +53,7 @@ class DashboardController < ApplicationController
   end
 
 
-  def courses_below_min_capacity
-    @courses = Course.all.select { |c| c.min_capacity > c.number_of_students }
-  end
+
 
   # Students
   def total_number_of_students
@@ -90,24 +94,26 @@ class DashboardController < ApplicationController
   end
 
   def number_of_volunteers_by_proficiency
+
   end
+  # MOVED TO USER MODEL
+  # def number_of_volunteers_assigned_to_course
+  #    # total number of volunteers
+  #   users = User.where(role: 'volunteer').count
 
-  def number_of_volunteers_assigned_to_course
-     # total number of volunteers
-    users = User.where(role: 'volunteer').count
+  #   #total number of distinct users on volunteer_rosters
+  #   distinct_users = VolunteerRoster.select(:user_id).distinct.count
 
-    #total number of distinct users on volunteer_rosters
-    distinct_users = VolunteerRoster.select(:user_id).distinct.count
-
-     @assigned_volunteers = users - distinct_users
-    # show # of volunteers that have never been assigned to a course
-  end
+  #    @assigned_volunteers = users - distinct_users
+  #   # show # of volunteers that have never been assigned to a course
+  # end
 
   def set_active_courses
     @active_courses = Course.all.select { |c| c.status != 'cancelled'}
   end
 
   def set_active_students
+
   end
 
   def set_attendance_percentage
@@ -116,4 +122,12 @@ class DashboardController < ApplicationController
     @percentage_attendance = present.to_f / total
   end
 
+  def set_assigned_volunteers
+    users = User.where(role: 'volunteer').count
+
+    #total number of distinct users on volunteer_rosters
+    distinct_users = VolunteerRoster.select(:user_id).distinct.count
+
+    @assigned_volunteers = users - distinct_users
+  end
 end
