@@ -62,6 +62,28 @@ class Course < ApplicationRecord
 
 # scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 
+# FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
+  def course_attendance
+    s = self.sessions.select do |session|
+      if session.date < DateTime.now
+        session.id
+      end
+    end
+    attendance = self.attendances.where(session_id: s.map(&:id))
+    percentage = (attendance.present.count.to_f / attendance.count.to_f) * 100
+    if percentage.nan?
+      return 0
+    else
+      percentage.round(2)
+    end
+  end
+
+  def self.lowest_attendance
+    self.all.sort_by { |course|
+      course.course_attendance
+    }
+  end
+
   def number_of_students
     self.students.count
   end
@@ -107,6 +129,8 @@ class Course < ApplicationRecord
   # def courses_below_min_capacity
   #   self.all.select { |c| c.min_capacity > c.number_of_students }
   # end
+
+
 
   private
 

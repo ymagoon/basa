@@ -3,7 +3,7 @@
 <button class="accordion">Students that haven't attended courses</button>
   <div class="panel">
   <div class="col-xs-2 students">
-  <% @attending_students.each do |student| %>
+  <% @absent_students.each do |student| %>
     <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
       <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
