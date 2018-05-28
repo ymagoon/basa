@@ -12,4 +12,6 @@ class Attendance < ApplicationRecord
   end
 
   validates :present, presence: true, inclusion: { in: @presence }
+
+
 end

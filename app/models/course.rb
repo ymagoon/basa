@@ -68,6 +68,12 @@ class Course < ApplicationRecord
     self.schedule.occurrences(self.end_date)
   end
 
+  scope :courses_below_min_cap, -> { select{ |c| c.min_capacity > c.number_of_students } }
+
+  # def courses_below_min_capacity
+  #   self.all.select { |c| c.min_capacity > c.number_of_students }
+  # end
+
   private
 
   # When a course is created, default the status to pending
@@ -91,4 +97,6 @@ class Course < ApplicationRecord
       Session.create(course: self, date: session)
     end
   end
+
+
 end
