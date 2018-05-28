@@ -5,17 +5,29 @@
       <div class="course-info">
         <div class="course-list-header">
           <h3><%= course.name %></h3>
-          <%= link_to edit_course_path(course) do %>
-            <i class="far fa-edit"></i>
-          <% end %>
-          <%= link_to course_path(course), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this course?'} do %>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
         </div>
-        <p class="light"><%= course.subject.name %></p>
-        <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+        <div class="course-list-secondary">
+          <p><%= course.subject.name %></p>
+          <!-- <p><%#= course.address.venue_name %></p> -->
+        </div>
 
+        <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
       </div>
+
+
+
+
+    <%#= link_to edit_course_path(course) do %>
+            <!-- <i class="far fa-edit"></i> -->
+          <%# end %>
+          <%#= link_to course_path(course), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this course?'} do %>
+            <!-- <i class="far fa-trash-alt"></i> -->
+          <%# end %>
+
+
+
+
+
 
       <div class="volunteers">
         <div class="volunteer-section">
@@ -26,35 +38,35 @@
             <p class="v-name">No teachers</p>
           <% end %>
         </div>
-        <% unless course.assistants.empty? %>
+        <%# unless course.assistants.empty? %>
           <!-- sort assistants alphabetically by first name -->
-          <% assistants = course.assistants.sort_by { |assistant| assistant.first_name } %>
-          <% assistants.each do |assistant| %>
-            <div class="volunteer-section">
+          <%# assistants = course.assistants.sort_by { |assistant| assistant.first_name } %>
+          <%# assistants.each do |assistant| %>
+           <!--  <div class="volunteer-section">
               <div class="av assistant-av"><p>A</p></div>
-              <p class="v-name"><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="volunteer-section">
+              <p class="v-name"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p>
+            </div> -->
+          <%# end %>
+        <%# else %>
+         <!--  <div class="volunteer-section">
             <div class="av assistant-av"><p>A</p></div>
             <p class="v-name">No assistants</p>
-          </div>
-        <% end %>
+          </div> -->
+        <%# end %>
       </div>
-      <div class="student-info">
+      <!-- <div class="student-info">
         <div class="info-section">
-          <p><%= course.min_capacity %></p>
+          <p><%#= course.min_capacity %></p>
           <p class="info-label">Min</p>
         </div>
         <div class="info-section">
-          <p><%= course.number_of_students %></p>
+          <p><%#= course.number_of_students %></p>
           <p class="info-label">Current</p>
         </div>
         <div class="info-section">
-          <p><%= course.max_capacity %></p>
+          <p><%#= course.max_capacity %></p>
           <p class="info-label">Max</p>
-        </div>
+        </div> -->
       </div>
 
 
@@ -69,7 +81,7 @@
         <p><%#= course.id %></p>
       <%# end %> -->
 
-    </div>
+    <!-- </div> -->
     </div>
   <% end %>
 

@@ -1,8 +1,12 @@
+.courses-list {
+  // display: flex;
+}
+
 .course-card {
   display: flex;
   padding: 0;    //look at this
-  height: 150px; //look at this
-
+  // height: 100px; //look at this
+  // width: 350px;
   box-shadow: 1px 1px 1px $my-gray;
   background-color: white;
   // padding: 5px;
@@ -10,16 +14,27 @@
   border-radius: 3px;
 
   .course-info {
+    padding: 10px 0 5px 10px;
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 5px;
+
+    .course-list-secondary {
+      font-size: 10px;
+      color: $my-gray;
+      font-family: $gotham-bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 
-.courses-list {
-  // display: flex;
-}
+
 
 .course-card {
 
@@ -32,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 5px;
-    border: 1px solid #E8E8E8;
+    // border: 1px solid #E8E8E8;
     p {
       font-size: 12px;
       margin-bottom: 0;
@@ -61,8 +76,8 @@
       justify-content: center;
       padding: 0 5px;
       height: 33.33%;
-      border-bottom: 1px solid #E8E8E8;
-      border-right: 1px solid #E8E8E8;
+      // border-bottom: 1px solid #E8E8E8;
+      // border-right: 1px solid #E8E8E8;
 
     }
   }
@@ -88,11 +103,7 @@
   // align-items: center;
 }
 
-.light {
-  font-size: 10px;
-  color: $my-gray;
-  font-family: $gotham-bold;
-}
+
 
 .course-status {
   p {
