@@ -7,4 +7,6 @@ class Session < ApplicationRecord
   def date_formatted
     self.date.strftime('%A, %b %d')
   end
+
+  scope :past, -> { where("? > end_date", DateTime.now)}
 end
