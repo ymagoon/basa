@@ -43,7 +43,7 @@
       </div>
       <div class="course-info">
         <div class="course-list-header">
-          <h2><%= course.name %></h2>
+          <h3><%= course.name %></h3>
           <%= link_to edit_course_path(course) do %>
             <i class="far fa-edit"></i>
           <% end %>
@@ -61,6 +61,10 @@
       </div>
 
 
+      <!-- <div class="btn btn-add-students">
+
+      </div> -->
+
  <!--      <%#= link_to course_path(course) do %>
         <p><%#= course.address.venue_name %></p>
         <p># of sessions: <%#= course.number_of_sessions %></p>
@@ -72,3 +76,12 @@
   <% end %>
 
 </div>
+
+      <div class="btn-add btn-add-volunteer">
+        <div class="icon">
+          <%#= link_to course_student_rosters_path(@course) do %>
+            <i class="fas fa-plus"></i>
+          <%# end %>
+        </div>
+        <span>Add User</span>
+      </div>

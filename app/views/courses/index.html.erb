@@ -8,9 +8,10 @@
   <div class="better-container">
     <div class="main-page">
       <%= render 'filters' %>
+      <%#= link_to 'Add Course', new_course_path %>
       <div class="course-content">
         <div class="course-content-head">
-          <h2>23 results found</h2>
+          <h2><%= (@courses.count) %> results found</h2>
           <%= render 'shared/dropdown' %>
         </div>
         <div class="course-list-wrapper">
@@ -20,3 +21,11 @@
     </div>
   </div>
 </div>
+
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#courses">
+        Add Course
+      </button>
+
+<%= render 'shared/modal', title: 'Add a new course', partial: 'courses/form', course: @course, subjects: @filter_subjects, addresses: @filter_addresses %>
+
+
