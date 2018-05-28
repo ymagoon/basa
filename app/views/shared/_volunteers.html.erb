@@ -1,4 +1,4 @@
-<% if volunteers.present? %>
+<% unless volunteers.empty? %>
   <% volunteers.each do |volunteer| %>
   <%= volunteer.full_name %>
   <% end %>
