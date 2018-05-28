@@ -12,8 +12,13 @@ class VolunteerRostersController < ApplicationController
     @roster = VolunteerRoster.new
     @teachers = list_teachers
     @assistants = list_assistants
-    # @volunteers = list_teachers + list_assistants
+    @volunteers = list_teachers + list_assistants
+    if !params[:volunteer].nil?
+      check_vol_courses
+    end
   end
+
+
 
   def create
     @roster = VolunteerRoster.new(vol_roster_params)
@@ -22,7 +27,7 @@ class VolunteerRostersController < ApplicationController
     if @roster.save
       redirect_to new_course_volunteer_roster_path(@course)
     else
-      render :new
+      redirect_to new_course_volunteer_roster_path(@course), :flash => { :error => "Insufficient rights!" }
     end
   end
 
@@ -34,9 +39,7 @@ class VolunteerRostersController < ApplicationController
   end
 
   def check_vol_courses
-    @query = params[:volunteer] ? true : false
-    @vol_courses = VolunteerRoster.courses_by_volunteer(params[:id])
-    redirect_to new_course_volunteer_roster_path(@course)
+    @vol_courses = VolunteerRoster.courses_by_volunteer(params[:volunteer])
   end
 
   private

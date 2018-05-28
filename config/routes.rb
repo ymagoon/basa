@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     patch '/attendance', to: 'attendances#update'
     post '/student_rosters/:student_id', to: 'student_rosters#create'
     resources :volunteer_rosters, only: [:new, :create]
+    get '/check_availability', to: 'volunteer_rosters#check_vol_courses', as: :check_availability
   end
+
+
 
   resources :subjects, only: [:create]
   resources :students, only: [:index, :show, :create]

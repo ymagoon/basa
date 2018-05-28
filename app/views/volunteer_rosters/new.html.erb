@@ -6,13 +6,27 @@
   <br>
 
   <div class="volunteer-lookup">
-    <!-- in slack -->
+    <h2>1. Check Availability</h2>
+    <%= simple_form_for(@course, url: new_course_volunteer_roster_path(@course), method: :get) do |f| %>
+      <div class="form-inline">
+        <%= select_tag :volunteer, options_for_select(@volunteers.collect{ |u| [u.full_name, u.id] }), prompt: "Select volunteer", class: "form-control" %>
+        <%= f.button :submit, "Check Schedule", class: "btn btn-primary brand-primary" %>
+      </div>
+    <% end %>
+
+    <ul>
+     <%  if !@vol_courses.nil? %>
+      <% @vol_courses.each do |roster| %>
+        <li> <%= roster.course.name %> (<%= roster.course.start_date %> - <%= roster.course.end_date %>) </li>
+        <% end %>
+    </ul>
+    <% end %>
   </div>
+
 
   <div class="assign-form">
     <h2>2. Assign Volunteers</h2>
     <br>
-    <p>#TO DO: Validations - cant add same volunteer twice</p>
     <%= simple_form_for([@course, @roster]) do |f| %>
       <div class="form-inline">
         <%= f.input :user_id, collection: @teachers, label_method: :full_name, label: false, placeholder: "Teacher" %>
