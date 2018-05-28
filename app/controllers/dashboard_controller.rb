@@ -71,11 +71,11 @@ class DashboardController < ApplicationController
   end
 
   def average_attendance
-    passed_sessions = @course.sessions.where(:date < Date.new ).map { |session| session.id }
-    present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
-    total = @course.attendances.where(session_id: passed_sessions).count
-    return @average_attendance = present / total
-    end
+    # passed_sessions = @course.sessions.where(:date < Date.new ).map { |session| session.id }
+    # present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
+    # total = @course.attendances.where(session_id: passed_sessions).count
+    # return @average_attendance = present / total
+    # end
   end
 
   def student_attendance_for_active_courses
@@ -112,7 +112,6 @@ class DashboardController < ApplicationController
   end
 
   def set_active_students
-
   end
 
   def set_attendance_percentage

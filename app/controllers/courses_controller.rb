@@ -87,9 +87,9 @@ class CoursesController < ApplicationController
   end
 
   def average_attendance
-    passed_sessions = @course.sessions.where(:date < Time.now).map { |session| session.id }
-    present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
-    total = @course.attendances.where(session_id: passed_sessions).count
-    return @average_attendance = present / total
-  end
+  #   passed_sessions = @course.sessions.where(:date < Time.now).map { |session| session.id }
+  #   present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
+  #   total = @course.attendances.where(session_id: passed_sessions).count
+  #   return @average_attendance = present / total
+  # end
 end
