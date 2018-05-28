@@ -130,7 +130,11 @@ class Course < ApplicationRecord
   #   self.all.select { |c| c.min_capacity > c.number_of_students }
   # end
 
-
+  def self.no_teacher
+    courses_w_teachers = VolunteerRoster.all.map { |a| a.course_id}.uniq
+    ids = self.all.ids - courses_w_teachers
+    courses_with_no_teacher = ids.map { |id| Course.find(id) }
+  end
 
   private
 
