@@ -1,56 +1,63 @@
 <div class="courses-list">
   <% courses.each do |course|%>
-  <div class="col-xs-12 col-md-6">
-    <%= link_to course_path(course), class: 'text-black' do %>
-    <div class="course-card <%= course.pending? ? 'pending' : 'confirmed' %>" data-course-id="<%= course.id %>" >
-      <div class="course-info">
-        <div class="course-list-header">
-          <h3><%= course.name %></h3>
-        </div>
-        <div class="course-list-secondary">
-          <p class="no-margin-bottom"><%= course.subject.name.upcase %></p>
-        </div>
-        <p class="no-margin-bottom"><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
-      </div>
-      <div class="volunteers">
-        <div class="volunteer-section">
-          <div class="av teacher-av"><p>T</p></div>
-          <% unless course.teacher.blank? %>
-            <p class="v-name no-margin-bottom"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
-          <% else %>
-            <p class="v-name no-margin-bottom">None</p>
-          <% end %>
-        </div>
-        <div class="volunteer-section">
-          <div class="av assistant-av"><p>A</p></div>
-          <% unless course.assistants.empty? %>
-            <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
-            <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
-          <% else %>
-            <p class="v-name no-margin-bottom">None</p>
-          <% end %>
-        </div>
-        <div class="volunteer-section">
-          <div class="av student-av"><p>S</p></div>
-          <% unless course.students.empty? %>
-            <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
-            <p class="v-name no-margin-bottom">( <%= course.students.size %> / <%= course.max_capacity %> )</p>
-          <% else %>
-            <p class="v-name no-margin-bottom">None</p>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-xs-12 col-md-6">
+      <%= link_to course_path(course), class: 'text-black' do %>
+        <div class="course-card <%= course.pending? ? 'pending' : 'confirmed' %>" data-course-id="<%= course.id %>" >
+          <div class="course-info">
+            <div class="course-list-header">
+              <h3><%= course.name %></h3>
+            </div>
+            <div class="course-list-secondary">
+              <p class="no-margin-bottom"><%= course.subject.name.upcase %></p>
+            </div>
+            <p class="no-margin-bottom"><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+          </div>
+          <div class="volunteers">
+            <div class="volunteer-section">
+              <div class="av teacher-av"><p>T</p></div>
+              <% unless course.teacher.blank? %>
+                <p class="v-name no-margin-bottom"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
+              <% else %>
+                <p class="v-name no-margin-bottom">None</p>
+              <% end %>
+            </div>
+            <div class="volunteer-section">
+              <div class="av assistant-av"><p>A</p></div>
+              <% unless course.assistants.empty? %>
+                <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
+                <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
+              <% else %>
+                <p class="v-name no-margin-bottom">None</p>
+              <% end %>
+            </div>
+            <div class="volunteer-section">
+              <div class="av student-av"><p>S</p></div>
+              <% unless course.students.empty? %>
+                <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
+                <p class="v-name no-margin-bottom">( <%= course.students.size %> / <%= course.max_capacity %> )</p>
+              <% else %>
+                <p class="v-name no-margin-bottom">None</p>
+              <% end %>
+            </div>
+          </div>
 
-      <!-- <div class="location-container">
-        <p class="no-margin-bottom"><i class="fas fa-map-marker-alt"> </i><span><%#= course.address.venue_name.upcase %></span></p>
-      </div> -->
-      <div class="location-container">
-        <div class='location'><i class="fas fa-map-marker-alt"> </i><p class="no-margin-bottom"><%= course.address.venue_name.upcase %></p></div>
-      </div>
+          <div class="location-container">
+            <div class='location'>
+              <i class="fas fa-map-marker-alt"> </i>
+              <p class="no-margin-bottom">
+                <%= course.address.venue_name.upcase %>
+              </p>
+            </div>
 
+            <div class="action-icons">
+              <i class="fas fa-users" id="add-user"></i>
+              <i class="fas fa-users" id="add-volunteer"></i>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <% end %>
   <% end %>
 </div>
     <%#= link_to edit_course_path(course) do %>

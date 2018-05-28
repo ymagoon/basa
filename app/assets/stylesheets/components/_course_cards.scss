@@ -43,6 +43,7 @@
       justify-content: space-between;
     }
   }
+
   .volunteers {
     // width: 150px;
     display: flex;
@@ -56,11 +57,13 @@
       font-size: 12px;
     }
   }
+
   .location-container {
     flex: 1 1;
     margin: 10px 0 0 10px; // fix me
     display: flex;
     flex-direction: column;
+    justifiy-content: space-between;
     align-items: flex-end;
 
     .location {
@@ -69,10 +72,10 @@
       background-color: #647276;
       display: flex;
       align-items: center;
-    }
 
-    .fas {
-      color: white;
+      .fas {
+        color: white;
+      }
     }
 
     p {
@@ -82,10 +85,21 @@
       padding-top: 2px;
       padding-left: 5px;
       border-radius: 1px;
-      // display: inline-block;
+    }
+
+    .action-icons {
+      margin-top: 5px;
+      font-size: 14px !important;
+      width: 125px;
+      text-align: left;
+      font-size: 14px !important;
+
     }
   }
 }
+
+
+
 
 .confirmed {
   border-left: 5px solid $my-blue;
@@ -130,10 +144,3 @@
   padding: 0;
 }
 
-.text-black {
-  color: $my-black;
-
-  &:hover {
-    color: $my-black;
-  }
-}

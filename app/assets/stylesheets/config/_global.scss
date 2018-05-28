@@ -44,3 +44,11 @@
 label, input {
   margin: 0;
 }
+
+.text-black {
+  color: $my-black;
+
+  &:hover {
+    color: $my-black;
+  }
+}
