@@ -60,7 +60,6 @@ class VolunteerRostersController < ApplicationController
     proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
     @assistants = proficiencies.map { |proficiency| proficiency.user }
   end
-
 end
 
 
