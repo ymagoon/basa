@@ -11,10 +11,11 @@ import { initializeDateRangePicker } from './picker';
 import { dragAndDrop } from './dragdrop';
 import { initialize } from './attendance';
 import { accordian } from './accordian';
+import { filter } from './filters';
 import { tabs } from './tabs';
+filter();
 tabs();
 initNav();
-
 accordian();
 initializeDateRangePicker();
 
