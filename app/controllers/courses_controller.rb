@@ -6,7 +6,9 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
-
+    @course = Course.new
+    @filter_subjects = Subject.all
+    @filter_addresses = Address.venue_ids
     # Filter by location
     @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
