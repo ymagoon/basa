@@ -18,8 +18,6 @@ class VolunteerRostersController < ApplicationController
     end
   end
 
-
-
   def create
     @roster = VolunteerRoster.new(vol_roster_params)
     @roster.course = @course
@@ -39,6 +37,7 @@ class VolunteerRostersController < ApplicationController
   end
 
   def check_vol_courses
+    @volunteer = params[:volunteer]
     @vol_courses = VolunteerRoster.courses_by_volunteer(params[:volunteer])
   end
 

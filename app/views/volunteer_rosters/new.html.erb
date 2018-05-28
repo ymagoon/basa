@@ -14,12 +14,13 @@
       </div>
     <% end %>
 
-    <ul>
-     <%  if !@vol_courses.nil? %>
+    <%  if !@vol_courses.nil? %>
+      <h3> <%= @vol_courses.first.user.full_name %> is already assigned to: </h3>
+      <!-- <ul> -->
       <% @vol_courses.each do |roster| %>
-        <li> <%= roster.course.name %> (<%= roster.course.start_date %> - <%= roster.course.end_date %>) </li>
+        <p> <%= roster.course.name %> (<%= roster.course.start_date %> - <%= roster.course.end_date %>) </p>
         <% end %>
-    </ul>
+      <!-- </ul> -->
     <% end %>
   </div>
 
