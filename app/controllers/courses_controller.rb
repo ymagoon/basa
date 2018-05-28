@@ -29,7 +29,8 @@ class CoursesController < ApplicationController
     @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
     @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
 
-    # All course variables go here to show on the filter
+    # All course variables
+    @course_count = @courses.size
     @subjects = @courses.subject_count
     @venues = @courses.venue_count
 
