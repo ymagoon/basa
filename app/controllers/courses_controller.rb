@@ -122,5 +122,5 @@ class CoursesController < ApplicationController
   #   present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
   #   total = @course.attendances.where(session_id: passed_sessions).count
   #   return @average_attendance = present / total
-  # end
+  end
 end
