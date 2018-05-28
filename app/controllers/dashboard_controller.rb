@@ -74,14 +74,6 @@ class DashboardController < ApplicationController
     @percentage_attendance
   end
 
-  def average_attendance
-    # passed_sessions = @course.sessions.where(:date < Date.new ).map { |session| session.id }
-    # present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
-    # total = @course.attendances.where(session_id: passed_sessions).count
-    # return @average_attendance = present / total
-    # end
-  end
-
   def student_attendance_for_active_courses
     # % of student attendance for active courses - make sure the % only counts attendance UNTIL TODAY! (day running report)
     # otherwise, the data will be skewed
@@ -93,9 +85,6 @@ class DashboardController < ApplicationController
     User.where(role: 'volunteer').count
   end
 
-  def number_of_volunteers_by_proficiency
-
-  end
   # MOVED TO USER MODEL
   # def number_of_volunteers_assigned_to_course
   #    # total number of volunteers
@@ -112,9 +101,6 @@ class DashboardController < ApplicationController
     @active_courses = Course.all.select { |c| c.status != 'cancelled'}
   end
 
-  def set_active_students
-
-  end
 
   def set_attendance_percentage
     total = Attendance.all.count
