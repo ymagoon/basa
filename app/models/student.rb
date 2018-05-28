@@ -25,4 +25,11 @@ class Student < ApplicationRecord
     now = Date.today
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
+
+  def absent_student
+    Attendance.where(present: "absent")
+    #I want to select the students that haven't shown up to any course
+    #Their present: status should be marked "absent" for all sessions up to todays date
+  end
+
 end

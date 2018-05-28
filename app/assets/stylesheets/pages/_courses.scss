@@ -1,0 +1,15 @@
+.main-page {
+  display: flex;
+  .course-content {
+    width: 100%;
+  }
+  .course-content-head {
+    display: flex;
+    margin-left: 30px;
+    align-content: center;
+    justify-content: space-between;
+  }
+  h2 {
+    margin: 0px;
+  }
+}

@@ -1,78 +1,73 @@
-// We will have our own custom navbar, but keeping this here as a reference
+/* The side navigation menu */
+.sidenav {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: black; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+ /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
 
-// .navbar-wagon {
-//   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-//   background: white;
-//   transition: all 0.3s ease;
-//   height: 70px;
-//   padding: 0px 30px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
+.nav-button {
+  border: 1p;
+  display: flex;
+  flex-direction: column;
 
-// /* Logo */
-// .navbar-wagon-brand img {
-//   height: 50px;
-// }
+  align-content: center;
+  text-align: center;
+}
 
-// /* User Avatar */
-// .navbar-wagon .avatar {
-//   height: 35px;
-//   width: 35px;
-//   border-radius: 50%;
-// }
+/* The navigation menu links */
+.sidenav fas {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
 
-// /* Right section */
-// .navbar-wagon-right {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
 
-// /* Basic navbar item */
-// .navbar-wagon-item {
-//   cursor: pointer;
-//   padding: 0 20px;
-// }
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: $my-green;
+    transition: 0.3s;
+}
 
-// /* Navbar link */
-// .navbar-wagon-link {
-//   color: #616668;
-//   font-size: 14px;
-// }
-// .navbar-wagon-link:hover {
-//   color: #da552f;
-//   text-decoration: none;
-// }
+/* Position and style the close button (top right corner) */
+#close-btn {
+  font-size: 40px;
+  position: relative;
+  left: 90px;
+}
 
-// /* Dropdown menu */
-// .navbar-wagon-dropdown-menu {
-//   margin-top: 15px;
-//   box-shadow: 1px 1px 4px #E6E6E6;
-//   border-color: #E6E6E6;
-// }
-// .navbar-wagon-dropdown-menu li > a {
-//   transition: color 0.3s ease;
-//   font-weight: lighter !important;
-//   color: #999999 !important;
-//   font-size: 15px !important;
-//   line-height: 22px !important;
-//   padding: 10px 20px;
-// }
-// .navbar-wagon-dropdown-menu li > a:hover {
-//   background: transparent !important;
-//   color: black !important;
-// }
-// .navbar-wagon-dropdown-menu:before {
-//   content: ' ';
-//   height: 10px;
-//   width: 10px;
-//   position: absolute;
-//   right: 10px;
-//   top: -6px;
-//   background-color: white;
-//   transform: rotate(45deg);
-//   border-left: 1px solid #E6E6E6;
-//   border-top: 1px solid #E6E6E6;
-// }
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#nav-btn {
+  display: flex;
+  width: 50px;
+  z-index:9;
+  position:fixed;
+  margin-left: 5px;
+}
+.nav-icon {
+  font-size: 50px;
+  padding-bottom: 5px;
+}

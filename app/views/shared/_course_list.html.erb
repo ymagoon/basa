@@ -1,43 +1,74 @@
 <div class="courses-list">
   <% courses.each do |course|%>
+  <div class="col-xs-12 col-md-6">
     <div class="course-card" data-course-id="<%= course.id %>" >
-      <%= link_to course_path(course) do %>
-        <h2><%= course.name %></h2>
-        <h3><%= course.subject.name %></h3>
+      <div class="volunteers">
+        <div class="volunteer-section">
+          <div class="av teacher-av"><p>T</p></div>
+          <% unless course.teacher.blank? %>
+            <p class="v-name"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
+          <% else %>
+            <p class="v-name">No teachers</p>
+          <% end %>
+        </div>
+        <% unless course.assistants.empty? %>
+          <!-- sort assistants alphabetically by first name -->
+          <% assistants = course.assistants.sort_by { |assistant| assistant.first_name } %>
+          <% assistants.each do |assistant| %>
+            <div class="volunteer-section">
+              <div class="av assistant-av"><p>A</p></div>
+              <p class="v-name"><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="volunteer-section">
+            <div class="av assistant-av"><p>A</p></div>
+            <p class="v-name">No assistants</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="student-info">
+        <div class="info-section">
+          <p><%= course.min_capacity %></p>
+          <p class="info-label">Min</p>
+        </div>
+        <div class="info-section">
+          <p><%= course.number_of_students %></p>
+          <p class="info-label">Current</p>
+        </div>
+        <div class="info-section">
+          <p><%= course.max_capacity %></p>
+          <p class="info-label">Max</p>
+        </div>
+      </div>
+      <div class="course-info">
+        <div class="course-list-header">
+          <h2><%= course.name %></h2>
+          <%= link_to edit_course_path(course) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to course_path(course), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this course?'} do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+        <p class="light"><%= course.subject.name %></p>
         <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
-        <p>
-          <%= course.number_of_students %> (<%= course.max_capacity %>)
-        </p>
-        <p><%= course.address.venue_name %></p>
         <div class="course-status">
           <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
             <%= course.pending? ? 'Pending' : 'Confirmed' %>
           </p>
         </div>
-        <p># of sessions: <%= course.number_of_sessions %></p>
-        <p>
-          <% unless course.teacher.blank? %>
-            <%= "#{course.teacher.first_name} #{course.teacher.last_name}" %>
-          <% else %>
-            No teacher assigned yet
-          <% end %>
-        </p>
-        <% unless course.assistants.empty? %>
-          <% course.assistants.each do |assistant| %>
-            <p><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
-          <% end %>
-        <% else %>
-          No assistants assigned yet
-        <% end %>
+      </div>
 
-        <%= link_to edit_course_path(course) do %>
-          <i class="far fa-edit"></i>
-        <% end %>
 
-        <%= link_to course_path(course), method: :delete, remote: true do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      <% end %>
+ <!--      <%#= link_to course_path(course) do %>
+        <p><%#= course.address.venue_name %></p>
+        <p># of sessions: <%#= course.number_of_sessions %></p>
+        <p><%#= course.id %></p>
+      <%# end %> -->
+
+    </div>
     </div>
   <% end %>
+
 </div>

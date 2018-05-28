@@ -1,8 +1,16 @@
 <% title 'Student Data' %>
 <%= render 'shared/dashboard_tabs' %>
-<button class="accordion">Student Accordian </button>
+<button class="accordion">Students that haven't attended courses</button>
   <div class="panel">
+  <div class="col-xs-2 students">
+  <% @attending_students.each do |student| %>
+    <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
+      <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
+      <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
+    </div>
+  <% end %>
+</div>
 
 
   </div>

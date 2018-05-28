@@ -28,6 +28,40 @@ class Course < ApplicationRecord
   validates :min_capacity, presence: true, :numericality => { :only_integer => true }
   validates :session_length, presence: true, :numericality => { :only_integer => true }
 
+  # Define all of the scopes for filtering and sorting on the index page
+
+  # Course location filters
+  scope :locations, -> (locations) { where('addresses.venue_name': locations).joins(:address) }
+  # lists each venue (as a hash) with how many other courses have that same address
+
+  # might not work because might take all venues for ALL courses instead of the already filtered on courses
+  scope :venue_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
+
+  # Course subject filters
+  scope :subject_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.subject.name] += 1 } }
+  scope :subjects, ->(subjects) { where('subjects.name': subjects).joins(:subject) }
+
+  # Course status filters
+  scope :status, -> (status) { where(status: status) }
+
+  # Course phase filters
+  # These three filters do not work together because of their conditions. Need to find a way where they wont overwrite each other!
+  scope :current, -> { where("? between start_date and end_date", DateTime.now)}
+  scope :future, -> { where("start_date > ?", DateTime.now)}
+  scope :past, -> { where("? > end_date", DateTime.now)}
+
+  # Course date range filters
+
+  # Miscellaneous filters
+  scope :with_no_teacher, -> { where('id not in (select course_id from volunteer_rosters where role = ?)', 0) }
+  scope :with_no_assistants, -> { where('id not in (select course_id from volunteer_rosters where role = ?)', 1) }
+
+  # Course sorting scopes
+  scope :order_by_start_date, -> { order(start_date: :asc)}
+  scope :order_by_end_date, -> { order(start_date: :desc)}
+
+# scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+
   def number_of_students
     self.students.count
   end
@@ -43,7 +77,7 @@ class Course < ApplicationRecord
   end
 
   def date_formatted(date)
-    date.strftime('%A, %b %d')
+    date.strftime('%a, %b %d')
   end
 
   def schedule
@@ -68,6 +102,12 @@ class Course < ApplicationRecord
     self.schedule.occurrences(self.end_date)
   end
 
+  scope :courses_below_min_cap, -> { select{ |c| c.min_capacity > c.number_of_students } }
+
+  # def courses_below_min_capacity
+  #   self.all.select { |c| c.min_capacity > c.number_of_students }
+  # end
+
   private
 
   # When a course is created, default the status to pending
@@ -91,4 +131,6 @@ class Course < ApplicationRecord
       Session.create(course: self, date: session)
     end
   end
+
+
 end
