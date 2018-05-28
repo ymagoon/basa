@@ -1,4 +1,10 @@
 import 'bootstrap';
+import { initNav } from './navbar';
+
+
+
+
+
 import 'daterangepicker';
 
 import { initializeDateRangePicker } from './picker';
@@ -7,6 +13,8 @@ import { initialize } from './attendance';
 import { accordian } from './accordian';
 import { tabs } from './tabs';
 tabs();
+initNav();
+
 accordian();
 initializeDateRangePicker();
 

@@ -1,11 +1,20 @@
-/* Set the width of the side navigation to 250px */
- function openNav() {
-    document.getElementById("mySidenav").style.width = "120px";
+/* Set the width of the side navigation to 120px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "140px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
 /* Set the width of the side navigation to 0 */
  function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    document.body.style.backgroundColor = "white";
 }
 
-export { openNav, closeNav };
+function initNav(){
+  document.getElementById("nav-btn").onclick = openNav;
+  document.getElementById("close-btn").onclick = closeNav;
+}
+
+
+
+export { initNav };

@@ -1,0 +1,36 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" id="close-btn">&times;</a>
+  <div class="nav-button">
+    <% if !current_user.nil? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <p>Logout</p>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="nav-button">
+    <%= link_to home_path do %>
+      <i class=" nav-icon far fa-calendar-alt"></i>
+      <p>Dashboard</p>
+      <% end %>
+  </div>
+  <div class="nav-button">
+    <%= link_to courses_path do %>
+      <i class="nav-icon fas fa-users"></i>
+      <p>Courses</p>
+      <% end %>
+  </div>
+  <div class="nav-button">
+    <%= link_to volunteers_path do %>
+      <i class=" nav-icon fas fa-chalkboard-teacher"></i>
+      <p>Teachers</p>
+      <% end %>
+  </div>
+  <div class="nav-button">
+    <%= link_to students_path do %>
+      <i class=" nav-icon fas fa-users"></i>
+      <p>Students</p>
+      <% end %>
+  </div>
+</div>
+
+<span id="nav-btn" style="font-size:30px;cursor:pointer" >&#9776;</span>
