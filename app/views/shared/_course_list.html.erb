@@ -1,16 +1,16 @@
 <div class="courses-list">
   <% courses.each do |course|%>
-  <!-- <div class="col-xs-6"> -->
+  <div class="col-xs-12 col-md-6">
     <div class="course-card" data-course-id="<%= course.id %>" >
       <div class="volunteers">
-        <% unless course.teacher.blank? %>
-          <div class="volunteer-section">
-            <div class="av teacher-av"><p>T</p></div>
+        <div class="volunteer-section">
+          <div class="av teacher-av"><p>T</p></div>
+          <% unless course.teacher.blank? %>
             <p class="v-name"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
-          </div>
-        <% else %>
-          <p>No teacher assigned yet</p>
-        <% end %>
+          <% else %>
+            <p class="v-name">No teachers</p>
+          <% end %>
+        </div>
         <% unless course.assistants.empty? %>
           <!-- sort assistants alphabetically by first name -->
           <% assistants = course.assistants.sort_by { |assistant| assistant.first_name } %>
@@ -21,31 +21,29 @@
             </div>
           <% end %>
         <% else %>
-          <p>No assistants assigned yet</p>
+          <div class="volunteer-section">
+            <div class="av assistant-av"><p>A</p></div>
+            <p class="v-name">No assistants</p>
+          </div>
         <% end %>
       </div>
       <div class="student-info">
+        <div class="info-section">
+          <p><%= course.min_capacity %></p>
+          <p class="info-label">Min</p>
+        </div>
         <div class="info-section">
           <p><%= course.number_of_students %></p>
           <p class="info-label">Current</p>
         </div>
         <div class="info-section">
-          <p><%= course.min_capacity %></p>
-          <p class="info-label">Minimum</p>
-        </div>
-        <div class="info-section">
           <p><%= course.max_capacity %></p>
-          <p class="info-label">Maximum</p>
+          <p class="info-label">Max</p>
         </div>
       </div>
       <div class="course-info">
         <div class="course-list-header">
           <h2><%= course.name %></h2>
-          <div class="course-status">
-            <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
-              <%= course.pending? ? 'Pending' : 'Confirmed' %>
-            </p>
-          </div>
           <%= link_to edit_course_path(course) do %>
             <i class="far fa-edit"></i>
           <% end %>
@@ -55,6 +53,11 @@
         </div>
         <p class="light"><%= course.subject.name %></p>
         <p><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+        <div class="course-status">
+          <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
+            <%= course.pending? ? 'Pending' : 'Confirmed' %>
+          </p>
+        </div>
       </div>
 
 
@@ -64,7 +67,7 @@
         <p><%#= course.id %></p>
       <%# end %> -->
 
-    <!-- </div> -->
+    </div>
     </div>
   <% end %>
 

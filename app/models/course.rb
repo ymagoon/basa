@@ -62,13 +62,6 @@ class Course < ApplicationRecord
 
 # scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 
-
-  # if filter = params[:filter]
-  #   @courses = filter == 'start_date' ? Course.order_by_start_date : Course.order_by_end_date
-  # else
-  #   @courses = Course.order_by_start_date
-  # end
-
   def number_of_students
     self.students.count
   end
@@ -84,7 +77,7 @@ class Course < ApplicationRecord
   end
 
   def date_formatted(date)
-    date.strftime('%A, %b %d')
+    date.strftime('%a, %b %d')
   end
 
   def schedule
