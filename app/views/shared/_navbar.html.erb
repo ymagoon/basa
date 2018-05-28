@@ -1,5 +1,12 @@
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="close-btn">&times;</a>
+  <a href="javascript:void(0)" id="close-btn">&times;</a>
+  <div class="nav-button">
+    <% if !current_user.nil? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <p>Logout</p>
+        <% end %>
+      <% end %>
+  </div>
   <div class="nav-button">
     <%= link_to home_path do %>
       <i class=" nav-icon far fa-calendar-alt"></i>
