@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :volunteer_rosters, only: [:new, :create]
   end
 
+
+
   resources :subjects, only: [:create]
   resources :students, only: [:index, :show, :create]
   resources :addresses, only: [:create]

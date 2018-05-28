@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_action  :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :average_attendance
+  before_action  :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses
   def home
     @courses = active_courses
     @no_teacher = courses_with_no_teacher
@@ -17,10 +17,12 @@ class DashboardController < ApplicationController
   end
 
   def students
-    @attending_students = number_of_students_attended_course
+    @absent_students = Student.absent_student
   end
 
   def attendance
+    @courses = Course.lowest_attendance
+    @students = Student.lowest_attendance
   end
 
   private

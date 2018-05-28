@@ -1,0 +1,55 @@
+// main layout
+
+.vol-roster-container {
+  margin: 0 auto;
+  padding: 10px 0px 10px 0px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.volunteer-lookup {
+  margin: 10px;
+  padding: 20px;
+  background-color: $my-light-gray;
+  height: 70vh;
+  flex: 1 1 30%;
+}
+
+.assign-form {
+  margin: 10px;
+  padding: 20px;
+  background-color: $my-light-gray;
+  height: 70vh;
+  flex: 1 1 30%;
+}
+
+.display-roster {
+  margin: 10px;
+  padding: 20px;
+  background-color: $my-green;
+  height: 70vh;
+  flex: 1 1 30%;
+}
+
+// volunteer lookup
+
+.search-container {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.search-input {
+  flex: 1 1 auto;
+  margin: 5px;
+}
+
+.search-button {
+  flex: 0 0 50px;
+  margin: 5px;
+}
+
+
+

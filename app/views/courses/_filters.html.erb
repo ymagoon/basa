@@ -1,0 +1,89 @@
+<div class="filter-form">
+  <%= form_tag '/courses', method: 'get', remote: true, :id => 'filter' do %>
+    <!-- venues -->
+    <div class="filter-container">
+      <div class="filter-header">
+        <p>Locations</p>
+      </div>
+      <% @venues.each do |venue| %>
+        <div class="element">
+          <%= check_box_tag "address[#{venue[0]}]", 1, false, class: 'address-filter checkbox' %>
+          <span class="filter"></span>
+          <%= label_tag venue[0], venue[0] %>
+        </div>
+      <% end %>
+    </div>
+    <!-- subjects -->
+    <div class="filter-container">
+      <div class="filter-header">
+        <p>Subjects</p>
+      </div>
+      <% @subjects.each do |subject| %>
+        <div class="element">
+          <%= check_box_tag "subjects[#{subject[0]}]", 1, false, class: 'subject-filter checkbox' %>
+          <span class="filter"></span>
+          <%= label_tag subject[0], subject[0] %>
+        </div>
+      <% end %>
+    </div>
+    <!-- phases -->
+    <div class="filter-container">
+      <div class="filter-header">
+        <p>Phases</p>
+      </div>
+      <div class="element">
+        <%= check_box_tag "current", 1, false, class: 'current-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'current', 'current' %>
+      </div>
+      <div class="element">
+        <%= check_box_tag "future", 1, false, class: 'future-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'future', 'future' %>
+      </div>
+      <div class="element">
+        <%= check_box_tag "past", 1, false, class: 'past-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'past', 'past' %>
+      </div>
+    </div>
+    <!-- status -->
+    <div class="filter-container">
+      <div class="filter-header">
+        <p>Status</p>
+      </div>
+      <div class="element">
+        <%= check_box_tag "status[pending]", 1, false, class: 'pending-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'pending', 'pending' %>
+      </div>
+      <div class="element">
+        <%= check_box_tag "status[confirmed]", 1, false, class: 'confirmed-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'confirmed', 'confirmed' %>
+      </div>
+      <div class="element">
+        <%= check_box_tag "status[cancelled]", 1, false, class: 'cancelled-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'cancelled', 'cancelled' %>
+      </div>
+    </div>
+    <!-- misc filters -->
+    <div class="filter-container">
+      <div class="filter-header">
+        <p>Miscellaneous</p>
+      </div>
+      <div class="element">
+        <%= check_box_tag "no_teacher", 1, false, class: 'no-teacher-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'no_teacher', 'no_teacher' %>
+      </div>
+      <div class="element">
+        <%= check_box_tag "no_assistants", 1, false, class: 'no-assistants-filter checkbox' %>
+        <span class="filter"></span>
+        <%= label_tag 'no_assistants', 'no_assistants' %>
+      </div>
+    </div>
+    <%= submit_tag 'submit', :id => 'submit' %>
+  <% end %>
+</div>

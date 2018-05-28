@@ -26,10 +26,25 @@ class Student < ApplicationRecord
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def absent_student
-    Attendance.where(present: "absent")
-    #I want to select the students that haven't shown up to any course
-    #Their present: status should be marked "absent" for all sessions up to todays date
+
+  def self.absent_student
+    Student.all.select { |student|
+      student.attendances.all? { |attendance| attendance.absent? }
+    }
   end
+
+  def attendance_percentage
+    a = self.attendances
+    if a.empty?
+      return 0
+    else
+      (a.present.count / a.count.to_f).round(2) * 100
+    end
+  end
+
+  def self.lowest_attendance
+    list = self.all.sort_by { |student| student.attendance_percentage }
+  end
+
 
 end

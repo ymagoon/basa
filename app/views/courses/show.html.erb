@@ -23,8 +23,8 @@
         <% end %>
     </div>
     <div class="row">
-    <h3> <span>Students  (<%= @course.number_of_students %>/<%= @course.max_capacity %>)</span> </h3>
-      <%= @course.average_attendance %>
+    <h3> <span>Students <%= @course.course_attendance %>(<%= @course.number_of_students %>/<%= @course.max_capacity %>) </span> </h3>
+
     </div>
   </div>
 </div>

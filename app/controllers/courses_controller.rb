@@ -3,9 +3,40 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :average_attendance
 
+
   def index
     @courses = Course.all
-    @students = Student.all
+
+    # Filter by location
+    @courses = @courses.locations(params[:address].keys) if params[:address].present?
+
+    # Filter by phase
+    @courses = @courses.current if params[:current] if params[:current].present?
+    @courses = @courses.future if params[:future] if params[:future].present?
+    @courses = @courses.past if params[:past] if params[:past].present?
+
+    # Filter by subject
+    @courses = @courses.subjects(params[:subjects].keys) if params[:subjects].present?
+
+    # Filter by status
+    @courses = @courses.status(params[:status].keys) if params[:status].present?
+
+    # Filter by misc
+    @courses = @courses.with_no_teacher if params[:no_teacher].present?
+    @courses = @courses.with_no_assistants if params[:no_assistants].present?
+
+    # Sort by dates
+    @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
+    @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
+
+    # All course variables go here to show on the filter
+    @subjects = @courses.subject_count
+    @venues = @courses.venue_count
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -18,10 +49,10 @@ class CoursesController < ApplicationController
     @teacher = @course.teacher
     @assistants = @course.assistants
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.js # show.js.erb
-    end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.js # show.js.erb
+    # end
   end
 
   def new
@@ -90,6 +121,7 @@ class CoursesController < ApplicationController
   #   passed_sessions = @course.sessions.where(:date < Time.now).map { |session| session.id }
   #   present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
   #   total = @course.attendances.where(session_id: passed_sessions).count
-  #   return @average_attendance = present / total
-   end
+  #   return @average_attendance = present / tota
+  end
+
 end
