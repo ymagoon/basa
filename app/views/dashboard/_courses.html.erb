@@ -1,0 +1,14 @@
+<button class="accordion">All Active Courses</button>
+<div class="panel">
+  <%= render 'shared/course_list', courses: @courses %>
+</div>
+
+<button class="accordion">Courses with no Teacher</button>
+<div class="panel">
+  <%= render 'shared/course_list', courses: @no_teacher %>
+</div>
+
+<button class="accordion">Courses Below Minimum Capacity</button>
+<div class="panel">
+ <%= render 'shared/course_list', courses: @below_cap %>
+</div>

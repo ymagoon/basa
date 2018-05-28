@@ -4,9 +4,6 @@ class DashboardController < ApplicationController
     @courses = @active_courses
     @no_teacher = Course.no_teacher
     @below_cap = Course.courses_below_min_cap
-  end
-
-  def volunteers
     @c_vols = Proficiency.teachers_by_subject("C#")
     @ruby_vols = Proficiency.teachers_by_subject("Ruby on Rails")
     @scratch_vols = Proficiency.teachers_by_subject("Scratch")
@@ -14,16 +11,19 @@ class DashboardController < ApplicationController
     @php_vols = Proficiency.teachers_by_subject("PHP")
     @mobile_app_vols = Proficiency.teachers_by_subject("Mobile App Development")
     @unassigned_vols = Proficiency.teachers_by_subject(nil)
+    @absent_students = Student.absent_student
+    @course_attendance = Course.lowest_attendance
+    @students_attendance = Student.lowest_attendance
+  end
+
+  def volunteers
   end
 
   def students
-    @absent_students = Student.absent_student
   end
   #FUCKING WORK
 
   def attendance
-    @courses = Course.lowest_attendance
-    @students = Student.lowest_attendance
   end
 
   private

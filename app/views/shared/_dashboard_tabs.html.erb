@@ -1,5 +1,5 @@
 <% title 'Home' %>
-
+<!--
   <div class="tabs">
       <%= link_to home_path, class: "tab" do %>
         <h3> <%= @active_courses.count %> / <%= Course.count %></h3>
@@ -19,6 +19,18 @@
       <% end %>
   </div>
 
+ -->
 
 
+ <input id="tab1" type="radio" name="tabs" checked>
+  <label for="tab1">Courses</label>
+
+  <input id="tab2" type="radio" name="tabs">
+  <label for="tab2">Students</label>
+
+  <input id="tab3" type="radio" name="tabs">
+  <label for="tab3">Volunteers</label>
+
+  <input id="tab4" type="radio" name="tabs">
+  <label for="tab4">Attendance</label>
 

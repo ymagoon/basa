@@ -1,17 +1,31 @@
 <% title 'Home' %>
+<main>
 <%= render 'shared/dashboard_tabs' %>
 
-<button class="accordion">All Active Courses</button>
-  <div class="panel">
-    <%= render 'shared/course_list', courses: @courses %>
-  </div>
+   <!--    courses section  -->
+  <section id="content1">
+    <%= render 'courses' %>
+  </section>
 
-<button class="accordion">Courses with no Teacher</button>
-<div class="panel">
-  <%= render 'shared/course_list', courses: @no_teacher %>
-</div>
 
-<button class="accordion">Courses Below Minimum Capacity</button>
-<div class="panel">
-   <%= render 'shared/course_list', courses: @below_cap %>
-</div>
+ <!--       students section -->
+
+  <section id="content2">
+  <%= render 'students' %>
+  </section>
+
+
+    <!--       Volunteers section  -->
+
+  <section id="content3">
+    <%= render 'volunteers' %>
+  </section>
+
+<!--
+            Attendance section  -->
+
+  <section id="content4">
+    <%= render 'attendance' %>
+  </section>
+
+</main>

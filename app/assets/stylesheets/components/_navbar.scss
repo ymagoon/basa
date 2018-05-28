@@ -19,9 +19,11 @@
   border: 1p;
   display: flex;
   flex-direction: column;
-
   align-content: center;
   text-align: center;
+  p {
+    font-size: 10px;
+  }
 }
 
 /* The navigation menu links */
@@ -43,15 +45,15 @@
 
 /* Position and style the close button (top right corner) */
 #close-btn {
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
-  left: 90px;
+  left: 55px;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -62,12 +64,12 @@
 
 #nav-btn {
   display: flex;
-  width: 50px;
-  z-index:9;
+  width: 30px;
+
   position:fixed;
   margin-left: 5px;
 }
 .nav-icon {
-  font-size: 50px;
+  font-size: 30px;
   padding-bottom: 5px;
 }
