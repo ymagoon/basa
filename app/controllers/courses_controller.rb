@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :average_attendance
 
   def index
     @courses = Course.all
@@ -83,5 +84,12 @@ class CoursesController < ApplicationController
 
   def set_course
     @course = Course.find(params[:id])
+  end
+
+  def average_attendance
+    passed_sessions = @course.sessions.where(:date < Time.now).map { |session| session.id }
+    present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
+    total = @course.attendances.where(session_id: passed_sessions).count
+    return @average_attendance = present / total
   end
 end

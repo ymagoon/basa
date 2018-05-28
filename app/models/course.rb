@@ -102,4 +102,6 @@ class Course < ApplicationRecord
       Session.create(course: self, date: session)
     end
   end
+
+
 end

@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_action :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses
+  before_action :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :average_attendance
   def home
     @courses = active_courses
     @no_teacher = courses_with_no_teacher
@@ -11,6 +11,7 @@ class DashboardController < ApplicationController
   end
 
   def students
+    @attending_students = number_of_students_attended_course
   end
 
   def attendance
@@ -57,7 +58,8 @@ class DashboardController < ApplicationController
 
   def number_of_students_attended_course
     # number of students that have attended a course (count the student_roster table)
-
+    a = Attendance.where(present: "present")
+    @attending_students = a.map { |a| Student.find(a.student_id) }.uniq
   end
 
   def number_of_students_attended_course_unique
@@ -68,9 +70,18 @@ class DashboardController < ApplicationController
     @percentage_attendance
   end
 
+  def average_attendance
+    passed_sessions = @course.sessions.where(:date < Date.new ).map { |session| session.id }
+    present = @course.attendances.where(session_id: passed_sessions).select { |att| present = att.present == "present"}.count
+    total = @course.attendances.where(session_id: passed_sessions).count
+    return @average_attendance = present / total
+    end
+  end
+
   def student_attendance_for_active_courses
     # % of student attendance for active courses - make sure the % only counts attendance UNTIL TODAY! (day running report)
     # otherwise, the data will be skewed
+
   end
 
   # Volunteers
