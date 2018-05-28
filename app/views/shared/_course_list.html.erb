@@ -22,7 +22,7 @@
               <% end %>
             </div>
             <div class="volunteer-section">
-              <div class="av assistant-av tool-tip-inner" data-toggle="tooltip" data-placement="top" title="I need you to work!"><p>A</p></div>
+              <div class="av assistant-av tool-tip-inner" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= course.assistants.map { |assistant| "#{assistant.first_name} #{assistant.last_name}" }.join(' ') %>"><p>A</p></div>
               <% unless course.assistants.empty? %>
                 <!-- <p class="v-name no-margin-bottom"><%#= "#{assistant.first_name} #{assistant.last_name}" %></p> -->
                 <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
