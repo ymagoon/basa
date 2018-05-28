@@ -1,3 +1,5 @@
-<% volunteers.each do |volunteer| %>
-<%= volunteer.full_name %>
+<% if volunteers.present? %>
+  <% volunteers.each do |volunteer| %>
+  <%= volunteer.full_name %>
+  <% end %>
 <% end %>
