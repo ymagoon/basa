@@ -1,15 +1,16 @@
 class User < ApplicationRecord
   attr_accessor :login
 
+  has_many :proficiencies
+  has_many :volunteer_rosters
+
   # enum allows us to call user.admin? user.volunteer? => true/false user.role => 'admin' || 'volunteer'
   enum role: [:admin, :volunteer]
   before_create :set_default_role
 
-  scope :volunteers, -> { where('role = 1') }
-  scope :admins, -> { where('role = 0') }
-
   # scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
-
+  scope :volunteers, -> { where(role: 1) }
+  scope :admins, -> { where(role: 0) }
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }, length: { minimum: 6 }
 
@@ -33,6 +34,10 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}".titleize
   end
 
   private

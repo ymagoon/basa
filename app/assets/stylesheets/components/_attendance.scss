@@ -1,31 +1,55 @@
 .attendance-sessions {
   display: flex;
-  margin-left: 200px;
+  padding-left: 170px;
+
   .session-header {
-    transform: rotate(-60deg);
+    height: 150px;
+    width: 30px;
+    font-size: 12px;
+    font-family: $gotham-medium;
+    color: $my-gray;
+
+    span {
+      width:200px; /* same as height of .session-header */
+      display:inline-block;
+      -webkit-transform-origin:84px 70px;
+      -ms-transform-origin:84px 70px;
+      -o-transform-origin:84px 70px;
+      transform-origin: 84px 70px;
+
+      -webkit-transform:rotate(-75deg);
+      -ms-transform: rotate(-75deg);
+      -o-transform: rotate(-75deg);
+      transform: rotate(-75deg);
+    }
   }
 }
 
 .attendance-table {
   box-shadow: 1px 1px 3px $my-gray;
+  margin: 50px 0;
+  overflow-x: auto;
+
   .attendance-row {
     display: flex;
     align-items: center;
-    height: 100%;
 
-    &:nth-child(odd) {
+    &:nth-child(even) {
       background-color: white;
     }
     .attendance-student {
-      width: 200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex: 0 0 150px;
       padding: 10px 15px;
-      height: 100%;
-
-      border-right: 1px solid $my-gray; // fix this so its a vertical line (cant have padding)
 
       p {
-        height: 100%;
         margin: 0;
+      }
+
+      .fas {
+        color: $my-gray;
       }
     }
     .attendance-session {
@@ -33,58 +57,17 @@
 
       .attendance {
         background-color: $my-gray;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         border-radius: 50%;
-        margin-left: 20px;
+        margin-left: 15px;
       }
       .absent {
         background-color: $my-gray;
       }
       .present {
-        background-color: $my-test-green;
+        background-color: $my-green;
       }
     }
   }
 }
-
-// .attendance-table {
-//   box-shadow: 1px 1px 3px $my-gray;
-//   display: flex;
-//   .attendance-column {
-//     // display: flex;
-//     // justify-content: center;
-//     height: 100%;
-//     padding: 10px 15px;
-
-//     &:nth-child(odd) {
-//       background-color: white;
-//     }
-
-//     .attendance-session-column {
-//       display: flex;
-//       flex-direction: column;
-
-//       .attendance-session-date {
-//         -webkit-transform: rotate(-60deg);
-//         -moz-transform: rotate(-60deg);
-//         -o-transform: rotate(-60deg);
-//         transform: rotate(-60deg);
-//       }
-
-//       .attendance {
-//         background-color: $my-gray;
-//         width: 20px;
-//         height: 20px;
-//         border-radius: 50%;
-//         margin-bottom: 20px;
-//       }
-//       .absent {
-//         background-color: $my-gray;
-//       }
-//       .present {
-//         background-color: $my-test-green;
-//       }
-//     }
-//   }
-// }

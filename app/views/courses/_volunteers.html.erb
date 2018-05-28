@@ -1,0 +1,31 @@
+<h3>VOLUNTEERS</h3>
+<% unless teacher.blank? || assistants.empty? %>
+  <div class="volunteer-info border-bottom">
+    <% if teacher %>
+      <div class="volunteer-img">
+        <p><%= "#{teacher.first_name[0]}#{teacher.last_name[0]}" %></p>
+      </div>
+      <div class="volunteer">
+        <p><%= "#{teacher.first_name} #{teacher.last_name}" %></p>
+        <p><%= teacher.phone %></p>
+        <p><%= teacher.email %></p>
+      </div>
+    <% end %>
+
+    <% unless assistants.empty? %>
+      <% assistants.each do |assistant| %>
+        <div class="volunteer-img">
+          <p><%= "#{assistant.first_name[0]}#{assistant.last_name[0]}" %></p>
+        </div>
+        <div class="volunteer">
+          <p><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
+          <p><%= assistant.phone %></p>
+          <p><%= assistant.email %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>You do not have any volunteers assigned to this course yet.</p>
+<% end %>
+

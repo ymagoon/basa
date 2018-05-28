@@ -11,12 +11,22 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @students = @course.students.order(first_name: :asc)
     @sessions = @course.sessions
+
+    # For the drop down
+    @courses = Course.where(status: ['pending', 'confirmed']).select { |c| c.start_date >= DateTime.now || c.end_date <= DateTime.now }
+    @teacher = @course.teacher
+    @assistants = @course.assistants
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+    end
   end
 
   def new
     @course = Course.new
     @subjects = Subject.all
-    @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id }
+    @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id } # Can refactor this using scope in model. See VolunteerRoster.
   end
 
   def create
