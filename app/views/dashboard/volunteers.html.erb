@@ -1,22 +1,46 @@
 <% title 'Volunteer Data' %>
 <%= render 'shared/dashboard_tabs' %>
-<button class="accordion">Volunteer Accordian </button>
+<button class="accordion">C# Volunteers </button>
   <div class="panel">
 
-
+  <%= render 'shared/volunteers', volunteers: @c_vols %>
 
   </div>
 
-<button class="accordion">Volunteer Accordian </button>
+<button class="accordion">Ruby on Rails Volunteers</button>
 <div class="panel">
 
-
+<%= render 'shared/volunteers', volunteers: @ruby_vols %>
 
 </div>
 
-<button class="accordion">Volunteer Accordian </button>
+<button class="accordion">Scratch Volunteers </button>
 <div class="panel">
 
+<%= render 'shared/volunteers', volunteers:  @scratch_vols  %>
 
+</div>
+<button class="accordion">Python Volunteers </button>
+<div class="panel">
+
+<%= render 'shared/volunteers', volunteers: @python_vols%>
+
+</div>
+<button class="accordion">PHP Volunteers </button>
+<div class="panel">
+
+<%= render 'shared/volunteers', volunteers: @php_vols %>
+
+</div>
+<button class="accordion">Mobile App Volunteers </button>
+<div class="panel">
+
+<%= render 'shared/volunteers', volunteers: @mobile_app_vols%>
+
+</div>
+<button class="accordion">Unassigned Volunteers </button>
+<div class="panel">
+
+<%= render 'shared/volunteers', volunteers: @unassigned_vols %>
 
 </div>

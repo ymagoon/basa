@@ -40,6 +40,17 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}".titleize
   end
 
+  def number_of_volunteers_assigned_to_course
+     # total number of volunteers
+    users = User.where(role: 'volunteer').count
+
+    #total number of distinct users on volunteer_rosters
+    distinct_users = VolunteerRoster.select(:user_id).distinct.count
+
+    users - distinct_users
+    # show # of volunteers that have never been assigned to a course
+  end
+
   private
 
   def set_default_role
@@ -51,6 +62,7 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
+
 end
 
 

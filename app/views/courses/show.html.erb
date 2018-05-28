@@ -24,7 +24,7 @@
     </div>
     <div class="row">
     <h3> <span>Students  (<%= @course.number_of_students %>/<%= @course.max_capacity %>)</span> </h3>
-
+      <%= @course.average_attendance %>
     </div>
   </div>
 </div>
@@ -34,7 +34,6 @@
     <%= link_to "Add Volunteers", new_course_volunteer_roster_path(@course), class: "btn btn-primary brand-primary" %>
     <%= link_to "Back to Course Index", courses_path, class: "btn btn-primary brand-primary" %>
   </div>
-</div>
 
 <div class="wrapper">
   <div class="better-container">
@@ -43,6 +42,7 @@
     <%= render 'volunteers', course: @course, teacher: @teacher, assistants: @assistants %>
     <%= render 'attendance', students: @students, sessions: @sessions, course: @course %>
   </div>
+
 </div>
 
 <!--
