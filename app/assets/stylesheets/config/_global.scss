@@ -26,6 +26,22 @@
    border-right: 1px solid $my-gray-border;
 }
 
+.course-status {
+  p {
+    color: white;
+    border-radius: 3px;
+    padding: 2px 3px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+  }
+}
+.confirmed {
+  background-color: $my-blue;
+}
+.pending {
+  background-color: $my-green;
+}
+
 // hr {
 //     border: 0;
 //     height: 1px;

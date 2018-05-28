@@ -39,8 +39,11 @@ class Course < ApplicationRecord
 
   def assistants
     assistants = self.volunteer_rosters.select { |volunteer| volunteer.role == 'assistant' }.map(&:user)
-
     assistants.empty? ? [] : assistants
+  end
+
+  def date_formatted(date)
+    date.strftime('%A, %b %d')
   end
 
   def schedule
@@ -81,20 +84,6 @@ class Course < ApplicationRecord
   def set_notes
     self.notes ||= ''
   end
-
-  # times come from the datepicker as a string like "6/11/2018 12:00 PM - 6/28/2018 12:00 PM"
-#   def parse_times
-#     self.
-#     DateTime.strptime('2001-02-03T04:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z')
-#                           #=> #<DateTime: 2001-02-03T04:05:06+07:00 ...>
-# DateTime.strptime('03-02-2001 04:05:06 PM', '%d-%m-%Y %I:%M:%S %p')
-#                           #=> #<DateTime: 2001-02-03T16:05:06+00:00 ...>
-# DateTime.strptime('2001-W05-6T04:05:06+07:00', '%G-W%V-%uT%H:%M:%S%z')
-#                           #=> #<DateTime: 2001-02-03T04:05:06+07:00 ...>
-# DateTime.strptime('2001 04 6 04 05 06 +7', '%Y %U %w %H %M %S %z')
-#                           #=> #<DateTime: 2001-02-03T04:05:06+07:00 ...>
-# DateTime.strptime('2001 05 6 04 05 06 +7', '%Y %W %u %H %M %S %z')
-#   end
 
   # Create all of the sessions for the course after the course itself is created
   def create_sessions
