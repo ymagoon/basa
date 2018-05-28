@@ -18,7 +18,7 @@ class Student < ApplicationRecord
 
   # Return a list of all student attendance for a specified course. Used in course show to properly display the attendance
   def student_attendance(course)
-    Attendance.joins("INNER JOIN sessions ON sessions.id = attendances.session_id and attendances.student_id = #{self.id} INNER JOIN courses ON sessions.course_id = courses.id and courses.id= #{course.id}")
+    Attendance.joins("INNER JOIN sessions ON sessions.id = attendances.session_id and attendances.student_id = #{self.id} INNER JOIN courses ON sessions.course_id = courses.id and courses.id= #{course.id} order by attendances.id")
   end
 
   def age(dob)
