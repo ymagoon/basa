@@ -12,7 +12,10 @@ class VolunteerRoster < ApplicationRecord
   end
 
   def self.courses_by_volunteer(volunteer)
-    rosters = VolunteerRoster.joins(:course).where('user_id = ? AND start_date > ?', volunteer, DateTime.now).order('courses.start_date DESC')
-    # rosters.map { |roster| roster.course.name }
+    VolunteerRoster.joins(:course).where('user_id = ? AND start_date > ?', volunteer, DateTime.now).order('courses.start_date DESC')
+  end
+
+  def format_date(date)
+    date.strftime('%a %d %b')
   end
 end

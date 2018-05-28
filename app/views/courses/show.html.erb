@@ -24,14 +24,14 @@
     </div>
     <div class="row">
     <h3> <span>Students  (<%= @course.number_of_students %>/<%= @course.max_capacity %>)</span> </h3>
-      <%= @course.average_attendance %>
-    </div>
+<!--       <# @course.average_attendance #>
+ -->    </div>
   </div>
 </div>
 <div class="container">
   <div class="control-buttons">
     <%= link_to "Add Students", course_student_rosters_path(@course), class: "btn btn-primary brand-primary" %>
-    <%= link_to "Add Volunteers", new_course_volunteer_roster_path(@course), class: "btn btn-primary brand-primary" %>
+    <%= link_to "Add Volunteers", new_course_volunteer_roster_path(@course), class: "btn btn-primary brand-primary" data-toggle="modal" data-target="#myModal"%>
     <%= link_to "Back to Course Index", courses_path, class: "btn btn-primary brand-primary" %>
   </div>
 
