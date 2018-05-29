@@ -6,29 +6,7 @@
   .course-content {
     margin: 10px;
   }
-  .course-content-head {
-    display: flex;
-    margin: 0 5px 0 8px;
-    align-content: center;
-    justify-content: space-between;
 
-    .left-header {
-      display: flex;
-      align-items: center;
-    }
-    .sort {
-      margin: 0 0 0 10px;
-    }
-    .fas {
-      font-size: 22px;
-      color: $my-gray;
-
-      &:hover {
-        color: $my-blue;
-      }
-    }
-
-  }
   h2 {
     margin: 0px;
   }
