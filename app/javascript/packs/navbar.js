@@ -1,6 +1,6 @@
 /* Set the width of the side navigation to 120px */
 function openNav() {
-    document.getElementById("mySidenav").style.width = "140px";
+    document.getElementById("mySidenav").style.width = "90px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
