@@ -1,13 +1,13 @@
 <% title 'Home' %>
 <main>
  <input id="tab1" type="radio" name="tabs" checked>
-  <label for="tab1">Courses</label>
+  <label class="tab" for="tab1"><%= render :partial => 'shared/courses.svg' %>Courses</label>
 
   <input id="tab3" type="radio" name="tabs">
-  <label for="tab3">Volunteers</label>
+  <label class="tab" for="tab3"><%= render :partial => 'shared/teacher.svg' %>Volunteers</label>
 
   <input id="tab4" type="radio" name="tabs">
-  <label for="tab4">Attendance</label>
+  <label class="tab" for="tab4"><%= render :partial => 'shared/calendar.svg' %>Attendance</label>
 
 
    <!--    courses section  -->
@@ -29,3 +29,4 @@
   </section>
 
 </main>
+<!-- <div style="width:4px">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->

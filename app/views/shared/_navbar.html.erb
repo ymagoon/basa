@@ -9,25 +9,26 @@
   </div>
   <div class="nav-button">
     <%= link_to home_path do %>
-      <%= image_tag 'content-design.png', class: "svg" %>
+      <%#= image_tag 'content-design.svg', class: "svg" %>
+      <%= render :partial => 'shared/content-design.svg' %>
       <p>Dashboard</p>
       <% end %>
   </div>
   <div class="nav-button">
     <%= link_to courses_path do %>
-      <i class="nav-icon fas fa-users"></i>
+      <%= render :partial => 'shared/courses.svg' %>
       <p>Courses</p>
       <% end %>
   </div>
   <div class="nav-button">
     <%= link_to volunteers_path do %>
-      <i class=" nav-icon fas fa-chalkboard-teacher"></i>
+      <%= render :partial => 'shared/teacher.svg' %>
       <p>Teachers</p>
       <% end %>
   </div>
   <div class="nav-button">
     <%= link_to students_path do %>
-      <i class=" nav-icon fas fa-users"></i>
+      <%= render :partial => 'shared/student.svg' %>
       <p>Students</p>
       <% end %>
   </div>

@@ -11,7 +11,6 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
   overflow-x: hidden; /* Disable horizontal scroll */
- /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -26,22 +25,6 @@
   }
 }
 
-/* The navigation menu links */
-.sidenav fas {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: $my-green;
-    transition: 0.3s;
-}
 
 /* Position and style the close button (top right corner) */
 #close-btn {
@@ -69,11 +52,24 @@
   position:fixed;
   margin-left: 5px;
 }
-.nav-icon {
-  font-size: 30px;
-  padding-bottom: 5px;
+
+
+svg {
+  width: 40px;
+  fill: $my-blue;
 }
-.svg use {
-    fill: transparent;
-    color: #007fa3;
+
+.nav-button:hover{
+  color: $my-green;
+  transition: 0.3s;
+  svg {
+    fill: $my-green;
+    transition: 0.3s;
+  }
+  a:hover {
+    color: $my-green;
+    transition: 0.3s;
+  }
 }
+
+

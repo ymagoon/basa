@@ -90,23 +90,17 @@ label {
   font-weight: 200;
 }
 
-label:before {
-  font-family: fontawesome;
-  font-weight: normal;
-  margin-right: 10px;
-}
-
-label[for*='1']:before { content: '\f02d'; }
-label[for*='2']:before { content: '\f1ae'; }
-label[for*='3']:before { content: '\f007'; }
-label[for*='4']:before { content: '\f073'; }
 
 label:hover {
   color: #888;
   cursor: pointer;
 }
 
-input:checked + label {
+label:hover > svg {
+  fill: #888;;
+}
+
+input:checked + label  {
   color: $my-blue;
   border: 1px solid $my-light-gray;
   border-top: 2px solid $my-blue;
@@ -136,3 +130,20 @@ input:checked + label {
     padding: 15px;
   }
 }
+input:checked + label > svg {
+  fill: $my-blue;
+}
+
+.tab:active {
+  svg {
+    fill: $my-blue;
+  }
+}
+
+.tab {
+  svg {
+  fill: #bbb;
+  width: 20px;
+  }
+}
+
