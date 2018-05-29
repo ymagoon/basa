@@ -1,0 +1,19 @@
+<div class="container student-list">
+  <%= render 'create', students: @students, course: @course %>
+  <div class="student-roster">
+    <%= link_to "Back to Course Page", course_path(@course), class: "btn btn-primary brand-primary" %>
+      <div class="assigned-students">
+          <% @course.students.each do |student| %>
+          <div draggable="true" class="assigned student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" id="<%= student.id %>">
+            <div class="student_name"><h5> <%= student.first_name %> <%= student.last_name %> </h5></div>
+
+            <div id="age-gender"><p><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>" style="padding: 0px 5px 0px 5px">  </i>      <%= student.age(student.birth_date) %>  <%= link_to student_roster_path(student.student_rosters.ids), method: :delete, confirm: "Are you sure you wish to delete this course?" do %><i class="fas fa-trash-alt trash-link"></i></p>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+      </div>
+    </div>
+    <div ID="flashes"></div>
+  </div>
+</div>

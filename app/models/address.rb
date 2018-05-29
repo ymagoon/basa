@@ -6,6 +6,7 @@ class Address < ApplicationRecord
   @address_type = ['venue', 'volunteer', 'student']
 
   enum address_type: @address_type
+  scope :venues, -> { where(address_type: 'venue') }
 
   validates :venue_name, uniqueness: true, allow_blank: true
   validates :address_1, presence: true
