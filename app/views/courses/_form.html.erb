@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= simple_form_for(course) do |f| %>
+  <div class="form-container">
+    <%= simple_form_for(course) do |f| %>
+      <%= f.input :name, label: false, placeholder: 'Enter course name', autofocus: true %>
       <%= f.input :subject_id, collection: subjects %>
       <%= f.input :address_id, collection: addresses %>
       <!-- pass in as :start_date, but parse into start_date and :end_date in controller -->
@@ -11,10 +11,10 @@
       <%= f.input :max_capacity, label: false, placeholder: 'Enter maximum class capacity' %>
       <%= f.input :session_length, label: false, placeholder: 'Enter the class duration' %>
       <%= f.input :notes, label: false, placeholder: 'Enter a class note' %>
-      <%= f.submit %>
-      <% end %>
-    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.button :submit, "Create Course", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<!-- input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string -->
