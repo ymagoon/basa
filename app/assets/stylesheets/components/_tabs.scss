@@ -9,7 +9,7 @@
 
 html, body {
   height: 100vh;
-  background-color: #fff;
+
 }
 
 body {
@@ -28,9 +28,26 @@ p {
   line-height: 1.5;
 }
 
+li:active > a {
+  color: $my-blue;
+}
+
+a {
+    color: black;
+    font-size: 12px;
+    width: 150px;
+    &:active {
+      color: $my-blue;
+    }
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: $my-blue;
+}
+
 main {
-  min-width: 800px;
-  max-width: 100%;
+  min-width: 80%;
+  max-width: 90%;
   padding: 50px;
   margin: 0 auto;
   background: #fff;
@@ -40,6 +57,13 @@ section {
   display: none;
   padding: 20px 0 0;
   border-top: 1px solid #ddd;
+  border: 1px solid $my-light-gray;
+  box-shadow: 1px 1px 1px $my-light-gray;
+
+}
+
+body {
+  background-color: #F3F3F3;
 }
 
 input {
@@ -54,6 +78,7 @@ label {
   text-align: center;
   color: #bbb;
   border: 1px solid transparent;
+  font-family: $gotham-light
 }
 
 label:before {
@@ -73,10 +98,11 @@ label:hover {
 }
 
 input:checked + label {
-  color: #555;
-  border: 1px solid #ddd;
+  color: $my-blue;
+  border: 1px solid $my-light-gray;
   border-top: 2px solid $my-blue;
   border-bottom: 1px solid #fff;
+  border-radius: 4px;
 }
 
 #tab1:checked ~ #content1,

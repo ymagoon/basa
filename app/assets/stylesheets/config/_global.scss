@@ -7,9 +7,13 @@
   font-style: bold;
 }
 
+.body {
+  background-color: $my-light-gray;
+}
+
 .wrapper, html {
   margin:0 auto;
-  background-color: $my-light-gray;
+
 }
 
 .better-container {

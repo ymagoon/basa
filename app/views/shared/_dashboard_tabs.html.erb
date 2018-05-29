@@ -1,32 +1,7 @@
 <% title 'Home' %>
-<!--
-  <div class="tabs">
-      <%= link_to home_path, class: "tab" do %>
-        <h3> <%= @active_courses.count %> / <%= Course.count %></h3>
-        <p>Aggragate Course Data</p>
-        <% end %>
-        <%= link_to volunteers_dashboard_index_path, class: "tab" do %>
-        <h3> <%= @assigned_volunteers %> / <%= User.where(role: 'volunteer').count %></h3>
-        <p>Aggragate Volunteer Data</p>
-      <% end %>
-      <%= link_to attendance_dashboard_index_path, class: "tab" do %>
-        <h3><%= @percentage_attendance.round(4) * 100 %> %</h3>
-        <p>Aggragate Attendance Data</p>
-      <% end %>
-      <%= link_to students_dashboard_index_path, class: "tab" do %>
-        <h3><%= Student.count %></h3>
-        <p>Aggragate Student Data</p>
-      <% end %>
-  </div>
-
- -->
-
 
  <input id="tab1" type="radio" name="tabs" checked>
   <label for="tab1">Courses</label>
-
-  <input id="tab2" type="radio" name="tabs">
-  <label for="tab2">Students</label>
 
   <input id="tab3" type="radio" name="tabs">
   <label for="tab3">Volunteers</label>

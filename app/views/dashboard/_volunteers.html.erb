@@ -1,46 +1,36 @@
-<% title 'Volunteer Data' %>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="c#" role="tab" data-toggle="tab">C#</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="MobileApp" role="tab" data-toggle="tab">Mobile App</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="PHP" role="tab" data-toggle="tab">PHP</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="Pythnon" role="tab" data-toggle="tab">Python</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="Ruby" role="tab" data-toggle="tab">Ruby on Rails</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="Scratch" role="tab" data-toggle="tab">Scratch</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="Unassigned" role="tab" data-toggle="tab">Unassigned</a></li>
+  </ul>
 
-<button class="accordion">C# Volunteers </button>
-  <div class="panel">
-
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="MobileApp">
+<%= render 'shared/volunteers', volunteers: @mobile_app_vols%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="c#">
   <%= render 'shared/volunteers', volunteers: @c_vols %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Ruby">
+ <%= render 'shared/volunteers', volunteers: @ruby_vols %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Scratch">
+ <%= render 'shared/volunteers', volunteers:  @scratch_vols  %>
+    </div>
+      <div role="tabpanel" class="tab-pane" id="Python">
+<%= render 'shared/volunteers', volunteers: @python_vols%>
+    </div>
+      <div role="tabpanel" class="tab-pane" id="PHP">
+<%= render 'shared/volunteers', volunteers: @php_vols %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Unassigned">
+<%= render 'shared/volunteers', volunteers: @unassigned_vols %>
+    </div>
 
   </div>
 
-<button class="accordion">Ruby on Rails Volunteers</button>
-<div class="panel">
 
-<%= render 'shared/volunteers', volunteers: @ruby_vols %>
-
-</div>
-
-<button class="accordion">Scratch Volunteers </button>
-<div class="panel">
-
-<%= render 'shared/volunteers', volunteers:  @scratch_vols  %>
-
-</div>
-<button class="accordion">Python Volunteers </button>
-<div class="panel">
-
-<%= render 'shared/volunteers', volunteers: @python_vols%>
-
-</div>
-<button class="accordion">PHP Volunteers </button>
-<div class="panel">
-
-<%= render 'shared/volunteers', volunteers: @php_vols %>
-
-</div>
-<button class="accordion">Mobile App Volunteers </button>
-<div class="panel">
-
-<%= render 'shared/volunteers', volunteers: @mobile_app_vols%>
-
-</div>
-<button class="accordion">Unassigned Volunteers </button>
-<div class="panel">
-
-<%= render 'shared/volunteers', volunteers: @unassigned_vols %>
-
-</div>
