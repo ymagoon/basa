@@ -26,6 +26,9 @@ class Student < ApplicationRecord
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  def birth_date_formatted
+    self.birth_date.strftime("%d/%m/%Y")
+  end
 
   def self.absent_student
     Student.all.select { |student|
@@ -45,6 +48,4 @@ class Student < ApplicationRecord
   def self.lowest_attendance
     list = self.all.sort_by { |student| student.attendance_percentage }
   end
-
-
 end
