@@ -3,7 +3,7 @@
     <!-- venues -->
     <div class="filter-container">
       <div class="filter-header">
-        <p>Locations</p>
+        <p class="capital-gray">Locations</p>
       </div>
       <% @venues.each do |venue| %>
         <div class="element">
@@ -16,7 +16,7 @@
     <!-- subjects -->
     <div class="filter-container">
       <div class="filter-header">
-        <p>Subjects</p>
+        <p class="capital-gray">Subjects</p>
       </div>
       <% @subjects.each do |subject| %>
         <div class="element">
@@ -29,7 +29,7 @@
     <!-- phases -->
     <div class="filter-container">
       <div class="filter-header">
-        <p>Phases</p>
+        <p class="capital-gray">Phases</p>
       </div>
       <div class="element">
         <%= check_box_tag "current", 1, false, class: 'current-filter checkbox' %>
@@ -50,7 +50,7 @@
     <!-- status -->
     <div class="filter-container">
       <div class="filter-header">
-        <p>Status</p>
+        <p class="capital-gray">Status</p>
       </div>
       <div class="element">
         <%= check_box_tag "status[pending]", 1, false, class: 'pending-filter checkbox' %>
@@ -71,7 +71,7 @@
     <!-- misc filters -->
     <div class="filter-container">
       <div class="filter-header">
-        <p>Miscellaneous</p>
+        <p class="capital-gray">Miscellaneous</p>
       </div>
       <div class="element">
         <%= check_box_tag "no_teacher", 1, false, class: 'no-teacher-filter checkbox' %>
