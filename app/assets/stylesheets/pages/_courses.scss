@@ -8,9 +8,13 @@
   }
   .course-content-head {
     display: flex;
-    // margin-left: 30px;
+    margin: 0 5px 0 8px;
     align-content: center;
     justify-content: space-between;
+
+    .sort {
+      margin: 0;
+    }
   }
   h2 {
     margin: 0px;
