@@ -4,7 +4,7 @@
     <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" data-course="<%= course.id %>" id="<%= student.id %>">
       <div class="student_name"><h5><%= student.first_name %> <%= student.last_name %></h5></div>
 
-      <div id="age-gender"><p><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><%= student.age(student.birth_date) %></p></div>
+      <div id="age-gender"><p><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %> " style="padding: 0px 5px 0px 5px">  </i><%= student.age(student.birth_date) %></p></div>
     </div>
   <% end %>
 </div>
