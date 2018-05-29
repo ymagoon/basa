@@ -7,9 +7,14 @@
   font-style: bold;
 }
 
+.body {
+  background-color: $my-light-gray;
+  font-family: $header-font;
+}
+
 .wrapper, html {
   margin:0 auto;
-  background-color: $my-light-gray;
+
 }
 
 .better-container {
@@ -45,6 +50,7 @@ label, input {
   margin: 0;
 }
 
+
 .text-black {
   color: $my-black;
 
@@ -72,3 +78,4 @@ label, input {
   color: $my-gray;
   font-family: $gotham-bold;
 }
+

@@ -1,12 +1,13 @@
 .assigned-students{
-    width: 70%;
+    width: 75%;
     height: 200px;
-    border: 2px solid lightgray;
     border-radius: 3px;
     margin: 0 auto;
     margin-top: 100px;
     text-align: center;
     overflow: auto;
+    background-color: #F6F6F6;
+    padding: 10px;
 }
 
 .assigned-students:hover{

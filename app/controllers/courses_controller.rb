@@ -61,7 +61,8 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     @subjects = Subject.all
-    @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id } # Can refactor this using scope in model. See VolunteerRoster.
+    # @addresses = Address.all.select { |address| address.venue? }.map { |address| address.id } # Can refactor this using scope in model. See VolunteerRoster.
+    @addresses = Address.venues
   end
 
   def create

@@ -1,17 +1,32 @@
 <% title 'Home' %>
-<%= render 'shared/dashboard_tabs' %>
+<main>
+ <input id="tab1" type="radio" name="tabs" checked>
+  <label class="tab" for="tab1"><%= render :partial => 'shared/courses.svg' %>Courses</label>
 
-<button class="accordion">All Active Courses</button>
-  <div class="panel">
-    <%= render 'shared/course_list', courses: @courses %>
-  </div>
+  <input id="tab3" type="radio" name="tabs">
+  <label class="tab" for="tab3"><%= render :partial => 'shared/teacher.svg' %>Volunteers</label>
 
-<button class="accordion">Courses with no Teacher</button>
-<div class="panel">
-  <%= render 'shared/course_list', courses: @no_teacher %>
-</div>
+  <input id="tab4" type="radio" name="tabs">
+  <label class="tab" for="tab4"><%= render :partial => 'shared/calendar.svg' %>Attendance</label>
 
-<button class="accordion">Courses Below Minimum Capacity</button>
-<div class="panel">
-   <%= render 'shared/course_list', courses: @below_cap %>
-</div>
+
+   <!--    courses section  -->
+  <section id="content1">
+    <%= render 'courses' %>
+  </section>
+
+    <!--       Volunteers section  -->
+
+  <section id="content3">
+    <%= render 'volunteers' %>
+  </section>
+
+<!--
+            Attendance section  -->
+
+  <section id="content4">
+    <%= render 'attendance' %>
+  </section>
+
+</main>
+<!-- <div style="width:4px">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->

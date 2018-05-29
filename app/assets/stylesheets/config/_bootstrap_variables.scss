@@ -5,8 +5,8 @@
 // 4. Here is another location to see them all (https://getbootstrap.com/docs/3.3/customize/)
 
 // General style
-$font-family-sans-serif:  $gotham;
-$headings-font-family:    $gotham;
+$font-family-sans-serif:  $text-font;
+$headings-font-family:    $header-font;
 $font-size-h1: 2em;
 $font-size-h2: 1.5em;
 $font-size-h3: 1.17em;
@@ -14,6 +14,8 @@ $font-size-h4: 1em;
 $font-size-h5: 0.83em;
 $font-size-h6: 0.75em;
 $font-size-base: 14px;
+$gotham-bold:             $header-font;
+$gotham-light:            $text-font;
 
 // Scaffolding
 $link-hover-decoration: none;

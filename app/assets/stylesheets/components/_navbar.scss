@@ -9,9 +9,8 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: black; /* Black*/
+  background-color: rgba(0, 0, 0, 0.8);
   overflow-x: hidden; /* Disable horizontal scroll */
- /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -19,39 +18,25 @@
   border: 1p;
   display: flex;
   flex-direction: column;
-
   align-content: center;
   text-align: center;
+  p {
+    font-size: 10px;
+  }
 }
 
-/* The navigation menu links */
-.sidenav fas {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: $my-green;
-    transition: 0.3s;
-}
 
 /* Position and style the close button (top right corner) */
 #close-btn {
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
-  left: 90px;
+  left: 55px;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -62,12 +47,29 @@
 
 #nav-btn {
   display: flex;
-  width: 50px;
-  z-index:9;
+  width: 30px;
+
   position:fixed;
   margin-left: 5px;
 }
-.nav-icon {
-  font-size: 50px;
-  padding-bottom: 5px;
+
+
+svg {
+  width: 40px;
+  fill: $my-blue;
 }
+
+.nav-button:hover{
+  color: $my-green;
+  transition: 0.3s;
+  svg {
+    fill: $my-green;
+    transition: 0.3s;
+  }
+  a:hover {
+    color: $my-green;
+    transition: 0.3s;
+  }
+}
+
+

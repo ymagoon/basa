@@ -3,7 +3,7 @@
     <%= simple_form_for(course) do |f| %>
       <%= f.input :name, label: false, placeholder: 'Enter course name', autofocus: true %>
       <%= f.input :subject_id, collection: subjects %>
-      <%= f.input :address_id, collection: addresses %>
+      <%= f.input :address, collection: addresses %>
       <!-- pass in as :start_date, but parse into start_date and :end_date in controller -->
       <%= f.input :start_date, required: true, label: 'Date Range', as: :string %>
       <%= f.input :frequency, as: :radio_buttons, collection: Course.frequencies.keys %>
