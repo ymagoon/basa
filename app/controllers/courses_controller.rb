@@ -71,7 +71,7 @@ class CoursesController < ApplicationController
     @subject = Subject.find(course_params[:subject_id])
     @course.subject = @subject
 
-    @address = Address.find(course_params[:address_id])
+    @address = Address.find(params[:course][:address_id])
     @course.address = @address
 
     @course.start_date = course_params[:start_date]
