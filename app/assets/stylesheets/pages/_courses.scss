@@ -12,9 +12,22 @@
     align-content: center;
     justify-content: space-between;
 
-    .sort {
-      margin: 0;
+    .left-header {
+      display: flex;
+      align-items: center;
     }
+    .sort {
+      margin: 0 0 0 10px;
+    }
+    .fas {
+      font-size: 22px;
+      color: $my-gray;
+
+      &:hover {
+        color: $my-blue;
+      }
+    }
+
   }
   h2 {
     margin: 0px;
