@@ -13,13 +13,14 @@
     text-decoration: none !important;
     transform-origin: center;
     transition: transform .2s cubic-bezier(0,0,.2,1),box-shadow .2s cubic-bezier(0,0,.2,1);
-    box-shadow: 0 5px 10px $my-gray;
-    transform: translateY(-2px);
+    box-shadow: 0 2px 2px $my-gray;
+    transform: translateY(-1px);
   }
 
   .card-content {
      display: flex;
      padding: 10px 0 10px 10px;
+     // align-items: center;
 
     .course-info {
       width: 200px;
@@ -90,11 +91,20 @@
 
       .action-icons {
         margin-top: 5px;
-        font-size: 14px !important;
+
         width: 125px;
         text-align: left;
-        font-size: 14px !important;
+        .fas {
+          font-size: 18px !important;
 
+        }
+        a {
+          color: $my-black;
+        }
+
+        a:hover {
+          color: $my-blue;
+        }
       }
     }
   }
