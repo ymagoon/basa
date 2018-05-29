@@ -59,13 +59,13 @@
 
               <div class="action-icons">
                 <%= link_to course_path(course) do %>
-                  <i class="fas fa-book" id="add-user"></i>
+                  <i class="fas fa-book" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="View More Details"></i>
                 <% end %>
                 <%= link_to course_student_rosters_path(course) do %>
-                  <i class="fas fa-users" id="add-user"></i>
+                  <i class="fas fa-users" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Students"></i>
                 <% end %>
                 <%= link_to new_course_volunteer_roster_path(course) do %>
-                  <i class="fas fa-chalkboard-teacher" id="add-volunteer"></i>
+                  <i class="fas fa-chalkboard-teacher" id="add-volunteer" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Volunteers"></i>
                 <% end %>
               </div>
             </div>
