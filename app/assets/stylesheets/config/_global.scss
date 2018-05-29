@@ -50,3 +50,32 @@ label, input {
   margin: 0;
 }
 
+
+.text-black {
+  color: $my-black;
+
+  &:hover {
+    color: $my-black;
+  }
+}
+
+.modal-body {
+  .container {
+    width: 100%;
+  }
+}
+
+.form-container {
+  margin: 0 auto;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.capital-gray {
+  font-size: 10px;
+  color: $my-gray;
+  font-family: $gotham-bold;
+}
+

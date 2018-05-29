@@ -9,6 +9,7 @@
   </div>
   <div class="nav-button">
     <%= link_to home_path do %>
+
       <%#= image_tag 'content-design.svg', class: "svg" %>
       <%= render :partial => 'shared/content-design.svg' %>
       <p>Dashboard</p>
@@ -22,13 +23,17 @@
   </div>
   <div class="nav-button">
     <%= link_to volunteers_path do %>
+
       <%= render :partial => 'shared/teacher.svg' %>
+
       <p>Teachers</p>
       <% end %>
   </div>
   <div class="nav-button">
     <%= link_to students_path do %>
+
       <%= render :partial => 'shared/student.svg' %>
+
       <p>Students</p>
       <% end %>
   </div>

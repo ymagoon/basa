@@ -8,24 +8,13 @@
   <div class="better-container">
     <div class="main-page">
       <%= render 'filters' %>
-      <%#= link_to 'Add Course', new_course_path %>
       <div class="course-content">
-        <div class="course-content-head">
-          <h2><%= (@courses.count) %> results found</h2>
-          <%= render 'shared/dropdown' %>
-        </div>
-        <div class="course-list-wrapper">
-          <%= render 'shared/course_list', courses: @courses %>
-        </div>
+        <%= render 'shared/course_list', courses: @courses %>
       </div>
     </div>
   </div>
 </div>
 
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#courses">
-        Add Course
-      </button>
-
-<%= render 'shared/modal', title: 'Add a new course', partial: 'courses/form', course: @course, subjects: @filter_subjects, addresses: @filter_addresses %>
+<%= render 'shared/modal', title: 'Add a New Course', partial: 'courses/form', course: @course, subjects: @filter_subjects, addresses: @filter_addresses %>
 
 
