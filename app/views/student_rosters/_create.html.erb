@@ -2,9 +2,9 @@
 <div class="col-xs-2 students">
   <% students.each do |student| %>
     <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" data-course="<%= course.id %>" id="<%= student.id %>">
-      <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
+      <div class="student_name"><h5><%= student.first_name %> <%= student.last_name %></h5></div>
 
-      <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
+      <div id="age-gender"><p><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><%= student.age(student.birth_date) %></p></div>
     </div>
   <% end %>
 </div>

@@ -5,23 +5,46 @@
   height: 600px;
   overflow: auto;
 }
-.age-gender {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 5px;
-}
+
 .student_card {
-  box-shadow: 1px 1px 1px 1px gray;
+  display: grid;
+  grid-template-columns: 50% 1fr 1fr 1fr;
+  grid-template-rows: 60% 40%;
+  box-shadow: 0px 0px 2px 2px $my-light-gray;
   margin: 5px;
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 50px;
+  //   #age-gender {
+  //   grid-row: 2 / span 1;
+  //   grid-column: 2 / span 3;
+  //   padding: 3px;
+  // }
+}
+
+.student_name {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 4;
+  text-align: center;
+}
+
+#age-gender {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 3;
+  padding: 3px;
+  color: gray;
+  text-decoration: none;
+  p {
+    font-size: 0.83em;
+  }
 }
 
 .female {
-    background: linear-gradient(to bottom right, $my-pink, $my-gray);
-  }
+  background-color: white;
+  border-left: solid 2px $my-green;
+}
 .male {
-    background: linear-gradient(to bottom right, $my-blue, $my-gray);
+  background-color: white;
+  border-left: solid 2px $my-blue;
   }
 
 .student-list {
