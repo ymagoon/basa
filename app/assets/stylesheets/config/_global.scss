@@ -62,3 +62,15 @@ label, input {
 .form-container {
   margin: 0 auto;
 }
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.capital-gray {
+  font-size: 10px;
+  color: $my-gray;
+  font-family: $gotham-bold;
+  // display: flex;
+  // justify-content: space-between;
+}

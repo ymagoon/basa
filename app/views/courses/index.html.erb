@@ -10,13 +10,11 @@
       <%= render 'filters' %>
       <%#= link_to 'Add Course', new_course_path %>
       <div class="course-content">
-        <div class="course-content-head">
-          <h2 id="results"><%= (@courses.count) %> results found</h2>
-          <%= render 'shared/dropdown' %>
-        </div>
-        <div class="course-list-wrapper">
-          <%= render 'shared/course_list', courses: @courses %>
-        </div>
+        <!-- <div class="course-content-head">
+          <h2 id="results"><%#= (@courses.count) %> <%#= "Result".pluralize(@courses.count) %> Found</h2>
+          <%#= render 'shared/dropdown' %>
+        </div> -->
+        <%= render 'shared/course_list', courses: @courses %>
       </div>
     </div>
   </div>

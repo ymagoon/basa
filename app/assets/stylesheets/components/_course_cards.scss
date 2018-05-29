@@ -3,10 +3,11 @@
 }
 
 .course-card {
+
   padding: 0;
   box-shadow: 1px 1px 1px $my-gray;
   background-color: white;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   border-radius: 3px;
 
   &:hover {
@@ -35,14 +36,6 @@
           font-weight: bold;
           margin: 0;
         }
-      }
-
-      .course-list-secondary {
-        font-size: 10px;
-        color: $my-gray;
-        font-family: $gotham-bold;
-        display: flex;
-        justify-content: space-between;
       }
     }
 
@@ -118,10 +111,6 @@
   border-left: 5px solid $my-green;
 }
 
-.no-margin-bottom {
-  margin-bottom: 0;
-}
-
 .av {
   background-color: $my-blue;
   color: white;
@@ -153,7 +142,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1170px) {
   .course-card {
     height: 110px;
   }
@@ -161,6 +150,6 @@
 
 @media screen and (max-width: 990px) {
   .course-card {
-    height: 90px;
+    height: auto;
   }
 }

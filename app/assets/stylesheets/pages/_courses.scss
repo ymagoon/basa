@@ -3,9 +3,12 @@
   .course-content {
     width: 100%;
   }
+  .course-content {
+    margin: 10px;
+  }
   .course-content-head {
     display: flex;
-    margin-left: 30px;
+    // margin-left: 30px;
     align-content: center;
     justify-content: space-between;
   }
