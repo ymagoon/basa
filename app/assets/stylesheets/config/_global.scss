@@ -52,3 +52,13 @@ label, input {
     color: $my-black;
   }
 }
+
+.modal-body {
+  .container {
+    width: 100%;
+  }
+}
+
+.form-container {
+  margin: 0 auto;
+}
