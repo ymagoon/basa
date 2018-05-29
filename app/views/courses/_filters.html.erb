@@ -9,7 +9,7 @@
         <div class="element">
           <%= check_box_tag "address[#{venue[0]}]", 1, false, class: 'address-filter checkbox' %>
           <span class="filter"></span>
-          <%= label_tag venue[0], venue[0] %>
+          <%= label_tag venue[0], venue[0], class: 'no-margin-bottom' %>
         </div>
       <% end %>
     </div>
@@ -22,7 +22,7 @@
         <div class="element">
           <%= check_box_tag "subjects[#{subject[0]}]", 1, false, class: 'subject-filter checkbox' %>
           <span class="filter"></span>
-          <%= label_tag subject[0], subject[0] %>
+          <%= label_tag subject[0], subject[0], class: 'no-margin-bottom' %>
         </div>
       <% end %>
     </div>
@@ -34,17 +34,17 @@
       <div class="element">
         <%= check_box_tag "current", 1, false, class: 'current-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'current', 'current' %>
+        <%= label_tag 'current', 'Current', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "future", 1, false, class: 'future-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'future', 'future' %>
+        <%= label_tag 'future', 'Future', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "past", 1, false, class: 'past-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'past', 'past' %>
+        <%= label_tag 'past', 'Past', class: 'no-margin-bottom' %>
       </div>
     </div>
     <!-- status -->
@@ -55,17 +55,17 @@
       <div class="element">
         <%= check_box_tag "status[pending]", 1, false, class: 'pending-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'pending', 'pending' %>
+        <%= label_tag 'pending', 'Pending', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "status[confirmed]", 1, false, class: 'confirmed-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'confirmed', 'confirmed' %>
+        <%= label_tag 'confirmed', 'Confirmed', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "status[cancelled]", 1, false, class: 'cancelled-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'cancelled', 'cancelled' %>
+        <%= label_tag 'cancelled', 'Cancelled', class: 'no-margin-bottom' %>
       </div>
     </div>
     <!-- misc filters -->
@@ -76,12 +76,12 @@
       <div class="element">
         <%= check_box_tag "no_teacher", 1, false, class: 'no-teacher-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'no_teacher', 'no_teacher' %>
+        <%= label_tag 'no_teacher', 'No Teacher', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "no_assistants", 1, false, class: 'no-assistants-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'no_assistants', 'no_assistants' %>
+        <%= label_tag 'no_assistants', 'No Assistants', class: 'no-margin-bottom' %>
       </div>
     </div>
     <%= submit_tag 'submit', :id => 'submit' %>

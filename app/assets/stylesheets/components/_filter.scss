@@ -7,9 +7,9 @@
   font-family: $gotham-light;
   font-weight: bold;
   width: 225px;
+  height: auto;
   border: 1px solid #E8E8E8;
   margin-top: 10px;
-
 
   form {
     width: 100%;
@@ -37,11 +37,12 @@
   //       margin: 0;
   //     }
   //   }
-  //   .element {
+    .element {
   //     padding-left: 20px;
   //     margin-top: 5px;
-  //     display: flex;
-  //     align-items: center;
+      display: flex;
+      align-items: center;
+      padding: 2px 3px;
   //     &:first-child {
   //       // padding-top: 5px; make this godamn thing work with 10px;
   //     }
@@ -49,26 +50,15 @@
   //       margin-bottom: 10px;
   //     }
 
-  //     label {
-  //       font-size: 14px;
-  //       padding-left: 10px;
-  //       margin: 0;
-  //     }
-  //     .checkbox {
-  //       margin: 0;
-  //       // display: none;
-  //     }
-  //     .filter {
-  //       height: 20px;
-  //       width: 20px;
-  //       background-color: #E8E8E8;
-  //       border-radius: 3px;
-  //       border: 2px solid #ccc;
-
-  //       &:hover {
-  //         background-color: #ccc;
-  //       }
-  //     }
-  //   }
+      label {
+        font-family: $gotham;
+        font-weight: 500;
+        font-size: 14px;
+        padding-left: 5px;
+      }
+      .checkbox {
+        margin: 0;
+      }
+    }
   }
 }
