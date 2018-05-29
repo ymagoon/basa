@@ -1,26 +1,23 @@
 <h3>VOLUNTEERS</h3>
 <% unless teacher.blank? || assistants.empty? %>
-  <div class="volunteer-info border-bottom">
-    <% if teacher %>
-      <div class="volunteer-img">
-        <p><%= "#{teacher.first_name[0]}#{teacher.last_name[0]}" %></p>
-      </div>
-      <div class="volunteer">
-        <p><%= "#{teacher.first_name} #{teacher.last_name}" %></p>
-        <p><%= teacher.phone %></p>
-        <p><%= teacher.email %></p>
-      </div>
-    <% end %>
-
+  <div class="volunteer-list">
+    <div class="volunteer teacher">
+      <% if teacher %>
+        <div class="volunteer-name">
+          <p class="no-margin-bottom"><%= "#{teacher.first_name} #{teacher.last_name}" %></p>
+          <!-- <p><%#= teacher.phone %></p>
+          <p><%#= teacher.email %></p> -->
+        </div>
+        <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "Phone: #{teacher.phone}\nEmail: #{teacher.email}" %>"></i>
+      <% end %>
+    </div>
     <% unless assistants.empty? %>
       <% assistants.each do |assistant| %>
-        <div class="volunteer-img">
-          <p><%= "#{assistant.first_name[0]}#{assistant.last_name[0]}" %></p>
-        </div>
-        <div class="volunteer">
-          <p><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
-          <p><%= assistant.phone %></p>
-          <p><%= assistant.email %></p>
+        <div class="volunteer assistant">
+          <div class="volunteer-name">
+            <p class="no-margin-bottom"><%= "#{assistant.first_name} #{assistant.last_name}" %></p>
+          </div>
+          <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "Phone: #{assistant.phone}\nEmail: #{assistant.email}" %>"></i>
         </div>
       <% end %>
     <% end %>
