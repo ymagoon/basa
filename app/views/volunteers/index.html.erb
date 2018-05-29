@@ -2,29 +2,30 @@
 <h1>Volunteers</h1>
 
 <% @volunteers.each do |volunteer| %>
-  <h2> <%= volunteer.first_name %> <%= volunteer.last_name %> </h2>
+<div class="volunteer-card col-xs-6">
+  <h2 class="text-center"> <%= volunteer.first_name %> <%= volunteer.last_name %> </h2>
   <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
 
   <h3>Proficiencies:</h3>
-  <h4>Teacher</h4>
+  <h5>Teacher</h5>
   <ul>
   <% volunteer.proficiencies.each do |proficiency| %>
     <% if proficiency.role == "teacher" %>
-      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-primary brand-primary" do %><i class="far fa-trash-alt"></i> <% end %></li>
       <% end %>
     <% end %>
   </ul>
 
-  <h4>Assistant</h4>
+  <h5>Assistant</h5>
   <ul>
   <% volunteer.proficiencies.each do |proficiency| %>
     <% if proficiency.role == "assistant" %>
-      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-primary brand-primary" do %><i class="far fa-trash-alt"></i> <% end %></li>
       <% end %>
     <% end %>
   </ul>
 
-  <%= link_to 'Add Proficiencies', new_volunteer_proficiency_path(volunteer) %>
+  <%= link_to 'Add Proficiencies', new_volunteer_proficiency_path(volunteer), class: "btn-sm brand-primary btn-primary" %>
 
-  <p> -------------------------- </p>
+</div>
   <% end %>

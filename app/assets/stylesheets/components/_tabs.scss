@@ -32,17 +32,25 @@ li:active > a {
   color: $my-blue;
 }
 
-a {
-    color: black;
+li > a {
+    color: #bbb;
     font-size: 12px;
     width: 150px;
-    &:active {
-      color: $my-blue;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 200;
+    &:hover {
+      border: none;
+      color: #888;
+      cursor: pointer;
     }
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: $my-blue;
+  border: 1px solid $my-light-gray;
+  border-top: 2px solid #77C9D4;
+  border-bottom: 3px solid transparent;
 }
 
 main {
@@ -74,11 +82,12 @@ label {
   display: inline-block;
   margin: 0 0 -1px;
   padding: 15px 25px;
-  font-weight: 600;
   text-align: center;
   color: #bbb;
   border: 1px solid transparent;
-  font-family: $gotham-light
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
 }
 
 label:before {
