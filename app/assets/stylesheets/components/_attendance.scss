@@ -1,77 +1,132 @@
-.attendance-sessions {
-  display: flex;
-  padding-left: 170px;
-
-  .session-header {
-    height: 150px;
-    width: 30px;
-    font-size: 12px;
-    font-family: $header-font;
-    color: $my-gray;
-
-    span {
-      width:200px; /* same as height of .session-header */
-      display:inline-block;
-      -webkit-transform-origin:84px 70px;
-      -ms-transform-origin:84px 70px;
-      -o-transform-origin:84px 70px;
-      transform-origin: 84px 70px;
-
-      -webkit-transform:rotate(-75deg);
-      -ms-transform: rotate(-75deg);
-      -o-transform: rotate(-75deg);
-      transform: rotate(-75deg);
-    }
-  }
-}
-
 .attendance-table {
-  box-shadow: 1px 1px 3px $my-gray;
-  margin: 50px 0;
-  overflow-x: auto;
+  display: flex;
+  background-color: white;
+  box-shadow: 2px 2px 2px $my-gray;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid #E8E8E8;
 
-  .attendance-row {
-    display: flex;
-    align-items: center;
+  // margin: 50px 0;
+  // overflow-x: auto;
 
-    &:nth-child(even) {
-      background-color: white;
-    }
-    .attendance-student {
+  .student-col-header {
+
+    width: 200px;
+
+    .student-row {
+      height: 34px;
+      padding: 8px 15px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex: 0 0 150px;
-      padding: 10px 15px;
+      justify-content: space-between;
+      border-bottom: 1px solid #E8E8E8;
 
       p {
-        margin: 0;
+        font-size: 12px;
+        padding-right: 10px;
+        width: 125px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
 
       .fas {
-        color: $my-black;
+        color: $my-gray;
 
         &:hover {
           color: $my-blue;
         }
       }
-    }
-    .attendance-session {
-      display: flex;
 
-      .attendance {
-        background-color: $my-gray;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        margin-left: 15px;
-      }
-      .absent {
-        background-color: $my-gray;
-      }
-      .present {
-        background-color: $my-green;
+      &:last-child {
+        border-bottom: none;
       }
     }
   }
+  .attendance-content {
+    width: 100%;
+    overflow-x:scroll;
+    overflow-y:visible;
+
+    .attendance-row {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E8E8E8;
+      padding-left: 15px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .attendance-session {
+        display: flex;
+
+        .attendance {
+          background-color: #D0D5DF !important;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          margin-left: 15px;
+          overflow: auto;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+        }
+
+        .absent {
+          background-color: $my-gray;
+        }
+
+        .present {
+          background-color: $my-green;
+        }
+      }
+    }
+  }
+// }
+
+//     .attendance-student {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       flex: 0 0 150px;
+//       padding: 10px 15px;
+
+//       .attendance-header-text {
+//         font-size: 13px;
+//       }
+
+//     }
+
+
+// .attendance-sessions {
+//   display: flex;
+//   // padding-left: 170px;
+
+//   .session-header {
+//     height: 150px;
+//     width: 30px;
+//     font-size: 12px;
+//     font-family: $gotham-medium;
+//     font-weight: 400;
+//     // color: $my-gray;
+
+//     p {
+//       width:200px; /* same as height of .session-header */
+//       display:inline-block;
+//       -webkit-transform-origin: 174px -37px;
+//       -ms-transform-origin: 174px -37px;
+//       -o-transform-origin: 174px -37px;
+//       transform-origin: 174px -37px;
+
+//       -webkit-transform:rotate(-75deg);
+//       -ms-transform: rotate(-75deg);
+//       -o-transform: rotate(-75deg);
+//       transform: rotate(-75deg);
+//     }
+  // }
 }
