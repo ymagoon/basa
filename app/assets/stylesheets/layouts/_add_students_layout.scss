@@ -24,14 +24,16 @@
 
 .searchTerm {
   float: left;
-  width: 100%;
-  border: 3px solid $my-blue;
-  // padding: 5px;
-  height: 20px;
-  // border-radius: 5px;
   outline: none;
   color: #9DBFAF;
   background-color: white;
+  height: 34px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 
 .searchTerm:focus{
@@ -64,21 +66,24 @@
 .students-select-box {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   height: 600px;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.4);
   border: solid 1px rgb(240, 240, 240);
   padding: 10px;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 .student-roster {
+  // margin-top: 50px;
   border-radius: 3px;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  // box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .capacity {
-  background-color: #E5E5E5;
+  // background-color: #E5E5E5;
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
