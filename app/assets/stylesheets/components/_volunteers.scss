@@ -1,6 +1,6 @@
 .volunteer-list {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   flex-wrap: wrap;
 
   .volunteer {
@@ -14,10 +14,6 @@
     box-shadow: 1px 3px 3px $my-gray;
     margin: 5px;
     padding: 3px 0;
-
-    &:first-child {
-      margin-left: 0;
-    }
 
     &:last-child {
       margin-right: 0;
