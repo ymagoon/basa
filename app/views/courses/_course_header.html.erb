@@ -1,35 +1,42 @@
 <div class="course-header border-bottom">
-  <div class="course-title">
-    <h1><%= course.name %></h1>
-    <h2> <%= @course.subject.name %> </h2>
-    <h3> <%= @course.start_date.strftime('%a %d %b') %> - <%= @course.end_date.strftime('%a %d %b') %> | <%= @course.address.venue_name %> </h3>
-  </div>
-  <div class="number-of-students">
-    <p><%= @course.number_of_students %> (<%= @course.max_capacity %>)</p>
-  </div>
 
-  <div class="course-status">
-    <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
-      <%= course.pending? ? 'Pending' : 'Confirmed' %>
-    </p>
+  <div class="card-content">
+    <div class="course-info">
+      <!-- course header -->
+      <div class="course-list-header">
+        <h1><%= course.name %></h1>
+      </div>
+      <div class="capital-gray">
+        <h2 class="no-margin-bottom"><%= course.subject.name.upcase %></h2>
+      </div>
+      <p class="no-margin-bottom"> <%= @course.start_date.strftime('%a %d %b') %> - <%= @course.end_date.strftime('%a %d %b') %>, <%= @course.start_date.strftime('%l:%M %p') %> - <%= @course.end_date.strftime('%l:%M %p') %></p>
+    </div>
   </div>
+    <div class='location-box-course-header'>
+      <h5> <i class="fas fa-map-marker-alt" style="padding-right: 8px;"> </i><%= course.address.venue_name.upcase %> </h5>
+    </div>
+
+
+
+  <!-- //  COURSE SPECIFIC NAV ICONS // -->
+
   <div class="course-nav-bar">
-  <div class="course-nav-icon course-icon">
-    <%= link_to course_path(@course) do %>
-    <%= render :partial => 'shared/courses.svg' %>
-    <% end %>
+    <div class="course-nav-icon course-icon">
+      <%= link_to course_path(@course) do %>
+      <%= render :partial => 'shared/courses.svg' %>
+      <% end %>
+    </div>
+    <div class="course-nav-icon teacher-icon">
+      <%= link_to new_course_volunteer_roster_path(@course) do %>
+      <%= render :partial => 'shared/teacher.svg' %>
+      <% end %>
+    </div>
+    <div class="course-nav-icon student-icon">
+      <%= link_to course_student_rosters_path(@course) do %>
+      <%= render :partial => 'shared/student.svg' %>
+      <% end %>
+    </div>
   </div>
-  <div class="course-nav-icon teacher-icon">
-    <%= link_to new_course_volunteer_roster_path(@course) do %>
-    <%= render :partial => 'shared/teacher.svg' %>
-    <% end %>
-  </div>
-  <div class="course-nav-icon student-icon">
-    <%= link_to course_student_rosters_path(@course) do %>
-    <%= render :partial => 'shared/student.svg' %>
-    <% end %>
-  </div>
-</div>
 </div>
 
 
