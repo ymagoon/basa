@@ -4,16 +4,13 @@ class DashboardController < ApplicationController
     @courses = @active_courses
     @no_teacher = Course.no_teacher
     @below_cap = Course.courses_below_min_cap
-    @c_vols = Proficiency.teachers_by_subject("C#")
-    @ruby_vols = Proficiency.teachers_by_subject("Ruby on Rails")
-    @scratch_vols = Proficiency.teachers_by_subject("Scratch")
-    @python_vols = Proficiency.teachers_by_subject("Python")
-    @php_vols = Proficiency.teachers_by_subject("PHP")
-    @mobile_app_vols = Proficiency.teachers_by_subject("Mobile App Development")
+
     @unassigned_vols = Proficiency.teachers_by_subject(nil)
+
     @absent_students = Student.absent_student
     @course_attendance = Course.lowest_attendance
     @students_attendance = Student.lowest_attendance
+    @subjects = Subject.all
   end
 
   def volunteers
@@ -26,16 +23,6 @@ class DashboardController < ApplicationController
   end
 
   private
-
-  def list_teachers
-    proficiencies = Proficiency.teachers_by_subject(@course.subject.name)
-    @teachers = proficiencies.map { |proficiency| proficiency.user }
-  end
-
-  def list_assistants
-    proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
-    @assistants = proficiencies.map { |proficiency| proficiency.user }
-  end
 
   # Courses
   def total_number_of_courses
