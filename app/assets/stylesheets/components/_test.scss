@@ -1,0 +1,17 @@
+.totals-container {
+  height: 200px;
+  width: 200px;
+
+  .total-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .total-title {
+      font-size: 30px;
+    }
+    .total-content {
+      font-size: 45px;
+    }
+  }
+}
