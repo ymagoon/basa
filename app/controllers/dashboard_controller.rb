@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
     @no_teacher = Course.no_teacher
     @below_cap = Course.courses_below_min_cap
 
-    @unassigned_vols = Proficiency.teachers_by_subject(nil)
+    @unassigned_vols = User.unassigned_vols
 
     @absent_students = Student.absent_student
     @course_attendance = Course.lowest_attendance

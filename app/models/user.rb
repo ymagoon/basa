@@ -51,6 +51,12 @@ class User < ApplicationRecord
     # show # of volunteers that have never been assigned to a course
   end
 
+  def self.unassigned_vols
+    user_ids = Proficiency.all.map { |p| p.user_id }
+    self.all.reject { |ids| User.ids.include? user_ids }
+  end
+
+
   private
 
   def set_default_role
