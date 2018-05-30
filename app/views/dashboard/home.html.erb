@@ -73,10 +73,10 @@
               <%= render 'shared/course_list', courses: @course_attendance %>
             </div>
             <div class="tab-pane fade" id="sub32">
-              <p>Tab 3.2</p>
+              <%= render 'attendance', students: @students_attendance %>
             </div>
             <div class="tab-pane fade" id="sub33">
-              <%= render 'attendance' %>
+              <%= render 'attendance', students: @absent_students %>
             </div>
           </div>
         </div>

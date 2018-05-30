@@ -1,6 +1,6 @@
-<div class="container">\
+<div class="container">
   <div class="col-xs-2 students">
-    <% @absent_students.each do |student| %>
+    <% students.each do |student| %>
     <div class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
       <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
