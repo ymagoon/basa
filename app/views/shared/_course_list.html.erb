@@ -17,7 +17,7 @@
           <div class="volunteers">
             <!-- teachers -->
             <div class="volunteer-section">
-              <div class="av teacher-av"><p>T</p></div>
+              <div class="av teacher-av"><p class="no-margin-bottom">T</p></div>
               <% unless course.teacher.blank? %>
                 <p class="v-name no-margin-bottom"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
               <% else %>
@@ -27,7 +27,7 @@
             <!-- assistants -->
             <div class="volunteer-section">
               <div class="av assistant-av tool-tip-inner" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= course.assistants.sort_by { |a| a.first_name }.map { |assistant| "#{assistant.first_name} #{assistant.last_name}" }.join("\n") %>">
-                <p>A</p>
+                <p class="no-margin-bottom">A</p>
               </div>
               <% unless course.assistants.empty? %>
                 <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
@@ -37,7 +37,7 @@
             </div>
             <!-- students -->
             <div class="volunteer-section">
-              <div class="av student-av"><p>S</p></div>
+              <div class="av student-av"><p class="no-margin-bottom">S</p></div>
               <% unless course.students.empty? %>
                 <p class="v-name no-margin-bottom">( <%= course.students.size %> / <%= course.max_capacity %> )</p>
               <% else %>
