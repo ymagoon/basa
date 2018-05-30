@@ -4,83 +4,89 @@
 
   <%= render 'courses/course_header', course: @course %>
 
-  <div class="container">
+  <div class="vol-roster-container">
 
-    <div class="vol-roster-container">
+    <div class="volunteer-lookup">
+      <h3>1. Check Availability</h3>
+      <br>
+      <%= simple_form_for(@course, url: new_course_volunteer_roster_path(@course), method: :get) do |f| %>
+      <div class="form-inline">
+        <%= select_tag :volunteer, options_for_select(@volunteers.collect{ |u| [u.full_name, u.id] }), prompt: "Select volunteer", class: "form-control" %>
+        <%= f.button :submit, "Check Schedule", class: "btn btn-primary brand-primary" %>
+      </div>
+      <% end %>
 
-      <div class="volunteer-lookup">
-        <h2>1. Check Availability</h2>
-        <br>
-        <%= simple_form_for(@course, url: new_course_volunteer_roster_path(@course), method: :get) do |f| %>
-        <div class="form-inline">
-          <%= select_tag :volunteer, options_for_select(@volunteers.collect{ |u| [u.full_name, u.id] }), prompt: "Select volunteer", class: "form-control" %>
-          <%= f.button :submit, "Check Schedule", class: "btn btn-primary brand-primary" %>
+      <%  if @vol_courses.nil? %>
+      <h3> Select a volunteer to see which courses they're already assigned to</p>
+        <% elsif @vol_courses.empty? %>
+        <h3> The volunteer is not yet assigned to any courses </h3>
+        <% else %>
+        <h3> <%= @vol_courses.first.user.full_name %> is already assigned to: </h3>
+        <!-- <ul> -->
+          <% @vol_courses.each do |roster| %>
+          <p> <%= roster.course.name %> (<%= roster.course.start_date.strftime('%a %d %b') %> - <%= roster.course.end_date.strftime('%a %d %b') %>) </p>
+          <% end %>
+          <!-- </ul> -->
+          <% end %>
         </div>
-        <% end %>
 
-        <%  if @vol_courses.nil? %>
-        <h3> Select a volunteer to see which courses they're already assigned to</p>
-          <% elsif @vol_courses.empty? %>
-          <h3> The volunteer is not yet assigned to any courses </h3>
-          <% else %>
-          <h3> <%= @vol_courses.first.user.full_name %> is already assigned to: </h3>
-          <!-- <ul> -->
-            <% @vol_courses.each do |roster| %>
-            <p> <%= roster.course.name %> (<%= roster.course.start_date.strftime('%a %d %b') %> - <%= roster.course.end_date.strftime('%a %d %b') %>) </p>
-            <% end %>
-            <!-- </ul> -->
-            <% end %>
+        <div class="display-roster">
+          <h3>2. Assign Volunteers</h3>
+          <hr>
+          <div class="assign-forms-both">
+            <div class="assign-form">
+              <%= simple_form_for([@course, @roster]) do |f| %>
+              <div class="form-inline">
+                <%= f.input :user_id, collection: @teachers, label_method: :full_name, label: false, placeholder: "Teacher" %>
+                <%= f.input :role, input_html: { value: "teacher" }, as: :hidden %>
+                <%= f.button :submit, "Add Teacher", class: "btn btn-primary brand-primary" %>
+              </div>
+              <% end %>
+            </div>
+              <div class="assign-form">
+              <%= simple_form_for([@course, @roster]) do |f| %>
+              <div class="form-inline">
+                <%= f.input :user_id, collection: @assistants, label_method: :full_name, label: false, placeholder: "Assistant" %>
+                <%= f.input :role, input_html: { value: "assistant" }, as: :hidden %>
+                <%= f.button :submit, "Add Assistant", class: "btn btn-success brand-success" %>
+              </div>
+              <% end %>
+            </div>
           </div>
 
-          <div class="assign-form">
-            <h2>2. Assign Volunteers</h2>
-            <br>
-            <%= simple_form_for([@course, @roster]) do |f| %>
-            <div class="form-inline">
-              <%= f.input :user_id, collection: @teachers, label_method: :full_name, label: false, placeholder: "Teacher" %>
-              <%= f.input :role, input_html: { value: "teacher" }, as: :hidden %>
-              <%= f.button :submit, "Add Teacher", class: "btn btn-primary brand-primary" %>
-            </div>
-            <% end %>
-            <br>
-
-            <%= simple_form_for([@course, @roster]) do |f| %>
-            <div class="form-inline">
-              <%= f.input :user_id, collection: @assistants, label_method: :full_name, label: false, placeholder: "Assistant" %>
-              <%= f.input :role, input_html: { value: "assistant" }, as: :hidden %>
-              <%= f.button :submit, "Add Assistant", class: "btn btn-primary brand-primary" %>
-            </div>
-            <% end %>
-            <br>
-          </div>
-
-          <div class="display-roster">
-            <h2>3. Assigned Volunteers </h2>
-            <br>
-            <h3>Teachers</h3>
-
-
-            <% @course.volunteer_rosters.each do |roster| %>
+          <hr>
+          <div>
+          <h3>Teachers</h3>
+          <% @course.volunteer_rosters.each do |roster| %>
+          <div class="volunteer-list">
             <% if roster.role == "teacher" %>
             <div class="volunteer teacher">
               <div class="volunteer-name">
-                <p class="no-margin-bottom"><%= roster.user.full_name %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></p>
+                <p class="no-margin-bottom"><%= roster.user.full_name %></p>
               </div>
-              <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{roster.user.phone}\n#{roster.user.email}" %>"></i>
-              <% end %>
-               </div>
-              <% end %>
-
+              <div>
+               <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %>
+               <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{roster.user.phone}\n#{roster.user.email}" %>"></i></div>
+               <% end %>
+             </div>
+             <% end %>
+           </div>
           </div>
-
-
-          <h3>Assistants</h3>
-          <% @course.volunteer_rosters.each do |roster| %>
-          <% if roster.role == "assistant" %>
-          <p> <%= roster.user.full_name  %> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %></p>
-          <% end %>
-          <% end %>
+          <div>
+           <h3>Assistants</h3>
+           <% @course.volunteer_rosters.each do |roster| %>
+           <div class="volunteer-list">
+            <% if roster.role == "assistant" %>
+            <div class="volunteer assistant">
+              <div class="volunteer-name">
+                <p class="no-margin-bottom"> <%= roster.user.full_name  %> </p>
+              </div>
+              <div class='text-right'> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %> <i class="far fa-trash-alt"></i> <% end %> <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{roster.user.phone}\n#{roster.user.email}" %>"></i> </div>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
