@@ -1,5 +1,13 @@
-<% unless volunteers.empty? %>
+
+<div class="row">
   <% volunteers.each do |volunteer| %>
-  <%= volunteer.full_name %>
+  <div class="volunteer-card dash col-xs-6 col-sm-4">
+    <h4 class="text-center"> <%= volunteer.full_name %> </h4>
+    <div class="user-info text-center">
+      <p> User: <%= volunteer.username %> | <%= volunteer.email %> </p>
+      <p><%= volunteer.phone %> </p>
+    </div>
+  </div>
   <% end %>
-<% end %>
+</div>
+

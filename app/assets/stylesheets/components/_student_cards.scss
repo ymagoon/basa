@@ -1,11 +1,3 @@
-.students {
-  display: flex;
-  flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
-  overflow: auto;
-}
-
 .student_card {
   display: grid;
   grid-template-columns: 40% 1fr 1fr 1fr;
@@ -56,11 +48,16 @@
   border-left: solid 4px $my-blue;
   }
 
-.student-list {
-  display: flex;
-  justify-content: space-around;
-}
+// .student-list {
+//   display: flex;
+//   justify-content: space-around;
+// }
 
 .jsdragdrop {
   height: 700px;
+}
+
+.student-index {
+  display: flex;
+  flex-wrap: wrap;
 }
