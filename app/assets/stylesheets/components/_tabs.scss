@@ -15,17 +15,6 @@ body {
   background: #fff;
 }
 
-h1 {
-  padding: 50px 0;
-  font-weight: 400;
-  text-align: center;
-}
-
-p {
-  margin: 0 0 0px;
-  line-height: 1.5;
-}
-
 li:active > a {
   color: $my-blue;
 }
@@ -59,42 +48,11 @@ main {
   background: #fff;
 }
 
-section {
-  display: none;
-  padding: 20px 0 0;
-  border-top: 1px solid #ddd;
-  border: 1px solid $my-light-gray;
-  box-shadow: 1px 1px 1px $my-light-gray;
-
-}
-
-body {
-  background-color: #F3F3F3;
-}
-
 input {
   display: none;
 }
 
-label {
-  display: inline-block;
-  margin: 0 0 -1px;
-  padding: 15px 25px;
-  text-align: center;
-  color: #bbb;
-  border: 1px solid transparent;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  font-weight: 200;
-}
-
-
-label:hover {
-  color: #888;
-  cursor: pointer;
-}
-
-label:hover > svg {
+tab:hover > svg {
   fill: #888;;
 }
 
@@ -106,12 +64,6 @@ input:checked + label  {
   border-radius: 4px;
 }
 
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3,
-#tab4:checked ~ #content4 {
-  display: block;
-}
 
 @media screen and (max-width: 650px) {
   label {
@@ -132,7 +84,7 @@ input:checked + label > svg {
   fill: $my-blue;
 }
 
-.tab:active {
+.active:active {
   svg {
     fill: $my-blue;
   }
@@ -141,7 +93,8 @@ input:checked + label > svg {
 .tab {
   svg {
   fill: #bbb;
-  width: 20px;
+  width: 15px;
+  margin-right: 5px;
   }
 }
 

@@ -1,5 +1,6 @@
 .volunteer-list {
   display: flex;
+  // flex-direction: column;
   flex-wrap: wrap;
 
   .volunteer {
@@ -13,10 +14,6 @@
     box-shadow: 1px 3px 3px $my-gray;
     margin: 5px;
     padding: 3px 0;
-
-    &:first-child {
-      margin-left: 0;
-    }
 
     &:last-child {
       margin-right: 0;
@@ -50,7 +47,30 @@
   border: 1px solid $my-light-gray;
   box-shadow: 1px 1px 0 0 $my-light-gray;
   background: white;
+  margin: 5px;
+  height: 250px;
+  width: 300px;
+  flex-basis: content;
+  p {
+    font-size: 10px;
+  }
+  h4 {
+    text-transform: uppercase;
+  }
+  .proficiency {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .volunteer-button {
+    position: absolute;
+    bottom: 5px;
+    right: 90px;
+  }
 }
+
+.dash {
+    height: 120px !important;
+  }
 
 .assistant {
   border-left: 5px solid $my-green !important;

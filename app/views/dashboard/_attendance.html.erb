@@ -1,50 +1,11 @@
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Courses (Lowest-Highest)</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="teacher" role="tab" data-toggle="tab">Students (Lowest-Highest)</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Absent Students</a></li>
-  </ul>
+<div class="container">\
+  <div class="col-xs-2 students">
+    <% @absent_students.each do |student| %>
+    <div class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
+      <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
-      <%= render 'shared/course_list', courses: @courses %>
+      <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
     </div>
-    <div role="tabpanel" class="tab-pane" id="teacher">
-
-    </div>
-    <div role="tabpanel" class="tab-pane" id="messages">
-      <div class="col-xs-2 students">
-        <% @absent_students.each do |student| %>
-        <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
-          <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
-
-          <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
-        </div>
-        <% end %>
-    </div>
+    <% end %>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<button class="accordion">Courses with Lowest Attendance </button>
-<div class="panel">
-<%= render 'shared/course_list', courses: @courses %>
 </div>
-
-<button class="accordion">Students with Lowest Attendance </button>
-<div class="panel">
-
-</div>
-
-
-
-
-

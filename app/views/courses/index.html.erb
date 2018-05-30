@@ -1,14 +1,17 @@
 <% title 'Courses' %>
 <div class="course-information">
   <div class="container">
+    <%= render 'courses/course_header', course: @course %>
+
     <h1 class="text-center">List of all courses</h1>
   </div>
 </div>
 <div class="wrapper">
   <div class="better-container">
     <div class="main-page">
-      <%= render 'filters' %>
+      <%= render 'filters', total_course_count: @total_course_count %>
       <div class="course-content">
+        <%= render 'course_list_header', course_count: @course_count %>
         <%= render 'shared/course_list', courses: @courses %>
       </div>
     </div>
