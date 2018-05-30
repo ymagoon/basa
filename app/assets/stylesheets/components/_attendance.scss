@@ -38,9 +38,9 @@
         }
       }
 
-      &:last-child {
-        border-bottom: none;
-      }
+      // &:last-child {
+      //   border-bottom: none;
+      // }
     }
   }
   .attendance-content {
@@ -50,6 +50,7 @@
 
     .attendance-row {
       height: 34px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
