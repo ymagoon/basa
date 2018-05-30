@@ -1,39 +1,39 @@
 <div class="container">
 
-<!-- MOVE INTO COURSE_HEADER PARTIAL -->
-<div class="row">
-  <div class="col-xs-12 course_header">
-    <h1> Course Name and main details</h1>
-  </div>
-</div>
-<!-- MOVE INTO COURSE_HEADER PARTIAL -->
+  <!-- COURSE_HEADER PARTIAL -->
+  <%= render 'courses/course_header', course: @course %>
+
+  <!-- SEARCH BAR -->
   <div class="row">
-    <div class="col-xs-6 search_students">
-      <p>search bar here</p>
+    <div class="col-xs-6">
+
+      <div class="search_students_wrap">
+        <form>
+         <div class="search-box">
+          <input type="text" class="searchTerm" placeholder="Find a Student">
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
     </div>
 
-    <div class="col-xs-6 course-nav">
-      <p>icons to navigate here</p>
+    <div class="students-select-box">
+      <%= render 'create', students: @students, course: @course %>
     </div>
+
   </div>
 
-<div class="row">
-    <div class="col-xs-6 border">
-        <p> render student index </p>
+  <div class="col-xs-6">
+    <div class="student-roster">
+      <div class="capacity">
+        <p>Course Capacity:   Min (<strong><%= @course.min_capacity %></strong>) | Max (<strong><%= @course.max_capacity %></strong>)</p>
+      </div>
+      <p> <%= render 'student_index', students: @students, course: @course %> </p>
     </div>
 
-    <div class="col-xs-6 border">
-      <p> Max Students, Min Students, total students </p>
-    </div>
-</div>
-<!--     <div class="col-xs-6 col-xs-offset-6 assigned-students">
-      <p> assigned-students drag drop box </p>
-    </div>
- -->
+  </div>
 </div>
 
-
-
-
-<%= render 'student_index', students: @students, course: @course %>
-
+<div ID="flashes"></div>
+</div>
