@@ -48,24 +48,11 @@ main {
   background: #fff;
 }
 
-section {
-  display: none;
-  padding: 20px 0 0;
-  border-top: 1px solid #ddd;
-  border: 1px solid $my-light-gray;
-  box-shadow: 1px 1px 1px $my-light-gray;
-
-}
-
-body {
-  background-color: #F3F3F3;
-}
-
 input {
   display: none;
 }
 
-label:hover > svg {
+tab:hover > svg {
   fill: #888;;
 }
 
@@ -77,12 +64,6 @@ input:checked + label  {
   border-radius: 4px;
 }
 
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3,
-#tab4:checked ~ #content4 {
-  display: block;
-}
 
 @media screen and (max-width: 650px) {
   label {
@@ -103,7 +84,7 @@ input:checked + label > svg {
   fill: $my-blue;
 }
 
-.tab:active {
+.active:active {
   svg {
     fill: $my-blue;
   }

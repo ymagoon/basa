@@ -1,101 +1,63 @@
 <% title 'Home' %>
-<!-- <main>
- <input id="tab1" type="radio" name="tabs" checked>
-  <label class="tab" for="tab1"></label>
-
-  <input id="tab3" type="radio" name="tabs">
-  <label class="tab" for="tab3"></label>
-
-  <input id="tab4" type="radio" name="tabs">
-  <label class="tab" for="tab4"></label> -->
-
-
-  <!--    courses section  -->
-<!--   <section id="content1">
-
-</section> -->
-
-<!--       Volunteers section  -->
-
-<!--  <section id="content3"> -->
-  <%#= render 'volunteers' %>
-<!--   </section>
--->
-
-<!--     Attendance section   -->
-
-<!--   <section id="content4"> -->
-  <%#= render 'attendance' %>
- <!--  </section>
- -->
- <!-- </main> -->
- <!-- <div style="width:4px">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
- <div class="container">
-  <div class="tabbable boxed parentTabs">
-    <ul class="nav nav-tabs">
-      <li class="active tab"><a href="#set1"><%= render :partial => 'shared/courses.svg' %>Courses</a>
-      </li>
-      <li class="tab"><a href="#set2"><%= render :partial => 'shared/teacher.svg' %>Volunteers</a>
-      </li>
-      <li class="tab"><a href="#set3"><%= render :partial => 'shared/calendar.svg' %>Attendance</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane fade active in" id="set1">
-        <div class="tabbable">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#sub11">Active (<%= @courses.count %>)</a>
-            </li>
-            <li><a href="#sub12">Without Teachers (<%= @no_teacher.count %>)</a>
-            </li>
-            <li><a href="#sub13">Below Capacity  (<%= @below_cap.count %>)</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade active in" id="sub11">
-              <%= render 'shared/course_list', courses: @courses %>
-            </div>
-            <div class="tab-pane fade" id="sub12">
-              <%= render 'shared/course_list', courses: @no_teacher %>
-            </div>
-            <div class="tab-pane fade" id="sub13">
-              <%= render 'shared/course_list', courses: @below_cap %>
+<main>
+  <div class="container">
+    <div class="tabbable boxed parentTabs">
+      <ul class="nav nav-tabs">
+        <li class="active tab"><a href="#set1"><%= render :partial => 'shared/courses.svg' %>Courses</a>
+        </li>
+        <li class="tab"><a href="#set2"><%= render :partial => 'shared/teacher.svg' %>Volunteers</a>
+        </li>
+        <li class="tab"><a href="#set3"><%= render :partial => 'shared/calendar.svg' %>Attendance</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="set1">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#sub11">Active (<%= @courses.count %>)</a>
+              </li>
+              <li><a href="#sub12">Without Teachers (<%= @no_teacher.count %>)</a>
+              </li>
+              <li><a href="#sub13">Below Capacity  (<%= @below_cap.count %>)</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade active in" id="sub11">
+                <%= render 'shared/course_list', courses: @courses %>
+              </div>
+              <div class="tab-pane fade" id="sub12">
+                <%= render 'shared/course_list', courses: @no_teacher %>
+              </div>
+              <div class="tab-pane fade" id="sub13">
+                <%= render 'shared/course_list', courses: @below_cap %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-      <div class="tab-pane fade" id="set2">
-        <div class="tabbable">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#21">Unassigned</a>
-            </li>
-            <% @subjects.each do |subject| %>
-            <li>
-              <a href="#sub2-<%=subject.id%>"><%= subject.name %>
-              </a>
-            </li>
-            <% end %>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade active in" id="21">
-             <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
-            </div>
-            <% @subjects.each do |subject| %>
-            <div class="tab-pane fade" id="sub2-<%=subject.id%>">
+        <div class="tab-pane fade" id="set2">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#21">Unassigned</a>
+              </li>
+              <% @subjects.each do |subject| %>
+              <li>
+                <a href="#sub2-<%=subject.id%>"><%= subject.name %>
+                </a>
+              </li>
+              <% end %>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade active in" id="21">
+               <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
+             </div>
+             <% @subjects.each do |subject| %>
+             <div class="tab-pane fade" id="sub2-<%=subject.id%>">
               <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
             </div>
             <% end %>
           </div>
         </div>
       </div>
-
-
-
-
       <div class="tab-pane fade" id="set3">
         <div class="tabbable">
           <ul class="nav nav-tabs">
@@ -121,5 +83,4 @@
       </div>
     </div>
   </div>
-
-
+</main>
