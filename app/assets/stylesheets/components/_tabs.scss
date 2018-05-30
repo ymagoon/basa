@@ -15,12 +15,6 @@ body {
   background: #fff;
 }
 
-h1 {
-  padding: 50px 0;
-  font-weight: 400;
-  text-align: center;
-}
-
 li:active > a {
   color: $my-blue;
 }
@@ -69,24 +63,6 @@ body {
 
 input {
   display: none;
-}
-
-label {
-  display: inline-block;
-  margin: 0 0 -1px;
-  padding: 15px 25px;
-  text-align: center;
-  color: #bbb;
-  border: 1px solid transparent;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  font-weight: 200;
-}
-
-
-label:hover {
-  color: #888;
-
 }
 
 label:hover > svg {

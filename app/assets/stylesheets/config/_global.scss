@@ -69,7 +69,8 @@ label, input {
 
 .capital-gray {
   font-size: 10px;
+  font-weight: 400;
   color: $my-gray;
-  font-family: $gotham-bold;
+  font-family: $gotham-bold !important;
 }
 
