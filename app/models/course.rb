@@ -35,10 +35,10 @@ class Course < ApplicationRecord
   # lists each venue (as a hash) with how many other courses have that same address
 
   # might not work because might take all venues for ALL courses instead of the already filtered on courses
-  scope :venue_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
+  scope :venue_list, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
 
   # Course subject filters
-  scope :subject_count, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.subject.name] += 1 } }
+  scope :subject_list, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.subject.name] += 1 } }
   scope :subjects, ->(subjects) { where('subjects.name': subjects).joins(:subject) }
 
   # Course status filters

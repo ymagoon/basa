@@ -5,7 +5,7 @@ class Session < ApplicationRecord
   validates :date, presence: true
 
   def date_formatted
-    self.date.strftime('%A, %b %d')
+    self.date.strftime('%a, %b %d')
   end
 
   scope :past, -> { where("? > end_date", DateTime.now)}

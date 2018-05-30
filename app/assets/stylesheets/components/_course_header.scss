@@ -1,28 +1,119 @@
-.course-header {
+// .course-header {
+//   width: 100%;
+//   height: 150px;
+//   border: solid 1px gray;
+// }
+
+
+// ----------- COURSE SPECIFIC NAV ICONS ----------- //
+
+.course-nav-bar {
+  width: 100%;
+  background-color: #E5E5E5;
   display: flex;
-  padding: 30px 0;
+  justify-content: flex-end;
   align-items: center;
+  position: absolute;
+  bottom: 0px;
+  box-shadow: inset 0 0px 1px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  // height: 45px;
+}
 
-  .course-title {
-    h1, ul, ol {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
+.course-nav-icon svg {
+  width: 40px;
+  color: white;
+  border-radius: 25%;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
 
+.teacher-icon svg {
+  fill: $my-blue;
+  &:hover {
+  background-color: $my-blue;
+  fill: white;
   }
 }
 
-.add-user, .add-volunteer {
-  display: flex;
-  align-items: center;
-  border-radius: 3px;
-  padding: 2px 3px;
-  margin-left: 10px;
-  border: 1px solid $my-gray;
-
-  .icon > a {
-    color: white;
-    height: 100%;
+.student-icon svg {
+    fill: $my-green;
+    &:hover {
     background-color: $my-green;
+    fill: white;
   }
 }
+
+.course-icon svg {
+  fill: $my-gray;
+    &:hover {
+    background-color: $my-gray;
+    fill: white;
+  }
+}
+
+//
+
+.course-header {
+  // display: flex;
+  padding-bottom: 50px;
+  // align-items: center;
+  position: relative;
+  background-color: white;
+  height: auto;
+  margin-bottom: 20px;
+    h1, h2, h3, h4, h5, h6, p {
+      text-align: left;
+      padding: 10px;
+      margin: 0px;
+    }
+    h1 {
+      // color: $my-gray;
+      padding-bottom: 0px;
+    }
+    h2 {
+      color: $my-blue;
+    }
+  display: flex;
+  justify-content: space-between;
+}
+
+.course-header-info {
+  padding: 0px 20px 0px 20px;
+}
+
+.location-box-course-header {
+  padding: 2px 0 2px 5px;
+  width: auto;
+  background-color: $my-gray;
+  color: white;
+  height: 30px;
+  margin-top: 20px;
+  display: flex;
+  flex: no-wrap;
+  align-items: center;
+}
+//   .course-title {
+//     h1, ul, ol {
+//       margin: 0 !important;
+//       padding: 0 !important;
+//     }
+
+//   }
+// }
+
+// .add-user, .add-volunteer {
+//   display: flex;
+//   align-items: center;
+//   border-radius: 3px;
+//   padding: 2px 3px;
+//   margin-left: 10px;
+//   border: 1px solid $my-gray;
+
+//   .icon > a {
+//     color: white;
+//     height: 100%;
+//     background-color: $my-green;
+//   }
+// }

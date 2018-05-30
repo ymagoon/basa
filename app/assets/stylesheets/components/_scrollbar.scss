@@ -1,0 +1,12 @@
+.attendance-content::-webkit-scrollbar {
+    height: 6px;
+}
+
+.attendance-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.attendance-content::-webkit-scrollbar-thumb {
+  background-color: $my-blue;
+  outline: 1px solid $my-gray;
+}
