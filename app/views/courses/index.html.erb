@@ -7,15 +7,9 @@
 <div class="wrapper">
   <div class="better-container">
     <div class="main-page">
-      <%= render 'filters' %>
+      <%= render 'filters', total_course_count: @total_course_count %>
       <div class="course-content">
-        <div class="course-content-head">
-          <h2 id="results"><%= (@courses.count) %> <%= "Result".pluralize(@courses.count) %> Found</h2>
-          <div class="left-header">
-            <i class="fas fa-plus" data-toggle="modal" data-target="#courses"></i>
-            <%= render 'shared/dropdown' %>
-          </div>
-        </div>
+        <%= render 'course_list_header', course_count: @course_count %>
         <%= render 'shared/course_list', courses: @courses %>
       </div>
     </div>

@@ -5,9 +5,11 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    @total_course_count = @courses.size
+
     @course = Course.new
     @filter_subjects = Subject.all
-    @filter_addresses = Address.venue_ids
+    @filter_addresses = Address.venue_ids # fix drop down
     # Filter by location
     @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
@@ -31,10 +33,10 @@ class CoursesController < ApplicationController
     # @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
     # @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
 
-    # All course variables
+    # Course variables
     @course_count = @courses.size
-    @subjects = @courses.subject_count
-    @venues = @courses.venue_count
+    @subjects = @courses.subject_list
+    @venues = @courses.venue_list
 
     respond_to do |format|
       format.html
@@ -51,11 +53,6 @@ class CoursesController < ApplicationController
     @courses = Course.where(status: ['pending', 'confirmed']).select { |c| c.start_date >= DateTime.now || c.end_date <= DateTime.now }
     @teacher = @course.teacher
     @assistants = @course.assistants
-
-    # respond_to do |format|
-    #   format.html # show.html.erb
-    #   format.js # show.js.erb
-    # end
   end
 
   def new
