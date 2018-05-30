@@ -1,24 +1,11 @@
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="course-attendance" role="tab" data-toggle="tab">Courses(Low-High)</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="student-attendance" role="tab" data-toggle="tab">Students (Low-High)</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="absent-students" role="tab" data-toggle="tab">Absent Students</a></li>
-  </ul>
+<div class="container">\
+  <div class="col-xs-2 students">
+    <% @absent_students.each do |student| %>
+    <div class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
+      <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="course-attendance">
-      <%= render 'shared/course_list', courses: @course_attendance %>
+      <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
     </div>
-    <div role="tabpanel" class="tab-pane" id="student-attendance">
-      <%#= render 'shared/' %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="absent-students">
-      <div class="col-xs-2 students">
-        <% @absent_students.each do |student| %>
-        <div draggable="true" class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
-          <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
-
-          <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
-        </div>
-        <% end %>
-    </div>
+    <% end %>
   </div>
+</div>
