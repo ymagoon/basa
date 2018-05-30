@@ -1,33 +1,56 @@
 <% title 'Volunteers' %>
-<h1>Volunteers</h1>
-
-<% @volunteers.each do |volunteer| %>
-<div class="volunteer-card col-xs-4">
-  <h2 class="text-center"> <%= volunteer.first_name %> <%= volunteer.last_name %> </h2>
-  <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
-
-  <h3>Proficiencies:</h3>
-  <h5>Teacher</h5>
-  <ul>
-  <% volunteer.proficiencies.each do |proficiency| %>
-    <% if proficiency.role == "teacher" %>
-      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-primary brand-primary" do %><i class="far fa-trash-alt"></i> <% end %></li>
+<div class="container">
+    <h2 class="text-center">Volunteers</h2>
+    <% @volunteers.each do |volunteer| %>
+    <div class="volunteer-card col-xs-6 col-sm-4">
+      <h4 class="text-center"> <%= volunteer.first_name %> <%= volunteer.last_name %> </h4>
+      <div class="user-info text-center">
+        <p> User: <%= volunteer.username %> | <%= volunteer.email %> </p>
+        <p><%= volunteer.phone %> </p>
+      </div>
+      <% unless volunteer.proficiencies.empty? %>
+        <div class="proficiency">
+          <p class="av teacher-av">T</p>
+          <% volunteer.proficiencies.each do |proficiency| %>
+            <% if proficiency.role == "teacher" %>
+              <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sureyou wish to delete this proficiency?"} do %><p>  <%= proficiency.subject.name %><% end %> | </p>
+              <% end %>
+            <% end %>
+         </div>
       <% end %>
-    <% end %>
-  </ul>
-
-  <h5>Assistant</<h5></h5>
-  <ul>
-  <% volunteer.proficiencies.each do |proficiency| %>
-    <% if proficiency.role == "assistant" %>
-      <li><%= proficiency.subject.name %> <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-primary brand-primary" do %><i class="far fa-trash-alt"></i> <% end %></li>
+      <% unless volunteer.proficiencies.empty? %>
+        <div class="proficiency">
+          <p class="av assistant-av">A</p>
+          <% volunteer.proficiencies.each do |proficiency| %>
+            <% if proficiency.role == "assistant" %><p>
+              <%= link_to proficiency_path(proficiency), method: :delete, data: { confirm: "Are you sure you wish to delete this proficiency?"} do %> <%= proficiency.subject.name %><% end %> | </p>
+              <% end %>
+            <% end %>
+        </div>
       <% end %>
-    <% end %>
-  </ul>
+      <button type="button" data-volunteer="<% %>" data-toggle="modal" data-target="#proficiencyModal-<%= volunteer.id  %>" class="volunteer-button btn-sm brand-primary btn-primary">Add Proficiencies</button>
+</div>
 
-  <button type="button" data-volunteer="<% %>" data-toggle="modal" data-target="#proficiencyModal-<%= volunteer.id  %>" class: "btn-sm brand-primary btn-primary">Add Proficiencies</button>
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--       This is the modal for the proficiencies -->
   <div class="modal fade" id="proficiencyModal-<%= volunteer.id  %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -44,8 +67,6 @@
             <% end %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
         </div>
       </div>
     </div>
