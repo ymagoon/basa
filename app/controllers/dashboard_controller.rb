@@ -21,12 +21,21 @@ class DashboardController < ApplicationController
 
   def students
   end
-  #FUCKING WORK
 
   def attendance
   end
 
   private
+
+  def list_teachers
+    proficiencies = Proficiency.teachers_by_subject(@course.subject.name)
+    @teachers = proficiencies.map { |proficiency| proficiency.user }
+  end
+
+  def list_assistants
+    proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
+    @assistants = proficiencies.map { |proficiency| proficiency.user }
+  end
 
   # Courses
   def total_number_of_courses

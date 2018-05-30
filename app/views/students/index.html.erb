@@ -1,5 +1,3 @@
 <div class="container">
-  <% @students.each do |student| %>
-  <%= student.first_name %> <%= student.last_name %>
-  <% end %>
+<%= render 'shared/create_students', students: @students %>
 </div>

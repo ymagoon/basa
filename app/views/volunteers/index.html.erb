@@ -2,7 +2,7 @@
 <h1>Volunteers</h1>
 
 <% @volunteers.each do |volunteer| %>
-<div class="volunteer-card col-xs-6">
+<div class="volunteer-card col-xs-4">
   <h2 class="text-center"> <%= volunteer.first_name %> <%= volunteer.last_name %> </h2>
   <p> User: <%= volunteer.username %> | <%= volunteer.email %> | <%= volunteer.phone %> </p>
 
@@ -16,7 +16,7 @@
     <% end %>
   </ul>
 
-  <h5>Assistant</<h5></h5>>
+  <h5>Assistant</<h5></h5>
   <ul>
   <% volunteer.proficiencies.each do |proficiency| %>
     <% if proficiency.role == "assistant" %>
@@ -25,7 +25,31 @@
     <% end %>
   </ul>
 
-  <%= link_to 'Add Proficiencies', new_volunteer_proficiency_path(volunteer), class: "btn-sm brand-primary btn-primary" %>
+  <button type="button" data-volunteer="<% %>" data-toggle="modal" data-target="#proficiencyModal-<%= volunteer.id  %>" class: "btn-sm brand-primary btn-primary">Add Proficiencies</button>
 
-</div>
-  <% end %>
+  </div>
+  <div class="modal fade" id="proficiencyModal-<%= volunteer.id  %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="exampleModalLabel"> Add a proficiency</h4>
+        </div>
+        <!-- TODO: Rewrite that forms gets prefilled upon click -->
+        <div class="modal-body">
+            <%= simple_form_for([volunteer, @proficiency], url: volunteer_proficiencies_path(volunteer)) do |f| %>
+              <%= f.input :subject_id, collection: @subjects, label_method: :name %>
+              <%= f.input :role, as: :select, collection: @roles %>
+              <%= f.button :submit, class: "btn-sm btn-primary brand-primary" %>
+            <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

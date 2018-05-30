@@ -1,0 +1,14 @@
+<!-- Here are all of the students to choose from. Need to set a method in controller so we can order the students based on availability, or age, or locations, or whatever. Something for phase 2 or phase 3 -->
+<div class="student-index">
+    <% students.each do |student| %>
+      <div class="col-xs-4 ">
+      <div class="student_index-card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" id="<%= student.id %>">
+        <div class="student_name"><h5><%= student.first_name %> <%= student.last_name %></h5></div>
+        <div class="contact-info"><p> <%= student.email %> <%= student.phone %> </p></div>
+        <div id="age-gender"><p><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %> " style="padding: 0px 5px 0px 5px">  </i><%= student.age(student.birth_date) %></p></div>
+      </div>
+      </div>
+    <% end %>
+</div>
+<!-- This is the area for the student roster.  -->
+
