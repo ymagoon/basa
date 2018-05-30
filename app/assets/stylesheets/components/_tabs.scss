@@ -15,7 +15,6 @@ body {
   background: #fff;
 }
 
-
 li:active > a {
   color: $my-blue;
 }
@@ -55,24 +54,6 @@ main {
 input {
   display: none;
 }
-/*
-label {
-  display: inline-block;
-  margin: 0 0 -1px;
-  padding: 15px 25px;
-  text-align: center;
-  color: #bbb;
-  border: 1px solid transparent;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  font-weight: 200;
-}
-
-
-label:hover {
-  color: #888;
-
-}*/
 
 tab:hover > svg {
   fill: #888;;

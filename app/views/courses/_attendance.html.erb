@@ -1,25 +1,32 @@
 <div class="attendance-table">
-  <div class="attendance-sessions">
-    <% sessions.each do |session| %>
-      <div class="session-header">
-        <span><%= session.date_formatted %></span>
-      </div>
-    <% end %>
-  </div>
- <% students.each do |student| %>
-    <div class="attendance-row">
-      <div class="attendance-student border-right">
-        <p class="attendance-header-text"><%= "#{student.first_name} #{student.last_name}" %></p>
-        <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{student.phone}\n#{student.email}\n#{student.birth_date_formatted}" %>"></i>
-      </div>
-      <div class="attendance-session">
-        <% student.student_attendance(course).each do |attendance| %>
-          <div class="attendance <%= attendance.present? ? 'present' : 'absent' %>" data-attendance="<%= attendance.id %>" data-course="<%= course.id %>">
-           </div>
+  <div class="student-attendance-content">
+    <div class="student-col-header border-right">
+      <div class="student-row student-header"></div>
+      <% students.each do |student| %>
+        <div class="student-row">
+          <p class="attendance-header-text no-margin-bottom"><%= "#{student.first_name} #{student.last_name}" %></p>
+          <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{student.first_name} #{student.last_name} \n#{student.phone}\n#{student.email}\n#{student.birth_date_formatted}" %>"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="attendance-content">
+      <div class="attendance-sessions">
+        <% sessions.each do |session| %>
+          <div class="session-header">
+            <p class="no-margin-bottom"><%= session.date_formatted %></p>
+          </div>
         <% end %>
       </div>
+      <% students.each do |student| %>
+        <div class="attendance-row">
+          <div class="attendance-session">
+            <% student.student_attendance(course).each do |attendance| %>
+              <div class="attendance <%= attendance.present? ? 'present' : 'absent' %>" data-attendance="<%= attendance.id %>" data-course="<%= course.id %>">
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
-<!--
-  -->

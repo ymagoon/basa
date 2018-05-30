@@ -1,2 +1,2 @@
-document.querySelector('.course-content').innerHTML = "<%= j render 'shared/course_list', courses: @courses %>";
-
+document.getElementById('results').innerHTML = "<%= @course_count %> <%= 'Result'.pluralize(@course_count) %> Found";
+document.querySelector('.courses-list').innerHTML = "<%= j render 'shared/course_list', courses: @courses %>";
