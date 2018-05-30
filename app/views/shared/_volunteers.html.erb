@@ -1,5 +1,5 @@
 <% unless volunteers.empty? %>
   <% volunteers.each do |volunteer| %>
-  <%= volunteer.full_name %>
+  <%= volunteer.user.full_name %>
   <% end %>
 <% end %>

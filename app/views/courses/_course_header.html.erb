@@ -1,29 +1,35 @@
 <div class="course-header border-bottom">
   <div class="course-title">
     <h1><%= course.name %></h1>
+    <h2> <%= @course.subject.name %> </h2>
+    <h3> <%= @course.start_date.strftime('%a %d %b') %> - <%= @course.end_date.strftime('%a %d %b') %> | <%= @course.address.venue_name %> </h3>
   </div>
   <div class="number-of-students">
     <p><%= @course.number_of_students %> (<%= @course.max_capacity %>)</p>
   </div>
-  <%= render 'shared/dropdown', courses: courses %>
 
   <div class="course-status">
     <p class="<%= course.pending? ? 'pending' : 'confirmed' %>">
       <%= course.pending? ? 'Pending' : 'Confirmed' %>
     </p>
   </div>
-  <div class="add-user">
-    <div class="icon">
-      <%= link_to course_student_rosters_path(@course) do %>
-        <i class="fas fa-plus"></i>
-      <% end %>
-    </div>
-    <span>Add User</span>
-  </div>
-  <div class="add-volunteer">
-    <%= link_to new_course_volunteer_roster_path(@course), class: 'icon' do %>
-      <i class="fas fa-plus"></i>
+  <div class="course-nav-bar">
+  <div class="course-nav-icon course-icon">
+    <%= link_to course_path(@course) do %>
+    <%= render :partial => 'shared/courses.svg' %>
     <% end %>
-    <span>Add Volunteer</span>
+  </div>
+  <div class="course-nav-icon teacher-icon">
+    <%= link_to new_course_volunteer_roster_path(@course) do %>
+    <%= render :partial => 'shared/teacher.svg' %>
+    <% end %>
+  </div>
+  <div class="course-nav-icon student-icon">
+    <%= link_to course_student_rosters_path(@course) do %>
+    <%= render :partial => 'shared/student.svg' %>
+    <% end %>
   </div>
 </div>
+</div>
+
+
