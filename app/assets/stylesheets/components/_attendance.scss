@@ -49,13 +49,11 @@
     overflow-y:visible;
 
     .attendance-row {
-      height: 34px;
-      width: 100%;
+      // height: 34px;
+      // width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #E8E8E8;
-      padding-left: 15px;
+      // justify-content: space-between;
 
       &:last-child {
         border-bottom: none;
@@ -63,14 +61,22 @@
 
       .attendance-session {
         display: flex;
+        align-items: center;
+        height: 34px;
+        padding-left: 15px;
+        border-bottom: 1px solid #E8E8E8;
 
         .attendance {
-          background-color: #D0D5DF !important;
           width: 12px;
           height: 12px;
           border-radius: 50%;
           margin-left: 15px;
           overflow: auto;
+          box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+
+          &:hover {
+            box-shadow: inset 0 0px 3px rgba(0, 0, 0, 0.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+          }
 
           &:first-child {
             margin-left: 0;
@@ -79,7 +85,7 @@
         }
 
         .absent {
-          background-color: $my-gray;
+          background-color: #D0D5DF;
         }
 
         .present {
