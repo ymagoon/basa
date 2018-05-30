@@ -6,10 +6,10 @@ class PagesController < ApplicationController
     @courses_last_week = @total_number_of_courses - Course.where('created_at < ?', DateTime.now - 7).count
 
     @total_number_of_students = Student.count
-    @students_last_week = Student.where('created_at < ?', DateTime.now - 7).count
+    @students_last_week = @total_number_of_students - Student.where('created_at < ?', DateTime.now - 7).count
 
     @total_number_of_volunteers = User.where(role: 'volunteer').count
-    @volunteers_last_week = User.where('role = ? and created_at < ?', 1, DateTime.now - 7).count
+    @volunteers_last_week = @total_number_of_volunteers - User.where('role = ? and created_at < ?', 1, DateTime.now - 7).count
   end
 end
 

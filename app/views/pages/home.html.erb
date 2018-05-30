@@ -1,4 +1,6 @@
 <% title 'Test Title' %>
-<%= render 'totals', total_title: 'Courses', total_content: @total_number_of_courses, up_by: @courses_last_week %>
-<%= render 'totals', total_title: 'Students', total_content: @total_number_of_students, up_by: @students_last_week %>
-<%= render 'totals', total_title: 'Volunteers', total_content: @total_number_of_volunteers, up_by: @volunteers_last_week %>
+<div class="dashboard-head">
+  <%= render 'totals', total_title: 'Courses', total_content: @total_number_of_courses, last_week: @courses_last_week %>
+  <%= render 'totals', total_title: 'Students', total_content: @total_number_of_students, last_week: @students_last_week %>
+  <%= render 'totals', total_title: 'Volunteers', total_content: @total_number_of_volunteers, last_week: @volunteers_last_week %>
+</div>

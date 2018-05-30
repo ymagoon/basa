@@ -1,19 +1,51 @@
-.totals-container {
-  height: 200px;
-  width: 200px;
+.dashboard-head {
+  display: flex;
 
-  .total-card {
+
+  .totals-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: white;
 
-    .total-title {
-      font-size: 30px;
-    }
-    .total-content {
-      font-size: 45px;
-      font-weight: 100;
+    .total-card {
+      height: 150px;
+      width: 150px;
+      border-left: 1px solid $my-gray-border;
+      padding: 10px 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .center-totals {
+
+        p {
+          margin: 0 !important;
+        }
+
+        .total-title {
+          font-size: 14px;
+        }
+        .total-content {
+          font-size: 45px;
+          font-weight: 100;
+        }
+        .up {
+          display: flex;
+          align-content: center;
+          color: $stat-green;
+
+          p {
+            padding-left: 3px;
+          }
+        }
+      }
     }
   }
+}
+
+.up-arrow {
+  width: 12px;
+  height: 12px;
 }
