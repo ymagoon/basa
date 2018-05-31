@@ -1,7 +1,4 @@
-<div class="wrapper">
-  <div class="better-container">
-    <%#= render 'course_header', courses: @courses, course: @course %>
-    <%= render 'volunteers', course: @course, teacher: @teacher, assistants: @assistants %>
-    <%= render 'attendance', students: @students, sessions: @sessions, course: @course %>
-  </div>
-</div>
+<% title 'Attendance' %>
+<%= render 'course_header', courses: @courses, course: @course %>
+<%= render 'volunteers', course: @course, teacher: @teacher, assistants: @assistants %>
+<%= render 'attendance', students: @students, sessions: @sessions, course: @course %>
