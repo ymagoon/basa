@@ -10,13 +10,19 @@ class CoursesController < ApplicationController
     @course = Course.new
     @filter_subjects = Subject.all
     @filter_addresses = Address.venue_ids # fix drop down
-    # Filter by location
-    @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
     # Filter by phase
-    @courses = @courses.current if params[:current] if params[:current].present?
-    @courses = @courses.future if params[:future] if params[:future].present?
-    @courses = @courses.past if params[:past] if params[:past].present?
+    if params[:current].present? || params[:future].present? || params[:past].present?
+      @courses_temp = Course.none
+      # use or (union) to join active record relations
+      @courses_temp = @courses_temp.or(@courses.current) if params[:current].present?
+      @courses_temp = @courses_temp.or(@courses.future) if params[:future].present?
+      @courses_temp = @courses_temp.or(@courses.past) if params[:past].present?
+      @courses = @courses_temp
+    end
+
+    # Filter by location
+    @courses = @courses.locations(params[:address].keys) if params[:address].present?
 
     # Filter by subject
     @courses = @courses.subjects(params[:subjects].keys) if params[:subjects].present?
@@ -29,6 +35,7 @@ class CoursesController < ApplicationController
     @courses = @courses.with_no_assistants if params[:no_assistants].present?
 
     # Sort by dates
+    # binding.pry
     @courses = @courses.order_by_start_date # hard code until this is working
     # @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
     # @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
