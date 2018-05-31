@@ -41,7 +41,7 @@
               </li>
               <% @subjects.each do |subject| %>
               <li>
-                <a href="#sub2-<%=subject.id%>"><%= subject.name %>
+                <a href="#sub2-<%=subject.id%>"><%= subject.name %>( <%= subject.teachers.uniq.count %>)
                 </a>
               </li>
               <% end %>

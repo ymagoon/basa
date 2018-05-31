@@ -13,14 +13,13 @@ class DashboardController < ApplicationController
     @subjects = Subject.all
   end
 
-  def volunteers
-  end
-
-  def students
-  end
-
-  def attendance
-  end
+ def statistics
+  @courses
+  @teachers
+  @students
+  @proficiencies
+  @subjects
+ end
 
   private
 
