@@ -3,17 +3,18 @@
 <%= render 'courses/course_header', course: @course %>
 
 <div class="vol-roster-container">
-
   <div class="volunteer-lookup">
     <h3>CHECK AVAILABILITY</h3>
     <p>Select a volunteer to check their schedule</p>
-    <div class="assign-form">
-      <%= simple_form_for(@course, url: new_course_volunteer_roster_path(@course), method: :get) do |f| %>
-      <div class="form-inline">
-        <%= select_tag :volunteer, options_for_select(@volunteers.collect{ |u| [u.full_name, u.id] }), prompt: "Select volunteer", class: "form-control" %>
-        <%= f.button :submit, "Check Schedule", class: "btn btn-primary brand-primary" %>
+    <div class="assign-forms-both">
+      <div class="assign-form">
+        <%= simple_form_for(@course, url: new_course_volunteer_roster_path(@course), method: :get) do |f| %>
+        <div class="form-inline">
+          <%= select_tag :volunteer, options_for_select(@volunteers.collect{ |u| [u.full_name, u.id] }), prompt: "Select volunteer", class: "form-control" %>
+          <%= f.button :submit, "Check Schedule", class: "btn btn-primary brand-primary" %>
+        </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
     <div class="volunteer-lookup-results scroll-vertical">
       <%  if @vol_courses.nil? %>
@@ -22,41 +23,37 @@
       <h3> The volunteer is not yet assigned to any courses </h3>
       <% else %>
       <h3> <%= @vol_courses.first.user.full_name %> is already assigned to: </h3>
-      <!-- <ul> -->
-        <% @vol_courses.each do |roster| %>
-        <p> <%= roster.course.name %> (<%= roster.course.start_date.strftime('%a %d %b') %> - <%= roster.course.end_date.strftime('%a %d %b') %>) </p>
+      <% @vol_courses.each do |roster| %>
+      <p> <%= roster.course.name %> (<%= roster.course.start_date.strftime('%a %d %b') %> - <%= roster.course.end_date.strftime('%a %d %b') %>) </p>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <!-- ADD IT HERE -->
+  <div class="display-roster-section">
+    <h3>ASSIGN VOLUNTEERS</h3>
+    <p>Select teachers and assistants for <%= @course.name %></p>
+    <div class="assign-forms-both">
+      <div class="assign-form">
+        <%= simple_form_for([@course, @roster]) do |f| %>
+        <div class="form-inline">
+          <%= f.input :user_id, collection: @teachers, label_method: :full_name, label: false, placeholder: "Teacher" %>
+          <%= f.input :role, input_html: { value: "teacher" }, as: :hidden %>
+          <%= f.button :submit, "Add Teacher", class: "btn btn-primary brand-primary" %>
+        </div>
         <% end %>
-        <!-- </ul> -->
+      </div>
+      <div class="assign-form">
+        <%= simple_form_for([@course, @roster]) do |f| %>
+        <div class="form-inline">
+          <%= f.input :user_id, collection: @assistants, label_method: :full_name, label: false, placeholder: "Assistant" %>
+          <%= f.input :role, input_html: { value: "assistant" }, as: :hidden %>
+          <%= f.button :submit, "Add Assistant", class: "btn btn-success brand-success" %>
+        </div>
         <% end %>
       </div>
     </div>
-
-    <div class="display-roster-section">
-      <h3>ASSIGN VOLUNTEERS</h3>
-      <p>Select teachers and assistants for <%= @course.name %></p>
-      <div class="assign-forms-both">
-        <div class="assign-form">
-          <%= simple_form_for([@course, @roster]) do |f| %>
-          <div class="form-inline">
-            <%= f.input :user_id, collection: @teachers, label_method: :full_name, label: false, placeholder: "Teacher" %>
-            <%= f.input :role, input_html: { value: "teacher" }, as: :hidden %>
-            <%= f.button :submit, "Add Teacher", class: "btn btn-primary brand-primary" %>
-          </div>
-          <% end %>
-        </div>
-        <div class="assign-form">
-          <%= simple_form_for([@course, @roster]) do |f| %>
-          <div class="form-inline">
-            <%= f.input :user_id, collection: @assistants, label_method: :full_name, label: false, placeholder: "Assistant" %>
-            <%= f.input :role, input_html: { value: "assistant" }, as: :hidden %>
-            <%= f.button :submit, "Add Assistant", class: "btn btn-success brand-success" %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-
-      <hr>
-      <div class="display-roster-results scroll-vertical">
+    <div class="display-roster-results scroll-vertical">
         <h4>TEACHERS</h4>
         <% @course.volunteer_rosters.each do |roster| %>
         <div class="volunteer-list">
@@ -87,7 +84,5 @@
           <% end %>
         </div>
       </div>
-    </div>
   </div>
-</div>
 </div>
