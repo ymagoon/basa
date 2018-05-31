@@ -8,11 +8,14 @@
   <div class="dashboard-column right overall-attention">
     <h3 class="text-center">Attention</h3>
     <% unless @no_teacher.count.nil? %>
-    <p>Without Teachers (<%= @no_teacher.count %>)</p>
-    <p>Below Capacity  (<%= @below_cap.count %>)</p>
-    <p>Absent Students (<%= @absent_students.count %>)</p>
+      <%= link_to statistics_dashboard_index_path do %>
+        <p>Without Teachers (<%= @no_teacher.count %>)</p>
+        <p>Below Capacity  (<%= @below_cap.count %>)</p>
+        <p>Absent Students (<%= @absent_students.count %>)</p>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
 
-<% end %>
+

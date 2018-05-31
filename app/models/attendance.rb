@@ -13,4 +13,9 @@ class Attendance < ApplicationRecord
 
   validates :present, presence: true, inclusion: { in: @presence }
 
+  def set_attendance_percentage
+    total = Attendance.all.count
+    present = Attendance.where(present: "present").count
+    @percentage_attendance = present.to_f / total
+  end
 end
