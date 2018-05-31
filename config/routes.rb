@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   resources :volunteers, only: [:index, :show] do
     resources :proficiencies, only: [:new, :create]
   end
+
+  get 'test', to: 'pages#home', as: :test
 end
