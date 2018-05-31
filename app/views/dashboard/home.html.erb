@@ -7,6 +7,8 @@
     <%= render 'charts/students_by_age', data: @students_by_age %>
     <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
     <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
+    <%= render 'charts/totals', total_title: 'Total Attendance', total_content: @total_attendance, last_week: 'test' %>
+    <%= render 'charts/active_attendance', data: @active_attendance %>
   </div>
   <div class="dashboard-column right overall-attention">
     <h3 class="text-center">Attention</h3>
