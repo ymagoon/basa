@@ -1,0 +1,4 @@
+<%= javascript_pack_tag "charts" %>
+
+<h5>Vounteers by Subject</h5>
+<%= pie_chart Proficiency.joins(:subject).group(:name).count %>

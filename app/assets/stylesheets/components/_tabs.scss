@@ -38,6 +38,9 @@ li > a {
   border: 1px solid $my-light-gray;
   border-top: 2px solid #77C9D4;
   border-bottom: 3px solid transparent;
+  svg {
+    fill: $my-blue;
+  }
 }
 
 main {

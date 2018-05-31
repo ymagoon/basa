@@ -9,6 +9,8 @@ import { initialize } from './attendance';
 import { proficiencyModal } from './proficiencyModal';
 import { filter } from './filters';
 import { tabs } from './tabs';
+
+
 filter();
 tabs();
 initNav();

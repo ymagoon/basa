@@ -42,7 +42,7 @@ gem 'devise'
 gem 'pundit'
 gem 'pg_search'
 gem 'faker'
-
+gem "chartkick"
 # gems for dates
 gem 'ice_cube'
 
