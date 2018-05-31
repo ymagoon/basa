@@ -40,13 +40,10 @@
               <% end %>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane fade active in" id="21">
-               <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
-             </div>
-             <% @subjects.each do |subject| %>
-             <div class="tab-pane fade" id="sub2-<%=subject.id%>">
-              <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
-            </div>
+              <div class="tab-pane fade active in" id="21"><%= render 'shared/volunteers', volunteers: @unassigned_vols %></div>
+              <% @subjects.each do |subject| %>
+              <div class="tab-pane fade" id="sub2-<%=subject.id%>"><%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%></div>
+              <% end %></div>
           </div>
         </div>
       </div>
@@ -64,17 +61,9 @@
           </ul>
           <div class="tab-content">
 
-            <div class="tab-pane fade active in" id="sub31">
-              <%= render 'shared/course_list', courses: @course_attendance %>
-            </div>
-            <div class="tab-pane fade" id="sub32">
-              <%= render 'attendance', students: @students_attendance %>
-            </div>
-            <div class="tab-pane fade" id="sub33">
-              <%= render 'attendance', students: @absent_students %>
-            </div>
-
-          </div>
+            <div class="tab-pane fade active in" id="sub31"><%= render 'shared/course_list', courses: @course_attendance %></div>
+            <div class="tab-pane fade" id="sub32"><%= render 'attendance', students: @students_attendance %></div>
+            <div class="tab-pane fade" id="sub33"><%= render 'attendance', students: @absent_students %></div></div>
         </div>
       </div>
     </div>
