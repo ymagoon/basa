@@ -1,82 +1,23 @@
-<% title 'Dashboard' %>
-<main>
-  <div class="tabbable boxed parentTabs">
-    <ul class="nav nav-tabs">
-      <li class="active tab"><a href="#set1"><%= render :partial => 'shared/courses.svg' %>Courses</a>
-      </li>
-      <li class="tab"><a href="#set2"><%= render :partial => 'shared/teacher.svg' %>Volunteers</a>
-      </li>
-      <li class="tab"><a href="#set3"><%= render :partial => 'shared/calendar.svg' %>Attendance</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane fade active in" id="set1">
-        <div class="tabbable">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#sub11">Active (<%= @courses.count %>)</a>
-            </li>
-            <li><a href="#sub12">Without Teachers (<%= @no_teacher.count %>)</a>
-            </li>
-            <li><a href="#sub13">Below Capacity  (<%= @below_cap.count %>)</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade active in" id="sub11">
-              <%= render 'shared/course_list', courses: @courses %>
-            </div>
-
-          </div>
-        </div>
-        <div class="tab-pane fade" id="set2">
-          <div class="tabbable">
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#21">Unassigned</a>
-              </li>
-              <% @subjects.each do |subject| %>
-              <li>
-                <a href="#sub2-<%=subject.id%>"><%= subject.name %>( <%= subject.teachers.uniq.count %>)
-                </a>
-              </li>
-              <% end %>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane fade active in" id="21">
-               <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
-             </div>
-             <% @subjects.each do |subject| %>
-             <div class="tab-pane fade" id="sub2-<%=subject.id%>">
-              <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="set2">
-        <div class="tabbable">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#21">Unassigned</a>
-            </li>
-            <% @subjects.each do |subject| %>
-            <li>
-              <a href="#sub2-<%=subject.id%>"><%= subject.name %>
-              </a>
-            </li>
-            <% end %>
-          </ul>
-          <div class="tab-content">
-
-            <div class="tab-pane fade active in" id="sub31">
-              <%= render 'shared/course_list', courses: @course_attendance %>
-            </div>
-            <div class="tab-pane fade" id="sub32">
-              <%= render 'attendance', students: @students_attendance %>
-            </div>
-            <div class="tab-pane fade" id="sub33">
-              <%= render 'attendance', students: @absent_students %>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
+<%= javascript_pack_tag "charts" %>
+<div class="row"></div>
+<div class="row">
+  <div class="dashboard-column left">
+    <h3>Student Data</h3>
+    <%= render 'charts/students_by_gender' %>
   </div>
-</main>
+  <div class="dashboard-column right overall-attention">
+    <h3 class="text-center">Attention</h3>
+    <% unless @no_teacher.count.nil? %>
+      <%= link_to statistics_dashboard_index_path do %>
+        <p>Without Teachers (<%= @no_teacher.count %>)</p>
+        <% end %>
+      <% end %>
+        <p>Below Capacity  (<%= @below_cap.count %>)</p>
+        <p>Absent Students (<%= @absent_students.count %>)</p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+

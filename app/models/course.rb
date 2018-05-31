@@ -121,6 +121,10 @@ class Course < ApplicationRecord
     schedule
   end
 
+  def self.active_courses
+    self.all.select { |c| c.status != 'cancelled'}
+  end
+
   def list_occurrences
     self.schedule.occurrences(self.end_date)
   end
