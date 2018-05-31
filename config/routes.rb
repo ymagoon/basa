@@ -7,16 +7,6 @@ Rails.application.routes.draw do
         get 'attendance', to: "dashboard#attendance"
       end
     end
-  resources :charts, only: [] do
-    collection do
-      get 'past_attendance', to: "charts#past_attendance"
-      get 'students_by_gender', to: "charts#students_by_gender"
-      get 'volunteers_by_subject', to: "charts#volunteers_by_subject"
-      get 'courses_by_subject', to: "charts#courses_by_subject"
-    end
-  end
-
-
   resources :courses do
     resources :sessions, except: [:new, :create]
     resources :attendances, only: [:index]
