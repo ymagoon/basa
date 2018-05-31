@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
   scope :volunteers, -> { where(role: 1) }
   scope :admins, -> { where(role: 0) }
+  # scope :last_week, -> { where('role = volunteer and created_at < ?', DateTime.now - 7) }
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }, length: { minimum: 6 }
 
