@@ -33,11 +33,6 @@ From a usability standpoint, the drag and drop feature compared to a multi-selec
 
 ![Drag and Drop](./screenshots/dragdrop.gif)
 
-<p align="center">
-  <img src="./screenshots/dragdrop.gif" alt="Drag and Drop"
-       width="820" height="300">
-</p>
-
 We created `dragstart`, `dragover`, `dragenter`, and `drop` events to create a simple user experience. As soon as the students are dropped into our `drop-area`, an AJAX request automatically adds the student to the course. Since the `student-cards` contained student data we needed for the request, we had to pass that via the DataTransfer object `e.dataTransfer.setData("ids", ids);`.
 
 This is where all the magic happened:
@@ -108,9 +103,11 @@ function filter() {
 We needed a way to easily allow teachers manage all of their classes. Our attendance page was designed to allow teachers to update attendance in one screen for every single session of the course.
 
 
-`image goes here`
+![Attendance](./screenshots/attendance.png)
 
 Teachers never have to navigate from this screen. They are able to mark attendance for every student with the click of a button. Since the attendance circles for each session are not links, buttons or forms, we had to manually create the AJAX request in JS instead of using Rails' built in `query_ujs` library.
+
+![Attendance GIF](./screenshots/attendance.gif)
 
 ```
 function updateAttendance(e) {
