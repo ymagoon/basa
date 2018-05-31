@@ -112,7 +112,7 @@
       }
 
       .action-icons {
-        margin-top: 5px;
+        margin-top: 10px;
         width: 125px;
         text-align: left;
         display: flex;
@@ -130,9 +130,13 @@
   font-weight: 400 !important;
 }
 
-.assign-student svg, .assign-volunteer svg {
-  width: 25px;
+.assign-student svg, .assign-volunteer svg, .view-course svg {
+  width: 20px;
   fill: $my-black;
+
+  &:hover {
+    fill: $my-blue;
+  }
 }
 
 .course-date {
