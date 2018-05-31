@@ -2,6 +2,7 @@ class StudentRostersController < ApplicationController
   #after create, check to see if the number of studnets in the course is > min, if so, change the
   # course status to 1 (confirmed)
   before_action :set_course, only: [:index, :create]
+  before_action :set_view
 
   skip_before_action :verify_authenticity_token, only: [:create]
 
@@ -53,6 +54,9 @@ class StudentRostersController < ApplicationController
     @student = Student.find(params[:student_id])
   end
 
+  def set_view
+    @view = "student"
+  end
 
   # def destroy
   #   @student_roster = StudentRoster.find(params[:id])

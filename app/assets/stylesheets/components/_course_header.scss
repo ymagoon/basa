@@ -1,59 +1,5 @@
-// .course-header {
-//   width: 100%;
-//   height: 150px;
-//   border: solid 1px gray;
-// }
+// ----------- COURSE HEADER ----------- //
 
-
-// ----------- COURSE SPECIFIC NAV ICONS ----------- //
-
-.course-nav-bar {
-  width: 100%;
-  background-color: #E5E5E5;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: absolute;
-  bottom: 0px;
-  box-shadow: inset 0 0px 1px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
-  // height: 45px;
-}
-
-.course-nav-icon svg {
-  width: 40px;
-  color: white;
-  border-radius: 25%;
-  padding: 5px;
-  margin-top: 5px;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-
-.teacher-icon svg {
-  fill: $my-blue;
-  &:hover {
-  background-color: $my-blue;
-  fill: white;
-  }
-}
-
-.student-icon svg {
-    fill: $my-green;
-    &:hover {
-    background-color: $my-green;
-    fill: white;
-  }
-}
-
-.course-icon svg {
-  fill: $my-gray;
-    &:hover {
-    background-color: $my-gray;
-    fill: white;
-  }
-}
-
-//
 
 .course-header {
   // display: flex;
@@ -94,26 +40,67 @@
   flex: no-wrap;
   align-items: center;
 }
-//   .course-title {
-//     h1, ul, ol {
-//       margin: 0 !important;
-//       padding: 0 !important;
-//     }
 
-//   }
-// }
 
-// .add-user, .add-volunteer {
-//   display: flex;
-//   align-items: center;
-//   border-radius: 3px;
-//   padding: 2px 3px;
-//   margin-left: 10px;
-//   border: 1px solid $my-gray;
+// ----------- COURSE SPECIFIC NAV ICONS ----------- //
 
-//   .icon > a {
-//     color: white;
-//     height: 100%;
-//     background-color: $my-green;
-//   }
-// }
+.course-nav-bar {
+  width: 100%;
+  background-color: #E5E5E5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  box-shadow: inset 0 0px 1px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  // height: 45px;
+}
+
+.course-nav-icon svg {
+  width: 40px;
+  color: white;
+  border-radius: 25%;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.teacher-icon svg {
+  fill: $my-blue;
+  &:hover {
+  background-color: $my-blue;
+  fill: white;
+  }
+}
+
+.teacher-icon-active svg {
+  background-color: $my-blue;
+  fill: white;
+}
+
+.student-icon svg {
+    fill: $my-green;
+    &:hover {
+    background-color: $my-green;
+    fill: white;
+  }
+}
+
+.student-icon-active svg {
+  background-color: $my-green;
+  fill: white;
+}
+
+.course-icon svg {
+  fill: $my-gray;
+    &:hover {
+    background-color: $my-gray;
+    fill: white;
+  }
+}
+
+.course-icon-active svg {
+  background-color: $my-gray;
+  fill: white;
+}

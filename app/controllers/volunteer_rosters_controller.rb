@@ -1,5 +1,6 @@
 class VolunteerRostersController < ApplicationController
   before_action :set_course, except: :destroy
+  before_action :set_view
 
   def index
   end
@@ -59,6 +60,10 @@ class VolunteerRostersController < ApplicationController
   def list_assistants
     proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
     @assistants = proficiencies.map { |proficiency| proficiency.user }
+  end
+
+  def set_view
+    @view = "teacher"
   end
 end
 
