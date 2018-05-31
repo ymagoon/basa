@@ -15,11 +15,11 @@ body {
   background: #fff;
 }
 
-li:active > a {
+.nav > li:active > a {
   color: $my-blue;
 }
 
-li > a {
+.nav > li > a {
     color: #bbb;
     font-size: 12px;
     width: 150px;
@@ -59,7 +59,7 @@ tab:hover > svg {
   fill: #888;;
 }
 
-input:checked + label  {
+.nav > input:checked + label  {
   color: $my-blue;
   border: 1px solid $my-light-gray;
   border-top: 2px solid $my-blue;
