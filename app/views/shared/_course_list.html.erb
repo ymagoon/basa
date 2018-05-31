@@ -6,18 +6,18 @@
           <div class="course-info">
             <!-- course header -->
             <div class="course-list-header">
-              <h3><%= course.name %></h3>
+              <h3 class="card-course-title"><%= course.name %></h3>
             </div>
             <div class="capital-gray">
               <p class="no-margin-bottom"><%= course.subject.name.upcase %></p>
             </div>
-            <p class="no-margin-bottom"><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
+            <p class="course-date no-margin-bottom"><%= course.date_formatted(course.start_date) %> - <%= course.date_formatted(course.end_date) %></p>
           </div>
           <!-- volunteers -->
           <div class="volunteers">
             <!-- teachers -->
             <div class="volunteer-section">
-              <div class="av teacher-av"><p>T</p></div>
+              <div class="av teacher-av"><p class="no-margin-bottom">T</p></div>
               <% unless course.teacher.blank? %>
                 <p class="v-name no-margin-bottom"><%= "#{course.teacher.first_name} #{course.teacher.last_name}" %></p>
               <% else %>
@@ -27,7 +27,7 @@
             <!-- assistants -->
             <div class="volunteer-section">
               <div class="av assistant-av tool-tip-inner" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= course.assistants.sort_by { |a| a.first_name }.map { |assistant| "#{assistant.first_name} #{assistant.last_name}" }.join("\n") %>">
-                <p>A</p>
+                <p class="no-margin-bottom">A</p>
               </div>
               <% unless course.assistants.empty? %>
                 <p class="v-name no-margin-bottom">( <%= course.assistants.size %> )</p>
@@ -37,7 +37,7 @@
             </div>
             <!-- students -->
             <div class="volunteer-section">
-              <div class="av student-av"><p>S</p></div>
+              <div class="av student-av"><p class="no-margin-bottom">S</p></div>
               <% unless course.students.empty? %>
                 <p class="v-name no-margin-bottom">( <%= course.students.size %> / <%= course.max_capacity %> )</p>
               <% else %>
@@ -59,10 +59,16 @@
                 <i class="fas fa-book" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="View More Details"></i>
               <% end %>
               <%= link_to course_student_rosters_path(course) do %>
-                <i class="fas fa-users" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Students"></i>
+                <div class="assign-student" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Students">
+                  <%= render :partial => 'shared/teacher.svg' %>
+                </div>
+               <!--  <i class="fas fa-users" id="add-user" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Students"></i> -->
               <% end %>
               <%= link_to new_course_volunteer_roster_path(course) do %>
-                <i class="fas fa-chalkboard-teacher" id="add-volunteer" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Volunteers"></i>
+                <div class="assign-volunteer" id="add-volunteer" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Volunteers">
+                  <%= render :partial => 'shared/student.svg' %>
+                </div>
+                <!-- <i class="fas fa-chalkboard-teacher" id="add-volunteer" data-toggle="tooltip" data-html="true" data-placement="left" title="Assign Volunteers"></i> -->
               <% end %>
             </div>
           </div>
@@ -71,3 +77,4 @@
     </div>
   <% end %>
 </div>
+
