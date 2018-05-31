@@ -103,9 +103,11 @@ function filter() {
 We needed a way to easily allow teachers manage all of their classes. Our attendance page was designed to allow teachers to update attendance in one screen for every single session of the course.
 
 
-`image goes here`
+![Attendance](./screenshots/attendance.png)
 
 Teachers never have to navigate from this screen. They are able to mark attendance for every student with the click of a button. Since the attendance circles for each session are not links, buttons or forms, we had to manually create the AJAX request in JS instead of using Rails' built in `query_ujs` library.
+
+![Attendance GIF](./screenshots/attendance.gif)
 
 ```
 function updateAttendance(e) {
