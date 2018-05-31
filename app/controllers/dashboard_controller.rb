@@ -4,12 +4,12 @@ class DashboardController < ApplicationController
   def home
   end
 
- def statistics
-  @teachers = User.all
+  def statistics
+    @teachers = User.all
 
-  @proficiencies
-  @users = User.all
- end
+    @proficiencies
+    @users = User.all
+  end
 
   private
 
@@ -24,11 +24,10 @@ class DashboardController < ApplicationController
     @percentage_attendance
   end
 
-  def set_active_courses
-    @active_courses = Course.all.select { |c| c.status != 'cancelled'}
-  end
+
 
   def set_courses
+    @active_courses = Course.active_courses
     @courses = Course.all
     @no_teacher = Course.no_teacher
     @below_cap = Course.courses_below_min_cap

@@ -10,6 +10,8 @@
     <% unless @no_teacher.count.nil? %>
       <%= link_to statistics_dashboard_index_path do %>
         <p>Without Teachers (<%= @no_teacher.count %>)</p>
+        <% end %>
+      <% end %>
         <p>Below Capacity  (<%= @below_cap.count %>)</p>
         <p>Absent Students (<%= @absent_students.count %>)</p>
       <% end %>
