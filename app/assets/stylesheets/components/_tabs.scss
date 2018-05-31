@@ -36,6 +36,7 @@ body {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: $my-blue;
   border: 1px solid $my-light-gray;
+  height: -5px;
   border-top: 2px solid #77C9D4;
   border-bottom: 3px solid transparent;
   svg {
@@ -51,7 +52,7 @@ main {
   background: #fff;
 }
 
-input {
+.nav > input {
   display: none;
 }
 
