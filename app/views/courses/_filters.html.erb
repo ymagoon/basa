@@ -9,7 +9,7 @@
         <div class="element">
           <%= check_box_tag "address[#{venue[0]}]", 1, false, class: 'address-filter checkbox' %>
           <span class="filter"></span>
-          <%= label_tag venue[0], venue[0], class: 'no-margin-bottom' %>
+          <%= label_tag "address[#{venue[0]}]", venue[0], class: 'no-margin-bottom' %>
         </div>
       <% end %>
     </div>
@@ -22,7 +22,7 @@
         <div class="element">
           <%= check_box_tag "subjects[#{subject[0]}]", 1, false, class: 'subject-filter checkbox' %>
           <span class="filter"></span>
-          <%= label_tag subject[0], subject[0], class: 'no-margin-bottom' %>
+          <%= label_tag "subjects[#{subject[0]}]", subject[0], class: 'no-margin-bottom' %>
         </div>
       <% end %>
     </div>
@@ -55,17 +55,17 @@
       <div class="element">
         <%= check_box_tag "status[pending]", 1, false, class: 'pending-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'pending', 'Pending', class: 'no-margin-bottom' %>
+        <%= label_tag 'status[pending]', 'Pending', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "status[confirmed]", 1, false, class: 'confirmed-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'confirmed', 'Confirmed', class: 'no-margin-bottom' %>
+        <%= label_tag 'status[confirmed]', 'Confirmed', class: 'no-margin-bottom' %>
       </div>
       <div class="element">
         <%= check_box_tag "status[cancelled]", 1, false, class: 'cancelled-filter checkbox' %>
         <span class="filter"></span>
-        <%= label_tag 'cancelled', 'Cancelled', class: 'no-margin-bottom' %>
+        <%= label_tag 'status[cancelled]', 'Cancelled', class: 'no-margin-bottom' %>
       </div>
     </div>
     <!-- misc filters -->
