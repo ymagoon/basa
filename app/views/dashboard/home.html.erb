@@ -1,12 +1,5 @@
 <%= javascript_pack_tag "charts" %>
-<div class="row"></div>
-<div class="dashboard-head">
-  <%= render 'charts/totals', total_title: 'Courses', total_content: @total_number_of_courses, last_week: @courses_last_week %>
-  <%= render 'charts/totals', total_title: 'Students', total_content: @total_number_of_students, last_week: @students_last_week %>
-  <%= render 'charts/totals', total_title: 'Volunteers', total_content: @total_number_of_volunteers, last_week: @volunteers_last_week %>
-</div>
-<div class="row">
-  <div class="dashboard-column left">
+
     <div class="charts data">
       <h3 class="text-center">Student Data</h3>
       <div class="student charts">
@@ -18,9 +11,11 @@
       </div>
       <div class="volunteer charts">
         <h3 class="text-center">Volunteer Data</h3>
+         <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
       </div>
       <div class="course charts">
         <h3 class="text-center">Course Data</h3>
+        <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
       </div>
     </div>
   </div>
@@ -42,6 +37,7 @@
         <p>Absent Students (<%= @absent_students.count %>)</p>
       <% end %>
     <% end %>
+
   </div>
 </div>
 

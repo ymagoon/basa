@@ -1,25 +1,13 @@
 class DashboardController < ApplicationController
-  before_action  :set_courses, :set_unassigned_vols, :set_subjects, :set_students, :set_attendances
-
   def home
-
-  @total_number_of_courses = Course.all
-  # @courses_last_week = @total_number_of_courses.count - @total_number_of_courses.last_week.count
-  @total_number_of_students = Student.all
-  # @students_last_week = @total_number_of_students.count - @total_number_of_students.last_week.count
-  @total_number_of_volunteers = User.volunteer.count
-    @students_group_by_age = @total_number_of_students.group_by_age
-    @students_group_by_gender = @total_number_of_students.group_by_gender
+    @students_by_age = Student.group_by_age
+    @students_by_gender = Student.group_by_gender
+    @courses_by_subject = Course.group_by_subject
+    @volunteers_by_subject = Proficiency.group_by_subject
   end
 
   def statistics
-    @teachers = User.all
-
-    @proficiencies
-    @users = User.all
   end
-
-
 
   private
 
@@ -33,8 +21,6 @@ class DashboardController < ApplicationController
   def total_student_attendance
     @percentage_attendance
   end
-
-
 
   def set_courses
     @active_courses = Course.active_courses
@@ -58,6 +44,10 @@ class DashboardController < ApplicationController
   end
 
   def set_subjects
-     @subjects = Subject.all
+    @subjects = Subject.all
+  end
+
+  def set_volunteers
+    @volunteers = User.volunteer.count
   end
 end

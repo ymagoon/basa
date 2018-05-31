@@ -61,7 +61,7 @@ class Course < ApplicationRecord
   scope :order_by_start_date, -> { order(start_date: :asc)}
   scope :order_by_end_date, -> { order(start_date: :desc)}
 
-# scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+  scope :group_by_subject, -> { self.joins(:subject).group('subjects.name').count }
 
 # FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
   def course_attendance

@@ -9,6 +9,9 @@ class Proficiency < ApplicationRecord
 
   validates :role, presence: true, inclusion: { in: ROLES }
 
+  # Currently counts users twice if they are assistants and teachers
+  scope :group_by_subject, -> { self.joins(:subject).group(:name).count }
+
   def self.teachers_by_subject(subject)
     Proficiency.joins(:subject).where('subjects.name = ? AND role = 0', subject)
   end
