@@ -1,12 +1,12 @@
 class DashboardController < ApplicationController
-  before_action  :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :set_courses, :set_unassigned_vols, :set_subjects, :set_absent_students, :set_attendances
+  before_action  :set_assigned_volunteers, :set_attendance_percentage, :set_active_courses, :set_courses, :set_unassigned_vols, :set_subjects, :set_students, :set_attendances
 
   def home
   end
 
  def statistics
   @teachers = User.all
-  @students = Student.all
+
   @proficiencies
   @users = User.all
  end
@@ -73,7 +73,8 @@ class DashboardController < ApplicationController
     @students_attendance = Student.lowest_attendance
   end
 
-  def set_absent_students
+  def set_students
+    @students = Student.all
     @absent_students = Student.absent_student
   end
 
