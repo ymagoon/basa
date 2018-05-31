@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action  :set_courses, :set_unassigned_vols, :set_subjects, :set_students, :set_attendances, :set_volunteers
+
   def home
     @students_by_age = Student.group_by_age
     @students_by_gender = Student.group_by_gender
