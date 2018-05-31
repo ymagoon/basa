@@ -8,17 +8,18 @@
 }
 
 .body {
-  background-color: $my-light-gray;
+  // background-color: $my-light-gray;
   font-family: $header-font;
 }
 
-.wrapper, html {
-  margin:0 auto;
-
+body, html {
+  height: 100%;
 }
 
-.better-container {
-  margin: 0 30px;
+.wrapper, html {
+  height: 100%;
+  margin:0 auto;
+  background-color: #FAFBFC;
 }
 
 .border-bottom {
