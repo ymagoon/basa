@@ -11,6 +11,13 @@ class StudentRostersController < ApplicationController
     @allstudents = Student.all
     @inclass = StudentRoster.joins(:student).where(course: @course).pluck(:student_id)
     @students = @allstudents.where.not(id: @inclass).order(:created_at)
+
+    @search = params[:search] ? true : false
+    if @search
+      @students = @students.where("first_name ilike ? OR last_name ilike ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @students
+    end
   end
 
   def create

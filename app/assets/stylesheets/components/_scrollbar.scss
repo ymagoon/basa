@@ -10,3 +10,16 @@
   background-color: $my-blue;
   outline: 1px solid $my-gray;
 }
+
+.scroll-vertical::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-vertical::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.scroll-vertical::-webkit-scrollbar-thumb {
+  background-color: $my-blue;
+  outline: 1px solid $my-gray;
+}

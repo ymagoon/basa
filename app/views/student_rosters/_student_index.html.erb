@@ -1,5 +1,5 @@
 <%= title 'Assign Students' %>
-<div class="assigned-students">
+<div class="assigned-students scroll-vertical">
   <% @course.students.each do |student| %>
     <div draggable="true" class="assigned student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>" id="<%= student.id %>">
       <div class="student_name">

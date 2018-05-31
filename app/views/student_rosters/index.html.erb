@@ -8,17 +8,13 @@
     <div class="col-xs-6">
 
       <div class="search_students_wrap">
-        <form>
-         <div class="search-box">
-          <input type="text" class="searchTerm" placeholder="Find a Student">
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
-    </div>
+        <%= form_tag course_student_rosters_path(@course), method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Find a student", class: "form-control searchTerm" %>
+        <%= submit_tag %>
+        <% end %>
+      </div>
 
-    <div class="students-select-box">
+    <div class="students-select-box scroll-vertical">
       <%= render 'create', students: @students, course: @course %>
     </div>
 
