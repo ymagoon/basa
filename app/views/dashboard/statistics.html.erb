@@ -1,16 +1,3 @@
-<% title 'Test Title' %>
-<div class="dashboard-head">
-  <%= render 'charts/totals', total_title: 'Courses', total_content: @total_number_of_courses, last_week: @courses_last_week %>
-  <%= render 'charts/totals', total_title: 'Students', total_content: @total_number_of_students, last_week: @students_last_week %>
-  <%= render 'charts/totals', total_title: 'Volunteers', total_content: @total_number_of_volunteers, last_week: @volunteers_last_week %>
-</div>
-
-
-<h3>Student Data</h3>
-<h5>Students by Gender</h5>
-<%= render 'charts/students_by_gender', data: @students_group_by_gender %>
-<%= render 'charts/students_by_age', data: @students_group_by_age %>
-
 <% title 'Home' %>
 <main>
   <div class="tabbable boxed parentTabs">

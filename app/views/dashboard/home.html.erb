@@ -1,14 +1,45 @@
 <%= javascript_pack_tag "charts" %>
 <div class="row"></div>
+<div class="dashboard-head">
+  <%= render 'charts/totals', total_title: 'Courses', total_content: @total_number_of_courses, last_week: @courses_last_week %>
+  <%= render 'charts/totals', total_title: 'Students', total_content: @total_number_of_students, last_week: @students_last_week %>
+  <%= render 'charts/totals', total_title: 'Volunteers', total_content: @total_number_of_volunteers, last_week: @volunteers_last_week %>
+</div>
 <div class="row">
   <div class="dashboard-column left">
-    <h3>Student Data</h3>
-    <%= render 'charts/students_by_gender' %>
+    <div class="charts data">
+      <h3 class="text-center">Student Data</h3>
+      <div class="student charts">
+        <%= render 'charts/students_by_gender', data: @students_group_by_gender %>
+        <%= render 'charts/students_by_age', data: @students_group_by_age %>
+      </div>
+      <div class="attendance charts">
+        <h3 class="text-center">Attendance Data</h3>
+      </div>
+      <div class="volunteer charts">
+        <h3 class="text-center">Volunteer Data</h3>
+      </div>
+      <div class="course charts">
+        <h3 class="text-center">Course Data</h3>
+      </div>
+    </div>
   </div>
   <div class="dashboard-column right overall-attention">
     <h3 class="text-center">Attention</h3>
-
-        [Without Teachers (<%= @no_teacher.count %>), Below Capacity  (<%= @below_cap.count %>), Absent Students (<%= @absent_students.count %>)]
+    <hr>
+    <% unless @no_teacher.count.nil? %>
+      <%= link_to statistics_dashboard_index_path do %>
+        <p>Without Teachers (<%= @no_teacher.count %>)</p>
+        <% end %>
+      <% end %>
+    <% unless @below_cap.count.nil? %>
+      <%= link_to statistics_dashboard_index_path do %>
+        <p>Below Capacity  (<%= @below_cap.count %>)</p>
+        <% end %>
+      <% end %>
+    <% unless @absent_students.count.nil? %>
+      <%= link_to statistics_dashboard_index_path do %>
+        <p>Absent Students (<%= @absent_students.count %>)</p>
       <% end %>
     <% end %>
   </div>

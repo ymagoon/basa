@@ -1,5 +1,6 @@
 .dashboard-head {
   display: flex;
+  justify-content: center;
 
 
   .totals-container {
@@ -9,8 +10,8 @@
     background-color: white;
 
     .total-card {
-      height: 150px;
-      width: 150px;
+      height: 100px;
+      width: 100px;
       border-left: 1px solid $my-gray-border;
       padding: 10px 5px;
       display: flex;
@@ -48,4 +49,9 @@
 .up-arrow {
   width: 12px;
   height: 12px;
+}
+
+.charts {
+  display: flex;
+  flex-wrap: wrap;
 }
