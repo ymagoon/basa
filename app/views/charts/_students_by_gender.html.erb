@@ -1,0 +1,3 @@
+<%= javascript_pack_tag "charts" %>
+
+<%= pie_chart @students.group(:gender).count, donut: true %>
