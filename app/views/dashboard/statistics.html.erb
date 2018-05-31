@@ -1,14 +1,91 @@
-<%= javascript_pack_tag "charts" %>
+<% title 'Home' %>
+<main>
+  <div class="tabbable boxed parentTabs">
+    <ul class="nav nav-tabs">
+      <li class="active tab"><a href="#set1"><%= render :partial => 'shared/courses.svg' %>Courses</a>
+      </li>
+      <li class="tab"><a href="#set2"><%= render :partial => 'shared/teacher.svg' %>Volunteers</a>
+      </li>
+      <li class="tab"><a href="#set3"><%= render :partial => 'shared/calendar.svg' %>Attendance</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade active in" id="set1">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#sub11">Active (<%= @courses.count %>)</a>
+            </li>
+            <li><a href="#sub12">Without Teachers (<%= @no_teacher.count %>)</a>
+            </li>
+            <li><a href="#sub13">Below Capacity  (<%= @below_cap.count %>)</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade active in" id="sub11">
+              <%= render 'shared/course_list', courses: @courses %>
+            </div>
+            <div class="tab-pane fade" id="sub12">
+              <%= render 'shared/course_list', courses: @no_teacher %>
+            </div>
+            <div class="tab-pane fade" id="sub13">
+              <%= render 'shared/course_list', courses: @below_cap %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="set2">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#21">Unassigned</a>
+            </li>
+            <% @subjects.each do |subject| %>
+            <li>
+              <a href="#sub2-<%=subject.id%>"><%= subject.name %>( <%= subject.teachers.uniq.count %>)
+              </a>
+            </li>
+            <% end %>
+          </ul>
+          <div class="tab-content">
 
-<div class="row">
-  <div class="dashboard-column left">
-    <h3>Student Data</h3>
-    <%= render 'charts/students_by_gender' %>
+            <div class="tab-pane fade active in" id="21">
+             <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
+           </div>
+           <% @subjects.each do |subject| %>
+           <div class="tab-pane fade" id="sub2-<%=subject.id%>">
+            <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="set3">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#sub31">Courses(Low-High)</a>
+          </li>
+          <li><a href="#sub32">Students (Low-High)</a>
+          </li>
+          <li><a href="#sub33">Absent Students</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+
+          <div class="tab-pane fade active in" id="sub31">
+            <%= render 'shared/course_list', courses: @course_attendance %>
+          </div>
+          <div class="tab-pane fade" id="sub32">
+            <%= render 'attendance', students: @students_attendance %>
+          </div>
+          <div class="tab-pane fade" id="sub33">
+            <%= render 'attendance', students: @absent_students %>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div class="dashboard-column right overall-attention">
-    <h3 class="text-center">Attention</h3>
-    <p>Without Teachers (<%= @no_teacher.count %>)</p>
-    <p>Below Capacity  (<%= @below_cap.count %>)</p>
-  </div>
-</div>
+
+</main>
+
 

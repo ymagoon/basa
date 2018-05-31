@@ -42,13 +42,17 @@ class User < ApplicationRecord
 
   def number_of_volunteers_assigned_to_course
      # total number of volunteers
-    users = User.where(role: 'volunteer').count
+    users = self.where(role: 'volunteer').count
 
     #total number of distinct users on volunteer_rosters
     distinct_users = VolunteerRoster.select(:user_id).distinct.count
 
     users - distinct_users
     # show # of volunteers that have never been assigned to a course
+  end
+
+  def self.total_number_of_volunteers
+    self.where(role: 'volunteer').count
   end
 
   def self.unassigned_vols
