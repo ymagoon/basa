@@ -46,8 +46,10 @@ class Course < ApplicationRecord
 
   # Course phase filters
   # These three filters do not work together because of their conditions. Need to find a way where they wont overwrite each other!
+
   scope :current, -> { where("? between start_date and end_date", DateTime.now)}
   scope :future, -> { where("start_date > ?", DateTime.now)}
+  scope :active, -> { self.current.or(self.future) }
   scope :past, -> { where("? > end_date", DateTime.now)}
   # scope :last_week, -> { where('created_at < ?', DateTime.now - 7) }
 
@@ -62,11 +64,12 @@ class Course < ApplicationRecord
   scope :order_by_end_date, -> { order(start_date: :desc)}
 
   scope :group_by_subject, -> { self.joins(:subject).group('subjects.name').count }
+  scope :total_attendance, -> { (self.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2) }
 
 # FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
   def course_attendance
     s = self.sessions.select do |session|
-      if session.date < DateTime.now
+      if session.date <= DateTime.now
         session.id
       end
     end

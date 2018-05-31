@@ -3,6 +3,7 @@ class StudentRoster < ApplicationRecord
   belongs_to :course
 
   after_create :create_attendance, :autoconfirm
+  after_destroy :delete_attendance
 
   validates :student, uniqueness: { scope: :course, message: "student already associated with course"}
   validate :max_capacity?
@@ -14,6 +15,14 @@ class StudentRoster < ApplicationRecord
 
     course.sessions.each do |session|
       Attendance.create(student_id: self.student_id, session: session)
+    end
+  end
+
+  def delete_attendance
+    course = Course.find(self.course_id)
+
+    course.sessions.each do |session|
+      Attendance.where(session: session, student: self.student).destroy_all
     end
   end
 
