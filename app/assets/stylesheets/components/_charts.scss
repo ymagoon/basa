@@ -54,4 +54,12 @@
 .charts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.student-data {
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  margin: 10px;
+  padding: 10px;
+  background: #F3f3f3;
 }

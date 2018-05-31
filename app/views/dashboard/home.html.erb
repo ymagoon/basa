@@ -1,19 +1,26 @@
 <%= javascript_pack_tag "charts" %>
+  <div class="dashboard-column left">
+    <div class="charts-data">
+       <div class="student-data">
+        <h3 class=" text-center">Student Data</h3>
+        <div class=" charts">
 
-    <div class="charts data">
-      <h3 class="text-center">Student Data</h3>
-      <div class="student charts">
-        <%= render 'charts/students_by_gender', data: @students_group_by_gender %>
-        <%= render 'charts/students_by_age', data: @students_group_by_age %>
-      </div>
-      <div class="attendance charts">
+          <%= render 'charts/students_by_gender', data: @students_by_gender %>
+          <%= render 'charts/students_by_age', data: @students_by_age %>
+
+        </div>
+       </div>
+       <hr>
         <h3 class="text-center">Attendance Data</h3>
+      <div class="attendance charts">
       </div>
-      <div class="volunteer charts">
+      <hr>
         <h3 class="text-center">Volunteer Data</h3>
+      <div class="volunteer charts">
          <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
       </div>
       <div class="course charts">
+        <hr>
         <h3 class="text-center">Course Data</h3>
         <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
       </div>
