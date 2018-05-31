@@ -1,0 +1,10 @@
+<%= javascript_pack_tag "charts" %>
+
+<%= area_chart data %>
+
+<%= line_chart @courses.active.map { |course|
+    {name: course.name, data: course.course_attendance}
+} %>
+
+
+<!-- Course.active.total_attendance -->

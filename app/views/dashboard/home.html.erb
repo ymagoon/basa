@@ -1,4 +1,12 @@
 <%= javascript_pack_tag "charts" %>
+
+
+
+
+
+
+
+
   <div class="dashboard-column left">
     <div class="charts-data">
        <div class="student-data">
@@ -13,6 +21,9 @@
        <hr>
         <h3 class="text-center">Attendance Data</h3>
       <div class="attendance charts">
+
+    <%= render 'charts/active_attendance', data: @active_attendance %>
+    <%= render 'charts/totals', total_title: 'Total Attendance', total_content: @total_attendance, last_week: 'test' %>
       </div>
       <hr>
         <h3 class="text-center">Volunteer Data</h3>
@@ -25,6 +36,7 @@
         <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
       </div>
     </div>
+
   </div>
   <div class="dashboard-column right overall-attention">
     <h3 class="text-center">Attention</h3>
