@@ -3,19 +3,13 @@
 <div class="row">
   <div class="dashboard-column left">
     <h3>Student Data</h3>
-    <%= render 'charts/students_by_gender' %>
+    <%= render 'charts/students_by_gender', data: @students_by_gender %>
+    <%= render 'charts/students_by_age', data: @students_by_age %>
+    <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
+    <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
   </div>
   <div class="dashboard-column right overall-attention">
     <h3 class="text-center">Attention</h3>
-    <% unless @no_teacher.count.nil? %>
-      <%= link_to statistics_dashboard_index_path do %>
-        <p>Without Teachers (<%= @no_teacher.count %>)</p>
-        <% end %>
-      <% end %>
-        <p>Below Capacity  (<%= @below_cap.count %>)</p>
-        <p>Absent Students (<%= @absent_students.count %>)</p>
-      <% end %>
-    <% end %>
   </div>
 </div>
 
