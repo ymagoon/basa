@@ -30,7 +30,6 @@
     }
     .fas {
       margin-right: 10px;
-
       &:hover {
         color: $my-blue;
       }
@@ -38,6 +37,14 @@
   }
 
 }
+
+.far {
+  margin-right: 2px;
+  color: $my-gray;
+    &:hover {
+      color: $my-green;
+    }
+  }
 
 .teacher {
   border-left: 5px solid $my-blue !important;
