@@ -49,6 +49,7 @@ class Course < ApplicationRecord
   scope :current, -> { where("? between start_date and end_date", DateTime.now)}
   scope :future, -> { where("start_date > ?", DateTime.now)}
   scope :past, -> { where("? > end_date", DateTime.now)}
+  # scope :last_week, -> { where('created_at < ?', DateTime.now - 7) }
 
   # Course date range filters
 
