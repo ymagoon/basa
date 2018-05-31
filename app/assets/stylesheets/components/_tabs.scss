@@ -15,11 +15,11 @@ body {
   background: #fff;
 }
 
-li:active > a {
+.nav > li:active > a {
   color: $my-blue;
 }
 
-li > a {
+.nav > li > a {
     color: #bbb;
     font-size: 12px;
     width: 150px;
@@ -36,6 +36,7 @@ li > a {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: $my-blue;
   border: 1px solid $my-light-gray;
+  height: -5px;
   border-top: 2px solid #77C9D4;
   border-bottom: 3px solid transparent;
   svg {
@@ -51,7 +52,7 @@ main {
   background: #fff;
 }
 
-input {
+.nav > input {
   display: none;
 }
 
@@ -59,7 +60,7 @@ tab:hover > svg {
   fill: #888;;
 }
 
-input:checked + label  {
+.nav > input:checked + label  {
   color: $my-blue;
   border: 1px solid $my-light-gray;
   border-top: 2px solid $my-blue;
