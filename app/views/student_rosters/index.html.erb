@@ -1,5 +1,3 @@
-<div class="container">
-
   <!-- COURSE_HEADER PARTIAL -->
   <%= render 'courses/course_header', course: @course %>
 
@@ -13,23 +11,33 @@
         <%= submit_tag %>
         <% end %>
       </div>
-
-    <div class="students-select-box scroll-vertical">
-      <%= render 'create', students: @students, course: @course %>
     </div>
-
   </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>SELECT STUDENTS</h3>
+      <% if @search %>
+        <p><%= link_to "Clear search results",  course_student_rosters_path(@course) %></p>
+      <% else %>
+        <p>All Students</p>
+      <% end %>
+      <div>
 
-  <div class="col-xs-6">
-    <div class="student-roster">
-      <div class="capacity">
-        <p>Course Capacity:   Min (<strong><%= @course.min_capacity %></strong>) | Max (<strong><%= @course.max_capacity %></strong>)</p>
       </div>
-      <p> <%= render 'student_index', students: @students, course: @course %> </p>
+
+      <div class="students-select-box scroll-vertical">
+        <%= render 'create', students: @students, course: @course %>
+      </div>
     </div>
 
-  </div>
+    <div class="col-xs-6">
+      <div class="student-roster">
+       <h3>STUDENTS REGISTERED FOR <%= @course.name.upcase %> </h3>
+       <p>Course Capacity:   Min (<strong><%= @course.min_capacity %></strong>) | Max (<strong><%= @course.max_capacity %></strong>)</p>
+       <p> <%= render 'student_index', students: @students, course: @course %> </p>
+     </div>
+   </div>
+ </div>
 </div>
 
 <div ID="flashes"></div>
-</div>

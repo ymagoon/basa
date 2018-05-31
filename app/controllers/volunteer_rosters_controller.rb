@@ -26,7 +26,7 @@ class VolunteerRostersController < ApplicationController
     if @roster.save
       redirect_to new_course_volunteer_roster_path(@course)
     else
-      redirect_to new_course_volunteer_roster_path(@course), :flash => { :error => "Insufficient rights!" }
+      redirect_to new_course_volunteer_roster_path(@course), :flash => { :error => "Couldn't save the assignment, try another volunteer!" }
     end
   end
 
