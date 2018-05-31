@@ -1,5 +1,14 @@
-<h3>Student Data</h3>
-<h5>Students by Gender</h5>
-<%= render 'charts/students_by_gender' %>
+<%= javascript_pack_tag "charts" %>
 
+<div class="row">
+  <div class="dashboard-column left">
+    <h3>Student Data</h3>
+    <%= render 'charts/students_by_gender' %>
+  </div>
+  <div class="dashboard-column right overall-attention">
+    <h3 class="text-center">Attention</h3>
+    <p>Without Teachers (<%= @no_teacher.count %>)</p>
+    <p>Below Capacity  (<%= @below_cap.count %>)</p>
+  </div>
+</div>
 

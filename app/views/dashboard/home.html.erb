@@ -9,6 +9,8 @@
       <li class="tab"><a href="#set3"><%= render :partial => 'shared/calendar.svg' %>Attendance</a>
       </li>
     </ul>
+
+ <!--              TAB #1                     -->
     <div class="tab-content">
       <div class="tab-pane fade active in" id="set1">
         <div class="tabbable">
@@ -24,9 +26,10 @@
             <div class="tab-pane fade active in" id="sub11">
               <%= render 'shared/course_list', courses: @courses %>
             </div>
-
           </div>
         </div>
+
+                   <!-- TAB #2 -->
         <div class="tab-pane fade" id="set2">
           <div class="tabbable">
             <ul class="nav nav-tabs">
@@ -47,6 +50,7 @@
              <div class="tab-pane fade" id="sub2-<%=subject.id%>">
               <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
             </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -62,6 +66,9 @@
             </li>
             <% end %>
           </ul>
+
+
+      <!--     TAB #3 -->
           <div class="tab-content">
 
             <div class="tab-pane fade active in" id="sub31">

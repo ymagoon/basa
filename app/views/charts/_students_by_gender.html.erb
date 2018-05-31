@@ -1,5 +1,4 @@
-<%= javascript_pack_tag "charts" %>
-
+<h5>Students by Gender</h5>
 <%= pie_chart @students.group(:gender).count, donut: true %>
 
 
