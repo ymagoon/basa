@@ -14,7 +14,7 @@ class Address < ApplicationRecord
   validates :city, presence: true
   validates :address_type, presence: true, inclusion: { in: @address_type }
 
-  def self.venue_ids
-    Address.all.select { |address| address.venue? }.map { |address| address.id }
+  def self.venues
+    Address.all.select { |address| address.venue? }.map { |address| address.venue_name }
   end
 end

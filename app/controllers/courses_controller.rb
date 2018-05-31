@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
 
     @course = Course.new
     @filter_subjects = Subject.all
-    @filter_addresses = Address.venue_ids # fix drop down
+    @filter_addresses = Address.venues
 
     # Filter by phase
     if params[:current].present? || params[:future].present? || params[:past].present?
@@ -76,7 +76,7 @@ class CoursesController < ApplicationController
     @subject = Subject.find(course_params[:subject_id])
     @course.subject = @subject
 
-    @address = Address.find(params[:course][:address_id])
+    @address = Address.find_by(venue_name: params[:course][:address_id])
     @course.address = @address
 
     @course.start_date = course_params[:start_date]
