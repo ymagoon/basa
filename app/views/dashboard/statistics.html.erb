@@ -2,6 +2,7 @@
 <main>
   <div class="tabbable boxed parentTabs">
     <ul class="nav nav-tabs">
+
       <li class="active tab"><a href="#set1"><%= render :partial => 'shared/courses.svg' %>Courses</a>
       </li>
       <li class="tab"><a href="#set2"><%= render :partial => 'shared/teacher.svg' %>Volunteers</a>
@@ -22,13 +23,22 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade active in" id="sub11">
-              <%= render 'shared/course_list', courses: @courses %>
+              <div class="row">
+                <hr>
+                <%= render 'shared/course_list', courses: @courses %>
+              </div>
             </div>
             <div class="tab-pane fade" id="sub12">
-              <%= render 'shared/course_list', courses: @no_teacher %>
+              <div class="row">
+                <hr>
+                <%= render 'shared/course_list', courses: @no_teacher %>
+              </div>
             </div>
             <div class="tab-pane fade" id="sub13">
-              <%= render 'shared/course_list', courses: @below_cap %>
+              <div class="row">
+                <hr>
+                <%= render 'shared/course_list', courses: @below_cap %>
+              </div>
             </div>
           </div>
         </div>
@@ -48,10 +58,12 @@
           <div class="tab-content">
 
             <div class="tab-pane fade active in" id="21">
+              <hr>
              <%= render 'shared/volunteers', volunteers: @unassigned_vols %>
            </div>
            <% @subjects.each do |subject| %>
            <div class="tab-pane fade" id="sub2-<%=subject.id%>">
+            <hr>
             <%= render 'shared/volunteers', volunteers: (@volunteers = subject.teachers.uniq)%>
           </div>
           <% end %>
@@ -72,13 +84,22 @@
         <div class="tab-content">
 
           <div class="tab-pane fade active in" id="sub31">
-            <%= render 'shared/course_list', courses: @course_attendance %>
+            <div class="row">
+              <hr>
+              <%= render 'shared/course_list', courses: @course_attendance %>
+            </div>
           </div>
           <div class="tab-pane fade" id="sub32">
-            <%= render 'attendance', students: @students_attendance %>
+            <div class="row">
+              <hr>
+              <%= render 'attendance', students: @students_attendance %>
+            </div>
           </div>
           <div class="tab-pane fade" id="sub33">
-            <%= render 'attendance', students: @absent_students %>
+            <div class="row">
+              <hr>
+              <%= render 'attendance', students: @absent_students %>
+            </div>
           </div>
         </div>
 

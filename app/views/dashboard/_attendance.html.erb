@@ -1,13 +1,13 @@
 
+<div class="row">
+  <div class="student-index">
+    <% students.each do |student| %>
+    <div class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
+      <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
 
-    <div class="student-index">
-      <% students.each do |student| %>
-      <div class="student_card <%= student.male? ? 'male' : 'female' %>" data-student="<%= student.id %>"  "<%= student.id %>">
-        <h5 class="text-center" style="padding:5px"><%= student.first_name %> <%= student.last_name %></h5>
-
-        <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
-      </div>
-      <% end %>
+      <span class="age-gender"><i class="fas <%= student.male? ? 'fa-male' : 'fa-female' %>"></i><p><%= student.age(student.birth_date) %></p></span>
     </div>
-
+    <% end %>
+  </div>
+</div>
 
