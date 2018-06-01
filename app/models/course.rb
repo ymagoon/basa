@@ -63,7 +63,12 @@ class Course < ApplicationRecord
   scope :order_by_end_date, -> { order(start_date: :desc)}
 
   scope :group_by_subject, -> { self.joins(:subject).group('subjects.name').count }
-  scope :total_attendance, -> { (self.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2) }
+
+  def self.total_attendance
+    (self.all.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2)
+  end
+
+  # scope :total_attendance, -> { (self.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2) }
 
 # FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
   def course_attendance
