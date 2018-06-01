@@ -1,8 +1,8 @@
 <%= javascript_pack_tag "charts" %>
 
-<%= area_chart data %>
+<%= bar_chart data, width: "200px", height: "200px" %>
 
-<%= line_chart @courses.active.map { |course|
+<%#= line_chart @courses.active.map { |course|
     {name: course.name, data: course.course_attendance}
 } %>
 

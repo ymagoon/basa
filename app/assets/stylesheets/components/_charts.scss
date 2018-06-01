@@ -1,6 +1,8 @@
 .dashboard-head {
   display: flex;
   justify-content: center;
+  width: 100%;
+
 
 
   .totals-container {
@@ -8,6 +10,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    margin: 5px;
 
     .total-card {
       height: 100px;
@@ -61,5 +64,5 @@
   box-shadow: 1px 1px 1px 1px lightgrey;
   margin: 10px;
   padding: 10px;
-  background: #F3f3f3;
+  background: white;
 }
