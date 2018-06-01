@@ -3,7 +3,7 @@
 
 .course-header {
   // display: flex;
-  padding-bottom: 50px;
+  padding-bottom: 90px;
   position: relative;
   background-color: white;
   height: auto;
@@ -44,28 +44,73 @@
 
 .course-nav-bar {
   width: 100%;
-  background-color: #E5E5E5;
+  background-color: #FFF;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 0px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.35), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
 }
+
 
 .course-nav-icons-group {
   display: flex;
   justify-content: flex-end;
+  background-color: white;
+  .active {
+    height: 50px;
+    position: relative;
+    background-position: 0 -88px;
+    background-color: #FAFBFC;
+    p {
+      background-color: #FAFBFC;
+      color: $my-green;
+    }
+    .course-nav-icon {
+  border-top: 2px solid $my-blue;
+  border-left: 1px solid lightgray;
+  background-color: #FAFBFC;
+  box-shadow: none;
+    p {
+      color: $my-green;
+    }
+    svg {
+      fill: $my-green;
+    }
+    }
+  }
+
+  .course-nav-icon {
+    width: 150px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    box-shadow: 0 4px 6px rgba(50,50,93,.11);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    p {
+      padding: 1px 10px 1px 10px;
+      text-align: center;
+      font-size: 14px;
+      color: $my-gray;
+    }
+    svg {
+      fill: $my-gray;
+      text-align: center;
+    }
+  }
 }
 
 .course-nav-icon svg {
   width: 40px;
   color: white;
-  border-radius: 25%;
   padding: 5px;
   margin-top: 5px;
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-bottom: 0px;
+  margin-right: 55px;
+  margin-left: 55px;
 }
 
 .teacher-icon svg {
@@ -76,9 +121,10 @@
   }
 }
 
-.teacher-icon-active svg {
+.teacher-icon .active svg {
   background-color: $my-blue;
   fill: white;
+
 }
 
 .student-icon svg {
@@ -89,7 +135,7 @@
   }
 }
 
-.student-icon-active svg {
+.active .student-icon svg {
   background-color: $my-green;
   fill: white;
 }
@@ -105,4 +151,6 @@
 .course-icon-active svg {
   background-color: $my-gray;
   fill: white;
+  border-top: 2px solid $my-blue;
+
 }

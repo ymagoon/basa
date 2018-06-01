@@ -1,11 +1,17 @@
 .dashboard-head {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   background: white;
   margin-top: 20px;
+  margin: 10px;
   padding: 15px;
-
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
 
 
   .totals-container {
@@ -13,18 +19,23 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    border-radius: 4px;
     margin: 5px;
+    padding: 5px 30px;
 
     .total-card {
       height: 100px;
       width: 100px;
-      border-left: 1px solid $my-gray-border;
-      padding: 10px 5px;
+
+ /*     border-left: 1px solid $my-gray-border;*/
+      padding: 10px 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
 
+      text-transform: uppercase;
       .center-totals {
 
         p {
@@ -68,4 +79,10 @@
   margin: 10px;
   padding: 10px;
   background: white;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
 }

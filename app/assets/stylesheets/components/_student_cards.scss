@@ -2,10 +2,16 @@
   display: grid;
   grid-template-columns: 40% 1fr 1fr 1fr;
   grid-template-rows: 60% 40%;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
   margin: 5px;
   width: 120px;
   height: 50px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
 }
 
 .student_name {
@@ -42,16 +48,25 @@
 .female {
   background-color: white;
   border-left: solid 4px $my-green;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
 }
 .male {
   background-color: white;
   border-left: solid 4px $my-blue;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
   }
 
-// .student-list {
-//   display: flex;
-//   justify-content: space-around;
-// }
+
 
 .jsdragdrop {
   height: 700px;
