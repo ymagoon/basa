@@ -37,7 +37,7 @@
 
       text-transform: uppercase;
       .center-totals {
-
+        text-align: center;
         p {
           margin: 0 !important;
         }
@@ -74,7 +74,15 @@
   justify-content: center;
 }
 
+.charts-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
 .student-data {
+  width: 48%;
   box-shadow: 1px 1px 1px 1px lightgrey;
   margin: 10px;
   padding: 10px;
