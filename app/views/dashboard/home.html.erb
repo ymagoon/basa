@@ -1,16 +1,18 @@
 <%= javascript_pack_tag "charts" %>
 
 
+<div class="dashboard-head">
 
+  <%= render 'charts/totals', total_title: 'Courses', total_content: @courses.count  %>
+  <%= render 'charts/totals', total_title: 'Students', total_content: @students.count  %>
+  <%= render 'charts/totals', total_title: 'Volunteers', total_content: @volunteers %>
 
-
-
-
+</div>
 
   <div class="dashboard-column left">
     <div class="charts-data">
        <div class="student-data">
-        <h3 class=" text-center">Student Data</h3>
+        <h3 class=" text-center">Students by Gender and Age</h3>
         <div class=" charts">
 
           <%= render 'charts/students_by_gender', data: @students_by_gender %>
@@ -18,45 +20,48 @@
 
         </div>
        </div>
-       <hr>
-        <h3 class="text-center">Attendance Data</h3>
-      <div class="attendance charts">
-
-    <%= render 'charts/active_attendance', data: @active_attendance %>
-    <%= render 'charts/totals', total_title: 'Total Attendance', total_content: @total_attendance, last_week: 'test' %>
+      <div class="student-data">
+        <h3 class="text-center">Total Attendance</h3>
+        <div class="attendance charts">
+          <%= render 'charts/active_attendance', data: @active_attendance %>
+          <%= render 'charts/totals', total_title: 'Total Attendance', total_content: @total_attendance, last_week: 'test' %>
+        </div>
       </div>
-      <hr>
-        <h3 class="text-center">Volunteer Data</h3>
-      <div class="volunteer charts">
-         <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
+      <div class="student-data">
+        <h3 class="text-center">Volunteers by Proficiency</h3>
+        <div class="volunteer charts">
+           <%= render 'charts/volunteers_by_subject', data: @volunteers_by_subject %>
+        </div>
       </div>
-      <div class="course charts">
-        <hr>
-        <h3 class="text-center">Course Data</h3>
-        <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
-      </div>
+        <div class="student-data">
+          <h3 class="text-center">Courses by Subject</h3>
+          <div class="course charts">
+            <%= render 'charts/courses_by_subject', data: @courses_by_subject %>
+          </div>
+        </div>
     </div>
 
   </div>
   <div class="dashboard-column right overall-attention">
-    <h3 class="text-center">Attention</h3>
-    <hr>
-    <% unless @no_teacher.count.nil? %>
-      <%= link_to statistics_dashboard_index_path do %>
-        <p>Without Teachers (<%= @no_teacher.count %>)</p>
+    <div class="attention">
+      <h3 class="text-center">Attention</h3>
+      <% unless @no_teacher.count.nil? %>
+        <%= link_to statistics_dashboard_index_path do %>
+          <p>Without Teachers <strong>(<%= @no_teacher.count %>)</strong> </p>
+          <% end %>
+        <% end %>
+      <% unless @below_cap.count.nil? %>
+        <%= link_to statistics_dashboard_index_path do %>
+          <p>Below Capacity <strong>(<%= @below_cap.count %>) </strong></p>
+          <% end %>
+        <% end %>
+      <% unless @absent_students.count.nil? %>
+        <%= link_to statistics_dashboard_index_path do %>
+          <p>Absent Students <strong>(<%= @absent_students.count %>)</strong></p>
         <% end %>
       <% end %>
-    <% unless @below_cap.count.nil? %>
-      <%= link_to statistics_dashboard_index_path do %>
-        <p>Below Capacity  (<%= @below_cap.count %>)</p>
-        <% end %>
-      <% end %>
-    <% unless @absent_students.count.nil? %>
-      <%= link_to statistics_dashboard_index_path do %>
-        <p>Absent Students (<%= @absent_students.count %>)</p>
-      <% end %>
-    <% end %>
 
+    </div>
   </div>
 </div>
 
