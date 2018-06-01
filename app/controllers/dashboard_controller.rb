@@ -6,8 +6,9 @@ class DashboardController < ApplicationController
     @students_by_gender = Student.group_by_gender
     @courses_by_subject = Course.group_by_subject
     @volunteers_by_subject = Proficiency.group_by_subject
+
     @total_attendance = Course.total_attendance
-    @current_attendance = Course.active.total_attendance
+    # @current_attendance = Course.active.total_attendance
     # @past_attendance = Course.past.total_attendance # fails if there is no past attendance
   end
 
