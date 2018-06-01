@@ -50,7 +50,7 @@
 
   .card-content {
      display: flex;
-     padding: 10px 0 10px 10px;
+     padding: 20px 0 20px 20px;
      align-items: center;
      width: 100%;
 
@@ -58,13 +58,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 125px;
+      width: 155px;
 
       .course-list-header {
         display: flex;
         align-items: center;
 
         h3 {
+          font-size: 18px;
           // font-weight: bold;
           margin: 0;
         }
@@ -75,14 +76,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 85px;
+      width: 100px;
       margin: 0 10px;
 
       .volunteer-section {
         display: flex;
       }
       p {
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
@@ -96,8 +97,8 @@
       align-items: flex-end;
 
       .location {
-        padding: 2px 0 2px 5px;
-        width: 125px;
+        padding: 4px 0 4px 6px;
+        width: 155px;
         background-color: $my-gray;
         display: flex;
         align-items: center;
@@ -108,7 +109,7 @@
       }
 
       p {
-        font-size: 11px;
+        font-size: 14px;
         font-family: $gotham-medium;
         color: white;
         padding-top: 2px;
@@ -118,7 +119,7 @@
 
       .action-icons {
         margin-top: 10px;
-        width: 125px;
+        width: 155px;
         text-align: left;
         display: flex;
         justify-content: space-around;
@@ -136,8 +137,8 @@
 }
 
 .assign-student svg, .assign-volunteer svg, .view-course svg {
-  width: 20px;
-  fill: $my-black;
+  width: 30px;
+  fill: $my-gray;
 
   &:hover {
     fill: $my-blue;
@@ -145,7 +146,7 @@
 }
 
 .course-date {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .confirmed {

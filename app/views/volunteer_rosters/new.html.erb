@@ -54,13 +54,13 @@
       </div>
     </div>
     <div class="display-roster-results scroll-vertical">
-        <h4>TEACHERS</h4>
+        <h4 class="volunteer-assign-break">TEACHERS</h4>
         <% @course.volunteer_rosters.each do |roster| %>
         <div class="volunteer-list">
           <% if roster.role == "teacher" %>
           <div class="volunteer teacher">
             <div class="volunteer-name">
-              <p class="no-margin-bottom"><%= roster.user.full_name %></p>
+              <p class="no-margin-bottom"><%= roster.user.full_name.truncate(18) %></p>
             </div>
             <div>
              <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %><i class="far fa-trash-alt"></i> <% end %>
@@ -69,14 +69,14 @@
            </div>
            <% end %>
          </div>
-         <br>
-         <h4>ASSISTANTS</h4>
+         <hr>
+         <h4 class="volunteer-assign-break">ASSISTANTS</h4>
          <% @course.volunteer_rosters.each do |roster| %>
          <div class="volunteer-list">
           <% if roster.role == "assistant" %>
           <div class="volunteer assistant">
             <div class="volunteer-name">
-              <p class="no-margin-bottom"> <%= roster.user.full_name  %> </p>
+              <p class="no-margin-bottom"> <%= roster.user.full_name.truncate(18)  %> </p>
             </div>
             <div class='text-right'> <%= link_to volunteer_roster_path(roster), method: :delete, data: { confirm: "Are you sure?"} do %> <i class="far fa-trash-alt"></i> <% end %> <i class="fas fa-address-card" data-toggle="tooltip" data-html="true" data-placement="top" title="<%= "#{roster.user.phone}\n#{roster.user.email}" %>"></i> </div>
             <% end %>

@@ -4,7 +4,10 @@
 .course-header {
   // display: flex;
   padding-bottom: 90px;
+  margin-bottom: 50px;
   position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
   background-color: white;
   height: auto;
     h1, h2, h3, h4, h5, h6, p {
@@ -13,6 +16,7 @@
       margin: 0px;
     }
     h1 {
+      font-size: 2em;
       padding-bottom: 0px;
     }
     h2 {
@@ -23,12 +27,8 @@
   box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.35), 0 0px 1px #FFF, 0 1px 0 #FFF;
 }
 
-.course-header-info {
-  padding: 0px 20px 0px 20px;
-}
-
 .location-box-course-header {
-  padding: 2px 0 2px 5px;
+  padding: 8px 0 8px 10px;
   width: auto;
   background-color: $my-gray;
   color: white;
@@ -44,7 +44,7 @@
 
 .course-nav-bar {
   width: 100%;
-  background-color: #FFF;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
