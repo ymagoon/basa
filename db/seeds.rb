@@ -264,13 +264,3 @@ attendances = Attendance.all
 attendances.each do |attendance|
   attendance.update(present: rand_attendance)
 end
-# Creating volunteer rosters
-
-# Courses in past need to be relative to the number of teachers available
-# Current courses need to be active courses
-# we want 10 sessions weekly starting on saturday or sunday from 9am - 5pm
-# 1 hour duration
-
-# seed attendance
-# 65% total attendance in the whole fucking system
-# one current course 85%, one current course 40%, the rest in between

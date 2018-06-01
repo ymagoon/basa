@@ -65,10 +65,12 @@ class Course < ApplicationRecord
   scope :group_by_subject, -> { self.joins(:subject).group('subjects.name').count }
 
   def self.total_attendance
-    (self.all.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2)
+    if self.count > 0
+      (self.all.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2)
+    else
+      0
+    end
   end
-
-  # scope :total_attendance, -> { (self.map { |c| c.course_attendance }.reduce(:+) / Course.count).round(2) }
 
 # FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
   def course_attendance
@@ -128,9 +130,9 @@ class Course < ApplicationRecord
     schedule
   end
 
-  def self.active_courses
-    self.all.select { |c| c.status != 'cancelled'}
-  end
+  # def self.active_courses
+  #   self.all.select { |c| c.status != 'cancelled'}
+  # end
 
   def list_occurrences
     self.schedule.occurrences(self.end_date)

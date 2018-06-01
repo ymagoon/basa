@@ -1,15 +1,19 @@
 class DashboardController < ApplicationController
-  before_action  :set_courses, :set_unassigned_vols, :set_subjects, :set_students, :set_attendances, :set_volunteers
+  before_action  :set_courses, :set_subjects, :set_students, :set_volunteers, :set_unassigned_vols, :set_attendances
 
   def home
-    @students_by_age = Student.group_by_age
-    @students_by_gender = Student.group_by_gender
-    @courses_by_subject = Course.group_by_subject
+    @students_by_age = @students.group_by_age
+    @students_by_gender = @students.group_by_gender
+    @courses_by_subject = @courses.group_by_subject
     @volunteers_by_subject = Proficiency.group_by_subject
 
-    @total_attendance = Course.total_attendance
-    # @current_attendance = Course.active.total_attendance
-    # @past_attendance = Course.past.total_attendance # fails if there is no past attendance
+    @total_attendance = @courses.total_attendance
+
+    @current_attendance = @courses.active.total_attendance
+    @past_attendance = @courses.past.total_attendance # fails if there is no past attendance
+
+    @attendance_by_course = {}
+    @courses.past.each { |c| @attendance_by_course[c.name] = c.course_attendance }
   end
 
   def statistics
@@ -29,10 +33,10 @@ class DashboardController < ApplicationController
   end
 
   def set_courses
-    @active_courses = Course.active_courses
     @courses = Course.all
-    @no_teacher = Course.no_teacher
-    @below_cap = Course.courses_below_min_cap
+    @active_courses = @courses.active
+    @no_teacher = @courses.no_teacher
+    @below_cap = @courses.courses_below_min_cap
   end
 
   def set_unassigned_vols
@@ -40,13 +44,13 @@ class DashboardController < ApplicationController
   end
 
   def set_attendances
-    @course_attendance = Course.lowest_attendance
-    @students_attendance = Student.lowest_attendance
+    @course_attendance = @courses.lowest_attendance
+    @students_attendance = @students.lowest_attendance
   end
 
   def set_students
     @students = Student.all
-    @absent_students = Student.absent_student
+    @absent_students = @students.absent_student
   end
 
   def set_subjects
