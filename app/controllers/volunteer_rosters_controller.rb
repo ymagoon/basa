@@ -1,5 +1,6 @@
 class VolunteerRostersController < ApplicationController
   before_action :set_course, except: :destroy
+  before_action :set_view
 
   def index
   end
@@ -25,7 +26,7 @@ class VolunteerRostersController < ApplicationController
     if @roster.save
       redirect_to new_course_volunteer_roster_path(@course)
     else
-      redirect_to new_course_volunteer_roster_path(@course), :flash => { :error => "Insufficient rights!" }
+      redirect_to new_course_volunteer_roster_path(@course), :flash => { :error => "Couldn't save the assignment, try another volunteer!" }
     end
   end
 
@@ -59,6 +60,10 @@ class VolunteerRostersController < ApplicationController
   def list_assistants
     proficiencies = Proficiency.assistants_by_subject(@course.subject.name)
     @assistants = proficiencies.map { |proficiency| proficiency.user }
+  end
+
+  def set_view
+    @view = "teacher"
   end
 end
 

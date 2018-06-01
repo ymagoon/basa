@@ -34,7 +34,6 @@ class Course < ApplicationRecord
   scope :locations, -> (locations) { where('addresses.venue_name': locations).joins(:address) }
   # lists each venue (as a hash) with how many other courses have that same address
 
-  # might not work because might take all venues for ALL courses instead of the already filtered on courses
   scope :venue_list, -> { self.each_with_object(Hash.new(0)) { |obj, counts| counts[obj.address.venue_name] += 1 } }
 
   # Course subject filters

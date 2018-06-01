@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_subject, only: [:create]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_view
   # before_action :average_attendance
 
   def index
@@ -9,7 +10,7 @@ class CoursesController < ApplicationController
 
     @course = Course.new
     @filter_subjects = Subject.all
-    @filter_addresses = Address.venue_ids # fix drop down
+    @filter_addresses = Address.venues
 
     # Filter by phase
     if params[:current].present? || params[:future].present? || params[:past].present?
@@ -35,7 +36,6 @@ class CoursesController < ApplicationController
     @courses = @courses.with_no_assistants if params[:no_assistants].present?
 
     # Sort by dates
-    # binding.pry
     @courses = @courses.order_by_start_date # hard code until this is working
     # @courses = @courses.order_by_start_date if params[:sort] == 'start_date'
     # @courses = @courses.order_by_end_date if params[:sort] == 'end_date'
@@ -75,7 +75,7 @@ class CoursesController < ApplicationController
     @subject = Subject.find(course_params[:subject_id])
     @course.subject = @subject
 
-    @address = Address.find(params[:course][:address_id])
+    @address = Address.find_by(venue_name: params[:course][:address_id])
     @course.address = @address
 
     @course.start_date = course_params[:start_date]
@@ -123,5 +123,9 @@ class CoursesController < ApplicationController
 
   def set_course
     @course = Course.find(params[:id])
+  end
+
+  def set_view
+    @view = "course"
   end
 end
