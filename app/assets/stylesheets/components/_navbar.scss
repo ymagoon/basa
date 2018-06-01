@@ -1,10 +1,12 @@
 /* The side navigation menu */
 .sidenav {
-  justify-content: space-between;
+  justify-content: space-around;
   display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
   flex-direction: column;
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
+  height: 100%;
+  width: 100px;
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
@@ -21,17 +23,13 @@
   align-content: center;
   text-align: center;
   p {
-    font-size: 10px;
+    font-size: 14px;
   }
 }
 
 
 /* Position and style the close button (top right corner) */
-#close-btn {
-  font-size: 30px;
-  position: relative;
-  left: 55px;
-}
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
@@ -47,7 +45,7 @@
 
 #nav-btn {
   display: flex;
-  width: 30px;
+  width: 50px;
 
   position:fixed;
   margin-left: 5px;
@@ -55,7 +53,7 @@
 
 
 svg {
-  width: 40px;
+  width: 50px;
   fill: $my-blue;
 }
 
@@ -72,4 +70,12 @@ svg {
   }
 }
 
+.nav-button .active {
+  color: $my-green;
+  transition: 0.3s;
+  svg {
+    fill: $my-green;
+    transition: 0.3s;
+  }
+}
 

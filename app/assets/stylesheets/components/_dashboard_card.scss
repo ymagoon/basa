@@ -6,6 +6,12 @@
 .dashboard_card {
   padding: 5px;
   margin: 10px;
+  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
+  transition-property: color,background-color,box-shadow,transform;
+  transition-property: color,background-color,box-shadow,transform,-webkit-box-shadow,-webkit-transform;
+  border-radius: 4px;
 }
 
 

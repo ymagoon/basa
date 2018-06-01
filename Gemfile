@@ -45,6 +45,8 @@ gem 'faker'
 gem "chartkick"
 # gems for dates
 gem 'ice_cube'
+# gem to add active_link_to tags to Navbar
+gem 'active_link_to'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

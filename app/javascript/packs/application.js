@@ -1,5 +1,5 @@
 import 'bootstrap';
-import { initNav } from './navbar';
+
 
 import 'daterangepicker';
 
@@ -13,7 +13,7 @@ import { tabs } from './tabs';
 
 filter();
 tabs();
-initNav();
+
 proficiencyModal();
 initializeDateRangePicker();
 
