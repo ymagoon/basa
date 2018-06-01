@@ -44,13 +44,14 @@
 
 .course-nav-bar {
   width: 100%;
-  background-color: #E5E5E5;
+  background-color: #FAFBFC;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 0px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.35), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  border-radius: 4px;
 }
 
 .course-nav-icons-group {
@@ -58,14 +59,29 @@
   justify-content: flex-end;
 }
 
+.course-nav-icon {
+  width: 120px;
+  border-top: 2px solid lightgray;
+  border-left: 1px solid lightgray;
+  &:active {
+    border-top: 2px solid $my-blue;
+  }
+  h6 {
+    padding: 1px;
+    text-align: center
+  }
+  svg {
+    text-align: center;
+  }
+}
+
 .course-nav-icon svg {
   width: 40px;
   color: white;
-  border-radius: 25%;
   padding: 5px;
   margin-top: 5px;
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 
 .teacher-icon svg {
@@ -79,6 +95,7 @@
 .teacher-icon-active svg {
   background-color: $my-blue;
   fill: white;
+
 }
 
 .student-icon svg {
@@ -105,4 +122,5 @@
 .course-icon-active svg {
   background-color: $my-gray;
   fill: white;
+
 }
