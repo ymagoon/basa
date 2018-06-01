@@ -70,4 +70,12 @@ svg {
   }
 }
 
+.nav-button .active {
+  color: $my-green;
+  transition: 0.3s;
+  svg {
+    fill: $my-green;
+    transition: 0.3s;
+  }
+}
 
