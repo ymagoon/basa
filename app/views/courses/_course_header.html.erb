@@ -13,7 +13,7 @@
     </div>
   </div>
     <div class='location-box-course-header'>
-      <h5> <i class="fas fa-map-marker-alt" style="padding-right: 8px;"> </i><%= course.address.venue_name.upcase %> </h5>
+      <h3> <i class="fas fa-map-marker-alt" style="padding-right: 8px;"> </i><%= course.address.venue_name.upcase %> </h3>
     </div>
 
 
@@ -21,13 +21,6 @@
   <!-- //  COURSE SPECIFIC NAV ICONS // -->
   <div class="course-nav-bar">
     <div class="course-nav-view">
-      <% if @view == "teacher" %>
-        <h4 style="color: #77C9D4"> ASSIGN VOLUNTEERS </h4>
-      <% elsif @view == "student" %>
-        <h4 style="color: #57BC90"> REGISTER STUDENTS </h4>
-      <% elsif @view == "course" %>
-        <h4 style="color: #A5A5AF"> ATTENDANCE </h4>
-      <% end %>
     </div>
     <div class="course-nav-icons-group">
       <%= active_link_to new_course_volunteer_roster_path(@course) do %>
@@ -39,7 +32,7 @@
       <%= active_link_to course_student_rosters_path(@course) do %>
         <div class="course-nav-icon">
         <%= render :partial => 'shared/student.svg' %>
-        <p>Assign Students</p>
+        <p>Register Students</p>
         </div>
       <% end %>
       <%= active_link_to course_path(@course), active: :exclusive do %>

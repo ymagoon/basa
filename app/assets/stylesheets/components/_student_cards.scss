@@ -1,11 +1,11 @@
 .student_card {
   display: grid;
-  grid-template-columns: 40% 1fr 1fr 1fr;
+  grid-template-columns: 33% 1fr 1fr;
   grid-template-rows: 60% 40%;
 
   margin: 5px;
-  width: 120px;
-  height: 50px;
+  width: 150px;
+  height: 70px;
   box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
   -webkit-transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
   transition-property: color,background-color,-webkit-box-shadow,-webkit-transform;
@@ -23,12 +23,12 @@
 #age-gender {
   grid-row: 2 / span 1;
   grid-column: 2 / span 3;
-  padding: 3px;
+  padding-right: 5px;
   color: gray;
   text-decoration: none;
   text-align: right;
   p {
-    font-size: 0.83em;
+    font-size: 1em;
   }
 }
 
@@ -38,7 +38,7 @@
 
 .trash-link {
   color: #8080806b;
-  font-size: 0.83em;
+  font-size: 1.25em;
   padding: 0px 5px 0px 5px;
     &:hover {
     color: $my-blue;
