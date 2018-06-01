@@ -72,6 +72,18 @@ class Course < ApplicationRecord
     end
   end
 
+  def current?
+    DateTime.now.between?(self.start_date, self.end_date)
+  end
+
+  def past?
+    DateTime.now > self.end_date
+  end
+
+  def future?
+    self.start_date > DateTime.now
+  end
+
 # FOR ATTENDANCE BASED ON PASSED SESSIONS/ATTENDANCES
   def course_attendance
     s = self.sessions.select do |session|
