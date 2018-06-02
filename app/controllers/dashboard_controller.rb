@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
     @past_attendance = @courses.past.total_attendance # fails if there is no past attendance
 
     @attendance_by_course = {}
-    @courses.past.each { |c| @attendance_by_course[c.name] = c.course_attendance }
+    @courses.active.each { |c| @attendance_by_course[c.name] = c.course_attendance }
   end
 
   def statistics
